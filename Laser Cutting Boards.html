@@ -1,0 +1,449 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --co:#D85A30;--co-lt:#FAECE7;--co-dk:#712B13;--co-mid:#F0997B;
+  --am:#BA7517;--am-lt:#FAEEDA;--am-dk:#633806;
+  --gy:#5F5E5A;--gy-lt:#F1EFE8;--gy-dk:#2C2C2A;
+  --text:var(--color-text-primary);--ts:var(--color-text-secondary);
+  --bg:var(--color-background-primary);--bg2:var(--color-background-secondary);
+  --bd:var(--color-border-tertiary);--bd2:var(--color-border-secondary);
+  --r:var(--border-radius-md);--rl:var(--border-radius-lg);
+}
+.pg{font-family:var(--font-sans);color:var(--text);max-width:900px;margin:0 auto;padding:0 0 2rem}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+.hero{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);padding:2.5rem 2rem;position:relative;overflow:hidden;margin-bottom:1.5rem}
+.h-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:var(--co)}
+.h-corner{position:absolute;top:0;right:0;width:120px;height:120px;border-left:0.5px solid var(--bd);border-bottom:0.5px solid var(--bd);border-radius:0 var(--rl) 0 50%}
+.h-tag{display:inline-flex;align-items:center;gap:6px;background:var(--co-lt);color:var(--co-dk);font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem}
+.h-dot{width:5px;height:5px;border-radius:50%;background:var(--co)}
+.hero h1{font-size:26px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:0.75rem;max-width:560px}
+.hero h1 em{color:var(--co);font-style:normal}
+.hero p{font-size:14px;color:var(--ts);line-height:1.8;max-width:500px;margin-bottom:1.5rem}
+.h-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-co{background:var(--co);color:#fff;border:none;padding:10px 20px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer}
+.btn-co:hover{background:var(--co-dk)}
+.btn-ol{background:transparent;color:var(--ts);border:0.5px solid var(--bd2);padding:10px 20px;border-radius:var(--r);font-size:13px;cursor:pointer}
+.btn-ol:hover{background:var(--bg2)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border:0.5px solid var(--bd);border-radius:var(--r);overflow:hidden;margin:0 0 2rem}
+.stat{background:var(--bg);padding:1rem;text-align:center}
+.sn{font-size:20px;font-weight:500;color:var(--co);line-height:1}
+.sl{font-size:11px;color:var(--ts);margin-top:4px;line-height:1.4}
+
+.sec{padding:1.5rem 0}
+.ey{font-size:11px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:var(--co);margin-bottom:5px}
+.st{font-size:22px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:0.75rem}
+.sb{font-size:14px;color:var(--ts);line-height:1.8;max-width:640px;margin-bottom:1.25rem}
+.div{height:0.5px;background:var(--bd);margin:0.5rem 0 1.5rem}
+
+.why-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.why-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--r);padding:1rem;border-left:2px solid var(--co);border-radius:0 var(--r) var(--r) 0}
+.why-c h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.why-c h4 i{font-size:16px;color:var(--co)}
+.why-c p{font-size:13px;color:var(--ts);line-height:1.7}
+
+.mats-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.mat-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);overflow:hidden;transition:border-color 0.2s}
+.mat-c:hover{border-color:var(--co)}
+.mat-head{height:6px}
+.mat-acrylic{background:#85B7EB}
+.mat-mdf{background:#97C459}
+.mat-sun{background:#EF9F27}
+.mat-ply{background:#D85A30}
+.mat-pvc{background:#534AB7}
+.mat-leather{background:#D4537E}
+.mat-body{padding:0.9rem}
+.mat-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-bottom:7px}
+.tag-ac{background:#E6F1FB;color:#0C447C}
+.tag-md{background:#EAF3DE;color:#27500A}
+.tag-sb{background:#FAEEDA;color:#633806}
+.tag-pl{background:var(--co-lt);color:var(--co-dk)}
+.tag-pv{background:#EEEDFE;color:#3C3489}
+.tag-le{background:#FBEAF0;color:#72243E}
+.mat-c h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px}
+.mat-c p{font-size:12px;color:var(--ts);line-height:1.65}
+.mat-spec{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.ms{font-size:10px;color:var(--ts);background:var(--bg2);border:0.5px solid var(--bd);border-radius:20px;padding:2px 8px}
+
+.svcs-list{display:flex;flex-direction:column;gap:0}
+.svc-r{display:grid;grid-template-columns:44px 1fr;gap:1rem;padding:1.1rem 0;border-bottom:0.5px solid var(--bd);align-items:start}
+.svc-r:last-child{border-bottom:none}
+.svc-n{width:36px;height:36px;border-radius:var(--r);background:var(--co-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.svc-n i{font-size:18px;color:var(--co-dk)}
+.svc-tag{display:inline-block;background:var(--co-lt);color:var(--co-dk);font-size:10px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-bottom:6px}
+.svc-r h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+.svc-r p{font-size:13px;color:var(--ts);line-height:1.7}
+
+.apps-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}
+.app-c{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--r);padding:0.9rem}
+.app-ic{width:28px;height:28px;border-radius:var(--r);background:var(--co-lt);display:flex;align-items:center;justify-content:center;margin-bottom:7px}
+.app-ic i{font-size:14px;color:var(--co-dk)}
+.app-c h4{font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px}
+.app-c p{font-size:11px;color:var(--ts);line-height:1.6}
+
+.files-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:1rem}
+.file-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--r);padding:0.9rem;text-align:center}
+.file-ext{font-size:16px;font-weight:500;color:var(--co);margin-bottom:4px;font-family:var(--font-mono)}
+.file-desc{font-size:11px;color:var(--ts);line-height:1.5}
+.file-best{display:inline-block;background:var(--co-lt);color:var(--co-dk);font-size:10px;padding:1px 7px;border-radius:10px;margin-top:4px}
+
+.steps-c{display:flex;flex-direction:column;gap:0}
+.step-r{display:grid;grid-template-columns:38px 1fr;gap:1rem;padding:1rem 0;border-bottom:0.5px solid var(--bd)}
+.step-r:last-child{border-bottom:none}
+.step-num{width:34px;height:34px;border-radius:50%;background:var(--co-lt);border:1.5px solid var(--co-mid);color:var(--co-dk);font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-r h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+.step-r p{font-size:13px;color:var(--ts);line-height:1.7}
+
+.ben-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ben{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--bg2);border-radius:var(--r);border:0.5px solid var(--bd)}
+.ben-ic{width:16px;height:16px;border-radius:50%;background:var(--co);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ben-ic i{font-size:10px;color:#fff}
+.ben p{font-size:13px;color:var(--ts);line-height:1.6}
+.ben strong{color:var(--text);font-weight:500}
+
+.faq-c{border-top:0.5px solid var(--bd)}
+.faq-i{border-bottom:0.5px solid var(--bd)}
+.faq-q{font-size:14px;font-weight:500;color:var(--text);padding:0.9rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-arr{width:22px;height:22px;border-radius:50%;background:var(--co-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.faq-arr i{font-size:13px;color:var(--co-dk)}
+.faq-a{font-size:13px;color:var(--ts);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.3s,padding-bottom 0.3s}
+.faq-a.open{max-height:200px;padding-bottom:0.9rem}
+
+.wu-g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.wu-c{background:var(--bg2);border-radius:var(--r);padding:1rem;text-align:center}
+.wu-n{font-size:18px;font-weight:500;color:var(--co);margin-bottom:4px;font-family:var(--font-mono)}
+.wu-c h4{font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px}
+.wu-c p{font-size:11px;color:var(--ts);line-height:1.5}
+
+.lsi-r{display:flex;flex-wrap:wrap;gap:6px;padding:0.9rem;background:var(--bg2);border-radius:var(--r);border:0.5px solid var(--bd);margin:1.5rem 0 0}
+.lsi-l{font-size:11px;font-weight:500;color:var(--ts);align-self:center;margin-right:4px}
+.lsi-p{font-size:11px;color:var(--ts);padding:3px 10px;background:var(--bg);border:0.5px solid var(--bd);border-radius:20px}
+
+.cta{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);padding:2rem;position:relative;overflow:hidden;margin-top:1.5rem}
+.cta-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:var(--co)}
+.cta h2{font-size:22px;font-weight:500;color:var(--text);margin-bottom:0.5rem}
+.cta p{font-size:14px;color:var(--ts);margin-bottom:0.75rem}
+.cta-loc{font-size:13px;color:var(--co);display:block;margin-bottom:1.25rem;font-weight:500}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-wa{background:#0F6E56;color:#9FE1CB;border:none;padding:10px 20px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer}
+</style>
+
+<h2 class="sr-only">DRK Stickers laser cutting service page for Coimbatore — acrylic, MDF, wood, and more</h2>
+
+<div class="pg">
+
+<div class="hero">
+  <div class="h-stripe"></div>
+  <div class="h-corner"></div>
+  <div class="h-tag"><span class="h-dot"></span>DRK Stickers — Coimbatore</div>
+  <h1>Precision <em>laser cutting</em> in Coimbatore — acrylic, MDF, wood & more</h1>
+  <p>Intricate jali designs, acrylic name boards, custom wooden panels, shaped signage — we deliver high-precision laser cutting on any design, any material, any quantity. ±0.1mm accuracy. Smooth edges. Fast turnaround.</p>
+  <div class="h-btns">
+    <button class="btn-co" onclick="sendPrompt('I want a free laser cutting quote from DRK Stickers Coimbatore')">Get a free quote ↗</button>
+    <button class="btn-ol" onclick="sendPrompt('What materials does DRK Stickers laser cut?')">Explore materials</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="sn">±0.1mm</div><div class="sl">Cutting accuracy</div></div>
+  <div class="stat"><div class="sn">6+</div><div class="sl">Materials we cut</div></div>
+  <div class="stat"><div class="sn">24hr</div><div class="sl">Standard turnaround</div></div>
+  <div class="stat"><div class="sn">1–∞</div><div class="sl">Single piece to bulk</div></div>
+</div>
+
+<div class="sec">
+  <div class="ey">Why laser cutting</div>
+  <div class="st">The precision advantage</div>
+  <div class="why-g">
+    <div class="why-c">
+      <h4><i class="ti ti-target" aria-hidden="true"></i>Unmatched precision</h4>
+      <p>CO₂ laser cutting achieves ±0.1mm accuracy. Intricate jali patterns, fine letterforms, and detailed artwork reproduced exactly — every single time.</p>
+    </div>
+    <div class="why-c">
+      <h4><i class="ti ti-sparkles" aria-hidden="true"></i>Smooth, polished edges</h4>
+      <p>The laser seals the cut edge as it works — producing naturally smooth, polished finishes on acrylic and clean sealed edges on MDF. No sanding, no finishing needed.</p>
+    </div>
+    <div class="why-c">
+      <h4><i class="ti ti-cpu" aria-hidden="true"></i>Any design complexity</h4>
+      <p>Any design drawable on a computer can be laser cut. Complex mesh jali, calligraphy, logo cutouts — design complexity doesn't increase the cost.</p>
+    </div>
+    <div class="why-c">
+      <h4><i class="ti ti-copy" aria-hidden="true"></i>Consistent batch production</h4>
+      <p>Once your file is set, every piece comes out identical. Perfect for name board series, return gift sets, signage batches, and production runs of any size.</p>
+    </div>
+    <div class="why-c">
+      <h4><i class="ti ti-leaf" aria-hidden="true"></i>Minimal material waste</h4>
+      <p>Computer-optimised cutting paths reduce material wastage significantly — keeping your cost per piece lower than manual cutting methods.</p>
+    </div>
+    <div class="why-c">
+      <h4><i class="ti ti-hand-stop" aria-hidden="true"></i>Zero contact on material</h4>
+      <p>The laser never touches the material physically — no pressure, no vibration, no risk of warping or cracking delicate sheets during cutting.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Materials</div>
+  <div class="st">What we laser cut</div>
+  <div class="mats-g">
+    <div class="mat-c">
+      <div class="mat-head mat-acrylic"></div>
+      <div class="mat-body">
+        <div class="mat-tag tag-ac">Most popular</div>
+        <h3>Acrylic (Perspex)</h3>
+        <p>Clear, coloured, frosted, and mirror acrylic. Flame-polished edges. Used for name boards, letter signs, logo displays, and decorative panels.</p>
+        <div class="mat-spec"><span class="ms">2–20mm</span><span class="ms">Flame-polished edge</span></div>
+      </div>
+    </div>
+    <div class="mat-c">
+      <div class="mat-head mat-mdf"></div>
+      <div class="mat-body">
+        <div class="mat-tag tag-md">Jali & panels</div>
+        <h3>MDF board</h3>
+        <p>Preferred for jali cutting, decorative panels, false ceiling inserts, and furniture elements. Clean sealed edges, ready to paint or install.</p>
+        <div class="mat-spec"><span class="ms">3–18mm</span><span class="ms">Sealed edge</span></div>
+      </div>
+    </div>
+    <div class="mat-c">
+      <div class="mat-head mat-sun"></div>
+      <div class="mat-body">
+        <div class="mat-tag tag-sb">Display</div>
+        <h3>Sunboard / PVC foam</h3>
+        <p>Lightweight display panels, shaped signage, exhibition cutouts, and retail displays — cut cleanly without tearing or cracking.</p>
+        <div class="mat-spec"><span class="ms">3–10mm</span><span class="ms">Clean straight edge</span></div>
+      </div>
+    </div>
+    <div class="mat-c">
+      <div class="mat-head mat-ply"></div>
+      <div class="mat-body">
+        <div class="mat-tag tag-pl">Gifts & décor</div>
+        <h3>Plywood & wood</h3>
+        <p>Cut and engraved for name plates, gift items, trophy bases, decorative panels, and retail display components.</p>
+        <div class="mat-spec"><span class="ms">3–12mm</span><span class="ms">Natural contrast engrave</span></div>
+      </div>
+    </div>
+    <div class="mat-c">
+      <div class="mat-head mat-pvc"></div>
+      <div class="mat-body">
+        <div class="mat-tag tag-pv">Industrial</div>
+        <h3>PVC sheets</h3>
+        <p>Display components, partition inserts, letter backs, and protective panels. Clean cuts with no sharp edges or cracking.</p>
+        <div class="mat-spec"><span class="ms">2–10mm</span><span class="ms">Burr-free edge</span></div>
+      </div>
+    </div>
+    <div class="mat-c">
+      <div class="mat-head mat-leather"></div>
+      <div class="mat-body">
+        <div class="mat-tag tag-le">Fashion & gifts</div>
+        <h3>Leather & synthetic</h3>
+        <p>Fashion accessories, upholstery inlays, and decorative elements. Laser produces sealed cuts without any fraying.</p>
+        <div class="mat-spec"><span class="ms">Up to 5mm</span><span class="ms">No fraying</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Services</div>
+  <div class="st">Our laser cutting services</div>
+  <div class="svcs-list">
+    <div class="svc-r">
+      <div class="svc-n"><i class="ti ti-writing" aria-hidden="true"></i></div>
+      <div>
+        <div class="svc-tag">Signage</div>
+        <h3>Acrylic name board & signage cutting</h3>
+        <p>Precision-cut acrylic name boards, company signboards, logo displays, and letter signs in any colour, thickness, and size. Flame-polished edges give a naturally premium, glass-like finish for offices, reception areas, and retail environments.</p>
+      </div>
+    </div>
+    <div class="svc-r">
+      <div class="svc-n"><i class="ti ti-layout-grid" aria-hidden="true"></i></div>
+      <div>
+        <div class="svc-tag">Interiors</div>
+        <h3>MDF jali cutting</h3>
+        <p>Intricate jali patterns and decorative mesh designs on MDF for wall panels, room dividers, false ceiling inserts, door panels, and furniture decorations. Any design — geometric, floral, abstract, or fully custom — cut with ±0.1mm accuracy.</p>
+      </div>
+    </div>
+    <div class="svc-r">
+      <div class="svc-n"><i class="ti ti-letter-a" aria-hidden="true"></i></div>
+      <div>
+        <div class="svc-tag">3D signage</div>
+        <h3>Acrylic letter cutting</h3>
+        <p>Individual letters, numbers, and symbols cut from acrylic sheets for 3D signage, illuminated letter backings, reception wall displays, and retail branding. Any font, any size, any acrylic colour.</p>
+      </div>
+    </div>
+    <div class="svc-r">
+      <div class="svc-n"><i class="ti ti-gift" aria-hidden="true"></i></div>
+      <div>
+        <div class="svc-tag">Gifts & awards</div>
+        <h3>Wooden name plates & gift items</h3>
+        <p>Custom name plates, trophy bases, corporate gift blanks, and personalised items cut and engraved on plywood and natural wood. Popular for weddings, corporate events, and retail gifting occasions.</p>
+      </div>
+    </div>
+    <div class="svc-r">
+      <div class="svc-n"><i class="ti ti-scan" aria-hidden="true"></i></div>
+      <div>
+        <div class="svc-tag">Surface engraving</div>
+        <h3>Laser engraving on acrylic & wood</h3>
+        <p>Logos, text, textures, and photographs engraved permanently onto acrylic, wood, MDF, and leather with high-contrast, fade-free results. Cutting and engraving combined in a single machine run.</p>
+      </div>
+    </div>
+    <div class="svc-r">
+      <div class="svc-n"><i class="ti ti-stack" aria-hidden="true"></i></div>
+      <div>
+        <div class="svc-tag">Production</div>
+        <h3>Prototype & batch production cutting</h3>
+        <p>From a single prototype piece to a high-volume batch run — same precision, same edge quality, fast turnaround at any quantity. Ideal for product designers, architects, retailers, and manufacturers.</p>
+      </div>
+    </div>
+    <div class="svc-r">
+      <div class="svc-n"><i class="ti ti-confetti" aria-hidden="true"></i></div>
+      <div>
+        <div class="svc-tag">Events & décor</div>
+        <h3>Custom shape cutting for events & décor</h3>
+        <p>Custom-shaped acrylic and MDF cutouts for wedding décor, event backdrops, stage props, photo booth elements, and festive decorations — any shape your design requires, delivered fast.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Who we serve</div>
+  <div class="st">Industries & applications</div>
+  <div class="apps-g">
+    <div class="app-c"><div class="app-ic"><i class="ti ti-building-arch" aria-hidden="true"></i></div><h4>Architects & interior designers</h4><p>MDF jali panels, decorative screens, false ceiling inserts, scale models.</p></div>
+    <div class="app-c"><div class="app-ic"><i class="ti ti-building-store" aria-hidden="true"></i></div><h4>Retail & showrooms</h4><p>Acrylic name boards, logo displays, product stands, shelf labels.</p></div>
+    <div class="app-c"><div class="app-ic"><i class="ti ti-briefcase" aria-hidden="true"></i></div><h4>Corporates & offices</h4><p>Reception boards, company logo walls, desk nameplates, award plaques.</p></div>
+    <div class="app-c"><div class="app-ic"><i class="ti ti-calendar-event" aria-hidden="true"></i></div><h4>Events & weddings</h4><p>Welcome boards, table numbers, seating letters, stage décor, photo props.</p></div>
+    <div class="app-c"><div class="app-ic"><i class="ti ti-ad" aria-hidden="true"></i></div><h4>Signage agencies</h4><p>Channel letter backs, signboard panels, display cutouts, hoarding elements.</p></div>
+    <div class="app-c"><div class="app-ic"><i class="ti ti-gift" aria-hidden="true"></i></div><h4>Gift & personalised items</h4><p>Return gift blanks, nameplate cutouts, trophy bases, personalised décor.</p></div>
+    <div class="app-c"><div class="app-ic"><i class="ti ti-school" aria-hidden="true"></i></div><h4>Schools & institutions</h4><p>Display cutouts, science fair models, award plaques, classroom boards.</p></div>
+    <div class="app-c"><div class="app-ic"><i class="ti ti-stethoscope" aria-hidden="true"></i></div><h4>Hospitals & clinics</h4><p>Department name boards, directional signage panels, information displays.</p></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">File formats</div>
+  <div class="st">Design files we accept</div>
+  <p class="sb">Share your design in any of these formats — or describe your idea and we'll prepare the cutting file for you.</p>
+  <div class="files-g">
+    <div class="file-c"><div class="file-ext">.DXF</div><div class="file-desc">Industry standard. Vector with clean closed paths.</div><div class="file-best">Preferred</div></div>
+    <div class="file-c"><div class="file-ext">.SVG</div><div class="file-desc">Scalable vector from Inkscape, Figma, Illustrator.</div></div>
+    <div class="file-c"><div class="file-ext">.AI</div><div class="file-desc">Adobe Illustrator. Paths closed, outlines expanded.</div></div>
+    <div class="file-c"><div class="file-ext">.PDF</div><div class="file-desc">Vector PDF from CorelDRAW, AutoCAD, Illustrator.</div></div>
+    <div class="file-c"><div class="file-ext">.CDR</div><div class="file-desc">CorelDRAW. Popular with Coimbatore signage studios.</div></div>
+  </div>
+  <p style="font-size:13px;color:var(--ts);line-height:1.7">No design file? Share a reference image, sketch, or description — our team converts it into a cutting-ready file. Minimum cutting path: 0.2mm line width. All text must be converted to outlines.</p>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Process</div>
+  <div class="st">How we handle your laser cutting order</div>
+  <div class="steps-c">
+    <div class="step-r"><div class="step-num">1</div><div><h4>Share your requirement</h4><p>Tell us your material, thickness, design, size, and quantity. WhatsApp your file or describe your need — we'll guide you from the first message.</p></div></div>
+    <div class="step-r"><div class="step-num">2</div><div><h4>Design review & file preparation</h4><p>We check your file for cutting suitability — path closure, minimum line widths, and scaling. If needed, our team adjusts the file or creates it from scratch.</p></div></div>
+    <div class="step-r"><div class="step-num">3</div><div><h4>Material selection & test cut</h4><p>We select the right material grade and thickness. For intricate or first-time designs, a test cut verifies accuracy and edge quality before the full production run.</p></div></div>
+    <div class="step-r"><div class="step-num">4</div><div><h4>Precision laser cutting</h4><p>Your design is cut by our industrial CO₂ laser machine following your file paths at ±0.1mm accuracy — fast, clean, and consistent across every piece in the order.</p></div></div>
+    <div class="step-r"><div class="step-num">5</div><div><h4>Finishing & cleaning</h4><p>Cut pieces cleaned, protective film removed, and edges inspected. Post-cut engraving or surface treatment applied at this stage.</p></div></div>
+    <div class="step-r"><div class="step-num">6</div><div><h4>Quality check & delivery</h4><p>Every piece inspected before careful packaging to prevent edge damage. Ready for collection at our Sidhapudur studio or delivery to your location.</p></div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Benefits</div>
+  <div class="st">Why choose laser cutting</div>
+  <div class="ben-g">
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>±0.1mm accuracy</strong> — intricate designs reproduced exactly, every single time</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>Smooth polished edges</strong> on acrylic and clean sealed edges on MDF — no finishing needed</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>Zero contact cutting</strong> — no pressure, no warping, no cracking on delicate materials</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>Any design complexity</strong> — jali, calligraphy, logos, fine detail — no extra cost</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>6+ materials</strong> — acrylic, MDF, sunboard, plywood, PVC, leather all in one studio</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>Single piece to bulk production</strong> — equal precision at any quantity</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>Fast turnaround</strong> — most standard orders completed within 24–48 hours</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>Design support included</strong> — we convert your idea or sketch into a cutting-ready file</p></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Questions answered</div>
+  <div class="st">Frequently asked questions</div>
+  <div class="faq-c" id="faq">
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How much does laser cutting cost in Coimbatore?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Laser cutting pricing depends on the material, thickness, design complexity, area to be cut, and quantity. Acrylic and MDF cutting starts from ₹50–₹100 per square foot for simple cuts, with intricate jali patterns priced higher based on cutting time. Contact DRK Stickers with your material, size, and design for a free, accurate quote.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">What is the maximum thickness you can laser cut?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Capacity depends on the material: acrylic up to 20mm, MDF up to 18mm, sunboard and PVC up to 10mm, plywood up to 12mm, and leather up to 5mm. Share your specific material and thickness and we'll confirm cutting capability for your project.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Can you laser cut very intricate jali patterns?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Yes — laser cutting is the ideal method for intricate jali and decorative mesh patterns. Our CO₂ laser achieves ±0.1mm accuracy, making it possible to cut patterns with very fine bridges, complex geometric detail, and tight curves consistently across multiple pieces.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Do I need to send a design file or can you create it?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Both options work. If you have a DXF, SVG, AI, PDF, or CDR file, we can proceed directly. If you don't have a file, share a reference image, sketch, or description — our in-house design team prepares a cutting-ready file for your approval before production begins.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How long does laser cutting take?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Simple cuts on standard sizes are typically completed within 24 hours. Complex intricate designs, large boards, or high-volume batch orders take 2–3 days. Contact us with your deadline and quantity and we'll confirm the schedule upfront.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">What is the difference between laser cutting and CNC routing?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Laser cutting uses a focused beam for very fine, precise cuts — ideal for thin materials, intricate patterns, and smooth edges. CNC routing uses a spinning bit for thicker materials and wider cuts. For acrylic, MDF jali, and fine detail work, laser cutting produces significantly superior edge quality and detail accuracy.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Can you engrave as well as cut in the same job?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Yes — our CO₂ laser engraves logos, text, textures, and photographs on acrylic, wood, MDF, and leather with permanent, high-contrast results. Cutting and engraving can be combined in a single machine run, saving both time and cost on your order.</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Why DRK Stickers</div>
+  <div class="st">Coimbatore's laser cutting studio</div>
+  <div class="wu-g">
+    <div class="wu-c"><div class="wu-n">±0.1mm</div><h4>Cutting accuracy</h4><p>Industrial CO₂ laser machines for flawless detail on every material.</p></div>
+    <div class="wu-c"><div class="wu-n">6+</div><h4>Materials</h4><p>Acrylic, MDF, sunboard, plywood, PVC, and leather — all in one place.</p></div>
+    <div class="wu-c"><div class="wu-n">24hr</div><h4>Turnaround</h4><p>Most standard laser cutting orders ready within 24–48 hours.</p></div>
+    <div class="wu-c"><div class="wu-n">Free</div><h4>Design support</h4><p>We convert your idea into a cutting-ready file — no extra charge.</p></div>
+  </div>
+</div>
+
+<div class="lsi-r">
+  <span class="lsi-l">Related:</span>
+  <span class="lsi-p">acrylic laser cutting Coimbatore</span>
+  <span class="lsi-p">MDF laser cutting</span>
+  <span class="lsi-p">laser engraving Coimbatore</span>
+  <span class="lsi-p">CO₂ laser cutting</span>
+  <span class="lsi-p">laser cut acrylic name board</span>
+  <span class="lsi-p">jali cutting Coimbatore</span>
+  <span class="lsi-p">custom laser cutting</span>
+  <span class="lsi-p">laser cut signboard</span>
+  <span class="lsi-p">MDF jali cutting</span>
+  <span class="lsi-p">acrylic letter cutting</span>
+  <span class="lsi-p">precision cutting Coimbatore</span>
+  <span class="lsi-p">sunboard laser cutting</span>
+  <span class="lsi-p">laser cutting service near me</span>
+  <span class="lsi-p">laser cut wooden board</span>
+</div>
+
+<div class="cta">
+  <div class="cta-stripe"></div>
+  <h2>Ready to laser cut your next project in Coimbatore?</h2>
+  <p>A single acrylic name board or a full batch of MDF jali panels — DRK Stickers has the machines, materials, and expertise to cut it precisely, cleanly, and fast.</p>
+  <span class="cta-loc">No. 102, Sidhapudur, Coimbatore — 641044</span>
+  <div class="cta-btns">
+    <button class="btn-co" onclick="sendPrompt('Get a free laser cutting quote from DRK Stickers Coimbatore')">Get a free quote ↗</button>
+    <button class="btn-wa" onclick="sendPrompt('WhatsApp DRK Stickers laser cutting design file')">WhatsApp your design ↗</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+function tf(el){
+  const a=el.nextElementSibling;
+  const ic=el.querySelector('.faq-arr i');
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-arr i').forEach(x=>{x.className='ti ti-plus'});
+  if(!isOpen){a.classList.add('open');ic.className='ti ti-minus'}
+}
+</script>

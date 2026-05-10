@@ -1,0 +1,436 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=DM+Sans:wght@400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#D32F2F;--red-dark:#B71C1C;--red-light:#FFEBEE;
+  --dark:#111111;--mid:#444;--muted:#777;--border:#e8e8e8;
+  --bg:#FAFAFA;--white:#fff;--card:#fff;
+  --radius:10px;--font-head:'Barlow Condensed',sans-serif;--font-body:'DM Sans',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--dark);font-size:15px;line-height:1.65}
+
+.page{max-width:860px;margin:0 auto;padding:0 0 60px}
+
+/* HERO */
+.hero{background:var(--dark);padding:52px 36px 44px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:40px solid rgba(211,47,47,0.15)}
+.hero::after{content:'';position:absolute;bottom:-40px;left:120px;width:160px;height:160px;border-radius:50%;border:24px solid rgba(211,47,47,0.08)}
+.hero-label{font-family:var(--font-body);font-size:11px;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:14px;font-weight:500}
+.hero-h1{font-family:var(--font-head);font-size:52px;line-height:1;font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:10px}
+.hero-h1 span{color:var(--red)}
+.hero-h2{font-size:14px;color:#aaa;max-width:520px;margin-bottom:28px;line-height:1.6}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-red{background:var(--red);color:#fff;padding:11px 22px;border-radius:6px;font-size:13px;font-weight:500;border:none;cursor:pointer;font-family:var(--font-body)}
+.btn-outline{background:transparent;color:#fff;padding:11px 22px;border-radius:6px;font-size:13px;font-weight:500;border:1.5px solid #444;cursor:pointer;font-family:var(--font-body)}
+.badge-row{display:flex;gap:20px;margin-top:28px;flex-wrap:wrap}
+.badge{display:flex;align-items:center;gap:8px;color:#ccc;font-size:12px}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
+
+/* SECTION WRAPPER */
+.section{padding:40px 36px}
+.section-alt{background:#fff}
+.sec-label{font-size:11px;letter-spacing:3px;color:var(--red);text-transform:uppercase;font-weight:500;margin-bottom:10px}
+.sec-title{font-family:var(--font-head);font-size:34px;font-weight:900;text-transform:uppercase;color:var(--dark);line-height:1.05;margin-bottom:14px}
+.sec-body{font-size:14px;color:var(--muted);line-height:1.75;max-width:680px}
+
+/* SERVICES GRID */
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;position:relative;overflow:hidden;transition:border-color .2s}
+.svc-card:hover{border-color:#ccc}
+.svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red)}
+.svc-icon{width:36px;height:36px;background:var(--red-light);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.svc-icon svg{width:18px;height:18px;fill:var(--red)}
+.svc-name{font-family:var(--font-head);font-size:19px;font-weight:700;text-transform:uppercase;color:var(--dark);margin-bottom:8px}
+.svc-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.svc-includes{list-style:none;margin-bottom:16px}
+.svc-includes li{font-size:12px;color:#555;padding:3px 0;padding-left:14px;position:relative}
+.svc-includes li::before{content:'✓';position:absolute;left:0;color:var(--red);font-weight:700;font-size:11px}
+.svc-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.svc-tag{font-size:11px;background:#f5f5f5;color:#555;padding:3px 10px;border-radius:20px}
+.svc-tag.red{background:var(--red-light);color:var(--red)}
+.svc-link{font-size:12px;color:var(--red);font-weight:500;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;border:none;background:none;font-family:var(--font-body);padding:0;display:flex;align-items:center;gap:4px}
+.svc-link::after{content:'→'}
+
+/* WHY DIFFERENT */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.why-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.why-num{font-family:var(--font-head);font-size:42px;font-weight:900;color:#f0f0f0;line-height:1;margin-bottom:6px}
+.why-title{font-size:14px;font-weight:500;color:var(--dark);margin-bottom:6px}
+.why-body{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* PROCESS */
+.process-steps{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.step{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.step-num{font-family:var(--font-head);font-size:36px;font-weight:900;color:var(--red);line-height:1;flex-shrink:0;width:36px}
+.step-title{font-size:14px;font-weight:500;color:var(--dark);margin-bottom:4px}
+.step-body{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* FAQ */
+.faq-list{margin-top:24px;display:flex;flex-direction:column;gap:1px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.faq-item{background:#fff}
+.faq-q{width:100%;text-align:left;padding:16px 20px;font-size:14px;font-weight:500;color:var(--dark);border:none;background:none;cursor:pointer;font-family:var(--font-body);display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+.faq-q:last-child{border-bottom:none}
+.faq-arrow{font-size:16px;color:var(--red);flex-shrink:0;transition:transform .2s}
+.faq-a{display:none;padding:0 20px 16px;font-size:13px;color:var(--muted);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-item.open .faq-q{color:var(--red)}
+
+/* CTA */
+.cta-strip{background:var(--dark);padding:40px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.cta-left h2{font-family:var(--font-head);font-size:30px;font-weight:900;text-transform:uppercase;color:#fff;line-height:1.1;margin-bottom:6px}
+.cta-left p{font-size:13px;color:#888;max-width:360px}
+.cta-btns{display:flex;gap:10px;flex-direction:column}
+.cta-info{display:flex;gap:24px;flex-wrap:wrap;margin-top:20px;width:100%;border-top:1px solid #222;padding-top:20px}
+.cta-detail{font-size:12px;color:#888}
+.cta-detail span{color:#ccc;display:block;font-size:13px;margin-top:2px}
+
+/* GALLERY PLACEHOLDER */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+.gallery-item{aspect-ratio:4/3;background:#f0f0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid #e0e0e0}
+.gallery-item::before{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;padding:6px 10px;text-align:center}
+.gallery-placeholder{width:40px;height:40px;opacity:0.2}
+.gallery-cta{margin-top:16px;text-align:center}
+
+/* divider */
+.divider{height:1px;background:var(--border);margin:0 36px}
+</style>
+
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Our Services</div>
+  <div class="hero-h1">Professional Car<br>Detailing <span>Services</span><br>in Coimbatore</div>
+  <div class="hero-h2">Complete Car Care Under One Roof — From Ceramic Coating & PPF to Sun Film & Interior Detailing</div>
+  <div class="hero-btns">
+    <button class="btn-red">Call Now</button>
+    <button class="btn-outline">WhatsApp for Free Quote</button>
+  </div>
+  <div class="badge-row">
+    <div class="badge"><div class="badge-dot"></div>5+ Years Experience</div>
+    <div class="badge"><div class="badge-dot"></div>500+ Cars Serviced</div>
+    <div class="badge"><div class="badge-dot"></div>Written Warranty</div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="section section-alt">
+  <div class="sec-label">What We Offer</div>
+  <div class="sec-title">All Car Care Services<br>at DRK Stickers Coimbatore</div>
+  <div class="sec-body">DRK Stickers is Coimbatore's most trusted car detailing studio — offering everything from basic exterior car wash and machine polishing to advanced ceramic nano coating, Paint Protection Film (PPF), car window tinting, deep interior cleaning and underbody anti-rust coating. Every service is performed by trained and certified auto detailing professionals using premium-grade, internationally trusted products.</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SERVICES GRID -->
+<div class="section">
+  <div class="sec-label">All Services</div>
+  <div class="sec-title">Choose Your Service</div>
+  <div class="services-grid">
+
+    <!-- Card 1 -->
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+      </div>
+      <div class="svc-name">Car Detailing</div>
+      <div class="svc-desc">A deep, thorough cleaning and restoration process that covers every inch of your vehicle — inside and out. We bring back your car's original shine using machine polishers and premium products.</div>
+      <ul class="svc-includes">
+        <li>Exterior hand wash & foam pre-wash</li>
+        <li>Clay bar decontamination</li>
+        <li>Machine polishing — swirl & scratch removal</li>
+        <li>Interior vacuum, dashboard & glass clean</li>
+        <li>Tyre dressing and rim cleaning</li>
+      </ul>
+      <div class="svc-meta">
+        <span class="svc-tag red">1–2 Days</span>
+        <span class="svc-tag">Best for: Full Refresh</span>
+      </div>
+      <button class="svc-link">Book Car Detailing</button>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l6 2.67V11c0 3.61-2.5 7.08-6 8.57C8.5 18.08 6 14.61 6 11V7.67L12 5z"/></svg>
+      </div>
+      <div class="svc-name">Ceramic Coating</div>
+      <div class="svc-desc">Professional nano ceramic coating that chemically bonds with your paint — creating a hydrophobic, ultra-hard layer that repels water, dust, UV rays and contaminants for years.</div>
+      <ul class="svc-includes">
+        <li>Full paint decontamination & prep</li>
+        <li>Paint correction before coating</li>
+        <li>Nano ceramic coating application</li>
+        <li>UV & chemical resistance</li>
+        <li>Written warranty included</li>
+      </ul>
+      <div class="svc-meta">
+        <span class="svc-tag red">2–3 Days</span>
+        <span class="svc-tag">Warranty: 2–5 Years</span>
+      </div>
+      <button class="svc-link">Book Ceramic Coating</button>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      </div>
+      <div class="svc-name">Paint Protection Film (PPF)</div>
+      <div class="svc-desc">A transparent self-healing film that physically protects your paint from rock chips, scratches, bird droppings and daily wear — virtually invisible once applied. Ideal for new and luxury cars.</div>
+      <ul class="svc-includes">
+        <li>Full paint surface inspection</li>
+        <li>Computer-cut PPF for exact fitment</li>
+        <li>Self-healing thermoplastic urethane film</li>
+        <li>UV & yellowing resistance</li>
+        <li>Zero bubbles professional installation</li>
+      </ul>
+      <div class="svc-meta">
+        <span class="svc-tag red">2–4 Days</span>
+        <span class="svc-tag">Warranty: 5–10 Years</span>
+      </div>
+      <button class="svc-link">Book PPF Service</button>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </div>
+      <div class="svc-name">Sun Film / Window Tinting</div>
+      <div class="svc-desc">Premium sun control films that block harmful UV rays, reduce cabin heat and improve driving comfort — critical in Coimbatore's intense climate. Precision cut, bubble-free installation.</div>
+      <ul class="svc-includes">
+        <li>Premium UV & heat rejection film</li>
+        <li>Multiple tint levels available</li>
+        <li>Bubble-free professional installation</li>
+        <li>Reduces cabin temperature significantly</li>
+        <li>Protects interior from UV fading</li>
+      </ul>
+      <div class="svc-meta">
+        <span class="svc-tag red">4–6 Hours</span>
+        <span class="svc-tag">Best for: All Cars</span>
+      </div>
+      <button class="svc-link">Book Sun Film</button>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M9.5 6.5v3h-3v-3h3M11 5H5v6h6V5zm-1.5 9.5v3h-3v-3h3M11 13H5v6h6v-6zm6.5-6.5v3h-3v-3h3M19 5h-6v6h6V5zm-6 8h1.5v1.5H13V13zm1.5 1.5H16V16h-1.5v-1.5zM16 13h1.5v1.5H16V13zm-3 3h1.5v1.5H13V16zm1.5 1.5H16V19h-1.5v-1.5zM16 16h1.5v1.5H16V16zm1.5-1.5H19V16h-1.5v-1.5zm0 3H19V19h-1.5v-1.5zM22 7h-2V4h-3V2h5v5zm0 15v-5h-2v3h-3v2h5zM2 22h5v-2H4v-3H2v5zM2 2v5h2V4h3V2H2z"/></svg>
+      </div>
+      <div class="svc-name">Interior Car Cleaning</div>
+      <div class="svc-desc">Professional deep cleaning that goes far beyond a basic vacuum — shampoo seats, steam clean carpets, treat every surface and eliminate odours with ozone treatment for a truly hygienic cabin.</div>
+      <ul class="svc-includes">
+        <li>Deep vacuuming of all surfaces</li>
+        <li>Seat shampooing — fabric & leather</li>
+        <li>Carpet & floor mat steam cleaning</li>
+        <li>Dashboard, console, door panel polish</li>
+        <li>Ozone treatment for odour removal</li>
+      </ul>
+      <div class="svc-meta">
+        <span class="svc-tag red">1 Day</span>
+        <span class="svc-tag">Best for: Family Cars</span>
+      </div>
+      <button class="svc-link">Book Interior Cleaning</button>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-5h2v5h6v-8h3L12 3zm0 12.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+      </div>
+      <div class="svc-name">Underbody Coating & Anti-Rust</div>
+      <div class="svc-desc">Rubberised anti-rust protective layer applied to your car's undercarriage — sealing it from moisture, preventing rust and reducing road noise. Essential for Coimbatore's monsoon season.</div>
+      <ul class="svc-includes">
+        <li>Full underbody inspection & wash</li>
+        <li>Rubberised anti-rust coating application</li>
+        <li>Wheel arch lining protection</li>
+        <li>Stone chip & debris resistance</li>
+        <li>Noise dampening & vibration reduction</li>
+      </ul>
+      <div class="svc-meta">
+        <span class="svc-tag red">4–6 Hours</span>
+        <span class="svc-tag">Best for: All Cars</span>
+      </div>
+      <button class="svc-link">Book Underbody Coating</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- WHY DIFFERENT -->
+<div class="section section-alt">
+  <div class="sec-label">Why Choose Us</div>
+  <div class="sec-title">What Makes DRK Stickers<br>Different</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div class="why-title">Only Premium International Products</div>
+      <div class="why-body">Every coating, film and cleaning agent used is sourced from internationally certified brands. No cheap substitutes — ever.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div class="why-title">Certified, Trained Technicians Only</div>
+      <div class="why-body">Every car is handled by certified detailing professionals — not untrained helpers. We understand paint chemistry at a level local shops simply don't.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div class="why-title">Written Warranty on All Coatings</div>
+      <div class="why-body">We back our work with written warranties on ceramic coating and PPF. Any issue within warranty period — we fix it, no questions asked.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div class="why-title">Free Inspection & Consultation</div>
+      <div class="why-body">Before any service, our experts inspect your car and recommend exactly what it needs — no upselling, no unnecessary add-ons. Completely free.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">05</div>
+      <div class="why-title">On-Time Delivery — Always</div>
+      <div class="why-body">We confirm a delivery date before starting and we stick to it. 100% of our jobs are delivered on or before the promised date.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">06</div>
+      <div class="why-title">500+ Happy Car Owners in Coimbatore</div>
+      <div class="why-body">Over 5 years and 500+ cars serviced — our reputation is built entirely on the quality of our work and the satisfaction of our customers.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <div class="sec-label">The Process</div>
+  <div class="sec-title">How It Works</div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Book an Appointment</div>
+        <div class="step-body">Call us, WhatsApp us or visit our studio in Coimbatore. Tell us your car model and service needed — we confirm your slot immediately.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Free Inspection & Consultation</div>
+        <div class="step-body">Our technicians do a detailed paint and interior inspection, then recommend the right service for your car and budget — completely free.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Expert Service Performed</div>
+        <div class="step-body">Your car is handled by certified professionals using premium products. We keep you updated throughout the process with full transparency.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">Quality Check & Delivery</div>
+        <div class="step-body">Every job goes through a thorough quality inspection before handover. We only release your car when we are 100% satisfied with the result.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<div class="section section-alt">
+  <div class="sec-label">Our Work</div>
+  <div class="sec-title">Real Cars. Real Results.</div>
+  <div class="sec-body">Every transformation below was done at our car detailing studio in Coimbatore. Real photos. Real results. No filters.</div>
+  <div class="gallery-grid">
+    <div class="gallery-item" data-label="Car Detailing — Before & After">
+      <svg class="gallery-placeholder" viewBox="0 0 24 24" fill="#bbb"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    </div>
+    <div class="gallery-item" data-label="Ceramic Coating — Before & After">
+      <svg class="gallery-placeholder" viewBox="0 0 24 24" fill="#bbb"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    </div>
+    <div class="gallery-item" data-label="PPF Installation — Before & After">
+      <svg class="gallery-placeholder" viewBox="0 0 24 24" fill="#bbb"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    </div>
+    <div class="gallery-item" data-label="Interior Cleaning — Before & After">
+      <svg class="gallery-placeholder" viewBox="0 0 24 24" fill="#bbb"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    </div>
+    <div class="gallery-item" data-label="Sun Film — Before & After">
+      <svg class="gallery-placeholder" viewBox="0 0 24 24" fill="#bbb"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    </div>
+    <div class="gallery-item" data-label="Underbody Coating — Before & After">
+      <svg class="gallery-placeholder" viewBox="0 0 24 24" fill="#bbb"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    </div>
+  </div>
+  <div class="gallery-cta">
+    <button class="btn-red" style="margin-top:16px">View Full Gallery →</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<div class="section">
+  <div class="sec-label">Got Questions?</div>
+  <div class="sec-title">Frequently Asked Questions</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">Which service is best for a brand new car? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">For a brand new car, we recommend starting with Paint Protection Film (PPF) to physically protect the paint from rock chips and scratches from day one. You can then add ceramic coating on top for UV and chemical protection. Our experts guide you during the free consultation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How often should I get my car detailed in Coimbatore? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">For cars driven daily, we recommend a basic detail every 3–4 months and a full interior and exterior detail at least once a year. Cars with ceramic coating need maintenance washes every 2–3 months.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">What is the difference between ceramic coating and PPF? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Ceramic coating is a nano-coating that bonds with paint — providing UV protection, hydrophobic properties and a high-gloss finish. PPF is a physical film that protects against rock chips and deep scratches. Many owners choose both — PPF underneath with ceramic coating on top for complete protection.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How long does each service take? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Basic car detailing: 3–4 hours. Full interior cleaning: 1 day. Ceramic coating: 2–3 days. PPF installation: 2–4 days. Sun film / window tinting: 4–6 hours. Underbody coating: 4–6 hours. We always confirm the exact timeline before beginning your job.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Do all services come with a warranty? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Yes. All ceramic coating and PPF services come with a written warranty. Ceramic coating: 2–5 years. PPF: 5–10 years depending on the grade. Any application-related issue within warranty — we fix it at no extra cost.</div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <button class="faq-q" style="border-bottom:none">Can I get multiple services done at the same time? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">Absolutely. Combining services saves time and often money. For example — interior cleaning, underbody coating and window tinting can all be done in a single visit. Talk to us and we will plan the best combination for your car.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-left">
+    <h2>Book Your Car Detailing<br>Service Today</h2>
+    <p>Call us, WhatsApp us or walk into our studio. Our team is ready to give your car the care it deserves.</p>
+  </div>
+  <div class="cta-btns">
+    <button class="btn-red">📞 Call Now</button>
+    <button class="btn-outline">💬 WhatsApp Us</button>
+  </div>
+  <div class="cta-info">
+    <div class="cta-detail">Phone<span>[Your Number]</span></div>
+    <div class="cta-detail">WhatsApp<span>[Your Number]</span></div>
+    <div class="cta-detail">Location<span>[Studio Address], Coimbatore</span></div>
+    <div class="cta-detail">Hours<span>Mon–Sat 9AM–7PM | Sun 10AM–5PM</span></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>

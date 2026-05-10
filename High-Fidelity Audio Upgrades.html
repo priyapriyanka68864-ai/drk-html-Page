@@ -1,0 +1,449 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#185FA5;
+  --accent-light:#E6F1FB;
+  --accent-dark:#0C447C;
+  --gold:#BA7517;
+  --gold-light:#FAEEDA;
+  --dark:#2C2C2A;
+  --mid:#5F5E5A;
+  --text:var(--color-text-primary);
+  --text-sec:var(--color-text-secondary);
+  --bg:var(--color-background-primary);
+  --bg-sec:var(--color-background-secondary);
+  --border:var(--color-border-tertiary);
+  --border-sec:var(--color-border-secondary);
+  --hf:'Syne',sans-serif;
+  --bf:'Inter',sans-serif;
+  --r-md:var(--border-radius-md);
+  --r-lg:var(--border-radius-lg);
+}
+.page{font-family:var(--bf);color:var(--text);max-width:900px;margin:0 auto;padding:0 0 2rem}
+
+.hero{background:var(--dark);border-radius:var(--r-lg);padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}
+.hero-wave{position:absolute;bottom:0;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,var(--accent) 0,var(--accent) 40px,transparent 40px,transparent 60px)}
+.hero-dot{position:absolute;top:1.5rem;right:2rem;width:180px;height:180px;border-radius:50%;border:40px solid rgba(24,95,165,0.12)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#185FA5;color:#B5D4F4;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;padding:5px 14px;border-radius:30px;margin-bottom:1.2rem}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#B5D4F4}
+.hero h1{font-family:var(--hf);font-size:46px;font-weight:800;color:#fff;line-height:1.05;margin-bottom:1rem;max-width:560px}
+.hero h1 em{color:#85B7EB;font-style:normal}
+.hero p{color:#B4B2A9;font-size:14px;line-height:1.8;max-width:500px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-blue{background:#185FA5;color:#fff;border:none;padding:11px 22px;border-radius:var(--r-md);font-family:var(--bf);font-size:13px;font-weight:500;cursor:pointer}
+.btn-blue:hover{background:#0C447C}
+.btn-ghost{background:transparent;color:#B4B2A9;border:0.5px solid rgba(255,255,255,0.2);padding:11px 22px;border-radius:var(--r-md);font-family:var(--bf);font-size:13px;cursor:pointer}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:var(--r-md);overflow:hidden;margin:1.5rem 0}
+.stat{background:var(--bg);padding:1rem;text-align:center}
+.stat-n{font-family:var(--hf);font-size:26px;font-weight:800;color:#185FA5;line-height:1}
+.stat-l{font-size:11px;color:var(--text-sec);margin-top:4px;line-height:1.4}
+
+.sec{padding:2rem 0}
+.sec-eyebrow{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#185FA5;margin-bottom:6px}
+.sec-title{font-family:var(--hf);font-size:30px;font-weight:800;color:var(--text);line-height:1.1;margin-bottom:1rem}
+.sec-body{font-size:14px;color:var(--text-sec);line-height:1.8;max-width:620px;margin-bottom:1.5rem}
+.divider{height:0.5px;background:var(--border);margin:0.5rem 0 2rem}
+
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem}
+.why-card{background:var(--bg-sec);border:0.5px solid var(--border);border-radius:var(--r-lg);padding:1.2rem}
+.why-icon{width:32px;height:32px;border-radius:var(--r-md);background:#E6F1FB;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.why-icon svg{width:16px;height:16px;stroke:#185FA5;fill:none;stroke-width:1.5}
+.why-card h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px}
+.why-card p{font-size:13px;color:var(--text-sec);line-height:1.7}
+
+.services-list{display:flex;flex-direction:column;gap:0}
+.svc{display:grid;grid-template-columns:48px 1fr;gap:1rem;padding:1.25rem 0;border-bottom:0.5px solid var(--border);align-items:start}
+.svc:last-child{border-bottom:none}
+.svc-num{font-family:var(--hf);font-size:22px;font-weight:800;color:#185FA5;line-height:1;padding-top:2px}
+.svc-tag{display:inline-block;background:#E6F1FB;color:#0C447C;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:30px;margin-bottom:6px}
+.svc h3{font-size:15px;font-weight:500;color:var(--text);margin-bottom:5px}
+.svc p{font-size:13px;color:var(--text-sec);line-height:1.7}
+.svc-brands{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.brand-pill{background:var(--bg);border:0.5px solid var(--border-sec);color:var(--text-sec);font-size:11px;padding:2px 10px;border-radius:20px}
+
+.brands-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.brand-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--r-lg);padding:1rem;text-align:center;transition:border-color 0.2s;cursor:default}
+.brand-card:hover{border-color:#185FA5}
+.brand-initial{width:44px;height:44px;border-radius:50%;background:#E6F1FB;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:var(--hf);font-size:18px;font-weight:800;color:#0C447C}
+.brand-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+.brand-desc{font-size:11px;color:var(--text-sec);line-height:1.5}
+
+.components-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.comp-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--r-lg);padding:1.2rem}
+.comp-label{font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#185FA5;margin-bottom:6px}
+.comp-card h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px}
+.comp-card p{font-size:12px;color:var(--text-sec);line-height:1.7}
+
+.steps{display:flex;flex-direction:column;gap:0;position:relative}
+.step{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding:1.2rem 0;border-bottom:0.5px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-circle{width:36px;height:36px;border-radius:50%;background:#185FA5;color:#fff;font-family:var(--hf);font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+.step p{font-size:13px;color:var(--text-sec);line-height:1.7}
+
+.audience-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.aud-card{background:var(--bg-sec);border:0.5px solid var(--border);border-radius:var(--r-md);padding:1rem}
+.aud-bar{height:3px;border-radius:2px;background:#185FA5;margin-bottom:10px;width:100%}
+.aud-card h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:5px}
+.aud-card p{font-size:12px;color:var(--text-sec);line-height:1.6}
+
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.benefit{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--bg-sec);border-radius:var(--r-md);border:0.5px solid var(--border)}
+.bcheck{width:16px;height:16px;border-radius:50%;background:#185FA5;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.bcheck svg{width:9px;height:9px;stroke:#fff;fill:none;stroke-width:2.5}
+.benefit p{font-size:13px;color:var(--text-sec);line-height:1.6}
+.benefit strong{color:var(--text);font-weight:500}
+
+.faq-item{border-bottom:0.5px solid var(--border)}
+.faq-q{font-size:14px;font-weight:500;color:var(--text);padding:1rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-toggle{width:20px;height:20px;border-radius:50%;background:var(--bg-sec);border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:#185FA5;line-height:1}
+.faq-a{font-size:13px;color:var(--text-sec);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.3s,padding 0.3s}
+.faq-a.open{max-height:160px;padding-bottom:1rem}
+
+.why-us-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wu-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--r-md);padding:1rem;text-align:center}
+.wu-num{font-family:var(--hf);font-size:28px;font-weight:800;color:#185FA5;margin-bottom:4px}
+.wu-card h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+.wu-card p{font-size:11px;color:var(--text-sec);line-height:1.5}
+
+.lsi-row{display:flex;flex-wrap:wrap;gap:7px;padding:1rem;background:var(--bg-sec);border-radius:var(--r-md);border:0.5px solid var(--border);margin:1.5rem 0 0}
+.lsi-pill{font-size:11px;color:var(--text-sec);padding:3px 10px;background:var(--bg);border:0.5px solid var(--border);border-radius:20px}
+.lsi-label{font-size:11px;font-weight:500;color:var(--text-sec);align-self:center;margin-right:4px}
+
+.cta-box{background:var(--dark);border-radius:var(--r-lg);padding:2.5rem 2rem;position:relative;overflow:hidden}
+.cta-ring{position:absolute;bottom:-60px;right:-60px;width:220px;height:220px;border-radius:50%;border:50px solid rgba(24,95,165,0.15)}
+.cta-box h2{font-family:var(--hf);font-size:32px;font-weight:800;color:#fff;margin-bottom:0.75rem;max-width:480px}
+.cta-box p{color:#888780;font-size:14px;margin-bottom:1.5rem}
+.cta-loc{color:#85B7EB;font-size:13px;margin-bottom:1.5rem;display:block}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-green{background:#0F6E56;color:#9FE1CB;border:none;padding:11px 22px;border-radius:var(--r-md);font-family:var(--bf);font-size:13px;font-weight:500;cursor:pointer}
+.btn-green:hover{background:#085041}
+</style>
+
+<div class="page">
+
+<div class="hero">
+  <div class="hero-dot"></div>
+  <div class="hero-wave"></div>
+  <div class="hero-badge"><span class="badge-dot"></span>DRK Stickers — Coimbatore</div>
+  <h1>Custom Car Sound System <em>Built for You</em></h1>
+  <p>Your car deserves to sound as good as it looks. At DRK Stickers, we design and install high-fidelity custom car sound systems using globally trusted brands — tuned precisely to your vehicle and your ears.</p>
+  <div class="hero-btns">
+    <button class="btn-blue" onclick="sendPrompt('I want a free audio consultation at DRK Stickers Coimbatore')">Get Free Consultation ↗</button>
+    <button class="btn-ghost" onclick="sendPrompt('What audio brands does DRK Stickers carry?')">Explore Brands</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n">7+</div><div class="stat-l">Premium brands stocked</div></div>
+  <div class="stat"><div class="stat-n">DSP</div><div class="stat-l">Precision cabin tuning</div></div>
+  <div class="stat"><div class="stat-n">1–2</div><div class="stat-l">Day full build time</div></div>
+  <div class="stat"><div class="stat-n">All</div><div class="stat-l">Car makes & models</div></div>
+</div>
+
+<div class="sec">
+  <div class="sec-eyebrow">The problem</div>
+  <div class="sec-title">Why factory audio falls short</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></div>
+      <h3>Distortion at high volumes</h3>
+      <p>Factory speakers are built to cost targets. They struggle with bass and treble simultaneously, resulting in muddy, distorted sound when you turn it up.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg></div>
+      <h3>Weak bass response</h3>
+      <p>Without a dedicated subwoofer, bass lines sound thin and flat. A custom car sound system with a proper sub transforms how music feels — not just sounds.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414M3 12a9 9 0 009 9"/></svg></div>
+      <h3>Poor soundstaging</h3>
+      <p>Without correct speaker placement and DSP tuning, music sounds like it's coming from the dashboard rather than surrounding you in a natural soundstage.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+      <h3>No smart connectivity</h3>
+      <p>Older factory head units lack Android Auto and Apple CarPlay — making navigation and hands-free calling inconvenient and unsafe.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec">
+  <div class="sec-eyebrow">What we offer</div>
+  <div class="sec-title">Our car audio upgrade services</div>
+  <div class="services-list">
+    <div class="svc">
+      <div class="svc-num">01</div>
+      <div>
+        <div class="svc-tag">Most popular</div>
+        <h3>Head unit / touchscreen replacement</h3>
+        <p>Upgrade your factory stereo to a modern touchscreen with Android Auto, Apple CarPlay, Bluetooth, and hi-res audio support. Clean, factory-fit look with full smartphone integration.</p>
+        <div class="svc-brands"><span class="brand-pill">Pioneer</span><span class="brand-pill">Sony</span><span class="brand-pill">Kenwood</span></div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">02</div>
+      <div>
+        <div class="svc-tag">Clarity upgrade</div>
+        <h3>Component speaker installation</h3>
+        <p>Replace factory speakers with high-performance component or coaxial speakers. Crisper highs, richer mids, and dramatically improved clarity — whether you love Tamil film music or audiophile jazz.</p>
+        <div class="svc-brands"><span class="brand-pill">JBL</span><span class="brand-pill">Hertz</span><span class="brand-pill">Focal</span></div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">03</div>
+      <div>
+        <div class="svc-tag">Feel the bass</div>
+        <h3>Subwoofer & enclosure build</h3>
+        <p>A dedicated subwoofer paired with a custom-fit enclosure delivers deep, tight, controlled bass. We size and tune the enclosure specifically for your boot space and vehicle acoustics.</p>
+        <div class="svc-brands"><span class="brand-pill">JBL</span><span class="brand-pill">Alpine</span><span class="brand-pill">Rockford Fosgate</span></div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">04</div>
+      <div>
+        <div class="svc-tag">Clean power</div>
+        <h3>Amplifier installation & wiring</h3>
+        <p>External amplification unlocks your speakers' true potential — louder volume with zero distortion. We install with professional-grade wiring to eliminate electrical interference and noise floor.</p>
+        <div class="svc-brands"><span class="brand-pill">Alpine</span><span class="brand-pill">Sony</span><span class="brand-pill">Pioneer</span></div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">05</div>
+      <div>
+        <div class="svc-tag">Premium</div>
+        <h3>DSP tuning & calibration</h3>
+        <p>A Digital Signal Processor lets our engineers calibrate time alignment, EQ, and crossover settings to your cabin's exact acoustics. This is what separates a good system from a great one.</p>
+        <div class="svc-brands"><span class="brand-pill">Alpine</span><span class="brand-pill">Hertz</span></div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">06</div>
+      <div>
+        <div class="svc-tag">Foundation</div>
+        <h3>Sound deadening & acoustic treatment</h3>
+        <p>Reduce road noise, vibration, and panel rattles before any audio component goes in. Premium damping material applied to doors, floor, and boot transforms your cabin into a quiet listening space.</p>
+        <div class="svc-brands"><span class="brand-pill">All vehicles</span></div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">07</div>
+      <div>
+        <div class="svc-tag">Complete build</div>
+        <h3>Full custom car sound system build</h3>
+        <p>End-to-end — head unit, component speakers, subwoofer, amplifier, DSP, and sound deadening — all matched, installed, and fine-tuned as one cohesive, high-fidelity system.</p>
+        <div class="svc-brands"><span class="brand-pill">JBL</span><span class="brand-pill">Pioneer</span><span class="brand-pill">Focal</span><span class="brand-pill">Alpine</span><span class="brand-pill">Hertz</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec">
+  <div class="sec-eyebrow">Brands we carry</div>
+  <div class="sec-title">Premium audio brands at DRK Stickers</div>
+  <p class="sec-body">We source and install only globally recognised, manufacturer-warranted brands — no generic alternatives, no compromises.</p>
+  <div class="brands-grid">
+    <div class="brand-card">
+      <div class="brand-initial">JBL</div>
+      <div class="brand-name">JBL</div>
+      <div class="brand-desc">Punchy, balanced sound. Best for everyday listening and bass lovers.</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-initial">PIO</div>
+      <div class="brand-name">Pioneer</div>
+      <div class="brand-desc">Benchmark head units and speakers. Android Auto + CarPlay standard.</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-initial">SNY</div>
+      <div class="brand-name">Sony</div>
+      <div class="brand-desc">Feature-rich with LDAC hi-res streaming and reliable build quality.</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-initial">ALP</div>
+      <div class="brand-name">Alpine</div>
+      <div class="brand-desc">Audiophile-grade subwoofers, amplifiers, and processors for purists.</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-initial">FOC</div>
+      <div class="brand-name">Focal</div>
+      <div class="brand-desc">French premium brand. Concert-hall clarity for the serious listener.</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-initial">HRZ</div>
+      <div class="brand-name">Hertz</div>
+      <div class="brand-desc">Italian automotive audio. Warm, natural sound above its price point.</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-initial">KNW</div>
+      <div class="brand-name">Kenwood</div>
+      <div class="brand-desc">Reliable feature-packed head units at accessible price points.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec">
+  <div class="sec-eyebrow">Components explained</div>
+  <div class="sec-title">What goes into your sound system</div>
+  <div class="components-grid">
+    <div class="comp-card">
+      <div class="comp-label">Head unit</div>
+      <h3>The brain</h3>
+      <p>Controls all audio sources — FM, Bluetooth, USB, Android Auto, Apple CarPlay. Outputs a clean signal to your amplifier for the best possible downstream sound quality.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-label">Component speakers</div>
+      <h3>Clarity & imaging</h3>
+      <p>Separate tweeters and woofers placed precisely for accurate soundstaging — vocals at ear level, instruments exactly where they belong in the stereo image.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-label">Subwoofer</div>
+      <h3>The foundation</h3>
+      <p>Reproduces frequencies below 80Hz that regular speakers cannot. Kick drums you feel, bass lines you hear clearly — music that sounds complete rather than thin.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-label">Amplifier</div>
+      <h3>Clean power</h3>
+      <p>Supplies stable, high-current power to your speakers. Eliminates distortion and clipping at high volumes. Unlocks full speaker performance without overtaxing the head unit.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-label">DSP</div>
+      <h3>The tuning tool</h3>
+      <p>Calibrates time alignment (all speakers reaching your ears together), equalisation (matching cabin acoustics), and crossover points (right frequencies to right speakers).</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-label">Sound deadening</div>
+      <h3>The quiet foundation</h3>
+      <p>Applied to doors, floor, and boot panels to eliminate rattles, road noise, and vibration — giving your audio system a quiet, clean environment to perform at its best.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec">
+  <div class="sec-eyebrow">Our process</div>
+  <div class="sec-title">How DRK Stickers installs your system</div>
+  <div class="steps">
+    <div class="step"><div class="step-circle">1</div><div><h4>Free consultation</h4><p>Tell us your vehicle, music preferences, and budget. We recommend the right combination of components and brands — no upselling, no pressure.</p></div></div>
+    <div class="step"><div class="step-circle">2</div><div><h4>Component selection</h4><p>We help you choose from JBL, Pioneer, Sony, Alpine, Focal, Hertz, and Kenwood — matched to your vehicle's cabin size, acoustics, and listening style.</p></div></div>
+    <div class="step"><div class="step-circle">3</div><div><h4>Sound deadening (if needed)</h4><p>Damping material applied to doors, floor, and boot before any audio component is installed — ensuring your new system has a clean, quiet environment.</p></div></div>
+    <div class="step"><div class="step-circle">4</div><div><h4>Professional installation</h4><p>Clean, concealed wiring and custom mounting for a factory-fit finish. No visible cables, no drill holes where they shouldn't be, no shortcuts.</p></div></div>
+    <div class="step"><div class="step-circle">5</div><div><h4>DSP tuning & calibration</h4><p>We tune time alignment, crossovers, and EQ precisely to your vehicle's cabin acoustics. This step alone transforms a connected system into a truly great one.</p></div></div>
+    <div class="step"><div class="step-circle">6</div><div><h4>Listening test & handover</h4><p>You sit in your car, we play your music, and you hear the difference for yourself. Final adjustments made on your feedback before we hand the keys back.</p></div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec">
+  <div class="sec-eyebrow">Who is this for?</div>
+  <div class="sec-title">This service is built for</div>
+  <div class="audience-grid">
+    <div class="aud-card"><div class="aud-bar"></div><h4>Daily commuters</h4><p>Spend hours in Coimbatore traffic? Great music makes every drive better.</p></div>
+    <div class="aud-card"><div class="aud-bar"></div><h4>Music lovers</h4><p>Own great headphones at home but your car sounds nothing like them.</p></div>
+    <div class="aud-card"><div class="aud-bar"></div><h4>Long-distance drivers</h4><p>Regular runs to Chennai, Bangalore, or Kerala — make every trip a concert.</p></div>
+    <div class="aud-card"><div class="aud-bar"></div><h4>Car enthusiasts</h4><p>Already upgraded the look — now make the interior experience match.</p></div>
+    <div class="aud-card"><div class="aud-bar"></div><h4>New car owners</h4><p>Disappointed by the factory sound system that came with your vehicle.</p></div>
+    <div class="aud-card"><div class="aud-bar"></div><h4>Audio purists</h4><p>Want precision DSP tuning, hi-res playback, and professional staging.</p></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec">
+  <div class="sec-eyebrow">Benefits</div>
+  <div class="sec-title">Why upgrade your car audio</div>
+  <div class="benefits-grid">
+    <div class="benefit"><div class="bcheck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Crystal-clear sound</strong> at any volume — zero distortion, zero muddiness</p></div>
+    <div class="benefit"><div class="bcheck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Deep, controlled bass</strong> from a dedicated subwoofer without panel rattles</p></div>
+    <div class="benefit"><div class="bcheck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Android Auto & Apple CarPlay</strong> for seamless smartphone integration</p></div>
+    <div class="benefit"><div class="bcheck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Precise soundstaging</strong> — music surrounds you, not just plays at you</p></div>
+    <div class="benefit"><div class="bcheck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>DSP tuning</strong> customised to your exact vehicle cabin acoustics</p></div>
+    <div class="benefit"><div class="bcheck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Quieter cabin</strong> with sound deadening cutting road noise significantly</p></div>
+    <div class="benefit"><div class="bcheck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Hi-res audio support</strong> — FLAC, LDAC, and lossless streaming compatible</p></div>
+    <div class="benefit"><div class="bcheck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Manufacturer warranty</strong> on all JBL, Pioneer, Sony, Alpine, Focal, Hertz, Kenwood products</p></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec">
+  <div class="sec-eyebrow">Questions answered</div>
+  <div class="sec-title">Frequently asked questions</div>
+  <div id="faq">
+    <div class="faq-item"><div class="faq-q" onclick="tf(this)">How much does a custom car sound system cost in Coimbatore?<div class="faq-toggle">+</div></div><div class="faq-a">Entry-level upgrades (head unit + speakers) start from ₹8,000–₹15,000. Mid-range builds with subwoofer and amplifier range from ₹20,000–₹50,000. Full high-fidelity builds with DSP and sound deadening start from ₹60,000 upward. Contact DRK Stickers for a free, itemised quote for your specific vehicle.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tf(this)">Will car audio installation void my vehicle warranty?<div class="faq-toggle">+</div></div><div class="faq-a">In most cases, a professionally installed aftermarket audio system does not void your vehicle warranty. Our non-destructive installation methods keep your original wiring and factory systems fully intact.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tf(this)">How long does the installation take?<div class="faq-toggle">+</div></div><div class="faq-a">A basic head unit replacement takes 2–4 hours. A full custom car sound system build with sound deadening and DSP tuning typically takes 1–2 days. We'll give you a specific timeline at consultation.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tf(this)">Can you work on any car brand?<div class="faq-toggle">+</div></div><div class="faq-a">Yes — we install in all makes and models including Maruti, Hyundai, Tata, Honda, Toyota, Volkswagen, Kia, MG, and more. Both hatchbacks and SUVs welcome.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tf(this)">What is the difference between DSP tuning and a regular equaliser?<div class="faq-toggle">+</div></div><div class="faq-a">A standard EQ boosts or cuts frequencies. A DSP (Digital Signal Processor) goes much further — controlling time alignment (so sound from all speakers reaches your ears simultaneously), precise crossover points, and cabin-specific room correction for a dramatically more accurate soundstage.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tf(this)">Do the products come with warranty?<div class="faq-toggle">+</div></div><div class="faq-a">Yes. All products from JBL, Pioneer, Sony, Alpine, Focal, Hertz, and Kenwood carry manufacturer warranties. Our installation workmanship is also backed by DRK Stickers' service guarantee.</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec">
+  <div class="sec-eyebrow">Why DRK Stickers</div>
+  <div class="sec-title">Coimbatore's car audio specialists</div>
+  <div class="why-us-grid">
+    <div class="wu-card"><div class="wu-num">7+</div><h4>Premium brands</h4><p>JBL, Pioneer, Sony, Alpine, Focal, Hertz, and Kenwood — genuine products with full manufacturer warranty.</p></div>
+    <div class="wu-card"><div class="wu-num">DSP</div><h4>Precision tuning</h4><p>We calibrate your system to your cabin's acoustics — not just connect cables and call it done.</p></div>
+    <div class="wu-card"><div class="wu-num">100%</div><h4>Clean installation</h4><p>Concealed wiring, custom mounts, OEM-quality finish — your car's interior looks untouched.</p></div>
+    <div class="wu-card"><div class="wu-num">Free</div><h4>Consultation</h4><p>No charge, no commitment — we talk through your needs, budget, and options first.</p></div>
+    <div class="wu-card"><div class="wu-num">All</div><h4>Car types</h4><p>Hatchbacks, sedans, SUVs, MUVs — all makes and models, no exclusions.</p></div>
+    <div class="wu-card"><div class="wu-num">CBE</div><h4>Locally trusted</h4><p>Based at Sidhapudur, Coimbatore — accessible, accountable, and always available after sale.</p></div>
+  </div>
+</div>
+
+<div class="lsi-row">
+  <span class="lsi-label">Related:</span>
+  <span class="lsi-pill">car audio upgrade Coimbatore</span>
+  <span class="lsi-pill">car speaker installation</span>
+  <span class="lsi-pill">car subwoofer</span>
+  <span class="lsi-pill">car amplifier</span>
+  <span class="lsi-pill">head unit upgrade</span>
+  <span class="lsi-pill">DSP tuning</span>
+  <span class="lsi-pill">premium car audio</span>
+  <span class="lsi-pill">high fidelity car audio</span>
+  <span class="lsi-pill">car stereo system</span>
+  <span class="lsi-pill">Android Auto CarPlay</span>
+  <span class="lsi-pill">soundproofing car</span>
+  <span class="lsi-pill">in-car entertainment</span>
+  <span class="lsi-pill">car sound quality</span>
+</div>
+
+<div class="sec">
+  <div class="cta-box">
+    <div class="cta-ring"></div>
+    <h2>Ready to hear your car the way music was meant to sound?</h2>
+    <p>Simple speaker upgrade or complete custom car sound system build — DRK Stickers has the expertise, the brands, and the passion to transform your in-car audio.</p>
+    <span class="cta-loc">No. 102, Sidhapudur, Coimbatore — 641044</span>
+    <div class="cta-btns">
+      <button class="btn-blue" onclick="sendPrompt('I want to book a car audio consultation at DRK Stickers Coimbatore')">Book Free Consultation ↗</button>
+      <button class="btn-green" onclick="sendPrompt('WhatsApp number for DRK Stickers car audio')">WhatsApp Us ↗</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function tf(el){
+  const a=el.nextElementSibling;
+  const t=el.querySelector('.faq-toggle');
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x=>{x.classList.remove('open')});
+  document.querySelectorAll('.faq-toggle').forEach(x=>{x.textContent='+'});
+  if(!isOpen){a.classList.add('open');t.textContent='−'}
+}
+</script>

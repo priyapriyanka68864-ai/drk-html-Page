@@ -1,0 +1,450 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pu:#534AB7;--pu-lt:#EEEDFE;--pu-dk:#3C3489;--pu-mid:#AFA9EC;
+  --am:#BA7517;--am-lt:#FAEEDA;--am-dk:#633806;--am-mid:#FAC775;
+  --co:#D85A30;--co-lt:#FAECE7;--co-dk:#712B13;
+  --text:var(--color-text-primary);--ts:var(--color-text-secondary);
+  --bg:var(--color-background-primary);--bg2:var(--color-background-secondary);
+  --bd:var(--color-border-tertiary);--bd2:var(--color-border-secondary);
+  --r:var(--border-radius-md);--rl:var(--border-radius-lg);
+}
+.pg{font-family:var(--font-sans);color:var(--text);max-width:900px;margin:0 auto;padding:0 0 2rem}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+.hero{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);padding:2.5rem 2rem;position:relative;overflow:hidden;margin-bottom:1.5rem}
+.hero-stripe{position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--pu)}
+.h-tag{display:inline-flex;align-items:center;gap:6px;background:var(--pu-lt);color:var(--pu-dk);font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem}
+.h-dot{width:5px;height:5px;border-radius:50%;background:var(--pu)}
+.hero h1{font-size:28px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:0.75rem;max-width:560px}
+.hero h1 em{color:var(--pu);font-style:normal}
+.hero p{font-size:14px;color:var(--ts);line-height:1.8;max-width:500px;margin-bottom:1.5rem}
+.h-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-pu{background:var(--pu);color:#fff;border:none;padding:10px 20px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer}
+.btn-pu:hover{background:var(--pu-dk)}
+.btn-ol{background:transparent;color:var(--ts);border:0.5px solid var(--bd2);padding:10px 20px;border-radius:var(--r);font-size:13px;cursor:pointer}
+.btn-ol:hover{background:var(--bg2)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border:0.5px solid var(--bd);border-radius:var(--r);overflow:hidden;margin:0 0 2rem}
+.stat{background:var(--bg);padding:1rem;text-align:center}
+.sn{font-size:22px;font-weight:500;color:var(--pu);line-height:1}
+.sl{font-size:11px;color:var(--ts);margin-top:4px;line-height:1.4}
+
+.sec{padding:1.5rem 0}
+.ey{font-size:11px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:var(--pu);margin-bottom:5px}
+.st{font-size:22px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:0.75rem}
+.sb{font-size:14px;color:var(--ts);line-height:1.8;max-width:640px;margin-bottom:1.25rem}
+.div{height:0.5px;background:var(--bd);margin:0.5rem 0 1.5rem}
+
+.who-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.who-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);padding:1rem}
+.who-ic{width:30px;height:30px;border-radius:var(--r);background:var(--pu-lt);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.who-ic i{font-size:16px;color:var(--pu-dk)}
+.who-c h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+.who-c p{font-size:12px;color:var(--ts);line-height:1.6}
+
+.types-list{display:flex;flex-direction:column;gap:0}
+.type-row{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:1.1rem 0;border-bottom:0.5px solid var(--bd);align-items:start}
+.type-row:last-child{border-bottom:none}
+.ty-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-bottom:6px}
+.ty-std{background:var(--pu-lt);color:var(--pu-dk)}
+.ty-pvc{background:var(--am-lt);color:var(--am-dk)}
+.ty-uv{background:#E1F5EE;color:#085041}
+.ty-sa{background:var(--co-lt);color:var(--co-dk)}
+.ty-ds{background:#E6F1FB;color:#0C447C}
+.type-row h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+.type-row p{font-size:13px;color:var(--ts);line-height:1.7}
+.type-spec{display:flex;flex-direction:column;gap:4px;min-width:110px}
+.spec-item{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--r);padding:5px 8px;text-align:center}
+.spec-val{font-size:12px;font-weight:500;color:var(--text)}
+.spec-lbl{font-size:10px;color:var(--ts);margin-top:1px}
+
+.uses-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.use-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);padding:1rem}
+.use-c:hover{border-color:var(--pu)}
+.use-tag{display:inline-block;background:var(--pu-lt);color:var(--pu-dk);font-size:10px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-bottom:7px}
+.use-c h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px}
+.use-c p{font-size:12px;color:var(--ts);line-height:1.7}
+
+.sizes-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.size-c{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--r);padding:0.9rem;text-align:center}
+.size-box{width:100%;aspect-ratio:1;max-width:60px;border:1.5px solid var(--pu-mid);border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center}
+.size-box i{font-size:20px;color:var(--pu)}
+.size-dim{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.size-use{font-size:11px;color:var(--ts)}
+
+.steps-c{display:flex;flex-direction:column;gap:0}
+.step-r{display:grid;grid-template-columns:38px 1fr;gap:1rem;padding:1rem 0;border-bottom:0.5px solid var(--bd)}
+.step-r:last-child{border-bottom:none}
+.step-num{width:34px;height:34px;border-radius:50%;background:var(--pu-lt);border:1.5px solid var(--pu-mid);color:var(--pu-dk);font-size:14px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-r h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+.step-r p{font-size:13px;color:var(--ts);line-height:1.7}
+
+.display-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.disp-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);padding:1rem;text-align:center}
+.disp-ic{width:36px;height:36px;border-radius:50%;background:var(--pu-lt);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.disp-ic i{font-size:18px;color:var(--pu-dk)}
+.disp-c h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+.disp-c p{font-size:12px;color:var(--ts);line-height:1.6}
+
+.ben-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ben{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--bg2);border-radius:var(--r);border:0.5px solid var(--bd)}
+.ben-ic{width:16px;height:16px;border-radius:50%;background:var(--pu);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ben-ic i{font-size:10px;color:#fff}
+.ben p{font-size:13px;color:var(--ts);line-height:1.6}
+.ben strong{color:var(--text);font-weight:500}
+
+.faq-c{border-top:0.5px solid var(--bd)}
+.faq-i{border-bottom:0.5px solid var(--bd)}
+.faq-q{font-size:14px;font-weight:500;color:var(--text);padding:0.9rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-arr{width:22px;height:22px;border-radius:50%;background:var(--pu-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.faq-arr i{font-size:13px;color:var(--pu-dk)}
+.faq-a{font-size:13px;color:var(--ts);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.3s,padding-bottom 0.3s}
+.faq-a.open{max-height:180px;padding-bottom:0.9rem}
+
+.wu-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wu-c{background:var(--bg2);border-radius:var(--r);padding:1rem;text-align:center}
+.wu-n{font-size:20px;font-weight:500;color:var(--pu);margin-bottom:4px}
+.wu-c h4{font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px}
+.wu-c p{font-size:11px;color:var(--ts);line-height:1.5}
+
+.lsi-r{display:flex;flex-wrap:wrap;gap:6px;padding:0.9rem;background:var(--bg2);border-radius:var(--r);border:0.5px solid var(--bd);margin:1.5rem 0 0}
+.lsi-l{font-size:11px;font-weight:500;color:var(--ts);align-self:center;margin-right:4px}
+.lsi-p{font-size:11px;color:var(--ts);padding:3px 10px;background:var(--bg);border:0.5px solid var(--bd);border-radius:20px}
+
+.cta{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);padding:2rem;position:relative;overflow:hidden;margin-top:1.5rem}
+.cta-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:var(--pu)}
+.cta h2{font-size:22px;font-weight:500;color:var(--text);margin-bottom:0.5rem}
+.cta p{font-size:14px;color:var(--ts);margin-bottom:0.75rem}
+.cta-loc{font-size:13px;color:var(--pu);display:block;margin-bottom:1.25rem;font-weight:500}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-wa{background:#0F6E56;color:#9FE1CB;border:none;padding:10px 20px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer}
+</style>
+
+<h2 class="sr-only">DRK Stickers foam board printing service page for Coimbatore customers</h2>
+
+<div class="pg">
+
+<div class="hero">
+  <div class="hero-stripe"></div>
+  <div class="h-tag"><span class="h-dot"></span>DRK Stickers — Coimbatore</div>
+  <h1>Premium <em>foam boards</em> in Coimbatore — printed for every need</h1>
+  <p>Shop displays, event signage, office boards, exhibitions — we print custom foam boards in any size with sharp full-colour digital printing, fast turnaround, and pricing that works for every budget.</p>
+  <div class="h-btns">
+    <button class="btn-pu" onclick="sendPrompt('I want a free quote for foam boards from DRK Stickers Coimbatore')">Get a free quote ↗</button>
+    <button class="btn-ol" onclick="sendPrompt('What sizes of foam boards does DRK Stickers offer?')">Explore sizes</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="sn">Any</div><div class="sl">Size — small to 4×8 ft</div></div>
+  <div class="stat"><div class="sn">24hr</div><div class="sl">Fast turnaround</div></div>
+  <div class="stat"><div class="sn">UV</div><div class="sl">High-res digital print</div></div>
+  <div class="stat"><div class="sn">Both</div><div class="sl">Single & double sided</div></div>
+</div>
+
+<div class="sec">
+  <div class="ey">Who we print for</div>
+  <div class="st">Industries we serve in Coimbatore</div>
+  <div class="who-g">
+    <div class="who-c">
+      <div class="who-ic"><i class="ti ti-building-store" aria-hidden="true"></i></div>
+      <h4>Retail & shops</h4>
+      <p>Price boards, promotional display panels, offers and scheme announcements at point of sale.</p>
+    </div>
+    <div class="who-c">
+      <div class="who-ic"><i class="ti ti-calendar-event" aria-hidden="true"></i></div>
+      <h4>Events & weddings</h4>
+      <p>Welcome boards, seating charts, photo booth backdrops, décor panels, and directional signs.</p>
+    </div>
+    <div class="who-c">
+      <div class="who-ic"><i class="ti ti-school" aria-hidden="true"></i></div>
+      <h4>Schools & colleges</h4>
+      <p>Project display boards, science fair panels, notice boards, and classroom learning aids.</p>
+    </div>
+    <div class="who-c">
+      <div class="who-ic"><i class="ti ti-building" aria-hidden="true"></i></div>
+      <h4>Offices & corporate</h4>
+      <p>Reception boards, product launch displays, meeting room graphics, and communication panels.</p>
+    </div>
+    <div class="who-c">
+      <div class="who-ic"><i class="ti ti-presentation" aria-hidden="true"></i></div>
+      <h4>Exhibitions & trade shows</h4>
+      <p>Booth display panels, brand identity graphics, product photography panels, and stand signage.</p>
+    </div>
+    <div class="who-c">
+      <div class="who-ic"><i class="ti ti-tool-kitchen-2" aria-hidden="true"></i></div>
+      <h4>Restaurants & food</h4>
+      <p>Menu boards, daily special displays, combo offer panels, and counter-top promotional signs.</p>
+    </div>
+    <div class="who-c">
+      <div class="who-ic"><i class="ti ti-stethoscope" aria-hidden="true"></i></div>
+      <h4>Hospitals & clinics</h4>
+      <p>Department directories, patient information boards, service panels, and health awareness displays.</p>
+    </div>
+    <div class="who-c">
+      <div class="who-ic"><i class="ti ti-home" aria-hidden="true"></i></div>
+      <h4>Real estate</h4>
+      <p>Project display boards, floor plan panels, site office signage, and open-house presentation graphics.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Material types</div>
+  <div class="st">Types of foam boards we offer</div>
+  <div class="types-list">
+    <div class="type-row">
+      <div>
+        <div class="ty-tag ty-std">Standard</div>
+        <h3>Standard foam board (paper-faced)</h3>
+        <p>Classic foam core board — polystyrene foam centre with paper faces on both sides. Lightweight, rigid, and highly printable. Best for indoor use, presentations, events, and short-to-medium-term displays.</p>
+      </div>
+      <div class="type-spec">
+        <div class="spec-item"><div class="spec-val">3mm / 5mm</div><div class="spec-lbl">Thickness</div></div>
+        <div class="spec-item"><div class="spec-val">Indoor</div><div class="spec-lbl">Best use</div></div>
+        <div class="spec-item"><div class="spec-val">2–3 yrs</div><div class="spec-lbl">Lifespan</div></div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="ty-tag ty-pvc">Sunboard / PVC</div>
+        <h3>PVC foam board (sunboard)</h3>
+        <p>More durable option with PVC surfaces on both sides. Waterproof, scratch-resistant, and handles semi-outdoor exposure. Popular for shop displays, retail signage, and semi-permanent indoor panels.</p>
+      </div>
+      <div class="type-spec">
+        <div class="spec-item"><div class="spec-val">3–8mm</div><div class="spec-lbl">Thickness</div></div>
+        <div class="spec-item"><div class="spec-val">Indoor / semi-outdoor</div><div class="spec-lbl">Best use</div></div>
+        <div class="spec-item"><div class="spec-val">4–5 yrs</div><div class="spec-lbl">Lifespan</div></div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="ty-tag ty-uv">High resolution</div>
+        <h3>UV printed foam board</h3>
+        <p>Printed directly using UV-cured inks for superior colour vibrancy, sharper detail, and enhanced fade resistance. Ideal for high-quality photo boards, exhibition graphics, and premium display panels.</p>
+      </div>
+      <div class="type-spec">
+        <div class="spec-item"><div class="spec-val">3mm / 5mm</div><div class="spec-lbl">Thickness</div></div>
+        <div class="spec-item"><div class="spec-val">Exhibition / retail</div><div class="spec-lbl">Best use</div></div>
+        <div class="spec-item"><div class="spec-val">3+ yrs</div><div class="spec-lbl">Lifespan</div></div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="ty-tag ty-sa">Self-adhesive</div>
+        <h3>Self-adhesive foam board</h3>
+        <p>Pressure-sensitive adhesive backing on one side — mount photos, prints, or graphics directly without additional glue. Used for photo mounting, art displays, and architectural presentation boards.</p>
+      </div>
+      <div class="type-spec">
+        <div class="spec-item"><div class="spec-val">3mm / 5mm</div><div class="spec-lbl">Thickness</div></div>
+        <div class="spec-item"><div class="spec-val">Photo / art display</div><div class="spec-lbl">Best use</div></div>
+        <div class="spec-item"><div class="spec-val">Permanent</div><div class="spec-lbl">Mount type</div></div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="ty-tag ty-ds">Double-sided</div>
+        <h3>Double-sided printed foam board</h3>
+        <p>Printed on both faces with the same or different designs — maximising visibility when displayed in the centre of a room, hanging from a ceiling, or used as a free-standing divider panel.</p>
+      </div>
+      <div class="type-spec">
+        <div class="spec-item"><div class="spec-val">Any</div><div class="spec-lbl">Thickness</div></div>
+        <div class="spec-item"><div class="spec-val">Events / retail</div><div class="spec-lbl">Best use</div></div>
+        <div class="spec-item"><div class="spec-val">2× visibility</div><div class="spec-lbl">Advantage</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Applications</div>
+  <div class="st">Popular uses for foam boards</div>
+  <div class="uses-g">
+    <div class="use-c">
+      <div class="use-tag">Retail</div>
+      <h3>Shop & retail displays</h3>
+      <p>Mount promotional boards near product displays, counters, or shop windows to highlight offers, prices, and new arrivals. The most cost-effective point-of-purchase communication tool for Coimbatore's retail businesses.</p>
+    </div>
+    <div class="use-c">
+      <div class="use-tag">Events</div>
+      <h3>Events & wedding boards</h3>
+      <p>Welcome boards, seating plan displays, table-top signs, photo booth backdrops, and décor panels — lightweight and easy to transport between venues across Coimbatore.</p>
+    </div>
+    <div class="use-c">
+      <div class="use-tag">Education</div>
+      <h3>School & college displays</h3>
+      <p>Project display boards, science fair panels, notice boards, achievement displays, and classroom learning aids — professional and affordable for educational institutions.</p>
+    </div>
+    <div class="use-c">
+      <div class="use-tag">Exhibition</div>
+      <h3>Exhibition & trade show panels</h3>
+      <p>Large-format display panels create impactful booth presentations. Display your brand, product photography, and key messages in a format that gets noticed across a busy exhibition floor.</p>
+    </div>
+    <div class="use-c">
+      <div class="use-tag">Food & beverage</div>
+      <h3>Restaurant menu boards</h3>
+      <p>A favourite for Coimbatore's restaurants and cafes — easy to update, easy to mount, and professionally printed to look great in any dining environment.</p>
+    </div>
+    <div class="use-c">
+      <div class="use-tag">Photography</div>
+      <h3>Photo & art mounting</h3>
+      <p>Self-adhesive foam boards are the preferred choice for photographers, artists, and architects to mount prints for client displays, portfolio shows, and presentations.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Sizes</div>
+  <div class="st">Standard sizes available</div>
+  <p class="sb">We print foam boards in any size you need. Below are our most popular sizes — custom dimensions are always available on request.</p>
+  <div class="sizes-g">
+    <div class="size-c"><div class="size-box"><i class="ti ti-layout-board-split" aria-hidden="true"></i></div><div class="size-dim">1 ft × 1.5 ft</div><div class="size-use">Counter / table-top</div></div>
+    <div class="size-c"><div class="size-box"><i class="ti ti-layout-board-split" aria-hidden="true"></i></div><div class="size-dim">1.5 ft × 2 ft</div><div class="size-use">Menu / POS display</div></div>
+    <div class="size-c"><div class="size-box"><i class="ti ti-layout-board-split" aria-hidden="true"></i></div><div class="size-dim">2 ft × 3 ft</div><div class="size-use">Shop / event sign</div></div>
+    <div class="size-c"><div class="size-box"><i class="ti ti-layout-board-split" aria-hidden="true"></i></div><div class="size-dim">3 ft × 4 ft</div><div class="size-use">Exhibition panel</div></div>
+    <div class="size-c"><div class="size-box"><i class="ti ti-layout-board-split" aria-hidden="true"></i></div><div class="size-dim">4 ft × 4 ft</div><div class="size-use">Backdrop / décor</div></div>
+    <div class="size-c"><div class="size-box"><i class="ti ti-layout-board-split" aria-hidden="true"></i></div><div class="size-dim">4 ft × 6 ft</div><div class="size-use">Trade show display</div></div>
+    <div class="size-c"><div class="size-box"><i class="ti ti-layout-board-split" aria-hidden="true"></i></div><div class="size-dim">4 ft × 8 ft</div><div class="size-use">Full-size panel</div></div>
+    <div class="size-c"><div class="size-box"><i class="ti ti-cut" aria-hidden="true"></i></div><div class="size-dim">Custom size</div><div class="size-use">Any dimension</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Printing process</div>
+  <div class="st">How we print your foam boards</div>
+  <div class="steps-c">
+    <div class="step-r"><div class="step-num">1</div><div><h4>Share your requirement</h4><p>Tell us your size, quantity, material type, thickness, and whether you need single or double-sided printing. WhatsApp your design file or let us know if you need design help.</p></div></div>
+    <div class="step-r"><div class="step-num">2</div><div><h4>Design review</h4><p>We check your artwork for resolution, bleed, and colour accuracy before printing. If you don't have a design, our in-house team creates one from your brief, logo, and content.</p></div></div>
+    <div class="step-r"><div class="step-num">3</div><div><h4>High-resolution digital printing</h4><p>Your design is printed directly onto the foam board using UV or eco-solvent inks — producing sharp, vibrant, colour-accurate graphics at full resolution. Colour output verified before every run.</p></div></div>
+    <div class="step-r"><div class="step-num">4</div><div><h4>Cutting & finishing</h4><p>Boards are cut to your specified size with clean, straight edges. Rounded corners, custom shapes, and laminate finishes applied at this stage.</p></div></div>
+    <div class="step-r"><div class="step-num">5</div><div><h4>Quality check & delivery</h4><p>Every board inspected for print quality, edge finish, and surface cleanliness before careful packaging. Boards delivered in perfect condition, ready to display.</p></div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Display options</div>
+  <div class="st">How to display your foam boards</div>
+  <div class="display-g">
+    <div class="disp-c">
+      <div class="disp-ic"><i class="ti ti-layout-board" aria-hidden="true"></i></div>
+      <h4>Wall mounting</h4>
+      <p>Use Command strips, double-sided tape, or screw mounts. Reposition multiple times without wall damage.</p>
+    </div>
+    <div class="disp-c">
+      <div class="disp-ic"><i class="ti ti-artboard" aria-hidden="true"></i></div>
+      <h4>Easel / stand</h4>
+      <p>Prop on a free-standing easel or floor display stand. No drilling or installation time needed.</p>
+    </div>
+    <div class="disp-c">
+      <div class="disp-ic"><i class="ti ti-arrow-up" aria-hidden="true"></i></div>
+      <h4>Hanging</h4>
+      <p>Attach a wire hanger or punch a hole to hang from ceilings, curtain rails, or display frames.</p>
+    </div>
+    <div class="disp-c">
+      <div class="disp-ic"><i class="ti ti-table" aria-hidden="true"></i></div>
+      <h4>Counter display</h4>
+      <p>Smaller boards stand upright on counters using a simple display stand or easel backing.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Benefits</div>
+  <div class="st">Why choose foam boards</div>
+  <div class="ben-g">
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p>Most affordable rigid signage material for indoor displays of any size</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p>Lightweight — carry, transport, and reposition without any tools</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p>Full-colour, high-resolution digital printing in any design or photograph</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p>Any size from small counter cards to 4×8 ft exhibition panels</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p>Custom shapes — rectangles, arches, circles, or fully cut silhouettes</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p>Ready in 24–48 hours for most standard foam board orders in Coimbatore</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p>Matte or gloss laminate finish options for a polished, professional look</p></div>
+    <div class="ben"><div class="ben-ic"><i class="ti ti-check" aria-hidden="true"></i></div><p>Single or double-sided — maximise visibility from every angle</p></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Questions answered</div>
+  <div class="st">Frequently asked questions</div>
+  <div class="faq-c" id="faq">
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">What is the price of foam boards in Coimbatore?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Foam board pricing depends on size, material (standard or PVC), thickness, quantity, and finish. Small boards start from very affordable single-unit pricing. Bulk orders reduce the cost per board significantly. Contact DRK Stickers with your exact size and quantity for a free, instant quote.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Can you print foam boards on the same day?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">For standard sizes and designs, many orders are completed within 24 hours. Same-day printing is available for urgent requirements depending on order size and current capacity. WhatsApp us your requirement directly to confirm availability for your deadline.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">What file format should I send for printing?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">We accept PDF, JPEG, PNG, and AI files. For best print results, provide artwork at 150 DPI minimum at full print size. CMYK colour mode is recommended for colour accuracy. If you're unsure, share your file and we'll check it for you before printing.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Can you cut foam boards into custom shapes?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Yes — we cut foam boards into any shape: rectangles with rounded corners, arches, circles, ovals, or fully custom silhouettes. Custom shape cutting is available for display standees, event décor props, and exhibition cutouts.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Can foam boards be used outdoors?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Standard paper-faced foam boards are designed for indoor use — outdoor rain and sunlight will damage them quickly. For semi-outdoor or shaded outdoor use, PVC foam board with UV printing is a more suitable option. Tell us your display environment and we'll recommend the right material.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How long do foam boards last?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Indoor paper-faced foam boards typically last 2–3 years when kept away from direct sunlight and moisture. PVC foam boards last longer and resist humidity and handling. For long-term use, PVC foam board with UV printing and laminate coating is recommended.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Do you provide design support?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Yes. Our in-house design team at DRK Stickers can create your foam board artwork from your content, logo, and brief. Share your text, images, and preferred layout — we produce a print-ready design for your approval before printing begins.</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Why DRK Stickers</div>
+  <div class="st">Why Coimbatore chooses us</div>
+  <div class="wu-g">
+    <div class="wu-c"><div class="wu-n">UV</div><h4>High-res printing</h4><p>UV and eco-solvent inks for sharp, vibrant, colour-accurate output on every board.</p></div>
+    <div class="wu-c"><div class="wu-n">Any</div><h4>Size & shape</h4><p>Custom cutting to your exact dimensions — from counter cards to full-size exhibition panels.</p></div>
+    <div class="wu-c"><div class="wu-n">24hr</div><h4>Fast turnaround</h4><p>Most standard foam board orders ready within 24–48 hours.</p></div>
+    <div class="wu-c"><div class="wu-n">Design</div><h4>In-house artwork</h4><p>Full design support if you don't have print-ready artwork — we create it for you.</p></div>
+    <div class="wu-c"><div class="wu-n">Free</div><h4>Quotation</h4><p>Share your size and quantity for an instant, transparent price — no hidden charges.</p></div>
+    <div class="wu-c"><div class="wu-n">CBE</div><h4>Local studio</h4><p>No. 102, Sidhapudur, Coimbatore — walk in, WhatsApp, or call anytime.</p></div>
+  </div>
+</div>
+
+<div class="lsi-r">
+  <span class="lsi-l">Related:</span>
+  <span class="lsi-p">foam board printing Coimbatore</span>
+  <span class="lsi-p">custom foam board signs</span>
+  <span class="lsi-p">PVC foam board</span>
+  <span class="lsi-p">sunboard printing</span>
+  <span class="lsi-p">foam core board</span>
+  <span class="lsi-p">indoor signage Coimbatore</span>
+  <span class="lsi-p">exhibition display boards</span>
+  <span class="lsi-p">promotional display boards</span>
+  <span class="lsi-p">foam sheet printing</span>
+  <span class="lsi-p">advertising display boards</span>
+  <span class="lsi-p">lightweight signage</span>
+  <span class="lsi-p">digital printing foam board</span>
+  <span class="lsi-p">foam board for events</span>
+</div>
+
+<div class="cta">
+  <div class="cta-stripe"></div>
+  <h2>Need foam boards in Coimbatore? Let's get printing.</h2>
+  <p>One board for your reception or 100 panels for your next exhibition — DRK Stickers prints and delivers with speed, quality, and pricing that works for every budget.</p>
+  <span class="cta-loc">No. 102, Sidhapudur, Coimbatore — 641044</span>
+  <div class="cta-btns">
+    <button class="btn-pu" onclick="sendPrompt('Get a free foam board quote from DRK Stickers Coimbatore')">Get a free quote ↗</button>
+    <button class="btn-wa" onclick="sendPrompt('WhatsApp contact for DRK Stickers foam board printing')">WhatsApp us ↗</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+function tf(el){
+  const a=el.nextElementSibling;
+  const ic=el.querySelector('.faq-arr i');
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-arr i').forEach(x=>{x.className='ti ti-plus'});
+  if(!isOpen){a.classList.add('open');ic.className='ti ti-minus'}
+}
+</script>

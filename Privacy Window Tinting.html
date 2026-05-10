@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Mulish:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0C0C0C;--ink2:#161616;--ink3:#222;
+  --silver:#8A8A8A;--border:#E2E2E2;--light:#F5F5F3;
+  --white:#fff;--muted:#666;
+  --accent:#1B1B1B;--gold:#B8860B;--gold-soft:#FFF8E1;
+  --tint-5:#0d0d0d;--tint-20:#2a2a2a;--tint-35:#444;--tint-50:#777;--tint-70:#b0b0b0;
+  --red:#C62828;--red2:#EF5350;--red-soft:#FFEBEE;
+  --font-h:'Syne',sans-serif;--font-b:'Mulish',sans-serif;
+}
+body{font-family:var(--font-b);background:var(--light);color:var(--ink);font-size:15px;line-height:1.7;margin:0}
+.page{max-width:860px;margin:0 auto}
+
+/* HERO */
+.hero{background:var(--ink);min-height:380px;padding:52px 40px 48px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-glow{position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(198,40,40,.12) 0%,transparent 70%)}
+.hero-lines{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red) 0%,transparent 60%)}
+.hero-inner{position:relative;z-index:1}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--red2);text-transform:uppercase;font-weight:700;margin-bottom:18px;font-family:var(--font-b)}
+.hero-h1{font-family:var(--font-h);font-size:42px;line-height:.96;color:#fff;font-weight:800;margin-bottom:14px}
+.hero-h1 span{color:var(--red2)}
+.hero-sub{font-size:13px;color:#666;line-height:1.75;margin-bottom:26px;font-weight:300}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-red{background:var(--red);color:#fff;padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-b)}
+.btn-ghost{background:transparent;color:#aaa;padding:11px 22px;border:1px solid #2e2e2e;border-radius:4px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-b)}
+/* hero right — tint visualizer */
+.tint-demo{position:relative;z-index:1}
+.tint-demo-label{font-size:10px;letter-spacing:2px;color:#444;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-b)}
+.tint-bars{display:flex;flex-direction:column;gap:6px}
+.tint-bar{display:flex;align-items:center;gap:10px;cursor:pointer;padding:6px 10px;border-radius:4px;border:1px solid transparent;transition:border-color .2s}
+.tint-bar:hover,.tint-bar.active{border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+.tint-swatch{width:48px;height:28px;border-radius:3px;flex-shrink:0;border:1px solid rgba(255,255,255,.08)}
+.tint-info{flex:1}
+.tint-name{font-size:12px;font-weight:600;color:#ccc}
+.tint-desc{font-size:11px;color:#444;line-height:1.3}
+.tint-pct{font-family:var(--font-h);font-size:18px;color:#333;flex-shrink:0}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.badge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:6px 12px;border-radius:3px;font-size:11px;color:#bbb;font-weight:500}
+.bdot{width:5px;height:5px;border-radius:50%;background:var(--red2);flex-shrink:0}
+
+/* SECTIONS */
+.sec{padding:48px 40px}
+.sec-w{background:#fff}
+.sec-d{background:var(--ink2)}
+.sec-g{background:var(--light)}
+.lbl{font-size:10px;letter-spacing:3px;color:var(--red);text-transform:uppercase;font-weight:700;margin-bottom:10px;font-family:var(--font-b)}
+.lbl-d{color:var(--red2)}
+.h2{font-family:var(--font-h);font-size:34px;line-height:1;color:var(--ink);margin-bottom:18px;font-weight:800}
+.h2-d{color:#fff}
+.h2 span,.h2-d span{color:var(--red2)}
+.body-p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:14px}
+.body-p-d{color:#666}
+.body-p:last-child{margin-bottom:0}
+.div{height:1px;background:var(--border)}
+
+/* WHAT IS — 2col */
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px;align-items:start}
+.vlt-explainer{background:var(--ink2);border-radius:6px;padding:22px}
+.vlt-title{font-size:11px;letter-spacing:2px;color:#555;text-transform:uppercase;margin-bottom:14px;font-family:var(--font-b)}
+.vlt-scale{display:flex;flex-direction:column;gap:10px}
+.vlt-row{display:flex;align-items:center;gap:12px}
+.vlt-block{width:38px;height:22px;border-radius:3px;border:1px solid rgba(255,255,255,.06);flex-shrink:0}
+.vlt-label{font-size:12px;color:#888;flex:1}
+.vlt-pct{font-family:var(--font-h);font-size:16px;color:#444}
+.vlt-note{margin-top:14px;font-size:11px;color:#444;line-height:1.6;border-top:1px solid rgba(255,255,255,.05);padding-top:12px}
+
+/* WHY COIMBATORE */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.why-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px}
+.why-icon{font-size:22px;margin-bottom:10px}
+.why-h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.why-p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* SHADE OPTIONS */
+.shades-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:22px;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.shade-card{padding:18px 14px;border-right:1px solid var(--border);cursor:pointer;transition:background .2s;position:relative}
+.shade-card:last-child{border-right:none}
+.shade-card:hover,.shade-card.sel{background:rgba(198,40,40,.03)}
+.shade-card.sel{border-bottom:3px solid var(--red)}
+.shade-window{width:100%;height:52px;border-radius:4px;border:1px solid rgba(0,0,0,.1);margin-bottom:10px;transition:background .3s}
+.shade-pct{font-family:var(--font-h);font-size:22px;color:var(--ink);font-weight:800;line-height:1;margin-bottom:3px}
+.shade-name{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.shade-tag{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;display:inline-block}
+.tag-legal{background:#E8F5E9;color:#2E7D32}
+.tag-popular{background:var(--red-soft);color:var(--red)}
+.tag-max{background:#1B1B1B;color:#fff}
+.shade-detail{display:none;margin-top:20px;padding:18px 20px;background:#fff;border:1px solid var(--border);border-radius:6px;border-top-left-radius:0;border-top-right-radius:0}
+.shade-detail.show{display:block}
+.shade-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.detail-item{font-size:13px;color:var(--muted);line-height:1.6}
+.detail-item strong{color:var(--ink);display:block;font-size:12px;margin-bottom:2px}
+
+/* BENEFITS */
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
+.ben-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px;position:relative;overflow:hidden;transition:border-color .2s,transform .15s}
+.ben-card:hover{border-color:#ccc;transform:translateY(-2px)}
+.ben-n{font-family:var(--font-h);font-size:44px;line-height:1;color:#f2f2f2;position:absolute;top:10px;right:12px;font-weight:800}
+.ben-icon{font-size:20px;margin-bottom:8px}
+.ben-h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px;position:relative}
+.ben-p{font-size:12px;color:var(--muted);line-height:1.65}
+
+/* LEGAL SECTION */
+.legal-banner{background:linear-gradient(135deg,#0C0C0C,#1a0505);border-radius:6px;padding:24px;margin-bottom:16px;border-left:4px solid var(--red2)}
+.legal-banner-title{font-family:var(--font-h);font-size:20px;color:#fff;margin-bottom:8px}
+.legal-banner-p{font-size:13px;color:#777;line-height:1.7}
+.legal-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:18px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.legal-table thead tr{background:rgba(198,40,40,.15)}
+.legal-table th{padding:11px 16px;text-align:left;color:#ccc;font-size:11px;letter-spacing:.5px;font-weight:600;font-family:var(--font-b)}
+.legal-table tbody tr{border-bottom:1px solid rgba(255,255,255,.04)}
+.legal-table tbody tr:last-child{border-bottom:none}
+.legal-table td{padding:11px 16px;color:#777;vertical-align:middle}
+.legal-table td:first-child{color:#aaa;font-weight:500}
+.vlt-chip{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.chip-legal{background:rgba(46,125,50,.2);color:#81C784}
+.chip-dark{background:rgba(198,40,40,.15);color:var(--red2)}
+.legal-points{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.legal-pt{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#666;line-height:1.6}
+.legal-pt-dot{width:6px;height:6px;border-radius:50%;background:var(--red2);flex-shrink:0;margin-top:7px}
+
+/* PROCESS */
+.process-wrap{margin-top:22px;display:flex;flex-direction:column;gap:0}
+.proc-step{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--border);position:relative}
+.proc-step:last-of-type{border-bottom:none}
+.proc-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:40px}
+.proc-num{font-family:var(--font-h);font-size:32px;font-weight:800;color:var(--red2);line-height:1}
+.proc-line{width:1px;background:var(--border);flex:1;min-height:20px;margin-top:4px}
+.proc-step:last-of-type .proc-line{display:none}
+.proc-h3{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px}
+.proc-p{font-size:13px;color:var(--muted);line-height:1.65}
+.proc-meta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.meta-pill{background:var(--ink2);border:1px solid rgba(255,255,255,.06);padding:10px 16px;border-radius:4px;text-align:center}
+.meta-pill-lbl{font-size:10px;color:#444;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+.meta-pill-val{font-size:14px;font-weight:600;color:var(--red2)}
+
+/* GALLERY */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.gal-item{aspect-ratio:4/3;background:#ece9e4;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid #ddd}
+.gal-item::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);color:#fff;font-size:10px;padding:6px 10px;text-align:center;font-family:var(--font-b)}
+.gal-icon svg{width:34px;height:34px;fill:#bbb;opacity:.5}
+
+/* FAQ */
+.faq-wrap{margin-top:22px;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.faq-item{background:#fff;border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;text-align:left;padding:15px 20px;font-size:14px;font-weight:500;color:var(--ink);border:none;background:none;cursor:pointer;font-family:var(--font-b);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-arr{color:var(--red);font-size:13px;transition:transform .2s;flex-shrink:0}
+.faq-a{display:none;padding:0 20px 15px;font-size:13px;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-item.open .faq-q{color:var(--red)}
+
+/* CTA */
+.cta{background:var(--ink);padding:48px 40px}
+.cta-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-bottom:28px}
+.cta-h2{font-family:var(--font-h);font-size:30px;color:#fff;line-height:1;margin-bottom:10px;font-weight:800}
+.cta-h2 span{color:var(--red2)}
+.cta-p{font-size:13px;color:#555;line-height:1.7;max-width:380px}
+.cta-btns{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.cta-info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid #1a1a1a;padding-top:24px}
+.ci-lbl{font-size:10px;color:#333;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.ci-val{font-size:13px;color:#777}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Privacy Window Tinting — DRK Stickers Coimbatore</div>
+    <div class="hero-h1">Window Tinting<br>Service in<br><span>Coimbatore</span></div>
+    <div class="hero-sub">Professional, legal & bubble-free car window tint installation — multiple shade options, UV protection & written warranty.</div>
+    <div class="hero-badges">
+      <div class="badge"><div class="bdot"></div>Enhanced Cabin Privacy</div>
+      <div class="badge"><div class="bdot"></div>Legally Compliant Films</div>
+      <div class="badge"><div class="bdot"></div>Bubble-Free Installation</div>
+      <div class="badge"><div class="bdot"></div>Written Warranty</div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-red">📞 Call for Free Quote</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+    </div>
+  </div>
+  <div class="tint-demo">
+    <div class="tint-demo-label">Choose Your Tint Shade</div>
+    <div class="tint-bars" id="heroBars">
+      <div class="tint-bar active" data-vlt="5">
+        <div class="tint-swatch" style="background:#0d0d0d"></div>
+        <div class="tint-info"><div class="tint-name">Limo Tint</div><div class="tint-desc">Maximum privacy</div></div>
+        <div class="tint-pct">5%</div>
+      </div>
+      <div class="tint-bar" data-vlt="20">
+        <div class="tint-swatch" style="background:#2e2e2e"></div>
+        <div class="tint-info"><div class="tint-name">Very Dark</div><div class="tint-desc">High privacy</div></div>
+        <div class="tint-pct">20%</div>
+      </div>
+      <div class="tint-bar" data-vlt="35">
+        <div class="tint-swatch" style="background:#4a4a4a"></div>
+        <div class="tint-info"><div class="tint-name">Dark Tint</div><div class="tint-desc">Most popular</div></div>
+        <div class="tint-pct">35%</div>
+      </div>
+      <div class="tint-bar" data-vlt="50">
+        <div class="tint-swatch" style="background:#888"></div>
+        <div class="tint-info"><div class="tint-name">Medium</div><div class="tint-desc">Side windows legal</div></div>
+        <div class="tint-pct">50%</div>
+      </div>
+      <div class="tint-bar" data-vlt="70">
+        <div class="tint-swatch" style="background:#c8c8c8"></div>
+        <div class="tint-info"><div class="tint-name">Light Tint</div><div class="tint-desc">Front windows legal</div></div>
+        <div class="tint-pct">70%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS -->
+<div class="sec sec-w">
+  <div class="lbl">Understanding the Service</div>
+  <div class="h2">What is Privacy<br><span>Window Tinting?</span></div>
+  <div class="what-grid">
+    <div>
+      <p class="body-p">Privacy window tinting is the application of a specially designed dark-tinted film to your car's windows — reducing visibility from outside into your cabin while maintaining clear outward visibility for the driver and passengers.</p>
+      <p class="body-p">Unlike basic sun films that focus on heat rejection, privacy window tinting uses darker shade films to make it significantly harder for people outside to see into your car — giving you security and personal space without compromising your view of the road.</p>
+      <p class="body-p">At DRK Stickers, our window tinting service in Coimbatore combines privacy performance with UV protection, heat rejection and a premium aesthetic finish.</p>
+    </div>
+    <div class="vlt-explainer">
+      <div class="vlt-title">What is VLT? — Explained Simply</div>
+      <div class="vlt-scale">
+        <div class="vlt-row"><div class="vlt-block" style="background:#0d0d0d"></div><div class="vlt-label">Maximum privacy — darkest</div><div class="vlt-pct">5%</div></div>
+        <div class="vlt-row"><div class="vlt-block" style="background:#2e2e2e"></div><div class="vlt-label">Very dark — high privacy</div><div class="vlt-pct">20%</div></div>
+        <div class="vlt-row"><div class="vlt-block" style="background:#4a4a4a"></div><div class="vlt-label">Dark — most popular</div><div class="vlt-pct">35%</div></div>
+        <div class="vlt-row"><div class="vlt-block" style="background:#888"></div><div class="vlt-label">Medium — good privacy</div><div class="vlt-pct">50%</div></div>
+        <div class="vlt-row"><div class="vlt-block" style="background:#c8c8c8"></div><div class="vlt-label">Light — legal front windows</div><div class="vlt-pct">70%</div></div>
+      </div>
+      <div class="vlt-note">VLT = Visible Light Transmission. Lower % = darker tint = more privacy. Higher % = lighter = more light passes through. Tamil Nadu law sets minimum VLT limits per window position.</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- WHY COIMBATORE -->
+<div class="sec">
+  <div class="lbl">Why It Matters Here</div>
+  <div class="h2">Why Coimbatore Car Owners<br>Choose <span>Privacy Tinting</span></div>
+  <p class="body-p">Coimbatore's busy roads, dense traffic and intense sunlight make privacy window tinting one of the most practical car upgrades in the city. Here is why:</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🚦</div>
+      <div class="why-h3">Heavy Traffic — More Eyes on Your Car</div>
+      <p class="why-p">Coimbatore's peak-hour traffic on Avinashi Road and Sathyamangalam Road keeps your car stationary for long periods — giving passersby full cabin visibility. Privacy tinting eliminates this instantly.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌞</div>
+      <div class="why-h3">Intense Sunlight & Heat</div>
+      <p class="why-p">Coimbatore's harsh sunlight makes every afternoon drive uncomfortable. Privacy tinting significantly reduces glare and solar heat — making every drive more comfortable and safer on your eyes.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">👜</div>
+      <div class="why-h3">Protect Valuables from Theft</div>
+      <p class="why-p">Bags, laptops and valuables left on seats are visible to potential thieves through clear windows. Dark tinting makes cabin contents invisible from outside — a proven deterrent against opportunistic theft.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">👨‍👩‍👧</div>
+      <div class="why-h3">Privacy for Families & Women Drivers</div>
+      <p class="why-p">For families with children and women driving alone, cabin privacy adds real safety and comfort — reducing unwanted attention at signals, in parking areas and during long drives across Coimbatore.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✨</div>
+      <div class="why-h3">Premium Aesthetic Upgrade</div>
+      <p class="why-p">Dark window tinting gives any car — from a basic hatchback to a luxury SUV — a sleek, sophisticated and premium appearance that instantly upgrades its visual appeal on Coimbatore roads.</p>
+    </div>
+    <div class="why-card" style="background:var(--ink2);border-color:transparent">
+      <div class="why-icon">🛡️</div>
+      <div class="why-h3" style="color:#fff">Safety in Accidents</div>
+      <p class="why-p" style="color:#555">Quality window film holds shattered glass together in the event of an accident — reducing the risk of glass fragments scattering and injuring occupants inside the cabin.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- SHADE OPTIONS — Interactive -->
+<div class="sec sec-w">
+  <div class="lbl">Film Options</div>
+  <div class="h2">Choose Your Tint Shade —<br><span>Privacy Film Options</span> in Coimbatore</div>
+  <p class="body-p">At DRK Stickers, we offer a full range of tint shades to suit your privacy preference, legal requirements and style. Click any shade to see details.</p>
+  <div class="shades-grid" id="shadeGrid">
+    <div class="shade-card sel" data-shade="0">
+      <div class="shade-window" style="background:#0d0d0d"></div>
+      <div class="shade-pct">5%</div>
+      <div class="shade-name">Limo Tint</div>
+      <span class="shade-tag tag-max">Darkest</span>
+    </div>
+    <div class="shade-card" data-shade="1">
+      <div class="shade-window" style="background:#2e2e2e"></div>
+      <div class="shade-pct">20%</div>
+      <div class="shade-name">Very Dark</div>
+      <span class="shade-tag tag-popular">High Privacy</span>
+    </div>
+    <div class="shade-card" data-shade="2">
+      <div class="shade-window" style="background:#4a4a4a"></div>
+      <div class="shade-pct">35%</div>
+      <div class="shade-name">Dark Tint</div>
+      <span class="shade-tag tag-popular">Most Popular</span>
+    </div>
+    <div class="shade-card" data-shade="3">
+      <div class="shade-window" style="background:#888"></div>
+      <div class="shade-pct">50%</div>
+      <div class="shade-name">Medium</div>
+      <span class="shade-tag tag-legal">Legal — Side</span>
+    </div>
+    <div class="shade-card" data-shade="4">
+      <div class="shade-window" style="background:#c8c8c8"></div>
+      <div class="shade-pct">70%</div>
+      <div class="shade-name">Light Tint</div>
+      <span class="shade-tag tag-legal">Legal — Front</span>
+    </div>
+  </div>
+  <!-- Detail panels -->
+  <div id="detail-0" class="shade-detail show">
+    <strong style="font-size:13px;color:var(--ink)">5% VLT — Limo Tint (Darkest Available)</strong>
+    <div class="shade-detail-grid" style="margin-top:10px">
+      <div class="detail-item"><strong>Privacy Level</strong>Nearly opaque from outside in daylight</div>
+      <div class="detail-item"><strong>Best For</strong>Rear windshield & rear side windows</div>
+      <div class="detail-item"><strong>UV Rejection</strong>Up to 99%</div>
+      <div class="detail-item"><strong>Legal Status</strong>Rear windows only — consult us before installing</div>
+    </div>
+  </div>
+  <div id="detail-1" class="shade-detail">
+    <strong style="font-size:13px;color:var(--ink)">20% VLT — Very Dark Tint (Maximum Privacy)</strong>
+    <div class="shade-detail-grid" style="margin-top:10px">
+      <div class="detail-item"><strong>Privacy Level</strong>Very difficult to see into cabin in daylight</div>
+      <div class="detail-item"><strong>Best For</strong>Rear side windows & rear windshield</div>
+      <div class="detail-item"><strong>UV Rejection</strong>Up to 99%</div>
+      <div class="detail-item"><strong>Legal Status</strong>Permissible on rear windows in Tamil Nadu</div>
+    </div>
+  </div>
+  <div id="detail-2" class="shade-detail">
+    <strong style="font-size:13px;color:var(--ink)">35% VLT — Dark Tint (Most Popular at DRK Stickers)</strong>
+    <div class="shade-detail-grid" style="margin-top:10px">
+      <div class="detail-item"><strong>Privacy Level</strong>Significantly reduces outside visibility</div>
+      <div class="detail-item"><strong>Best For</strong>Rear side windows & rear windshield</div>
+      <div class="detail-item"><strong>UV Rejection</strong>Up to 99%</div>
+      <div class="detail-item"><strong>Legal Status</strong>Most popular legal choice for rear windows</div>
+    </div>
+  </div>
+  <div id="detail-3" class="shade-detail">
+    <strong style="font-size:13px;color:var(--ink)">50% VLT — Medium Tint (Side Window Legal Grade)</strong>
+    <div class="shade-detail-grid" style="margin-top:10px">
+      <div class="detail-item"><strong>Privacy Level</strong>Moderate — reduces glare and outside view</div>
+      <div class="detail-item"><strong>Best For</strong>Front and rear side windows</div>
+      <div class="detail-item"><strong>UV Rejection</strong>Up to 99%</div>
+      <div class="detail-item"><strong>Legal Status</strong>Legally compliant for side windows Tamil Nadu</div>
+    </div>
+  </div>
+  <div id="detail-4" class="shade-detail">
+    <strong style="font-size:13px;color:var(--ink)">70% VLT — Light Tint (Front Window & Windshield Legal Grade)</strong>
+    <div class="shade-detail-grid" style="margin-top:10px">
+      <div class="detail-item"><strong>Privacy Level</strong>Minimal — UV & glare reduction focus</div>
+      <div class="detail-item"><strong>Best For</strong>Front windshield & front side windows</div>
+      <div class="detail-item"><strong>UV Rejection</strong>Up to 99%</div>
+      <div class="detail-item"><strong>Legal Status</strong>Fully compliant — required for front windows</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- BENEFITS -->
+<div class="sec">
+  <div class="lbl">Why Install It</div>
+  <div class="h2">6 Benefits of Professional<br><span>Window Tinting</span> in Coimbatore</div>
+  <div class="benefits-grid">
+    <div class="ben-card">
+      <div class="ben-n">01</div>
+      <div class="ben-icon">🔒</div>
+      <div class="ben-h3">Genuine Cabin Privacy</div>
+      <p class="ben-p">Significantly harder for people outside to see into your cabin — whether in heavy Coimbatore traffic, parked in a mall or stopped at a signal.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">02</div>
+      <div class="ben-icon">🛡️</div>
+      <div class="ben-h3">Protects Valuables from Theft</div>
+      <p class="ben-p">Bags, electronics and documents are hidden from passersby — acting as a strong deterrent against opportunistic theft and break-ins.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">03</div>
+      <div class="ben-icon">☀️</div>
+      <div class="ben-h3">UV Protection — Skin & Interior</div>
+      <p class="ben-p">Premium tint films block up to 99% of harmful UV rays — protecting your skin on long drives and preventing dashboard cracking and seat fading.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">04</div>
+      <div class="ben-icon">❄️</div>
+      <div class="ben-h3">Reduces Cabin Heat</div>
+      <p class="ben-p">Rejects solar heat and keeps your cabin noticeably cooler — reducing AC load and making every drive more comfortable in Coimbatore's climate.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">05</div>
+      <div class="ben-icon">💡</div>
+      <div class="ben-h3">Reduces Glare for Safer Driving</div>
+      <p class="ben-p">Reduces harsh glare from direct sunlight and oncoming headlights — lowering eye strain and making every drive significantly safer.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">06</div>
+      <div class="ben-icon">🚗</div>
+      <div class="ben-h3">Premium Aesthetic Upgrade</div>
+      <p class="ben-p">Clean, dark window tinting gives any vehicle a sleek, sophisticated appearance that stands out on Coimbatore's roads — instantly premium.</p>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL SECTION -->
+<div class="sec sec-d">
+  <div class="lbl lbl-d">Legal Compliance</div>
+  <div class="h2 h2-d">Is Window Tinting Legal<br>in <span>Tamil Nadu?</span></div>
+  <div class="legal-banner">
+    <div class="legal-banner-title">✅ Yes — Window Tinting is Legal in Tamil Nadu</div>
+    <p class="legal-banner-p">Window tinting is fully legal in Tamil Nadu and Coimbatore — provided the film meets the Visible Light Transmission (VLT) requirements set under the Motor Vehicles Act. At DRK Stickers, we only install legally compliant grades and guide every customer before installation.</p>
+  </div>
+  <table class="legal-table">
+    <thead>
+      <tr>
+        <th>Window Position</th>
+        <th>Minimum Legal VLT</th>
+        <th>DRK Stickers Recommendation</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Front Windshield</td>
+        <td>70% VLT</td>
+        <td>Light tint / UV-only clear film</td>
+        <td><span class="vlt-chip chip-legal">Legal ✓</span></td>
+      </tr>
+      <tr>
+        <td>Front Side Windows</td>
+        <td>70% VLT</td>
+        <td>70% light tint — legal & effective</td>
+        <td><span class="vlt-chip chip-legal">Legal ✓</span></td>
+      </tr>
+      <tr>
+        <td>Rear Side Windows</td>
+        <td>50% VLT</td>
+        <td>35–50% — privacy + legal compliance</td>
+        <td><span class="vlt-chip chip-dark">Darker OK</span></td>
+      </tr>
+      <tr>
+        <td>Rear Windshield</td>
+        <td>50% VLT</td>
+        <td>20–35% — strong privacy option</td>
+        <td><span class="vlt-chip chip-dark">Darker OK</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="legal-points">
+    <div class="legal-pt"><div class="legal-pt-dot"></div>DRK Stickers only installs legally compliant tint grades — we never install non-compliant films under any circumstances.</div>
+    <div class="legal-pt"><div class="legal-pt-dot"></div>We guide every customer on the correct VLT for each window position before installation begins.</div>
+    <div class="legal-pt"><div class="legal-pt-dot"></div>We provide film certification documentation after installation — keep it in your glove box for traffic stops.</div>
+    <div class="legal-pt"><div class="legal-pt-dot"></div>Using non-compliant tint can attract traffic fines and mandatory film removal — always choose a trusted installer.</div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="sec sec-w">
+  <div class="lbl">Our Method</div>
+  <div class="h2">Window Tinting<br><span>Installation Process</span></div>
+  <div class="process-wrap">
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">01</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Free Shade Consultation</div><p class="proc-p">We understand your privacy preference, daily usage and legal requirements — then guide you to the right tint shade for each window position. Completely free of charge with no obligation.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">02</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Thorough Glass Cleaning</div><p class="proc-p">Your car's windows are thoroughly cleaned inside and out — removing all dust, fingerprints, adhesive residue and contaminants that could cause bubbles or adhesion failure under the film.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">03</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Precision Film Cutting</div><p class="proc-p">Your chosen privacy film is precision-cut to match the exact shape and dimensions of every window — ensuring clean edges with zero gaps, overlaps or rough corners on any window.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">04</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Professional Film Application</div><p class="proc-p">Our certified technicians apply the film using professional tools — carefully squeegeeing out all moisture and air for a completely smooth, bubble-free, edge-to-edge finish on every window.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">05</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Post-Heat Sealing & Quality Check</div><p class="proc-p">The film is post-heated to lock it firmly to the glass — preventing peeling and ensuring long-lasting adhesion. Every window is inspected under controlled lighting before handover.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">06</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Certification & Care Instructions</div><p class="proc-p">We provide film certification documentation and full care instructions — including curing period guidelines and long-term maintenance advice for maximum film lifespan.</p></div>
+    </div>
+  </div>
+  <div class="proc-meta">
+    <div class="meta-pill"><div class="meta-pill-lbl">Installation Time</div><div class="meta-pill-val">3–5 Hours</div></div>
+    <div class="meta-pill"><div class="meta-pill-lbl">Curing Period</div><div class="meta-pill-val">3–5 Days</div></div>
+    <div class="meta-pill"><div class="meta-pill-lbl">Film Warranty</div><div class="meta-pill-val">Up to 10 Yrs</div></div>
+    <div class="meta-pill"><div class="meta-pill-lbl">Certification</div><div class="meta-pill-val">Provided ✓</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- GALLERY -->
+<div class="sec">
+  <div class="lbl">Our Work</div>
+  <div class="h2">Real Cars.<br><span>Real Results.</span></div>
+  <p class="body-p">Every privacy window tinting job below was completed at DRK Stickers in Coimbatore. See the transformation — before and after.</p>
+  <div class="gal-grid">
+    <div class="gal-item" data-label="Privacy Tint — Before & After">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Dark Window Tint Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="SUV Window Tinting — DRK Stickers">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Sedan Privacy Film Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Limo Tint Installation Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Window Tinting Service Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:18px"><button class="btn-red">View Full Gallery →</button></div>
+</div>
+
+<div class="div"></div>
+
+<!-- FAQ -->
+<div class="sec sec-w">
+  <div class="lbl">Got Questions?</div>
+  <div class="h2">Frequently Asked Questions —<br><span>Window Tinting Service</span> in Coimbatore</div>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q">Is window tinting legal in Coimbatore and Tamil Nadu? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Yes — window tinting is legal in Tamil Nadu within VLT limits set by the Motor Vehicles Act. Front side windows and the windshield require a minimum of 70% VLT. Rear side windows and the rear windshield permit darker tints with a minimum of 50% VLT. At DRK Stickers, we strictly follow these regulations and provide film certification after every installation so your car is fully road-legal.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Which tint shade gives the best privacy? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">For maximum privacy, 20% VLT on rear side windows and the rear windshield is the most popular choice at DRK Stickers. It makes it very difficult to see into the cabin during daylight hours while maintaining acceptable outward visibility for rear passengers. Our team will demonstrate each shade option before you decide so you can choose with confidence.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How much does window tinting cost in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Window tinting prices at DRK Stickers depend on your car size, the number of windows being tinted and the film grade selected. Contact us or WhatsApp us for a free, no-obligation quote specific to your car model and preferred tint shade. We offer transparent pricing with no hidden charges.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How long does window tinting installation take? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">A complete privacy window tinting installation at DRK Stickers typically takes 3–5 hours depending on your car size and number of windows. The film then requires a curing period of 3–5 days — avoid rolling down your windows during this time for the best results and longest film life.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Will tinting affect my visibility when driving at night? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Properly installed legal tint grades of 35% VLT and above do not significantly affect the driver's outward visibility at night. Very dark shades like 5% or 20% are applied only to rear windows where driver visibility is not an issue. Our experts always guide you to the right shade for your driving comfort and safety.</div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <button class="faq-q" style="border-bottom:none">Can I remove or change my window tint later? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Yes — professionally applied window tint film can be cleanly removed from glass without causing any damage to the window. If you wish to upgrade your tint grade, change the shade or remove it entirely, our team at DRK Stickers handles both film removal and re-installation with full care and precision.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-grid">
+    <div>
+      <div class="cta-h2">Book Your <span>Window Tinting</span><br>Service in Coimbatore</div>
+      <p class="cta-p">Give your car the privacy, style and protection it deserves. Legal, long-lasting and backed by written warranty. Free shade consultation — no obligation.</p>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-red">📞 Call for Free Quote</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+      <button class="btn-ghost">📍 Get Directions</button>
+    </div>
+  </div>
+  <div class="cta-info">
+    <div><div class="ci-lbl">Phone</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">Location</div><div class="ci-val">[Address], Coimbatore</div></div>
+    <div><div class="ci-lbl">Hours</div><div class="ci-val">Mon–Sat 9AM–7PM | Sun 10AM–5PM</div></div>
+  </div>
+</div>
+
+</div>
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+// Shade selector
+document.querySelectorAll('#shadeGrid .shade-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    document.querySelectorAll('#shadeGrid .shade-card').forEach(c=>c.classList.remove('sel'));
+    document.querySelectorAll('.shade-detail').forEach(d=>d.classList.remove('show'));
+    card.classList.add('sel');
+    const idx=card.dataset.shade;
+    const detail=document.getElementById('detail-'+idx);
+    if(detail)detail.classList.add('show');
+  });
+});
+// Hero tint bar
+document.querySelectorAll('#heroBars .tint-bar').forEach(bar=>{
+  bar.addEventListener('click',()=>{
+    document.querySelectorAll('#heroBars .tint-bar').forEach(b=>b.classList.remove('active'));
+    bar.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Mulish:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0C0C14;--ink2:#121220;--ink3:#1A1A2E;--ink4:#20203A;
+  --violet:#4527A0;--violet2:#5E35B1;--violet3:#7E57C2;--violet-soft:#EDE7F6;--violet-accent:#B39DDB;
+  --rose:#AD1457;--rose2:#E91E63;--rose-soft:#FCE4EC;
+  --teal:#00695C;--teal-soft:#E0F2F1;
+  --border:#E8E4F0;--border-d:#1E1E32;
+  --light:#F8F7FC;--white:#fff;--muted:#6B6880;--muted-d:#5A5870;
+  --font-h:'Syne',sans-serif;--font-b:'Mulish',sans-serif;
+}
+body{font-family:var(--font-b);background:var(--light);color:var(--ink);font-size:15px;line-height:1.7;margin:0}
+.page{max-width:860px;margin:0 auto}
+
+/* HERO */
+.hero{background:var(--ink2);padding:54px 40px 50px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+.hero-pattern{position:absolute;inset:0;opacity:.04;background-image:
+  repeating-linear-gradient(45deg,#B39DDB 0,#B39DDB 1px,transparent 0,transparent 50%),
+  repeating-linear-gradient(-45deg,#B39DDB 0,#B39DDB 1px,transparent 0,transparent 50%);
+  background-size:24px 24px;pointer-events:none}
+.hero-glow{position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(126,87,194,.1) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-80px;left:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(173,20,87,.06) 0%,transparent 70%);pointer-events:none}
+.hero-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet3) 0%,var(--rose2) 50%,transparent 100%)}
+.hero-inner{position:relative;z-index:1}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--violet-accent);text-transform:uppercase;font-weight:700;margin-bottom:16px;font-family:var(--font-b)}
+.hero-h1{font-family:var(--font-h);font-size:40px;line-height:.95;color:#fff;font-weight:800;margin-bottom:14px}
+.hero-h1 span{color:var(--violet-accent)}
+.hero-h2{font-size:13px;color:var(--muted-d);line-height:1.75;margin-bottom:22px;font-weight:300}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.hbadge{display:flex;align-items:center;gap:6px;background:rgba(179,157,219,.06);border:1px solid rgba(179,157,219,.15);padding:6px 12px;border-radius:3px;font-size:11px;color:#bbb;font-weight:500}
+.hbdot{width:5px;height:5px;border-radius:50%;background:var(--violet-accent);flex-shrink:0}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-violet{background:var(--violet3);color:#fff;padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-b)}
+.btn-ghost{background:transparent;color:#666;padding:11px 22px;border:1px solid var(--border-d);border-radius:4px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-b)}
+.btn-rose{background:var(--rose);color:#fff;padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-b)}
+/* hero right — frosted glass preview */
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px}
+.design-preview{background:rgba(255,255,255,.03);border:1px solid rgba(179,157,219,.12);border-radius:8px;padding:16px;overflow:hidden}
+.dp-label{font-size:10px;letter-spacing:2px;color:#3a3850;text-transform:uppercase;margin-bottom:10px;font-family:var(--font-b)}
+.dp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dp-swatch{height:48px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:1px;font-family:var(--font-b);position:relative;overflow:hidden}
+.ds-plain{background:rgba(255,255,255,.12);color:#aaa;border:1px solid rgba(255,255,255,.08)}
+.ds-etched{background:repeating-linear-gradient(45deg,rgba(255,255,255,.05),rgba(255,255,255,.05) 4px,rgba(255,255,255,.1) 4px,rgba(255,255,255,.1) 8px);color:#ccc;border:1px solid rgba(255,255,255,.1)}
+.ds-geo{background:repeating-linear-gradient(0deg,rgba(179,157,219,.08),rgba(179,157,219,.08) 6px,rgba(179,157,219,.14) 6px,rgba(179,157,219,.14) 12px);color:#b39ddb;border:1px solid rgba(179,157,219,.2)}
+.ds-custom{background:linear-gradient(135deg,rgba(173,20,87,.12),rgba(126,87,194,.12));color:#e91e63;border:1px solid rgba(173,20,87,.2)}
+.hero-stat{background:rgba(255,255,255,.02);border:1px solid rgba(179,157,219,.1);border-radius:6px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.hstat-icon{width:34px;height:34px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;background:rgba(179,157,219,.08)}
+.hstat-num{font-family:var(--font-h);font-size:22px;color:#fff;line-height:1;font-weight:800}
+.hstat-lbl{font-size:11px;color:#3a3850;margin-top:1px}
+
+/* SECTIONS */
+.sec{padding:48px 40px}
+.sec-w{background:#fff}
+.sec-d{background:var(--ink2)}
+.sec-g{background:var(--light)}
+.sec-v{background:var(--ink3)}
+.lbl{font-size:10px;letter-spacing:3px;color:var(--violet2);text-transform:uppercase;font-weight:700;margin-bottom:10px;font-family:var(--font-b)}
+.lbl-d{color:var(--violet-accent)}
+.lbl-r{color:var(--rose2)}
+.h2{font-family:var(--font-h);font-size:34px;line-height:1.02;color:var(--ink);margin-bottom:18px;font-weight:800}
+.h2-d{color:#fff}
+.h2 span{color:var(--rose2)}
+.h2-d span{color:var(--violet-accent)}
+.body-p{font-size:14px;color:var(--muted);line-height:1.82;margin-bottom:14px}
+.body-p:last-child{margin-bottom:0}
+.div{height:1px;background:var(--border)}
+
+/* LSI STRIP */
+.lsi-strip{padding:13px 40px;background:var(--ink);display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--border-d)}
+.lsi-lbl{font-size:10px;color:#2a2838;text-transform:uppercase;letter-spacing:2px;font-family:var(--font-b);flex-shrink:0}
+.lsi-tag{font-size:10px;background:rgba(179,157,219,.06);border:1px solid rgba(179,157,219,.12);color:#4a4860;padding:3px 10px;border-radius:20px;font-family:var(--font-b)}
+
+/* WHAT IS — 2col */
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px;align-items:start}
+.diff-box{background:var(--ink2);border-radius:6px;padding:22px}
+.diff-title{font-size:11px;letter-spacing:2px;color:#3a3850;text-transform:uppercase;margin-bottom:14px;font-family:var(--font-b)}
+.diff-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.diff-row:last-child{border-bottom:none;padding-bottom:0}
+.diff-icon{width:34px;height:34px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.diff-title2{font-size:12px;font-weight:700;color:var(--violet-accent);margin-bottom:4px}
+.diff-p{font-size:12px;color:#4a4860;line-height:1.55}
+.insight-box{background:var(--violet-soft);border:1px solid rgba(94,53,177,.2);border-radius:6px;padding:16px;margin-top:12px}
+.insight-p{font-size:13px;color:var(--violet2);line-height:1.65}
+
+/* WHERE CAN IT BE USED */
+.app-tabs{display:flex;gap:0;border:1px solid var(--border);border-radius:6px 6px 0 0;overflow:hidden;border-bottom:none;margin-top:22px}
+.app-tab{flex:1;padding:12px 8px;text-align:center;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-b);background:#fff;color:#999;border-right:1px solid var(--border);transition:all .2s}
+.app-tab:last-child{border-right:none}
+.app-tab.active{background:var(--violet3);color:#fff}
+.app-panels{border:1px solid var(--border);border-radius:0 0 6px 6px;background:#fff;min-height:200px}
+.app-panel{display:none;padding:24px}
+.app-panel.active{display:block}
+.app-item{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.app-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.app-item-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.app-dot{width:6px;height:6px;border-radius:50%;background:var(--violet3);flex-shrink:0}
+.app-item-p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* DESIGN OPTIONS — interactive cards */
+.design-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.design-card{border-radius:8px;padding:22px;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02);position:relative;cursor:pointer;transition:border-color .2s,transform .15s}
+.design-card:hover{border-color:rgba(179,157,219,.25);transform:translateY(-2px)}
+.design-card.featured{background:rgba(179,157,219,.05);border-color:rgba(179,157,219,.2)}
+.design-preview-box{width:100%;height:56px;border-radius:5px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:1px;color:#888;font-family:var(--font-b);overflow:hidden}
+.dpb-plain{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.06)}
+.dpb-etched{background:repeating-linear-gradient(45deg,rgba(255,255,255,.04),rgba(255,255,255,.04) 3px,rgba(255,255,255,.09) 3px,rgba(255,255,255,.09) 6px);border:1px solid rgba(255,255,255,.08);color:#ccc}
+.dpb-geo{background:repeating-linear-gradient(0deg,rgba(179,157,219,.06),rgba(179,157,219,.06) 4px,rgba(179,157,219,.12) 4px,rgba(179,157,219,.12) 8px);border:1px solid rgba(179,157,219,.15);color:#b39ddb}
+.dpb-custom{background:linear-gradient(135deg,rgba(173,20,87,.1),rgba(126,87,194,.1));border:1px solid rgba(179,157,219,.15);color:#e91e63}
+.dpb-combo{background:linear-gradient(90deg,rgba(255,255,255,.12) 50%,rgba(179,157,219,.08) 50%);border:1px solid rgba(255,255,255,.06);color:#999}
+.design-num{font-size:10px;letter-spacing:2px;color:#3a3850;text-transform:uppercase;margin-bottom:5px;font-family:var(--font-b)}
+.design-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;font-family:var(--font-h)}
+.design-p{font-size:12px;color:#4a4860;line-height:1.65;margin-bottom:10px}
+.design-opacity{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.opac-chip{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;font-family:var(--font-b)}
+.oc-1{background:rgba(255,255,255,.06);color:#666}
+.oc-2{background:rgba(179,157,219,.1);color:var(--violet-accent)}
+.oc-3{background:rgba(126,87,194,.15);color:var(--violet3)}
+.design-best{font-size:11px;color:var(--violet-accent);font-weight:600}
+/* 5th card full width */
+.design-card.full{grid-column:1/-1}
+
+/* BENEFITS */
+.ben-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
+.ben-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px;transition:border-color .2s,transform .15s}
+.ben-card:hover{border-color:rgba(94,53,177,.2);transform:translateY(-2px)}
+.ben-n{font-family:var(--font-h);font-size:44px;color:#f0eefb;line-height:1;margin-bottom:4px;font-weight:800}
+.ben-icon{font-size:20px;margin-bottom:8px}
+.ben-h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.ben-p{font-size:12px;color:var(--muted);line-height:1.65}
+
+/* COMPARISON TABLE */
+.comp-outer{margin-top:22px;border-radius:6px;overflow:hidden;border:1px solid var(--border-d)}
+.comp-table{width:100%;border-collapse:collapse;font-size:12px}
+.comp-table thead tr{background:var(--ink3)}
+.comp-table th{padding:12px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.5px;font-family:var(--font-b)}
+.th-f{color:#4a4860}
+.th-e{color:#EF9A9A}
+.th-v{color:var(--violet-accent)}
+.comp-table tbody tr{border-bottom:1px solid var(--border-d)}
+.comp-table tbody tr:last-child{border-bottom:none}
+.comp-table tbody tr:hover{background:rgba(255,255,255,.01)}
+.comp-table td{padding:10px 14px;vertical-align:middle;color:#4a4860}
+.comp-table td:first-child{color:#888;font-weight:500}
+.td-bad{color:#EF5350}
+.td-good{color:#66BB6A;font-weight:600}
+.td-best{color:var(--violet-accent);font-weight:600}
+.chip-v{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;background:rgba(179,157,219,.12);color:var(--violet-accent)}
+.chip-r{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;background:rgba(239,83,80,.1);color:#EF5350}
+.rec-box{background:rgba(179,157,219,.06);border:1px solid rgba(179,157,219,.15);border-radius:6px;padding:18px;margin-top:14px}
+.rec-box p{font-size:13px;color:#4a4860;line-height:1.75}
+.rec-box strong{color:var(--violet-accent);font-weight:500}
+
+/* PROCESS */
+.proc-steps{margin-top:22px}
+.proc-step{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.proc-step:last-child{border-bottom:none}
+.proc-left{flex-shrink:0;display:flex;flex-direction:column;align-items:center;width:44px}
+.proc-num{font-family:var(--font-h);font-size:32px;color:var(--violet-accent);line-height:1;font-weight:800}
+.proc-vline{width:1px;flex:1;background:rgba(179,157,219,.08);min-height:16px;margin-top:4px}
+.proc-step:last-child .proc-vline{display:none}
+.proc-h3{font-size:14px;font-weight:600;color:#e0e0e0;margin-bottom:5px}
+.proc-p{font-size:13px;color:#4a4860;line-height:1.65}
+.proc-meta{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.pm-box{background:rgba(179,157,219,.06);border:1px solid rgba(179,157,219,.15);padding:10px 16px;border-radius:4px;text-align:center}
+.pm-lbl{font-size:10px;color:#3a3850;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+.pm-val{font-size:14px;font-weight:700;color:var(--violet-accent)}
+
+/* GALLERY */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.gal-item{aspect-ratio:4/3;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid var(--border)}
+.gal-item::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:#fff;font-size:10px;padding:6px 10px;text-align:center;font-family:var(--font-b)}
+.gi-1{background:linear-gradient(135deg,#f0eefb,#ede7f6)}
+.gi-2{background:linear-gradient(135deg,#fce4ec,#f8bbd0)}
+.gi-3{background:linear-gradient(135deg,#e8eaf6,#e3f2fd)}
+.gi-4{background:linear-gradient(135deg,#f3e5f5,#ede7f6)}
+.gi-5{background:linear-gradient(135deg,#fff8e1,#fff3e0)}
+.gi-6{background:linear-gradient(135deg,#e0f2f1,#e8f5e9)}
+.gal-icon svg{width:36px;height:36px;opacity:.3}
+.gi-1 .gal-icon svg,.gi-2 .gal-icon svg{fill:#7E57C2}
+.gi-3 .gal-icon svg,.gi-4 .gal-icon svg{fill:#5E35B1}
+.gi-5 .gal-icon svg,.gi-6 .gal-icon svg{fill:#9575CD}
+
+/* FAQ */
+.faq-wrap{margin-top:22px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.faq-item{background:#fff;border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;text-align:left;padding:15px 20px;font-size:14px;font-weight:500;color:var(--ink);border:none;background:none;cursor:pointer;font-family:var(--font-b);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-arr{color:var(--violet2);font-size:13px;transition:transform .2s;flex-shrink:0}
+.faq-a{display:none;padding:0 20px 15px;font-size:13px;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-item.open .faq-q{color:var(--violet2)}
+
+/* CTA */
+.cta{background:var(--ink);padding:48px 40px}
+.cta-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-bottom:28px}
+.cta-h2{font-family:var(--font-h);font-size:28px;color:#fff;line-height:1.05;margin-bottom:10px;font-weight:800}
+.cta-h2 span{color:var(--violet-accent)}
+.cta-p{font-size:13px;color:#3a3850;line-height:1.7;max-width:380px}
+.cta-btns{display:flex;flex-direction:column;gap:10px}
+.cta-info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid var(--border-d);padding-top:24px}
+.ci-lbl{font-size:10px;color:#1e1e32;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.ci-val{font-size:13px;color:#3a3850}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-line"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Decorative & Frosted Films — DRK Stickers Coimbatore</div>
+    <div class="hero-h1">Decorative Window<br>Film in <span>Coimbatore</span><br>— Privacy & Style</div>
+    <div class="hero-h2">Professional frosted, etched, patterned & custom decorative glass film for homes, offices, shops & partitions — installed in a single day, no glass replacement needed.</div>
+    <div class="hero-badges">
+      <div class="hbadge"><div class="hbdot"></div>Permanent Privacy — Day & Night</div>
+      <div class="hbadge"><div class="hbdot"></div>100s of Design Options</div>
+      <div class="hbadge"><div class="hbdot"></div>Custom Designs Available</div>
+      <div class="hbadge"><div class="hbdot"></div>Homes, Offices & Shops</div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-violet">📞 Free Design Consultation</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="design-preview">
+      <div class="dp-label">Film Design Styles</div>
+      <div class="dp-grid">
+        <div class="dp-swatch ds-plain">PLAIN FROSTED</div>
+        <div class="dp-swatch ds-etched">ETCHED EFFECT</div>
+        <div class="dp-swatch ds-geo">GEOMETRIC</div>
+        <div class="dp-swatch ds-custom">CUSTOM DESIGN</div>
+      </div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">🔒</div>
+      <div><div class="hstat-num">24/7</div><div class="hstat-lbl">Privacy — Day & Night</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">🔄</div>
+      <div><div class="hstat-num">100%</div><div class="hstat-lbl">Removable — No Glass Damage</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">✨</div>
+      <div><div class="hstat-num">1 Day</div><div class="hstat-lbl">Installation — Same Day</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LSI STRIP -->
+<div class="lsi-strip">
+  <div class="lsi-lbl">Also Known As:</div>
+  <span class="lsi-tag">Frosted Window Film Coimbatore</span>
+  <span class="lsi-tag">Privacy Film for Glass</span>
+  <span class="lsi-tag">Office Glass Partition Film</span>
+  <span class="lsi-tag">Etched Glass Effect Film</span>
+  <span class="lsi-tag">Custom Glass Design Film</span>
+  <span class="lsi-tag">Sandblast Effect Film</span>
+  <span class="lsi-tag">Bathroom Window Privacy Film</span>
+</div>
+
+<!-- WHAT IS -->
+<div class="sec sec-w">
+  <div class="lbl">What is it?</div>
+  <div class="h2">What is Decorative Window Film<br>— and How is it <span>Different?</span></div>
+  <div class="what-grid">
+    <div>
+      <p class="body-p">Decorative and frosted window film is a specially manufactured adhesive film applied to the surface of existing glass — designed to add visual patterns, privacy, texture effects and design interest to plain glass surfaces without any permanent modification, acid treatment or glass replacement.</p>
+      <p class="body-p">Unlike acid etching or sandblasting which permanently alter the glass, decorative film from DRK Stickers achieves the exact same visual effect at a fraction of the cost — with the freedom to remove or change the design in the future.</p>
+      <div class="insight-box">
+        <p class="insight-p">💡 <strong>Key difference from other films:</strong> Frosted and decorative films provide <strong>privacy day AND night</strong> — unlike reflective sun control films that only work in daytime. The film blocks visibility in both directions at all times, whether it is bright outside or your interior lights are on at night.</p>
+      </div>
+    </div>
+    <div>
+      <div class="diff-box">
+        <div class="diff-title">What Our Films Deliver</div>
+        <div class="diff-row">
+          <div class="diff-icon" style="background:rgba(179,157,219,.1)">🔒</div>
+          <div><div class="diff-title2">Complete Privacy</div><div class="diff-p">Blocks direct visibility through glass in both directions — permanently, 24 hours a day, 7 days a week.</div></div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-icon" style="background:rgba(179,157,219,.1)">💡</div>
+          <div><div class="diff-title2">Soft Diffused Light</div><div class="diff-p">Frosted film does not block light — it diffuses it beautifully. Rooms remain bright and naturally lit.</div></div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-icon" style="background:rgba(173,20,87,.1)">✨</div>
+          <div><div class="diff-title2">Instant Design Upgrade</div><div class="diff-p">Transforms plain glass into an elegant, design-led architectural element — same visual quality as real etched glass.</div></div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-icon" style="background:rgba(179,157,219,.1)">🔄</div>
+          <div><div class="diff-title2">Fully Reversible</div><div class="diff-p">Unlike etching, the film can be removed cleanly at any time — no glass damage, no permanent commitment.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- WHERE CAN IT BE USED — Tabs -->
+<div class="sec">
+  <div class="lbl lbl-r">Applications</div>
+  <div class="h2">Where Can Decorative Film<br>Be Applied in <span>Coimbatore?</span></div>
+  <p class="body-p" style="color:#888">If your space has glass — and that glass needs privacy, personality or a design upgrade — decorative film is the answer. Click each space type to see specific applications.</p>
+  <div class="app-tabs" id="appTabs">
+    <div class="app-tab active" data-apanel="0">🏠 Homes</div>
+    <div class="app-tab" data-apanel="1">🏢 Offices</div>
+    <div class="app-tab" data-apanel="2">🏪 Shops & Retail</div>
+    <div class="app-tab" data-apanel="3">🏥 Other Spaces</div>
+  </div>
+  <div class="app-panels" id="appPanels">
+    <div class="app-panel active" id="apanel-0">
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Bathroom Windows — Most Popular</div><p class="app-item-p">Bathroom windows need complete privacy, day and night, year-round. Frosted film delivers this permanently and elegantly — no curtains, no opaque glass replacement needed. The most requested application in Coimbatore homes.</p></div>
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Bedroom Windows — Ground Floor Privacy</div><p class="app-item-p">Ground-floor bedroom windows visible from the street or neighbours. Frosted film on the lower half eliminates visibility while allowing natural light and air — without curtains blocking the window permanently.</p></div>
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Kitchen Cabinet Glass Doors</div><p class="app-item-p">Decorative patterned film on kitchen cabinet glass adds elegance and partial privacy — preventing cabinet contents from being fully visible while maintaining a clean, designer aesthetic.</p></div>
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Living Room Glass Doors & Panels</div><p class="app-item-p">Patterned and etched-effect films on living room glass panels and doors add a premium, custom feel — transforming standard builder-grade glass into a genuine design feature.</p></div>
+      <div class="app-item" style="border-bottom:none"><div class="app-item-title"><span class="app-dot"></span>Pooja Room Glass Panels</div><p class="app-item-p">Custom-designed religious motif films on pooja room glass panels and doors are a popular and meaningful decorative addition — adding reverence, elegance and privacy to sacred spaces in Coimbatore homes.</p></div>
+    </div>
+    <div class="app-panel" id="apanel-1">
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Glass Cabin Partitions — Most Popular</div><p class="app-item-p">The single most popular office application in Coimbatore. Frosted film on partition glass gives executives, meeting rooms and HR cabins complete visual privacy — without closing off the open, light-filled modern office feel.</p></div>
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Conference Room Glass Walls</div><p class="app-item-p">Full or partial frosted film on conference room glass walls provides meeting privacy while maintaining the modern glass-heavy aesthetic. Many offices also add company logos or brand elements as part of the frosted design.</p></div>
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Reception Area Glass — Branded</div><p class="app-item-p">Frosted film with company logos, brand elements or decorative patterns on reception glass creates a professional, branded first impression for every visitor entering your Coimbatore office.</p></div>
+      <div class="app-item" style="border-bottom:none"><div class="app-item-title"><span class="app-dot"></span>Workstation Privacy Dividers</div><p class="app-item-p">Frosted film on glass workstation dividers reduces visual distraction and adds personal privacy for employees in open-plan offices — improving focus and concentration in busy Coimbatore work environments.</p></div>
+    </div>
+    <div class="app-panel" id="apanel-2">
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Shop Window Branding & Accents</div><p class="app-item-p">Decorative films with brand elements, design patterns and visual accents on shop glass frontages make your retail space instantly more visually distinctive and professional on Coimbatore's busy high streets.</p></div>
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Changing Room & Trial Room Glass</div><p class="app-item-p">Complete frosted film on changing room doors ensures customer privacy — a non-negotiable for clothing stores, salons and beauty establishments across Coimbatore.</p></div>
+      <div class="app-item" style="border-bottom:none"><div class="app-item-title"><span class="app-dot"></span>Display Cabinet Privacy Panels</div><p class="app-item-p">Partial frosted film on glass display cabinets highlights featured products while adding a clean, professional backdrop — widely used in jewellery stores, electronics shops and premium retail in Coimbatore.</p></div>
+    </div>
+    <div class="app-panel" id="apanel-3">
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>Clinics, Hospitals & Professional Services</div><p class="app-item-p">Glass consultation room partitions, reception windows and patient area glass in clinics, dental practices and financial offices use frosted film to ensure complete client and patient privacy in a clean, professional aesthetic.</p></div>
+      <div class="app-item"><div class="app-item-title"><span class="app-dot"></span>New Construction & Interior Projects</div><p class="app-item-p">Architects and interior designers across Coimbatore increasingly specify decorative films as a cost-effective, versatile alternative to expensive patterned glass — delivering the same high-end look with full flexibility for future changes.</p></div>
+      <div class="app-item" style="border-bottom:none"><div class="app-item-title"><span class="app-dot"></span>Rental Properties & Leased Offices</div><p class="app-item-p">Since decorative film is fully removable without glass damage, it is the ideal solution for rental properties and leased commercial spaces in Coimbatore where permanent modifications to glass are not permitted by the landlord or lease agreement.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- DESIGN OPTIONS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-d">Design Options</div>
+  <div class="h2 h2-d">Film Design Options at<br>DRK Stickers <span>Coimbatore</span></div>
+  <p class="body-p" style="color:#4a4860">Choose from our extensive range of film designs — from simple, clean privacy to fully bespoke custom patterns. Our team guides you through every option during a free consultation.</p>
+  <div class="design-grid">
+    <div class="design-card">
+      <div class="design-preview-box dpb-plain">PLAIN FROSTED</div>
+      <div class="design-num">Option 01</div>
+      <div class="design-name">Plain Frosted Film</div>
+      <p class="design-p">Classic sandblast glass effect — clean, uniform matte-white frosted coverage across the entire glass surface. Complete privacy with soft, diffused natural light. Most widely used design.</p>
+      <div class="design-opacity">
+        <span class="opac-chip oc-1">20% — Light Frost</span>
+        <span class="opac-chip oc-2">50% — Medium Frost</span>
+        <span class="opac-chip oc-3">90% — Full Frost</span>
+      </div>
+      <div class="design-best">Best for: Bathrooms, office partitions, conference rooms</div>
+    </div>
+    <div class="design-card featured">
+      <div class="design-preview-box dpb-etched">ETCHED GLASS EFFECT</div>
+      <div class="design-num">Option 02</div>
+      <div class="design-name">Etched Glass Effect Film</div>
+      <p class="design-p">Replicates genuinely hand-etched or acid-etched glass with subtle variations in opacity, texture and depth. Premium artisanal appearance far beyond standard frosted film. Available in clear, silver and gold etched finishes.</p>
+      <div class="design-opacity">
+        <span class="opac-chip oc-2">Clear Etched</span>
+        <span class="opac-chip oc-2">Silver Etched</span>
+        <span class="opac-chip oc-2">Gold Etched</span>
+      </div>
+      <div class="design-best">Best for: Luxury villas, premium offices, high-end hospitality</div>
+    </div>
+    <div class="design-card">
+      <div class="design-preview-box dpb-geo">GEOMETRIC PATTERN</div>
+      <div class="design-num">Option 03</div>
+      <div class="design-name">Geometric Pattern Films</div>
+      <p class="design-p">Repeating geometric shapes — diamonds, hexagons, chevrons, lines and abstract patterns. Available as frosted-on-clear, clear-on-frosted and printed colour variations. Design-led glass that contributes to interior aesthetics.</p>
+      <div class="design-opacity">
+        <span class="opac-chip oc-1">Frosted-on-Clear</span>
+        <span class="opac-chip oc-2">Clear-on-Frosted</span>
+        <span class="opac-chip oc-3">Colour Printed</span>
+      </div>
+      <div class="design-best">Best for: Living rooms, restaurants, hotel lobbies, retail interiors</div>
+    </div>
+    <div class="design-card">
+      <div class="design-preview-box dpb-custom">★ CUSTOM DESIGN</div>
+      <div class="design-num">Option 04</div>
+      <div class="design-name">Custom-Cut Decorative Films</div>
+      <p class="design-p">Precision-cut to any shape, pattern, logo or motif — company logos on office glass, religious motifs on pooja room panels, floral patterns, architectural borders, restaurant branding, children's room themes. Unlimited possibilities.</p>
+      <div class="design-opacity">
+        <span class="opac-chip oc-3">Company Logos</span>
+        <span class="opac-chip oc-2">Religious Motifs</span>
+        <span class="opac-chip oc-2">Any Custom Shape</span>
+      </div>
+      <div class="design-best">Best for: Office branding, pooja rooms, hospitality, retail stores</div>
+    </div>
+    <div class="design-card full">
+      <div class="design-preview-box dpb-combo" style="height:44px">FROSTED + CLEAR CUTOUT COMBINATION</div>
+      <div class="design-num">Option 05</div>
+      <div class="design-name">Combination Films — Frosted Background + Clear Design Cutouts</div>
+      <p class="design-p">Layer two effects — a frosted background with custom-cut clear sections that create a striking contrast of opacity and transparency. Particularly impactful for corporate branding where company logos or graphic elements appear as clear glass cut-outs against a frosted white background — or vice versa. The most visually distinctive and sophisticated decorative film option available.</p>
+      <div class="design-best">Best for: Corporate office glass branding, reception areas, conference room glass, high-end retail windows, anywhere where visual impact matters.</div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="sec sec-w">
+  <div class="lbl">Why Choose It</div>
+  <div class="h2">6 Benefits of Decorative<br>Window Film in <span>Coimbatore</span></div>
+  <div class="ben-grid">
+    <div class="ben-card">
+      <div class="ben-n">01</div>
+      <div class="ben-icon">🔒</div>
+      <div class="ben-h3">Permanent Privacy — Day and Night</div>
+      <p class="ben-p">Frosted film provides complete, 24-hour privacy in both directions — whether it is bright daylight outside or your interior lights are on at night. Unlike reflective films that only work in daytime, frosted film never fails on privacy.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">02</div>
+      <div class="ben-icon">💡</div>
+      <div class="ben-h3">Maintains Natural Light Flow</div>
+      <p class="ben-p">Frosted film does not block light — it diffuses it beautifully. Natural light enters your space in a soft, even, glare-free form. You get full privacy and full natural light simultaneously — no dark, enclosed feel.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">03</div>
+      <div class="ben-icon">✨</div>
+      <div class="ben-h3">Instant Aesthetic Upgrade</div>
+      <p class="ben-p">Instantly transforms the visual quality of any glass surface — turning standard clear glass into an elegant, design-led architectural element at a fraction of the cost of real patterned or etched glass alternatives.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">04</div>
+      <div class="ben-icon">☀️</div>
+      <div class="ben-h3">UV Protection — Protects Interiors</div>
+      <p class="ben-p">Frosted and decorative films filter UV radiation through the glass — protecting furniture, flooring, artwork and interior finishes from UV-induced fading and deterioration for the full lifespan of the film.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">05</div>
+      <div class="ben-icon">🔄</div>
+      <div class="ben-h3">Changeable — Not Permanent</div>
+      <p class="ben-p">Unlike acid etching or sandblasting, decorative film can be professionally removed and replaced at any time — full flexibility to update your design, change patterns or restore the glass to clear as your needs evolve.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">06</div>
+      <div class="ben-icon">💰</div>
+      <div class="ben-h3">Fraction of the Cost of Etched Glass</div>
+      <p class="ben-p">High-quality decorative film achieves the exact same visual effect as acid etching or sandblasting — indistinguishable to the naked eye — at significantly lower cost, with no glass removal, no damage and same-day installation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="sec sec-v">
+  <div class="lbl lbl-d">Make the Smart Choice</div>
+  <div class="h2 h2-d">Decorative Film vs Real Etched Glass —<br><span>Why Film Wins</span></div>
+  <p class="body-p" style="color:#4a4860">Most people automatically think of acid etching when they want frosted glass. But for the vast majority of applications in Coimbatore homes and offices, decorative film is a significantly better choice:</p>
+  <div class="comp-outer">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th class="th-f">Factor</th>
+          <th class="th-e">Real Acid Etching</th>
+          <th class="th-v">Decorative Film ★</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Cost</td><td class="td-bad">Very high</td><td class="td-best"><span class="chip-v">Significantly lower — same result</span></td></tr>
+        <tr><td>Installation Time</td><td class="td-bad">Days — glass removal required</td><td class="td-good">Hours — same day ✓</td></tr>
+        <tr><td>Visual Result</td><td>Frosted / etched appearance</td><td class="td-best">Identical appearance ✓</td></tr>
+        <tr><td>Reversible?</td><td class="td-bad">❌ Permanent — cannot be undone</td><td class="td-good">✅ Fully removable anytime</td></tr>
+        <tr><td>Glass Removal</td><td class="td-bad">Required</td><td class="td-good">Not required ✓</td></tr>
+        <tr><td>Custom Design Changes</td><td class="td-bad">Zero — pattern is permanent</td><td class="td-good">Unlimited — update anytime ✓</td></tr>
+        <tr><td>UV Protection</td><td class="td-bad">None</td><td class="td-good">Filters UV radiation ✓</td></tr>
+        <tr><td>Suitable for Rental / Leased</td><td class="td-bad">No — permanent modification</td><td class="td-good">Yes — fully removable ✓</td></tr>
+        <tr><td>Best Application</td><td><span class="chip-r">New glass spec only</span></td><td><span class="chip-v">Any existing glass ★</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rec-box">
+    <p>For Coimbatore homeowners, office managers and business owners who want frosted or patterned glass — <strong>decorative window film from DRK Stickers delivers the exact same visual quality</strong> at a fraction of the cost, with zero glass removal, same-day installation and the freedom to change or update the design in the future. Once you see the quality of our installation up close, the difference from real etched glass is indistinguishable.</p>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-d">Our Method</div>
+  <div class="h2 h2-d">Our Decorative Film<br><span>Installation Process</span></div>
+  <p class="body-p" style="color:#4a4860">At DRK Stickers, every decorative and frosted film installation is completed with precision and care — a flawless finish that looks as good as genuine patterned glass.</p>
+  <div class="proc-steps">
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">01</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Design Consultation & Film Selection</div><p class="proc-p">We understand your specific requirements — where the film is going, the level of privacy needed, the design aesthetic you prefer and any custom design elements you want. Our team shows you physical film samples and design options during the consultation so you can make a fully informed, confident choice. Free with no obligation.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">02</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Glass Surface Cleaning & Preparation</div><p class="proc-p">On installation day, all glass surfaces are thoroughly cleaned inside and out — removing all dust, fingerprints, adhesive residue, grease and contaminants. Perfectly clean glass is essential for a flawless, bubble-free film application with a professional finish that lasts.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">03</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Film Cutting & Professional Application</div><p class="proc-p">Your chosen film is precision-cut to the exact dimensions of your glass panels — including any custom design elements. Our trained team applies the film using professional squeegee tools and application solution — carefully working out all air and moisture from under the film for a completely smooth, bubble-free, seamless finish on every glass surface.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">04</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Edge Finishing, Inspection & Handover</div><p class="proc-p">All film edges are neatly trimmed and finished for a clean, professional appearance. Every glass panel is inspected under good lighting before sign-off. The film typically fully cures within 3–5 days — minor haziness during this period clears completely as the film bonds to the glass surface.</p></div>
+    </div>
+  </div>
+  <div class="proc-meta">
+    <div class="pm-box"><div class="pm-lbl">Standard Installation</div><div class="pm-val">Few Hours – 1 Day</div></div>
+    <div class="pm-box"><div class="pm-lbl">Curing Period</div><div class="pm-val">3–5 Days</div></div>
+    <div class="pm-box"><div class="pm-lbl">Film Lifespan</div><div class="pm-val">7–10 Years</div></div>
+    <div class="pm-box"><div class="pm-lbl">Consultation</div><div class="pm-val">Free ✓</div></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="sec sec-g">
+  <div class="lbl">Our Work</div>
+  <div class="h2">Real Spaces.<br>Real <span>Transformations.</span></div>
+  <p class="body-p">Every installation below was completed by DRK Stickers in Coimbatore — homes, offices and commercial spaces transformed by professional decorative and frosted window film.</p>
+  <div class="gal-grid">
+    <div class="gal-item gi-1" data-label="Frosted Film — Office Partition Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item gi-2" data-label="Custom Design Film — Home Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item gi-3" data-label="Geometric Pattern Film — Office">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item gi-4" data-label="Etched Effect Film — Villa Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item gi-5" data-label="Frosted Film — Bathroom Window">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item gi-6" data-label="Combination Film — Reception Area">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:18px"><button class="btn-rose">View Full Gallery →</button></div>
+</div>
+
+<div class="div"></div>
+
+<!-- FAQ -->
+<div class="sec sec-w">
+  <div class="lbl">Got Questions?</div>
+  <div class="h2">Frequently Asked Questions —<br>Decorative Window Film in <span>Coimbatore</span></div>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q">How much does decorative window film installation cost in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Decorative and frosted window film installation prices at DRK Stickers are calculated per square foot of glass covered. Pricing depends on the film type selected (plain frosted, etched effect, geometric pattern or custom design), the total glass area and the complexity of any custom design work. Contact us or WhatsApp us for a free consultation and transparent, no-obligation quote specific to your space and requirements.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Does frosted film provide privacy at night when lights are on inside? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Yes — this is one of frosted film's most important advantages. Frosted and decorative films provide complete visual privacy in both directions, at all times of day and night. Whether it is bright daylight outside or your interior lights are on at night, frosted film blocks direct visibility through the glass from both sides consistently. This makes it the right choice for bathrooms, bedrooms, office partitions and any space where 24-hour privacy is required.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can I choose a custom design or logo for my office glass? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Absolutely. At DRK Stickers, we offer fully customised decorative film designs — company logos, brand elements, religious motifs, floral patterns, geometric designs, children's themes and any other bespoke design you require. Our team handles the entire process from design concept to professional installation. WhatsApp us with your design idea and we will work with you to create the perfect custom glass film for your space.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How long does decorative film last on glass? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">High-quality decorative and frosted films professionally installed by DRK Stickers are designed to last 7–10 years on interior glass surfaces. Proper care — which simply means wiping with a soft damp cloth and avoiding abrasive materials on the glass — ensures the film maintains its appearance and adhesion throughout its full lifespan.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can frosted film be removed without damaging the glass? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Yes — professionally installed decorative film can be cleanly removed from glass without any damage to the glass surface underneath. This makes frosted film particularly suitable for rental properties, leased offices and commercial spaces where permanent modifications are not permitted. If you want to update the design, change the pattern or restore the glass to clear, DRK Stickers handles film removal and re-installation with equal care.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can I get frosted film applied to just part of my glass — not the whole panel? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Yes — partial coverage is one of the most popular applications. For example, applying frosted film to the lower half of a window for privacy while leaving the upper half clear for natural light and views, or applying a decorative border or pattern around the edges of a glass panel. Our team can apply film to any portion of any glass panel with clean, precise edge lines — which will be discussed and demonstrated during your free consultation.</div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <button class="faq-q" style="border-bottom:none">Can decorative film be applied to all types of glass? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Decorative and frosted films can be applied to all plain flat glass surfaces — standard clear glass, lightly tinted glass and toughened or tempered glass, whether framed or frameless. Films cannot be applied to deeply textured, heavily patterned or perforated glass surfaces. For curved glass applications, specific flexible film products are available. Our team will assess your glass type during the free consultation before any work begins.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-grid">
+    <div>
+      <div class="cta-h2">Book Your Free <span>Decorative Film</span><br>Consultation in Coimbatore</div>
+      <p class="cta-p">Transform your plain glass into something beautiful, private and design-rich — in a single day, without replacing a single pane. Available for homes, offices, shops and commercial spaces across Coimbatore.</p>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-violet">📞 Free Consultation</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+      <button class="btn-ghost">📍 Get Directions</button>
+    </div>
+  </div>
+  <div class="cta-info">
+    <div><div class="ci-lbl">Phone</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">Location</div><div class="ci-val">[Address], Coimbatore</div></div>
+    <div><div class="ci-lbl">Hours</div><div class="ci-val">Mon–Sat 9AM–7PM | Sun 10AM–5PM</div></div>
+  </div>
+</div>
+
+</div>
+<script>
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const was=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!was)item.classList.add('open');
+  });
+});
+// Application tabs
+document.querySelectorAll('.app-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const idx=tab.dataset.apanel;
+    document.querySelectorAll('.app-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.app-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('apanel-'+idx).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

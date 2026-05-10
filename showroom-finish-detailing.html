@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Get professional showroom finish car detailing in Coimbatore at DRK Stickers. Paint correction, clay bar, interior deep clean, wax protection & more. Book today!">
+<title>Showroom Finish Detailing | Car Detailing Coimbatore | DRK Stickers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --white: #FAFAF8;
+    --gold: #C8960A;
+    --gold-light: #F5C842;
+    --gold-dim: #7A5C00;
+    --charcoal: #1C1C1C;
+    --mid: #2E2E2E;
+    --surface: #161616;
+    --muted: #888880;
+    --border: rgba(200,150,10,0.18);
+    --border-soft: rgba(255,255,255,0.07);
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 4px;
+    --radius-lg: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; height: 64px;
+    background: rgba(10,10,10,0.92);
+    border-bottom: 0.5px solid var(--border-soft);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 900; letter-spacing: 2px;
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; text-decoration: none;
+    padding: 9px 22px;
+    border-radius: var(--radius);
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ─── HERO ────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 5vw 10vh;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,150,10,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,150,10,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+  }
+  .hero-accent {
+    position: absolute; top: 20%; right: -5%;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,150,10,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-display);
+    font-size: 12px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    border: 0.5px solid var(--border);
+    padding: 6px 14px; border-radius: 2px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+  .hero-badge::before {
+    content: '';
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 900; line-height: 0.92;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--white);
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: normal; color: var(--gold-light);
+  }
+  .hero-sub {
+    font-size: 17px; font-weight: 300;
+    color: rgba(250,250,248,0.6);
+    max-width: 540px;
+    line-height: 1.6;
+    margin-bottom: 44px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; text-decoration: none;
+    padding: 14px 34px; border-radius: var(--radius);
+    transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; text-decoration: none;
+    padding: 14px 28px; border-radius: var(--radius);
+    border: 0.5px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+  .hero-stats {
+    margin-top: 72px;
+    display: flex; gap: 48px; flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 0.5px solid var(--border-soft);
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px; font-weight: 900; color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px; font-weight: 400; color: var(--muted);
+    letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;
+  }
+
+  /* ─── SECTION BASE ────────────────────────────── */
+  section { padding: 96px 5vw; }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900; line-height: 1;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 28px;
+  }
+  h2 span { color: var(--gold-light); }
+  .section-intro {
+    font-size: 17px; font-weight: 300; color: rgba(250,250,248,0.65);
+    max-width: 600px; line-height: 1.7; margin-bottom: 56px;
+  }
+
+  /* ─── ABOUT SECTION ───────────────────────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-copy p {
+    font-size: 16px; color: rgba(250,250,248,0.7);
+    line-height: 1.8; margin-bottom: 20px;
+  }
+  .about-copy p strong { color: var(--white); font-weight: 500; }
+  .lsi-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
+  }
+  .tag {
+    font-size: 12px; color: var(--gold);
+    border: 0.5px solid var(--border);
+    padding: 4px 10px; border-radius: 2px;
+    letter-spacing: 0.5px;
+  }
+  .pain-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+  .pain-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px; font-weight: 700;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 24px;
+  }
+  .pain-item {
+    display: flex; gap: 14px;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--border-soft);
+    align-items: flex-start;
+  }
+  .pain-item:last-child { border-bottom: none; }
+  .pain-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(200,150,10,0.12);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .pain-icon svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 2; }
+  .pain-item p { font-size: 14px; color: rgba(250,250,248,0.65); line-height: 1.5; }
+  .pain-item strong { color: var(--white); font-weight: 500; display: block; margin-bottom: 2px; }
+
+  /* ─── PROCESS STEPS ───────────────────────────── */
+  .process-bg { background: var(--charcoal); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+  }
+  .step-card {
+    background: var(--surface);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .step-card:hover { background: var(--mid); }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 80px; font-weight: 900; line-height: 1;
+    color: rgba(200,150,10,0.08);
+    position: absolute; top: -8px; right: 16px;
+    pointer-events: none;
+  }
+  .step-badge {
+    font-family: var(--font-display);
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .step-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 800;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 12px; line-height: 1.1;
+  }
+  .step-card p {
+    font-size: 14px; color: rgba(250,250,248,0.55);
+    line-height: 1.7;
+  }
+  .step-divider {
+    height: 2px; width: 40px;
+    background: var(--gold);
+    margin: 16px 0;
+  }
+
+  /* ─── COVERAGE TABS ───────────────────────────── */
+  .coverage-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  .coverage-panel {
+    background: var(--surface);
+    border: 0.5px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .coverage-header {
+    padding: 22px 28px;
+    background: var(--mid);
+    border-bottom: 0.5px solid var(--border-soft);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .coverage-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(200,150,10,0.15);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .coverage-icon svg { width: 18px; height: 18px; stroke: var(--gold-light); fill: none; stroke-width: 2; }
+  .coverage-header h3 {
+    font-family: var(--font-display);
+    font-size: 20px; font-weight: 800;
+    text-transform: uppercase; color: var(--white);
+  }
+  .coverage-body { padding: 24px 28px; }
+  .coverage-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    font-size: 14px; color: rgba(250,250,248,0.7);
+    line-height: 1.5;
+  }
+  .coverage-item:last-child { border-bottom: none; }
+  .coverage-item::before {
+    content: '';
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 8px;
+  }
+
+  /* ─── PACKAGES ────────────────────────────────── */
+  .packages-bg { background: var(--charcoal); }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .pkg-card {
+    background: var(--surface);
+    padding: 44px 32px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .pkg-card:hover { background: var(--mid); }
+  .pkg-card.featured {
+    background: rgba(200,150,10,0.08);
+    border-top: 3px solid var(--gold);
+  }
+  .pkg-card.featured:hover { background: rgba(200,150,10,0.13); }
+  .pkg-tag {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 4px 10px; border-radius: 2px;
+    margin-bottom: 20px; display: inline-block;
+    background: rgba(200,150,10,0.15); color: var(--gold);
+  }
+  .pkg-tag.popular { background: var(--gold); color: var(--black); }
+  .pkg-name {
+    font-family: var(--font-display);
+    font-size: 32px; font-weight: 900;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 8px;
+  }
+  .pkg-sub {
+    font-size: 13px; color: var(--muted);
+    margin-bottom: 28px; line-height: 1.5;
+  }
+  .pkg-features { list-style: none; margin-bottom: 36px; }
+  .pkg-features li {
+    font-size: 14px; color: rgba(250,250,248,0.65);
+    padding: 8px 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .pkg-features li::before {
+    content: '✓'; color: var(--gold); font-weight: 700;
+    flex-shrink: 0; font-size: 13px;
+  }
+  .pkg-cta {
+    display: block; text-align: center; text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 12px 20px;
+    border-radius: var(--radius);
+    transition: all 0.2s;
+  }
+  .pkg-cta.outline {
+    border: 0.5px solid rgba(255,255,255,0.2); color: var(--white);
+  }
+  .pkg-cta.outline:hover { border-color: var(--gold); color: var(--gold-light); }
+  .pkg-cta.solid {
+    background: var(--gold); color: var(--black);
+  }
+  .pkg-cta.solid:hover { background: var(--gold-light); }
+
+  /* ─── WHO IS THIS FOR ─────────────────────────── */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .audience-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .audience-card:hover {
+    border-color: var(--border);
+    background: var(--mid);
+  }
+  .audience-emoji {
+    font-size: 28px; margin-bottom: 14px; display: block;
+  }
+  .audience-card h4 {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 800;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 8px;
+  }
+  .audience-card p {
+    font-size: 13px; color: var(--muted); line-height: 1.6;
+  }
+
+  /* ─── USP ─────────────────────────────────────── */
+  .usp-bg { background: var(--charcoal); }
+  .usp-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .usp-item {
+    background: var(--surface); padding: 40px 32px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .usp-item:hover { border-top-color: var(--gold); background: var(--mid); }
+  .usp-item svg {
+    width: 32px; height: 32px;
+    stroke: var(--gold); fill: none; stroke-width: 1.5;
+    margin-bottom: 20px;
+  }
+  .usp-item h4 {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 800;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 10px;
+  }
+  .usp-item p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* ─── FAQ ─────────────────────────────────────── */
+  .faq-list { max-width: 780px; }
+  .faq-item {
+    border-bottom: 0.5px solid var(--border-soft);
+    padding: 0;
+  }
+  .faq-q {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 0; gap: 20px; text-align: left;
+  }
+  .faq-q span {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 700;
+    text-transform: uppercase; color: var(--white);
+    line-height: 1.2;
+  }
+  .faq-arrow {
+    width: 20px; height: 20px; flex-shrink: 0;
+    stroke: var(--gold); fill: none; stroke-width: 2;
+    transition: transform 0.3s;
+  }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.2s;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
+  .faq-a p { font-size: 15px; color: rgba(250,250,248,0.6); line-height: 1.75; }
+
+  /* ─── CTA BANNER ──────────────────────────────── */
+  .cta-banner {
+    background: var(--gold);
+    color: var(--black);
+    text-align: center;
+    padding: 80px 5vw;
+  }
+  .cta-banner .section-label { color: rgba(0,0,0,0.5); }
+  .cta-banner h2 {
+    color: var(--black);
+    font-size: clamp(40px, 6vw, 80px);
+    margin-bottom: 20px;
+  }
+  .cta-banner p {
+    font-size: 17px; color: rgba(0,0,0,0.65);
+    max-width: 500px; margin: 0 auto 40px;
+  }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-dark {
+    background: var(--black); color: var(--gold-light);
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; text-decoration: none;
+    padding: 14px 34px; border-radius: var(--radius);
+    transition: all 0.2s;
+  }
+  .btn-dark:hover { background: var(--charcoal); }
+  .btn-outline-dark {
+    border: 2px solid rgba(0,0,0,0.3); color: var(--black);
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; text-decoration: none;
+    padding: 14px 34px; border-radius: var(--radius);
+    transition: all 0.2s;
+  }
+  .btn-outline-dark:hover { border-color: var(--black); }
+  .contact-row {
+    display: flex; gap: 32px; justify-content: center;
+    margin-top: 40px; flex-wrap: wrap;
+  }
+  .contact-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 15px; font-weight: 500; color: rgba(0,0,0,0.7);
+  }
+  .contact-item svg {
+    width: 18px; height: 18px;
+    stroke: var(--black); fill: none; stroke-width: 2;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────── */
+  footer {
+    background: var(--charcoal);
+    border-top: 0.5px solid var(--border-soft);
+    padding: 40px 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  footer p { font-size: 13px; color: var(--muted); }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 900; letter-spacing: 2px;
+    color: var(--gold-light); text-decoration: none;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 800px) {
+    .about-grid, .coverage-grid, .packages-grid, .usp-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 52px; }
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://drkstickers.com" class="nav-logo">DRK Stickers</a>
+  <a href="#book" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-accent"></div>
+
+  <div class="hero-badge">Car Detailing Coimbatore</div>
+  <h1>Showroom <em>Finish</em><br>Detailing</h1>
+  <p class="hero-sub">Professional-grade paint correction, clay bar decontamination, interior deep clean & protective coating — bringing your car back to its showroom glory, right here in Coimbatore.</p>
+
+  <div class="hero-actions">
+    <a href="#book" class="btn-primary">Book Your Detail</a>
+    <a href="#process" class="btn-ghost">See How It Works</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">500+</span>
+      <span class="stat-label">Cars Detailed</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">8</span>
+      <span class="stat-label">Step Process</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">Customer Satisfaction</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">4–8h</span>
+      <span class="stat-label">Per Full Detail</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section id="about">
+  <div class="section-label">About the Service</div>
+  <div class="about-grid">
+    <div class="about-copy">
+      <h2>What is <span>Showroom Finish</span> Detailing?</h2>
+      <p>Showroom finish detailing is a <strong>comprehensive, multi-step car care process</strong> that goes far beyond a regular car wash. At DRK Stickers, we restore your vehicle's paint, correct surface imperfections, eliminate interior odours, and apply protective coatings — leaving your car looking exactly as it did the day it left the showroom.</p>
+      <p>Coimbatore's intense heat, dusty roads, and monsoon rains are especially harsh on your car's paint and interior. Our professional auto detailing process is the most effective way to restore and protect your vehicle from all of these.</p>
+      <p>Whether you drive a hatchback, sedan, SUV, or luxury car — our expert technicians treat every vehicle with the same meticulous care and attention to detail.</p>
+      <div class="lsi-tags">
+        <span class="tag">Paint Correction</span>
+        <span class="tag">Auto Detailing</span>
+        <span class="tag">Car Polish</span>
+        <span class="tag">Clay Bar Treatment</span>
+        <span class="tag">Vehicle Detailing</span>
+        <span class="tag">Paint Restoration</span>
+        <span class="tag">Car Wax</span>
+        <span class="tag">Interior Cleaning</span>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <h3>Is Your Car Showing These Signs?</h3>
+      <div class="pain-item">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <p><strong>Dull, faded paint</strong> that no longer reflects light like it used to — common in Coimbatore's UV-heavy climate.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3l18 18M7 7l10 10"/></svg>
+        </div>
+        <p><strong>Swirl marks & fine scratches</strong> visible in sunlight from automatic car washes or improper washing.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <p><strong>Stubborn tar, bird dropping stains & dust</strong> that a normal car wash simply cannot remove.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        </div>
+        <p><strong>Musty interior odours</strong>, stained upholstery, and faded dashboard plastics.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M20.4 7l-1.1-2C18.7 4 17.6 3.5 16.5 4L15 4.9a8 8 0 00-6 0L7.5 4C6.4 3.5 5.3 4 4.7 5L3.6 7"/></svg>
+        </div>
+        <p><strong>Brake-dust covered, oxidized wheels</strong> that make an otherwise clean car look neglected.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-bg" id="process">
+  <div class="section-label">Our Detailing Process</div>
+  <h2>8-Step <span>Showroom</span> Method</h2>
+  <p class="section-intro">Every detail session follows our proven professional process — no shortcuts, no rushing. Each step builds on the last to achieve a true showroom-quality result.</p>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-badge">Step 01</div>
+      <h3>Pre-Wash & Foam Bath</h3>
+      <div class="step-divider"></div>
+      <p>High-pressure pre-rinse followed by thick foam application to lift surface contaminants before any physical contact — preventing paint scratches.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-badge">Step 02</div>
+      <h3>Two-Bucket Hand Wash</h3>
+      <div class="step-divider"></div>
+      <p>pH-balanced shampoo and a microfibre wash mitt — top to bottom, panel by panel. Wheels and tyres cleaned separately with dedicated wheel cleaner.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-badge">Step 03</div>
+      <h3>Clay Bar Decontamination</h3>
+      <div class="step-divider"></div>
+      <p>Professional clay bar treatment removes embedded tar, brake dust, and industrial fallout that washing alone cannot reach — leaving paint smooth as glass.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-badge">Step 04</div>
+      <h3>Paint Correction & Polish</h3>
+      <div class="step-divider"></div>
+      <p>Machine polisher removes swirl marks, fine scratches, water spots, and oxidation — restoring your paint's original depth, clarity, and gloss.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">05</div>
+      <div class="step-badge">Step 05</div>
+      <h3>Wax / Sealant Protection</h3>
+      <div class="step-divider"></div>
+      <p>High-quality carnauba wax or synthetic sealant locks in the shine and shields paint from UV rays, dust, bird droppings, and Coimbatore's monsoon rain.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">06</div>
+      <div class="step-badge">Step 06</div>
+      <h3>Interior Deep Clean</h3>
+      <div class="step-divider"></div>
+      <p>Full vacuum of seats, carpets, and boot. Upholstery shampooing, dashboard and door panel wipe-down with appropriate conditioners.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">07</div>
+      <div class="step-badge">Step 07</div>
+      <h3>Glass & Trim Treatment</h3>
+      <div class="step-divider"></div>
+      <p>All windows streak-free inside and out. Exterior plastic trim restored with conditioner for a deep, rich finish that lasts.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">08</div>
+      <div class="step-badge">Step 08</div>
+      <h3>Tyre Dress & Final Inspection</h3>
+      <div class="step-divider"></div>
+      <p>Tyres dressed for a deep black finish. Full inspection under bright light — every panel checked before we hand your car back.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXTERIOR / INTERIOR COVERAGE -->
+<section id="coverage">
+  <div class="section-label">What's Covered</div>
+  <h2>Exterior <span>&</span> Interior</h2>
+  <p class="section-intro">Our showroom finish detail covers every surface of your vehicle — nothing is overlooked.</p>
+
+  <div class="coverage-grid">
+    <div class="coverage-panel">
+      <div class="coverage-header">
+        <div class="coverage-icon">
+          <svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m-4 12H9m-3 0v-6m0 0l-3-3m3 3l3-3"/><rect x="9" y="11" width="14" height="10" rx="2"/></svg>
+        </div>
+        <h3>Exterior Detailing</h3>
+      </div>
+      <div class="coverage-body">
+        <div class="coverage-item">Foam pre-wash and two-bucket hand wash with pH-safe shampoo</div>
+        <div class="coverage-item">Clay bar decontamination for a glass-smooth paint surface</div>
+        <div class="coverage-item">Machine polish for swirl mark and oxidation removal</div>
+        <div class="coverage-item">Carnauba wax or synthetic sealant application</div>
+        <div class="coverage-item">Wheel and tyre deep cleaning with brake dust removal</div>
+        <div class="coverage-item">Door jambs, hinges, and rubber seal cleaning</div>
+        <div class="coverage-item">Streak-free glass cleaning — all windows</div>
+        <div class="coverage-item">Exterior trim restoration and tyre dressing</div>
+      </div>
+    </div>
+
+    <div class="coverage-panel">
+      <div class="coverage-header">
+        <div class="coverage-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Interior Detailing</h3>
+      </div>
+      <div class="coverage-body">
+        <div class="coverage-item">Full vacuum of seats, carpets, floor mats, and boot</div>
+        <div class="coverage-item">Fabric upholstery shampoo and stain treatment</div>
+        <div class="coverage-item">Leather seat conditioning (if applicable)</div>
+        <div class="coverage-item">Dashboard, door panels, and centre console wipe-down</div>
+        <div class="coverage-item">Air vent cleaning with detailing brushes</div>
+        <div class="coverage-item">Interior glass cleaning — streak-free finish</div>
+        <div class="coverage-item">Plastic trim restoration and UV conditioner treatment</div>
+        <div class="coverage-item">Deodorisation for a fresh, clean cabin smell</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section>
+  <div class="section-label">Is This Right For You?</div>
+  <h2>Who Should <span>Book</span> This?</h2>
+  <p class="section-intro">Our showroom finish detailing is ideal for a wide range of car owners across Coimbatore.</p>
+  <div class="audience-grid">
+    <div class="audience-card">
+      <span class="audience-emoji">🚗</span>
+      <h4>New Car Owners</h4>
+      <p>Protect your factory paint from day one with the right coating and sealant treatment.</p>
+    </div>
+    <div class="audience-card">
+      <span class="audience-emoji">💰</span>
+      <h4>Selling Your Car</h4>
+      <p>A freshly detailed car commands a higher resale price and attracts buyers faster.</p>
+    </div>
+    <div class="audience-card">
+      <span class="audience-emoji">🌞</span>
+      <h4>Sun-Damaged Paint</h4>
+      <p>Coimbatore's harsh UV has faded your paint — our paint correction brings it back.</p>
+    </div>
+    <div class="audience-card">
+      <span class="audience-emoji">🗓️</span>
+      <h4>Long Overdue Detail</h4>
+      <p>Haven't detailed in 6+ months? Your car is overdue for a full professional treatment.</p>
+    </div>
+    <div class="audience-card">
+      <span class="audience-emoji">🎁</span>
+      <h4>Gift a Car Detail</h4>
+      <p>An outstanding gift for someone who takes pride in their vehicle.</p>
+    </div>
+    <div class="audience-card">
+      <span class="audience-emoji">🏆</span>
+      <h4>Luxury Car Owners</h4>
+      <p>Premium vehicles deserve premium care — our technicians are trained for all makes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DRK -->
+<section class="usp-bg">
+  <div class="section-label">Why DRK Stickers</div>
+  <h2>Coimbatore's <span>Trusted</span> Detailing Studio</h2>
+  <div class="usp-grid">
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <h4>Expert Technicians</h4>
+      <p>Our team is trained in professional auto detailing techniques — paint correction, clay bar, machine polishing, and more. Your car is in expert hands.</p>
+    </div>
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+      <h4>Premium Products Only</h4>
+      <p>We use pH-balanced, paint-safe shampoos, professional-grade clay bars, and high-quality waxes and sealants. No shortcuts, no cheap chemicals.</p>
+    </div>
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <h4>No Rushing, No Shortcuts</h4>
+      <p>A proper showroom finish takes 4–8 hours. We take the time to do every step correctly — because your car deserves it and so does your money.</p>
+    </div>
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <h4>Transparent Pricing</h4>
+      <p>No hidden charges, no surprise fees. We give you a clear quote before we begin and stick to it. What you're quoted is what you pay.</p>
+    </div>
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12 19.79 19.79 0 01.08 3.38a2 2 0 012-2.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.5a16 16 0 006.59 6.59l1.26-1.26a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      <h4>Easy Booking</h4>
+      <p>Call us or WhatsApp to book your detailing slot. We work around your schedule so your car is ready when you need it.</p>
+    </div>
+    <div class="usp-item">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      <h4>Hundreds of Happy Customers</h4>
+      <p>Car owners across Coimbatore — from daily drivers to luxury car enthusiasts — trust DRK Stickers for their car care needs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages-bg" id="packages">
+  <div class="section-label">Pricing Packages</div>
+  <h2>Choose Your <span>Package</span></h2>
+  <p class="section-intro">Every car is different. We offer packages to suit different needs and budgets — and we'll help you pick the right one for your vehicle.</p>
+
+  <div class="packages-grid">
+    <div class="pkg-card">
+      <span class="pkg-tag">Starter</span>
+      <div class="pkg-name">Silver Detail</div>
+      <p class="pkg-sub">Perfect for regular maintenance every 3–4 months</p>
+      <ul class="pkg-features">
+        <li>Foam pre-wash and hand wash</li>
+        <li>Interior vacuum — seats, carpets, boot</li>
+        <li>Interior wipe-down (dashboard, panels)</li>
+        <li>Streak-free glass clean</li>
+        <li>Tyre dressing</li>
+        <li>Wheel cleaning</li>
+      </ul>
+      <a href="tel:+91-XXXXXXXXXX" class="pkg-cta outline">Get Quote & Book</a>
+    </div>
+
+    <div class="pkg-card featured">
+      <span class="pkg-tag popular">Most Popular</span>
+      <div class="pkg-name">Gold Detail</div>
+      <p class="pkg-sub">Ideal for cars with light swirl marks and minor dullness</p>
+      <ul class="pkg-features">
+        <li>Everything in Silver, plus:</li>
+        <li>Clay bar decontamination</li>
+        <li>Single-stage machine polish</li>
+        <li>Carnauba wax application</li>
+        <li>Trim restore treatment</li>
+        <li>Interior shampoo (mats & carpet)</li>
+      </ul>
+      <a href="tel:+91-XXXXXXXXXX" class="pkg-cta solid">Get Quote & Book</a>
+    </div>
+
+    <div class="pkg-card">
+      <span class="pkg-tag">Full Restore</span>
+      <div class="pkg-name">Showroom Finish</div>
+      <p class="pkg-sub">Complete restoration for heavily neglected or sun-damaged cars</p>
+      <ul class="pkg-features">
+        <li>Everything in Gold, plus:</li>
+        <li>Multi-stage paint correction</li>
+        <li>Upholstery deep shampoo & stain treatment</li>
+        <li>Leather conditioning (if applicable)</li>
+        <li>Full plastic trim & rubber restoration</li>
+        <li>Deodorisation and cabin fresh treatment</li>
+      </ul>
+      <a href="tel:+91-XXXXXXXXXX" class="pkg-cta outline">Get Quote & Book</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-label">Frequently Asked Questions</div>
+  <h2>Got <span>Questions?</span></h2>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>How long does showroom finish detailing take?</span>
+        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>A full showroom finish detail typically takes 4 to 8 hours depending on your car's size and current condition. We recommend dropping your car in the morning so it's ready by evening. For very neglected vehicles, we may recommend booking an overnight session.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>How often should I get my car detailed in Coimbatore?</span>
+        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>We recommend a full detail every 4 to 6 months. Coimbatore's heat, dust, and monsoon rains are particularly damaging to paint and interior surfaces. Regular detailing protects your car's value and keeps it looking its best year-round.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Will detailing remove all scratches from my car?</span>
+        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Paint correction and polishing will remove or significantly reduce surface-level swirl marks, fine scratches, and water spots. Deep scratches that penetrate through the clear coat down to the base coat may require a paint touch-up service. Our technicians will assess your car and advise you honestly.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>What is the difference between car detailing and a regular car wash?</span>
+        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>A regular car wash cleans the surface — it removes loose dirt and dust. Professional detailing corrects, restores, and protects every part of your vehicle. It includes paint correction, clay bar treatment, wax protection, interior deep cleaning, and more. The result is a car that doesn't just look clean — it looks showroom-new.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>What is clay bar treatment and why does my car need it?</span>
+        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Clay bar treatment removes microscopic contaminants — tar, brake dust, industrial fallout — that are bonded to the paint surface and cannot be removed by washing. Without clay bar decontamination, your paint will feel slightly rough to the touch. After clay bar treatment, paint feels perfectly smooth and wax or sealant bonds far better.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>What is the difference between wax and ceramic coating?</span>
+        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Carnauba wax provides a warm, deep glow and lasts around 3 to 6 months. Ceramic coating is a semi-permanent, nano-technology based protective layer that bonds to the paint and can last 1 to 5 years. It provides superior protection against UV, chemical stains, and water. Our team can advise which option suits your car and budget best.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Do you service all car types in Coimbatore?</span>
+        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Yes — we detail all types of vehicles including hatchbacks, sedans, SUVs, MUVs, and luxury/premium cars. All cars receive the same meticulous care and professional process regardless of make or model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="book">
+  <div class="section-label">Ready to Book?</div>
+  <h2>Book Your Car Detailing in Coimbatore Today</h2>
+  <p>Drop your car in to DRK Stickers and let our expert team restore it to showroom condition. Call or WhatsApp us for a quick quote.</p>
+  <div class="cta-buttons">
+    <a href="tel:+91-XXXXXXXXXX" class="btn-dark">📞 Call to Book</a>
+    <a href="https://wa.me/91XXXXXXXXXX" class="btn-outline-dark">💬 WhatsApp Us</a>
+  </div>
+  <div class="contact-row">
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      DRK Stickers, Coimbatore
+    </div>
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Mon – Sat: 9:00 AM – 7:00 PM
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://drkstickers.com" class="footer-logo">DRK Stickers</a>
+  <p>© 2025 DRK Stickers — Sun Film & Car Care Studio, Coimbatore. All rights reserved.</p>
+  <p style="font-size:12px; color: #555;">Car Detailing Coimbatore | Paint Correction | Auto Detailing | Car Care Studio</p>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

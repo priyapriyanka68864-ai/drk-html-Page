@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Mulish:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#080C10;--ink2:#0E1318;--ink3:#141A20;--ink4:#1C2430;
+  --blue:#1565C0;--blue2:#1976D2;--blue-accent:#42A5F5;--blue-soft:#E3F2FD;--blue-glow:#0D47A1;
+  --red:#C62828;--red2:#EF5350;
+  --silver:#CFD8DC;--border:#1E2A36;--border-l:#E0E0E0;
+  --light:#F4F6F8;--white:#fff;--muted:#607080;--muted-d:#546070;
+  --font-h:'Syne',sans-serif;--font-b:'Mulish',sans-serif;
+}
+body{font-family:var(--font-b);background:var(--light);color:var(--ink);font-size:15px;line-height:1.7;margin:0}
+.page{max-width:860px;margin:0 auto}
+
+/* HERO */
+.hero{background:var(--ink2);padding:54px 40px 50px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+.hero-mesh{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(66,165,245,.02) 40px,rgba(66,165,245,.02) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(66,165,245,.02) 40px,rgba(66,165,245,.02) 41px);pointer-events:none}
+.hero-glow{position:absolute;top:-100px;right:-100px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(66,165,245,.08) 0%,transparent 65%);pointer-events:none}
+.hero-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue-accent) 0%,rgba(66,165,245,.3) 60%,transparent 100%)}
+.hero-inner{position:relative;z-index:1}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--blue-accent);text-transform:uppercase;font-weight:700;margin-bottom:16px;font-family:var(--font-b)}
+.hero-h1{font-family:var(--font-h);font-size:40px;line-height:.95;color:#fff;font-weight:800;margin-bottom:14px}
+.hero-h1 span{color:var(--blue-accent)}
+.hero-h2{font-size:13px;color:var(--muted-d);line-height:1.75;margin-bottom:22px;font-weight:300}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.hbadge{display:flex;align-items:center;gap:6px;background:rgba(66,165,245,.05);border:1px solid rgba(66,165,245,.15);padding:6px 12px;border-radius:3px;font-size:11px;color:#aaa;font-weight:500}
+.hbdot{width:5px;height:5px;border-radius:50%;background:var(--blue-accent);flex-shrink:0}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-blue{background:var(--blue-accent);color:var(--ink);padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-b)}
+.btn-ghost{background:transparent;color:#666;padding:11px 22px;border:1px solid #1e2a36;border-radius:4px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-b)}
+.btn-red{background:var(--red);color:#fff;padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-b)}
+/* hero right */
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px}
+.hero-stat{background:rgba(255,255,255,.03);border:1px solid rgba(66,165,245,.1);border-radius:6px;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.hstat-icon{width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:17px;background:rgba(66,165,245,.08)}
+.hstat-num{font-family:var(--font-h);font-size:24px;color:#fff;line-height:1;font-weight:800}
+.hstat-lbl{font-size:11px;color:#445;margin-top:1px}
+
+/* SECTIONS */
+.sec{padding:48px 40px}
+.sec-w{background:#fff}
+.sec-d{background:var(--ink2)}
+.sec-g{background:var(--light)}
+.sec-ink3{background:var(--ink3)}
+.lbl{font-size:10px;letter-spacing:3px;color:var(--blue2);text-transform:uppercase;font-weight:700;margin-bottom:10px;font-family:var(--font-b)}
+.lbl-d{color:var(--blue-accent)}
+.lbl-r{color:var(--red2)}
+.h2{font-family:var(--font-h);font-size:34px;line-height:1.02;color:var(--ink);margin-bottom:18px;font-weight:800}
+.h2-d{color:#fff}
+.h2 span{color:var(--red2)}
+.h2-d span{color:var(--blue-accent)}
+.body-p{font-size:14px;color:var(--muted);line-height:1.82;margin-bottom:14px}
+.body-p:last-child{margin-bottom:0}
+.div{height:1px;background:var(--border-l)}
+
+/* LSI STRIP */
+.lsi-strip{padding:13px 40px;background:var(--ink);display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--border)}
+.lsi-lbl{font-size:10px;color:#333;text-transform:uppercase;letter-spacing:2px;font-family:var(--font-b);flex-shrink:0}
+.lsi-tag{font-size:10px;background:rgba(66,165,245,.05);border:1px solid rgba(66,165,245,.12);color:#556;padding:3px 10px;border-radius:20px;font-family:var(--font-b)}
+
+/* WHAT IS PPF */
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px;align-items:start}
+.layers-wrap{background:var(--ink2);border-radius:6px;padding:22px}
+.layers-title{font-size:11px;letter-spacing:2px;color:#445;text-transform:uppercase;margin-bottom:14px;font-family:var(--font-b)}
+.layer-row{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.04);position:relative;padding-left:44px}
+.layer-row:last-child{border-bottom:none;padding-bottom:0}
+.layer-num{position:absolute;left:0;top:14px;font-family:var(--font-h);font-size:28px;color:var(--blue-accent);opacity:.25;line-height:1;font-weight:800}
+.layer-label{font-size:11px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-family:var(--font-b)}
+.layer-name{font-size:13px;font-weight:600;color:#ccc;margin-bottom:4px}
+.layer-desc{font-size:12px;color:#556;line-height:1.6}
+.analogy-box{background:var(--blue-soft);border:1px solid rgba(21,101,192,.2);border-radius:6px;padding:18px;margin-top:12px}
+.analogy-title{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;font-family:var(--font-b)}
+.analogy-p{font-size:13px;color:var(--blue);line-height:1.65;opacity:.85}
+
+/* THREATS */
+.threats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.threat-card{background:#fff;border:1px solid var(--border-l);border-radius:6px;padding:20px;border-left:3px solid transparent;transition:border-color .2s}
+.threat-card:hover{border-left-color:var(--blue-accent)}
+.threat-icon{font-size:22px;margin-bottom:8px}
+.threat-h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.threat-p{font-size:13px;color:var(--muted);line-height:1.65}
+.bottom-line{background:var(--ink2);border-left:4px solid var(--blue-accent);padding:18px 22px;border-radius:0 6px 6px 0;margin-top:12px;grid-column:1/-1}
+.bottom-line p{font-size:13px;color:var(--muted-d);line-height:1.75}
+.bottom-line strong{color:#ccc;font-weight:500}
+
+/* COVERAGE OPTIONS */
+.cov-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
+.cov-card{border-radius:8px;padding:24px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);position:relative;overflow:hidden}
+.cov-card.full{background:rgba(66,165,245,.04);border-color:rgba(66,165,245,.25)}
+.cov-card.full::after{content:'MOST POPULAR';position:absolute;top:12px;right:-22px;background:var(--blue-accent);color:var(--ink);font-size:9px;font-weight:800;letter-spacing:1.5px;padding:4px 30px;transform:rotate(45deg);font-family:var(--font-b)}
+.cov-num{font-family:var(--font-h);font-size:44px;color:rgba(66,165,245,.08);line-height:1;margin-bottom:4px;font-weight:800}
+.cov-icon{font-size:20px;margin-bottom:8px}
+.cov-name{font-family:var(--font-h);font-size:20px;color:#fff;font-weight:800;line-height:1.1;margin-bottom:8px}
+.cov-tag{display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;margin-bottom:12px;font-family:var(--font-b)}
+.ct-1{background:rgba(255,255,255,.04);color:#556}
+.ct-2{background:rgba(66,165,245,.08);color:var(--blue-accent)}
+.ct-3{background:rgba(66,165,245,.12);color:var(--blue-accent)}
+.cov-list{list-style:none;margin-bottom:16px}
+.cov-list li{font-size:12px;color:var(--muted-d);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.cov-list li::before{content:'✓';position:absolute;left:0;color:var(--blue-accent);font-weight:700;font-size:11px;top:4px}
+.cov-best{font-size:12px;color:#445;font-style:italic;border-top:1px solid rgba(255,255,255,.05);padding-top:12px;line-height:1.55}
+
+/* FILM TYPES */
+.film-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
+.film-card{background:#fff;border:1px solid var(--border-l);border-radius:8px;padding:22px;transition:transform .15s,box-shadow .15s}
+.film-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.film-icon{font-size:26px;margin-bottom:10px}
+.film-name{font-family:var(--font-h);font-size:20px;font-weight:800;color:var(--ink);margin-bottom:6px;line-height:1.1}
+.film-tag{display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;margin-bottom:12px;font-family:var(--font-b)}
+.ft-1{background:#F3F4F6;color:#555}
+.ft-2{background:#F0F4FF;color:#1565C0}
+.ft-3{background:#E8F5E9;color:#2E7D32}
+.film-p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:10px}
+.film-best{font-size:12px;color:var(--blue2);font-weight:600}
+
+/* BENEFITS */
+.ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.ben-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:6px;padding:20px;display:flex;gap:14px;transition:border-color .2s}
+.ben-card:hover{border-color:rgba(66,165,245,.2)}
+.ben-icon-box{width:42px;height:42px;background:rgba(66,165,245,.07);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.ben-h3{font-size:13px;font-weight:700;color:#e0e0e0;margin-bottom:5px}
+.ben-p{font-size:12px;color:var(--muted-d);line-height:1.65}
+
+/* COMPARISON */
+.comp-outer{margin-top:22px;border-radius:6px;overflow:hidden;border:1px solid var(--border-l)}
+.comp-table{width:100%;border-collapse:collapse;font-size:12px}
+.comp-table thead tr{background:var(--ink2)}
+.comp-table th{padding:12px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.5px;font-family:var(--font-b)}
+.th-f{color:#556}
+.th-w{color:#aaa}
+.th-c{color:#90CAF9}
+.th-p{color:var(--blue-accent)}
+.comp-table tbody tr{border-bottom:1px solid var(--border-l);background:#fff}
+.comp-table tbody tr:nth-child(even){background:#fafafa}
+.comp-table td{padding:9px 14px;vertical-align:middle;color:#666}
+.comp-table td:first-child{color:var(--ink);font-weight:500}
+.td-yes{color:#2E7D32;font-weight:600}
+.td-no{color:#EF5350}
+.td-best{color:var(--blue2);font-weight:600}
+.chip-b{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;background:var(--blue-soft);color:var(--blue2)}
+.chip-g{background:#f5f5f5;color:#666;display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.rec-box{background:rgba(66,165,245,.04);border:1px solid rgba(66,165,245,.15);border-radius:6px;padding:18px;margin-top:14px}
+.rec-box p{font-size:13px;color:var(--muted);line-height:1.75}
+.rec-box strong{color:var(--blue2);font-weight:500}
+
+/* PROCESS */
+.proc-wrap{margin-top:22px}
+.proc-step{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.proc-step:last-child{border-bottom:none}
+.proc-left{flex-shrink:0;display:flex;flex-direction:column;align-items:center;width:44px}
+.proc-num{font-family:var(--font-h);font-size:32px;color:var(--blue-accent);line-height:1;font-weight:800}
+.proc-vline{width:1px;flex:1;background:rgba(66,165,245,.08);min-height:16px;margin-top:4px}
+.proc-step:last-child .proc-vline{display:none}
+.proc-h3{font-size:14px;font-weight:600;color:#e0e0e0;margin-bottom:5px}
+.proc-p{font-size:13px;color:var(--muted-d);line-height:1.65}
+.proc-meta{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.pm-box{background:rgba(66,165,245,.06);border:1px solid rgba(66,165,245,.15);padding:10px 16px;border-radius:4px;text-align:center}
+.pm-lbl{font-size:10px;color:#445;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+.pm-val{font-size:14px;font-weight:700;color:var(--blue-accent)}
+
+/* GALLERY */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.gal-item{aspect-ratio:4/3;background:#eef2f5;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid var(--border-l)}
+.gal-item::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:#fff;font-size:10px;padding:6px 10px;text-align:center;font-family:var(--font-b)}
+.gal-icon svg{width:36px;height:36px;fill:#b0bec5;opacity:.7}
+
+/* FAQ */
+.faq-wrap{margin-top:22px;border:1px solid var(--border-l);border-radius:8px;overflow:hidden}
+.faq-item{background:#fff;border-bottom:1px solid var(--border-l)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;text-align:left;padding:15px 20px;font-size:14px;font-weight:500;color:var(--ink);border:none;background:none;cursor:pointer;font-family:var(--font-b);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-arr{color:var(--blue2);font-size:13px;transition:transform .2s;flex-shrink:0}
+.faq-a{display:none;padding:0 20px 15px;font-size:13px;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-item.open .faq-q{color:var(--blue2)}
+
+/* CTA */
+.cta{background:var(--ink);padding:48px 40px}
+.cta-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-bottom:28px}
+.cta-h2{font-family:var(--font-h);font-size:30px;color:#fff;line-height:1.05;margin-bottom:10px;font-weight:800}
+.cta-h2 span{color:var(--blue-accent)}
+.cta-p{font-size:13px;color:#556;line-height:1.7;max-width:380px}
+.cta-btns{display:flex;flex-direction:column;gap:10px}
+.cta-info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid #141A20;padding-top:24px}
+.ci-lbl{font-size:10px;color:#1e2a36;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.ci-val{font-size:13px;color:#667}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-line"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Paint Protection Film (PPF) — DRK Stickers Coimbatore</div>
+    <div class="hero-h1">PPF Coating<br>in <span>Coimbatore</span><br>— Invisible Armour</div>
+    <div class="hero-h2">Professional paint protection film installation — self-healing, rock chip resistant & crystal clear. Partial or full body. Written warranty up to 10 years.</div>
+    <div class="hero-badges">
+      <div class="hbadge"><div class="hbdot"></div>Rock Chip & Scratch Protection</div>
+      <div class="hbadge"><div class="hbdot"></div>Self-Healing Technology</div>
+      <div class="hbadge"><div class="hbdot"></div>Virtually Invisible on Paint</div>
+      <div class="hbadge"><div class="hbdot"></div>Up to 10 Year Warranty</div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-blue">📞 Free PPF Consultation</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hstat-icon">🛡️</div>
+      <div><div class="hstat-num">10 Yrs</div><div class="hstat-lbl">Maximum Warranty</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">🔄</div>
+      <div><div class="hstat-num">Self</div><div class="hstat-lbl">Healing Technology</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">👁️</div>
+      <div><div class="hstat-num">Clear</div><div class="hstat-lbl">Virtually Invisible Film</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">🪨</div>
+      <div><div class="hstat-num">100%</div><div class="hstat-lbl">Rock Chip Blocked</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LSI STRIP -->
+<div class="lsi-strip">
+  <div class="lsi-lbl">Also Known As:</div>
+  <span class="lsi-tag">Paint Protection Film Coimbatore</span>
+  <span class="lsi-tag">Clear Bra Coimbatore</span>
+  <span class="lsi-tag">Self-Healing PPF</span>
+  <span class="lsi-tag">Rock Chip Protection Film</span>
+  <span class="lsi-tag">Full Body PPF Coimbatore</span>
+  <span class="lsi-tag">PPF Coating Price Coimbatore</span>
+  <span class="lsi-tag">Transparent Car Paint Protection</span>
+</div>
+
+<!-- WHAT IS PPF -->
+<div class="sec sec-w">
+  <div class="lbl">Understanding PPF</div>
+  <div class="h2">What is Paint Protection Film<br>— and <span>How Does it Work?</span></div>
+  <div class="what-grid">
+    <div>
+      <p class="body-p">Paint Protection Film — also called PPF, clear bra or transparent car paint protection — is a thick, optically clear thermoplastic urethane (TPU) film applied directly to your car's painted surfaces. Once professionally installed, the film is virtually invisible — but incredibly tough.</p>
+      <p class="body-p">Think of PPF as an invisible armour for your car's paint. It sits on top of your factory finish and absorbs the physical impacts, scratches and environmental damage that would otherwise permanently scar your original paint. When it eventually gets damaged, you replace the film — not your car's paint.</p>
+      <div class="analogy-box">
+        <div class="analogy-title">🛡️ The Simple Analogy</div>
+        <p class="analogy-p">PPF is like a phone screen protector — but engineered for car paint. It takes all the scratches, chips and damage so your original paint underneath stays permanently perfect. And like a screen protector, you replace the film when needed — never the original surface.</p>
+      </div>
+    </div>
+    <div>
+      <div class="layers-wrap">
+        <div class="layers-title">The 3 Layers of PPF — Explained</div>
+        <div class="layer-row">
+          <div class="layer-num">1</div>
+          <div class="layer-label">Top Layer</div>
+          <div class="layer-name">Self-Healing Clearcoat</div>
+          <div class="layer-desc">Elastomeric polymer topcoat — heals minor scratches and swirl marks with heat from sunlight or warm water. Stain-resistant and hydrophobic.</div>
+        </div>
+        <div class="layer-row">
+          <div class="layer-num">2</div>
+          <div class="layer-label">Core Layer</div>
+          <div class="layer-name">TPU Armour — Thermoplastic Urethane</div>
+          <div class="layer-desc">The armour layer — absorbs physical impact from stone chips, road debris and minor scratches. Prevents anything from reaching your factory paint.</div>
+        </div>
+        <div class="layer-row">
+          <div class="layer-num">3</div>
+          <div class="layer-label">Bottom Layer</div>
+          <div class="layer-name">Pressure-Sensitive Adhesive</div>
+          <div class="layer-desc">Bonds the film securely to your paint — tight enough to last 10 years, clean enough to remove without any paint damage or residue.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- WHY COIMBATORE NEEDS PPF -->
+<div class="sec">
+  <div class="lbl lbl-r">Coimbatore Roads</div>
+  <div class="h2">Why PPF is Essential for<br>New Cars in <span>Coimbatore</span></div>
+  <p class="body-p" style="color:#888">Coimbatore's roads, traffic and climate create a uniquely challenging environment for your car's paint. Here is what your car faces every single day — and why PPF is the only solution that handles all of it:</p>
+  <div class="threats-grid">
+    <div class="threat-card">
+      <div class="threat-icon">🪨</div>
+      <div class="threat-h3">Stone Chips & Road Debris — #1 Paint Threat</div>
+      <p class="threat-p">Coimbatore's expanding road network — highways, construction zones and poorly maintained stretches — kicks up loose gravel, stone chips and road debris constantly. A single stone chip is a permanent paint scar without PPF.</p>
+    </div>
+    <div class="threat-card">
+      <div class="threat-icon">🚗</div>
+      <div class="threat-h3">Heavy Traffic — Parking Scratches Daily</div>
+      <p class="threat-p">Dense urban traffic and tight parking at Coimbatore's malls, markets and offices exposes your car to door dings, motorcycle handlebar grazes and trolley contact daily. PPF on door edges absorbs all minor contact damage.</p>
+    </div>
+    <div class="threat-card">
+      <div class="threat-icon">☀️</div>
+      <div class="threat-h3">Intense UV — Paint Fading and Oxidation</div>
+      <p class="threat-p">Coimbatore's year-round intense sunlight causes UV oxidation and paint fading — especially on red, blue and black cars. PPF's UV-blocking layer protects the original factory colour and gloss beneath the film for the full warranty period.</p>
+    </div>
+    <div class="threat-card">
+      <div class="threat-icon">🌧️</div>
+      <div class="threat-h3">Monsoon Acid Rain & Water Marks</div>
+      <p class="threat-p">Coimbatore's monsoon rains carry airborne pollutants that etch into unprotected paint and leave permanent water spots. PPF's stain-resistant surface repels these contaminants through the full monsoon season.</p>
+    </div>
+    <div class="threat-card">
+      <div class="threat-icon">🐦</div>
+      <div class="threat-h3">Bird Droppings & Tree Sap</div>
+      <p class="threat-p">In Coimbatore's heat, bird droppings and tree sap etch permanently into bare paint within hours. PPF's topcoat resists these — and even if the film surface gets etched, you replace the film, not your original paint underneath.</p>
+    </div>
+    <div class="threat-card" style="background:var(--ink2);border-color:transparent">
+      <div class="threat-icon">📈</div>
+      <div class="threat-h3" style="color:#fff">Resale Value Protection</div>
+      <p class="threat-p" style="color:#556">A PPF-protected car maintains original factory paint in pristine condition — commanding significantly higher resale value than an equivalent unprotected car with chips, scratches and visible paint corrections.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- COVERAGE OPTIONS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-d">Coverage Options</div>
+  <div class="h2 h2-d">PPF Coverage Options<br>— <span>Partial or Full Body?</span></div>
+  <p class="body-p" style="color:#556">Choose the coverage level that suits your car, driving habits and budget. Our experts will guide you to the ideal protection map for your specific car model during a free consultation.</p>
+  <div class="cov-grid">
+    <div class="cov-card">
+      <div class="cov-num">01</div>
+      <div class="cov-icon">🎯</div>
+      <div class="cov-name">Impact Zone PPF</div>
+      <span class="cov-tag ct-1">High-Risk Areas Only</span>
+      <ul class="cov-list">
+        <li>Full front bumper</li>
+        <li>Bonnet leading edge or full</li>
+        <li>Front fenders</li>
+        <li>Side mirrors</li>
+        <li>Door handle areas</li>
+        <li>Headlight protection</li>
+      </ul>
+      <div class="cov-best">Best for: Daily highway drivers & road-trip cars needing maximum stone chip protection at an accessible price point.</div>
+    </div>
+    <div class="cov-card full">
+      <div class="cov-num">02</div>
+      <div class="cov-icon">🔐</div>
+      <div class="cov-name">Enhanced Protection PPF</div>
+      <span class="cov-tag ct-2">Front + Sides</span>
+      <ul class="cov-list">
+        <li>Everything in Impact Zone</li>
+        <li>Full door panels</li>
+        <li>Door edges and sills</li>
+        <li>Rear bumper upper section</li>
+        <li>Rocker panels</li>
+      </ul>
+      <div class="cov-best">Best for: Urban Coimbatore drivers who park in tight spaces — malls, offices and markets where door dings are a daily risk.</div>
+    </div>
+    <div class="cov-card">
+      <div class="cov-num">03</div>
+      <div class="cov-icon">💎</div>
+      <div class="cov-name">Full Body PPF</div>
+      <span class="cov-tag ct-3">Complete Protection</span>
+      <ul class="cov-list">
+        <li>Full bonnet & bumpers</li>
+        <li>All full door panels</li>
+        <li>Both full fenders</li>
+        <li>Full roof panel</li>
+        <li>Rear quarter panels</li>
+        <li>Rocker panels</li>
+        <li>Headlights & tail lights</li>
+      </ul>
+      <div class="cov-best">Best for: New cars, luxury vehicles, SUVs and owners who want permanent complete protection for all factory paint.</div>
+    </div>
+  </div>
+  <div style="margin-top:12px;text-align:center;font-size:13px;color:#445">💡 Custom coverage plans available — <strong style="color:var(--blue-accent)">WhatsApp us</strong> and our experts will design the ideal protection map for your car model.</div>
+</div>
+
+<!-- FILM TYPES -->
+<div class="sec sec-w">
+  <div class="lbl">Film Options</div>
+  <div class="h2">PPF Film Types at<br>DRK Stickers <span>Coimbatore</span></div>
+  <p class="body-p">Three finish options — each providing the same physical protection, different in appearance and grade:</p>
+  <div class="film-grid">
+    <div class="film-card">
+      <div class="film-icon">✨</div>
+      <div class="film-name">Gloss PPF</div>
+      <span class="film-tag ft-1">Crystal Clear</span>
+      <p class="film-p">Completely transparent and crystal clear — enhances your car's existing paint gloss, maintains the factory shine and is virtually invisible once installed. Your car looks exactly as it did from the factory — just permanently protected.</p>
+      <div class="film-best">Best for: All car colours especially metallic, pearl and multi-coat factory finishes.</div>
+    </div>
+    <div class="film-card">
+      <div class="film-icon">🌫️</div>
+      <div class="film-name">Matte PPF</div>
+      <span class="film-tag ft-2">Satin Transformation</span>
+      <p class="film-p">Converts your car's gloss paint to a sophisticated satin or matte finish while providing the same level of physical protection. Complete paint protection AND a stunning matte transformation — without any repainting.</p>
+      <div class="film-best">Best for: Dark-coloured cars and owners who want a premium matte aesthetic without matte paint fragility.</div>
+    </div>
+    <div class="film-card">
+      <div class="film-icon">🔄</div>
+      <div class="film-name">Self-Healing PPF</div>
+      <span class="film-tag ft-3">Premium Grade</span>
+      <p class="film-p">Enhanced elastomeric topcoat that actively heals minor scratches and swirl marks using heat from sunlight or warm water. The most advanced film available — zero visible scratches on the film surface, ever.</p>
+      <div class="film-best">Best for: Luxury cars, performance vehicles and owners who demand the absolute best.</div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-d">Why Choose PPF</div>
+  <div class="h2 h2-d">7 Reasons to Get PPF Coating<br>at <span>DRK Stickers Coimbatore</span></div>
+  <div class="ben-grid">
+    <div class="ben-card">
+      <div class="ben-icon-box">🪨</div>
+      <div>
+        <div class="ben-h3">Rock Chip Protection — Nothing Else Does This</div>
+        <p class="ben-p">PPF is the only car protection product that physically stops stone chips and road debris from reaching your paint. Ceramic coating, wax and polish cannot do this. For Coimbatore highway drivers, this is non-negotiable.</p>
+      </div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">🔄</div>
+      <div>
+        <div class="ben-h3">Self-Healing — Minor Scratches Disappear</div>
+        <p class="ben-p">Premium PPF's topcoat self-heals minor surface scratches and swirl marks when exposed to heat — from natural sunlight or a warm rinse. The film surface stays flawless throughout its lifespan without any intervention.</p>
+      </div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">👁️</div>
+      <div>
+        <div class="ben-h3">Virtually Invisible — Paint Shows Through</div>
+        <p class="ben-p">Quality PPF from DRK Stickers is optically clear — virtually invisible on your car's surface after installation. No colour change, no visible edges, no distortion of paint colour, gloss or finish. Pure, protected factory look.</p>
+      </div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">☀️</div>
+      <div>
+        <div class="ben-h3">UV Protection — Prevents Paint Fading</div>
+        <p class="ben-p">PPF's UV-blocking properties prevent oxidation and colour fading from Coimbatore's intense year-round sunlight. Your factory paint colour stays vivid and deep under the film for the full warranty period.</p>
+      </div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">💧</div>
+      <div>
+        <div class="ben-h3">Stain & Chemical Resistance</div>
+        <p class="ben-p">PPF's stain-resistant surface repels bird droppings, tree sap, road tar, fuel stains and chemicals — preventing them from reaching or etching your original paint. If the film gets affected, replace the film — not your paint.</p>
+      </div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">📈</div>
+      <div>
+        <div class="ben-h3">Protects Resale Value Significantly</div>
+        <p class="ben-p">A car with original factory paint in pristine condition commands significantly higher resale value than an equivalent unprotected car with chips, scratches and paint corrections visible. PPF is an investment that pays back at resale.</p>
+      </div>
+    </div>
+    <div class="ben-card" style="grid-column:1/-1">
+      <div class="ben-icon-box">🔧</div>
+      <div>
+        <div class="ben-h3">Removable — No Permanent Commitment</div>
+        <p class="ben-p">Unlike repainting or permanent modifications, PPF can be professionally removed at any time — leaving your original factory paint completely undamaged underneath. Sell the car, upgrade the film grade or remove it entirely — the choice is always yours. Complete flexibility without any compromise to your original paint.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="sec sec-w">
+  <div class="lbl">Make the Right Choice</div>
+  <div class="h2">PPF vs Ceramic vs Wax —<br><span>Understanding the Difference</span></div>
+  <p class="body-p">The most common question we get: "Should I get PPF or ceramic coating?" Here is a clear, honest comparison — and our recommendation for Coimbatore car owners:</p>
+  <div class="comp-outer">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th class="th-f">Feature</th>
+          <th class="th-w">Wax / Polish</th>
+          <th class="th-c">Ceramic Coating</th>
+          <th class="th-p">PPF Film ★</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Protection Type</td><td>Surface layer</td><td>Chemical nano-bond</td><td><span class="chip-b">Physical armour film</span></td></tr>
+        <tr><td>Rock Chip Protection</td><td class="td-no">❌ None</td><td class="td-no">❌ None</td><td class="td-yes">✅ Yes — primary benefit</td></tr>
+        <tr><td>Scratch Protection</td><td class="td-no">❌ Minimal</td><td>⚡ Light scratches</td><td class="td-yes">✅ Full resistance</td></tr>
+        <tr><td>Self-Healing</td><td class="td-no">❌ No</td><td class="td-no">❌ No</td><td class="td-yes">✅ Yes — premium grades</td></tr>
+        <tr><td>UV Protection</td><td>⚡ Basic</td><td class="td-yes">✅ Excellent</td><td class="td-yes">✅ Excellent</td></tr>
+        <tr><td>Hydrophobic</td><td>⚡ Moderate</td><td class="td-yes">✅ Excellent</td><td>✅ Good</td></tr>
+        <tr><td>Chemical Resistance</td><td class="td-no">❌ Minimal</td><td class="td-yes">✅ Excellent</td><td>✅ Stain resistant</td></tr>
+        <tr><td>Durability</td><td>2–4 Months</td><td>2–5 Years</td><td class="td-best">7–10 Years ★</td></tr>
+        <tr><td>Removable</td><td>✅ Yes</td><td class="td-no">❌ No</td><td class="td-yes">✅ Yes — cleanly</td></tr>
+        <tr><td>Best For</td><td><span class="chip-g">Maintenance</span></td><td><span class="chip-g">Chemical protection</span></td><td><span class="chip-b">Physical protection ★</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rec-box">
+    <p>For new cars in Coimbatore — our recommendation: <strong>PPF on all high-impact zones + Ceramic Coating on top of the PPF and remaining body panels.</strong> This combination gives you complete physical protection (PPF) and complete chemical/UV protection with hydrophobic gloss (ceramic coating) — the absolute best of both worlds. Our experts will design this combined package for your specific car during a free consultation.</p>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- PROCESS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-d">Our Method</div>
+  <div class="h2 h2-d">PPF Installation Process<br>— <span>6 Professional Steps</span></div>
+  <p class="body-p" style="color:#556">Professional PPF installation is a precision craft — requiring clean conditions, precision film cutting and expert wrapping technique. Every DRK Stickers installation follows this strict process:</p>
+  <div class="proc-wrap">
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">01</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Paint Inspection & Preparation Assessment</div><p class="proc-p">Full paint inspection under controlled lighting — checking for swirl marks, scratches, chips and contaminants. All defects are documented and discussed. Required paint correction is completed before PPF installation — because once the film goes on, it locks in whatever condition the paint is in.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">02</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Full Paint Decontamination & Cleaning</div><p class="proc-p">Complete foam pre-wash, hand wash and clay bar decontamination removes all surface dirt, dust, road tar and bonded contaminants. The paint must be perfectly clean before film application — zero trapped particles under the film is the standard we work to.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">03</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Precision Computer-Cut Film Preparation</div><p class="proc-p">Your PPF panels are precision-cut using a computer-aided cutting system mapped to the exact dimensions and contours of your specific car model. Every panel fits perfectly with clean edges and zero gaps — we never use imprecise hand-cut pieces that leave exposed edges.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">04</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Professional Film Application — Panel by Panel</div><p class="proc-p">Each panel is applied using professional slip solution and squeegee technique — carefully working the film onto the paint surface, stretching it around curves, edges and complex contour lines. All air bubbles and water pockets are removed for a completely smooth, invisible bond on every panel.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">05</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Edge Tucking & Heat Forming</div><p class="proc-p">All film edges are carefully tucked into door gaps, grille openings and panel edges — or heat-formed around curves using a heat gun — to ensure clean, invisible edges that will not lift or peel over time. This step is what separates a professional DRK Stickers installation from an amateur job.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">06</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Final Inspection, Curing & Delivery</div><p class="proc-p">Car inspected under controlled lighting for any lifting edges, bubbles or imperfections. Film allowed to cure 24–48 hours in studio. Some haze and small water pockets may be visible during curing — these clear completely as the film bonds fully. Written warranty certificate issued on delivery.</p></div>
+    </div>
+  </div>
+  <div class="proc-meta">
+    <div class="pm-box"><div class="pm-lbl">Installation Time</div><div class="pm-val">2–5 Days</div></div>
+    <div class="pm-box"><div class="pm-lbl">Studio Curing</div><div class="pm-val">24–48 Hours</div></div>
+    <div class="pm-box"><div class="pm-lbl">Full Cure</div><div class="pm-val">7 Days</div></div>
+    <div class="pm-box"><div class="pm-lbl">Max Warranty</div><div class="pm-val">10 Years</div></div>
+    <div class="pm-box"><div class="pm-lbl">Certification</div><div class="pm-val">Provided ✓</div></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="sec sec-g">
+  <div class="lbl">Our Work</div>
+  <div class="h2">Real Cars.<br>Real <span>Protection.</span></div>
+  <p class="body-p">Every PPF installation below was completed at DRK Stickers Coimbatore. Precision installation, crystal clear finish, invisible protection on real cars.</p>
+  <div class="gal-grid">
+    <div class="gal-item" data-label="PPF Coating — Before & After Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Full Body PPF — DRK Stickers">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="PPF Bonnet Installation Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Self-Healing PPF — Luxury Car">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Matte PPF Transformation Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="SUV PPF Full Coverage Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:18px"><button class="btn-red">View Full Gallery →</button></div>
+</div>
+
+<div class="div"></div>
+
+<!-- FAQ -->
+<div class="sec sec-w">
+  <div class="lbl">Got Questions?</div>
+  <div class="h2">Frequently Asked Questions —<br>PPF Coating in <span>Coimbatore</span></div>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q">How much does PPF coating cost in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">PPF coating prices at DRK Stickers vary based on coverage area (partial or full body), your car size and the film grade selected. Partial coverage (impact zones) is significantly more affordable than full body coverage. Full body PPF for standard cars starts from ₹XXXX and scales up based on vehicle size and film grade. Contact us or WhatsApp for a free, no-obligation quote specific to your car model and chosen coverage.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How long does PPF last in Coimbatore's climate? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">High-quality PPF installed by DRK Stickers carries a written warranty of 7–10 years depending on the film grade. With proper maintenance using pH-neutral shampoo and microfibre washing, PPF in Coimbatore's climate comfortably lasts its full warranty period — maintaining its UV-blocking, stain-resistant and self-healing properties throughout.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Will PPF damage my car's original paint when removed? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">No — professionally installed PPF can be cleanly removed at any time without damaging the original factory paint underneath. The pressure-sensitive adhesive is specifically formulated to bond securely during use but release cleanly without leaving any residue or lifting any paint when professionally removed. Our team handles both PPF installation and removal with equal care.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Should I get PPF or ceramic coating for my new car in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Both serve different purposes and work best together. PPF provides physical protection against rock chips, scratches and road debris — nothing else can do this. Ceramic coating provides chemical protection, UV resistance, hydrophobicity and mirror gloss — but no physical impact protection. For a new car in Coimbatore, our recommendation is PPF on all high-impact zones with ceramic coating on the full car on top — giving you complete protection from both physical and chemical threats. Our experts design this combined package during a free consultation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How long does PPF installation take at DRK Stickers? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">PPF installation time depends on coverage area. Partial coverage (impact zones) typically takes 2–3 days. Full body PPF takes 3–5 days. We always confirm the exact timeline before beginning any work. The film requires 24–48 hours of curing in our studio before you drive away, and achieves full cure in 7 days after installation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can PPF be applied to any car colour and finish? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Yes — PPF works on all paint colours and finishes including gloss, metallic, pearl, matte and satin factory finishes. We also offer matte finish PPF that converts gloss paint to a premium satin finish while providing the same physical protection. Our experts will advise on the right film type for your specific paint finish during a free consultation at DRK Stickers Coimbatore.</div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <button class="faq-q" style="border-bottom:none">Does PPF require special maintenance after installation? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">PPF maintenance is minimal. After the initial 7-day full cure period, wash your car normally using a pH-neutral car shampoo and microfibre wash mitts. Avoid automatic car washes with harsh brushes and abrasive cleaning agents. Remove bird droppings and tree sap promptly. An annual PPF health check at DRK Stickers Coimbatore is recommended to check for any edge lifting or damage that needs attention — ensuring the film performs at its best throughout its warranty period.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-grid">
+    <div>
+      <div class="cta-h2">Book Your <span>PPF Coating</span><br>Consultation in Coimbatore</div>
+      <p class="cta-p">Protect your car's paint from day one — rock chips, scratches, UV damage and road debris stopped before they reach your factory finish. Precision installation. Written warranty. Free consultation included.</p>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-blue">📞 Free Consultation</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+      <button class="btn-ghost">📍 Get Directions</button>
+    </div>
+  </div>
+  <div class="cta-info">
+    <div><div class="ci-lbl">Phone</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">Location</div><div class="ci-val">[Address], Coimbatore</div></div>
+    <div><div class="ci-lbl">Hours</div><div class="ci-val">Mon–Sat 9AM–7PM | Sun 10AM–5PM</div></div>
+  </div>
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const was=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!was)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

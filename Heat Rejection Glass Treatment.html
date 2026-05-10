@@ -1,0 +1,457 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#1D9E75;--teal-lt:#E1F5EE;--teal-dk:#085041;--teal-mid:#9FE1CB;
+  --amb:#BA7517;--amb-lt:#FAEEDA;--amb-dk:#633806;--amb-mid:#FAC775;
+  --text:var(--color-text-primary);--ts:var(--color-text-secondary);
+  --bg:var(--color-background-primary);--bg2:var(--color-background-secondary);
+  --bd:var(--color-border-tertiary);--bd2:var(--color-border-secondary);
+  --r:var(--border-radius-md);--rl:var(--border-radius-lg);
+  --hf:'Outfit',sans-serif;--bf:'Space Grotesk',sans-serif;
+}
+.pg{font-family:var(--bf);color:var(--text);max-width:900px;margin:0 auto;padding:0 0 2rem}
+
+.hero{background:#04342C;border-radius:var(--rl);padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(29,158,117,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(29,158,117,0.06) 1px,transparent 1px);background-size:32px 32px}
+.h-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal)}
+.h-badge{display:inline-flex;align-items:center;gap:6px;border:0.5px solid rgba(29,158,117,0.5);color:#9FE1CB;font-family:var(--bf);font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;padding:5px 14px;border-radius:30px;margin-bottom:1.2rem}
+.h-dot{width:5px;height:5px;border-radius:50%;background:#9FE1CB}
+.hero h1{font-family:var(--hf);font-size:42px;font-weight:800;color:#fff;line-height:1.08;margin-bottom:1rem;max-width:560px}
+.hero h1 em{color:#9FE1CB;font-style:normal}
+.hero p{color:#5DCAA5;font-size:14px;line-height:1.8;max-width:520px;margin-bottom:2rem}
+.h-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-t{background:var(--teal);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-family:var(--bf);font-size:13px;font-weight:500;cursor:pointer}
+.btn-t:hover{background:var(--teal-dk)}
+.btn-ol{background:transparent;color:#9FE1CB;border:0.5px solid rgba(29,158,117,0.5);padding:11px 22px;border-radius:var(--r);font-family:var(--bf);font-size:13px;cursor:pointer}
+.btn-ol:hover{border-color:#5DCAA5;color:#5DCAA5}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border:0.5px solid var(--bd);border-radius:var(--r);overflow:hidden;margin:1.5rem 0}
+.stat{background:var(--bg);padding:1rem;text-align:center}
+.sn{font-family:var(--hf);font-size:24px;font-weight:800;color:var(--teal);line-height:1}
+.sl{font-size:11px;color:var(--ts);margin-top:4px;line-height:1.4}
+
+.sec{padding:2rem 0}
+.ey{font-size:11px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.st{font-family:var(--hf);font-size:28px;font-weight:700;color:var(--text);line-height:1.15;margin-bottom:1rem}
+.sb{font-size:14px;color:var(--ts);line-height:1.8;max-width:640px;margin-bottom:1.5rem}
+.div{height:0.5px;background:var(--bd);margin:0.5rem 0 2rem}
+
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pain-c{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--r);padding:1.1rem;border-left:2px solid var(--teal);border-radius:0 var(--r) var(--r) 0}
+.pain-c h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.pain-c p{font-size:13px;color:var(--ts);line-height:1.7}
+
+.tech-list{display:flex;flex-direction:column;gap:0}
+.tech-row{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:1.25rem 0;border-bottom:0.5px solid var(--bd);align-items:start}
+.tech-row:last-child{border-bottom:none}
+.tech-left{}
+.tech-tier{display:inline-block;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-bottom:8px}
+.tier-entry{background:#F1EFE8;color:#5F5E5A}
+.tier-mid{background:#E6F1FB;color:#185FA5}
+.tier-prem{background:var(--teal-lt);color:var(--teal-dk)}
+.tier-ultra{background:#FAEEDA;color:#633806}
+.tier-top{background:#FAECE7;color:#712B13}
+.tech-row h3{font-size:15px;font-weight:500;color:var(--text);margin-bottom:5px}
+.tech-row p{font-size:13px;color:var(--ts);line-height:1.7}
+.tech-brand{font-size:12px;color:var(--teal);font-weight:500;margin-top:6px}
+.tech-stats{display:flex;flex-direction:column;gap:6px;min-width:130px}
+.stat-bar-item{display:flex;flex-direction:column;gap:3px}
+.sbi-label{font-size:10px;color:var(--ts);font-weight:500;letter-spacing:0.5px;text-transform:uppercase}
+.sbi-track{height:5px;background:var(--bd);border-radius:3px;overflow:hidden}
+.sbi-fill{height:100%;border-radius:3px;transition:width 0.4s}
+.fill-teal{background:var(--teal)}
+.fill-amb{background:var(--amb)}
+.fill-blue{background:#185FA5}
+.sbi-val{font-size:11px;color:var(--text);font-weight:500}
+
+.svcs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.svc-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);padding:1.2rem;transition:border-color 0.2s;cursor:default}
+.svc-c:hover{border-color:var(--teal)}
+.svc-icon{width:32px;height:32px;border-radius:var(--r);background:var(--teal-lt);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.svc-icon i{font-size:16px;color:var(--teal-dk)}
+.svc-tag{display:inline-block;background:var(--teal-lt);color:var(--teal-dk);font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-bottom:8px}
+.svc-c h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px}
+.svc-c p{font-size:12px;color:var(--ts);line-height:1.7}
+
+.brands-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.brand-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--rl);padding:1rem;text-align:center;transition:border-color 0.2s;cursor:default}
+.brand-c:hover{border-color:var(--teal)}
+.brand-init{width:40px;height:40px;border-radius:50%;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:var(--hf);font-size:13px;font-weight:700;color:var(--teal-dk)}
+.brand-n{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+.brand-d{font-size:11px;color:var(--ts);line-height:1.5}
+
+.perf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.perf-c{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--r);padding:1rem;text-align:center}
+.perf-acronym{font-family:var(--hf);font-size:18px;font-weight:700;color:var(--teal);margin-bottom:6px}
+.perf-c h4{font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px}
+.perf-c p{font-size:11px;color:var(--ts);line-height:1.6}
+
+.legal-box{background:var(--teal-lt);border:0.5px solid rgba(29,158,117,0.3);border-radius:var(--rl);padding:1.5rem}
+.legal-badge{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:#fff;font-size:11px;font-weight:500;letter-spacing:0.5px;padding:4px 12px;border-radius:20px;margin-bottom:1rem}
+.legal-box h3{font-family:var(--hf);font-size:18px;font-weight:700;color:var(--teal-dk);margin-bottom:0.75rem}
+.legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1rem}
+.legal-row{background:#fff;border:0.5px solid rgba(29,158,117,0.25);border-radius:var(--r);padding:0.9rem}
+.legal-glass{font-size:12px;font-weight:500;color:var(--ts);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px}
+.legal-vlt{font-family:var(--hf);font-size:22px;font-weight:700;color:var(--teal);line-height:1}
+.legal-note{font-size:11px;color:var(--ts);margin-top:3px}
+.legal-body{font-size:13px;color:var(--teal-dk);line-height:1.7}
+
+.steps-c{display:flex;flex-direction:column;gap:0}
+.step-r{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding:1.1rem 0;border-bottom:0.5px solid var(--bd)}
+.step-r:last-child{border-bottom:none}
+.step-circle{width:34px;height:34px;border-radius:50%;background:#04342C;border:1.5px solid var(--teal);color:#9FE1CB;font-family:var(--hf);font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-r h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+.step-r p{font-size:13px;color:var(--ts);line-height:1.7}
+
+.ben-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ben{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--bg2);border-radius:var(--r);border:0.5px solid var(--bd)}
+.ben-chk{width:16px;height:16px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ben-chk i{font-size:10px;color:#fff}
+.ben p{font-size:13px;color:var(--ts);line-height:1.6}
+.ben strong{color:var(--text);font-weight:500}
+
+.faq-c{border-top:0.5px solid var(--bd)}
+.faq-i{border-bottom:0.5px solid var(--bd)}
+.faq-q{font-size:14px;font-weight:500;color:var(--text);padding:1rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-arr{width:22px;height:22px;border-radius:50%;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.faq-arr i{font-size:14px;color:var(--teal-dk)}
+.faq-a{font-size:13px;color:var(--ts);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.3s,padding-bottom 0.3s}
+.faq-a.open{max-height:200px;padding-bottom:1rem}
+
+.wu-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wu-c{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--r);padding:1rem;text-align:center}
+.wu-n{font-family:var(--hf);font-size:22px;font-weight:700;color:var(--teal);margin-bottom:4px}
+.wu-c h4{font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px}
+.wu-c p{font-size:11px;color:var(--ts);line-height:1.5}
+
+.lsi-r{display:flex;flex-wrap:wrap;gap:6px;padding:1rem;background:var(--bg2);border-radius:var(--r);border:0.5px solid var(--bd);margin:1.5rem 0 0}
+.lsi-l{font-size:11px;font-weight:500;color:var(--ts);align-self:center;margin-right:4px}
+.lsi-p{font-size:11px;color:var(--ts);padding:3px 10px;background:var(--bg);border:0.5px solid var(--bd);border-radius:20px}
+
+.cta{background:#04342C;border-radius:var(--rl);padding:2.5rem 2rem;position:relative;overflow:hidden}
+.cta-g{position:absolute;inset:0;background-image:linear-gradient(rgba(29,158,117,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(29,158,117,0.07) 1px,transparent 1px);background-size:28px 28px}
+.cta-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal)}
+.cta h2{font-family:var(--hf);font-size:28px;font-weight:700;color:#fff;margin-bottom:0.75rem;max-width:480px;position:relative}
+.cta p{color:#5DCAA5;font-size:14px;margin-bottom:1rem;position:relative}
+.cta-loc{color:#9FE1CB;font-size:13px;margin-bottom:1.5rem;display:block;position:relative}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+.btn-wa{background:#0F6E56;color:#9FE1CB;border:none;padding:11px 22px;border-radius:var(--r);font-family:var(--bf);font-size:13px;font-weight:500;cursor:pointer}
+</style>
+
+<div class="pg">
+
+<div class="hero">
+  <div class="h-grid"></div>
+  <div class="h-bar"></div>
+  <div class="h-badge"><span class="h-dot"></span>DRK Stickers — Coimbatore</div>
+  <h1>Clear <em>UV Blocking</em> Window Film & Heat Rejection Glass Treatment</h1>
+  <p>Coimbatore's sun doesn't take a day off. We install premium clear UV blocking window films and nano-ceramic glass treatments that cut cabin heat, block harmful UV rays, and protect your interior — invisibly.</p>
+  <div class="h-btns">
+    <button class="btn-t" onclick="sendPrompt('I want a free window film consultation at DRK Stickers Coimbatore')">Get Free Consultation ↗</button>
+    <button class="btn-ol" onclick="sendPrompt('What window film brands does DRK Stickers install?')">Explore Brands</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="sn">99.9%</div><div class="sl">UV rays blocked</div></div>
+  <div class="stat"><div class="sn">8–15°C</div><div class="sl">Cabin temp reduction</div></div>
+  <div class="stat"><div class="sn">66%</div><div class="sl">Max TSER achieved</div></div>
+  <div class="stat"><div class="sn">5G</div><div class="sl">Signal-safe films</div></div>
+</div>
+
+<div class="sec">
+  <div class="ey">The problem</div>
+  <div class="st">Why Coimbatore cars need glass treatment</div>
+  <div class="pain-grid">
+    <div class="pain-c">
+      <h4><i class="ti ti-sun" aria-hidden="true"></i>Extreme cabin heat</h4>
+      <p>Car glass acts as a greenhouse. A parked cabin in Coimbatore's summer can exceed 60°C. Even while driving, untreated glass amplifies solar heat making AC work twice as hard.</p>
+    </div>
+    <div class="pain-c">
+      <h4><i class="ti ti-alert-triangle" aria-hidden="true"></i>Harmful UV exposure</h4>
+      <p>Standard car glass blocks very little UV radiation. Prolonged exposure through windows causes cumulative skin damage — equivalent to sun exposure without sunscreen.</p>
+    </div>
+    <div class="pain-c">
+      <h4><i class="ti ti-palette" aria-hidden="true"></i>Interior fading & cracking</h4>
+      <p>UV radiation bleaches dashboards, fades seat upholstery, and cracks leather and vinyl. This damage happens silently every day without a UV blocking film in place.</p>
+    </div>
+    <div class="pain-c">
+      <h4><i class="ti ti-eye" aria-hidden="true"></i>Glare & driver fatigue</h4>
+      <p>Intense sun glare on Coimbatore's busy roads causes eye strain, reduces reaction time, and makes driving genuinely unsafe — especially on east-west roads in the morning.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Film technology</div>
+  <div class="st">Which film is right for you?</div>
+  <p class="sb">Window films range from basic dyed films to 200-layer nano-optical technology. Here's every type DRK Stickers offers — with honest performance numbers so you can choose wisely.</p>
+  <div class="tech-list">
+    <div class="tech-row">
+      <div class="tech-left">
+        <div class="tech-tier tier-entry">Entry level</div>
+        <h3>Dyed window film</h3>
+        <p>Absorbs visible light and provides basic UV protection. Affordable, but limited heat rejection and prone to fading or colour shift over time. For very tight budgets only.</p>
+      </div>
+      <div class="tech-stats">
+        <div class="stat-bar-item"><div class="sbi-label">UV rejection</div><div class="sbi-track"><div class="sbi-fill fill-teal" style="width:65%"></div></div><div class="sbi-val">~65%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">Heat (TSER)</div><div class="sbi-track"><div class="sbi-fill fill-amb" style="width:30%"></div></div><div class="sbi-val">20–35%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">Lifespan</div><div class="sbi-track"><div class="sbi-fill fill-blue" style="width:30%"></div></div><div class="sbi-val">2–4 yrs</div></div>
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-left">
+        <div class="tech-tier tier-mid">Mid range</div>
+        <h3>Carbon window film</h3>
+        <p>Carbon-infused film with significantly better heat rejection, rich matte finish, and no signal interference. Does not fade or turn purple over time. A solid all-rounder.</p>
+        <div class="tech-brand">CarzSpa Aegis K Series</div>
+      </div>
+      <div class="tech-stats">
+        <div class="stat-bar-item"><div class="sbi-label">UV rejection</div><div class="sbi-track"><div class="sbi-fill fill-teal" style="width:99%"></div></div><div class="sbi-val">Up to 99%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">Heat (TSER)</div><div class="sbi-track"><div class="sbi-fill fill-amb" style="width:50%"></div></div><div class="sbi-val">40–55%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">Lifespan</div><div class="sbi-track"><div class="sbi-fill fill-blue" style="width:60%"></div></div><div class="sbi-val">5–7 yrs</div></div>
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-left">
+        <div class="tech-tier tier-prem">Premium</div>
+        <h3>Ceramic window film</h3>
+        <p>Non-metallic nano-ceramic particles deliver excellent infrared rejection, full signal safety, and exceptional optical clarity. Available in clear and tinted variants — our most recommended for front glass.</p>
+        <div class="tech-brand">3M Ceramic IR Series · LLumar CTX · Garware Nano Ceramic</div>
+      </div>
+      <div class="tech-stats">
+        <div class="stat-bar-item"><div class="sbi-label">UV rejection</div><div class="sbi-track"><div class="sbi-fill fill-teal" style="width:99%"></div></div><div class="sbi-val">Up to 99%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">Heat (TSER)</div><div class="sbi-track"><div class="sbi-fill fill-amb" style="width:62%"></div></div><div class="sbi-val">55–65%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">IR rejection</div><div class="sbi-track"><div class="sbi-fill fill-blue" style="width:92%"></div></div><div class="sbi-val">Up to 95%</div></div>
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-left">
+        <div class="tech-tier tier-ultra">Ultra premium</div>
+        <h3>Nano-ceramic window film</h3>
+        <p>Enhanced nano-particle ceramic technology for higher IR rejection, better optical clarity, and superior durability. Near-invisible performance — blocks intense heat while maintaining a natural glass appearance.</p>
+        <div class="tech-brand">CarzSpa Aegis CX Series · SunTek CoolSight · V-KOOL</div>
+      </div>
+      <div class="tech-stats">
+        <div class="stat-bar-item"><div class="sbi-label">UV rejection</div><div class="sbi-track"><div class="sbi-fill fill-teal" style="width:99%"></div></div><div class="sbi-val">Up to 99.9%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">Heat (TSER)</div><div class="sbi-track"><div class="sbi-fill fill-amb" style="width:67%"></div></div><div class="sbi-val">60–70%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">IR rejection</div><div class="sbi-track"><div class="sbi-fill fill-blue" style="width:98%"></div></div><div class="sbi-val">Up to 99%</div></div>
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-left">
+        <div class="tech-tier tier-top">Top tier</div>
+        <h3>3M Crystalline — multi-layer optical film</h3>
+        <p>Over 200 proprietary nano-layers in a film thinner than a Post-it Note. Industry-leading heat and IR rejection in a nearly clear format — ideal for windshields where Indian law requires high VLT. 5G compatible, non-metallised.</p>
+        <div class="tech-brand">3M Crystalline Series</div>
+      </div>
+      <div class="tech-stats">
+        <div class="stat-bar-item"><div class="sbi-label">UV rejection</div><div class="sbi-track"><div class="sbi-fill fill-teal" style="width:99%"></div></div><div class="sbi-val">Up to 99.9%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">Heat (TSER)</div><div class="sbi-track"><div class="sbi-fill fill-amb" style="width:66%"></div></div><div class="sbi-val">Up to 66%</div></div>
+        <div class="stat-bar-item"><div class="sbi-label">IR rejection</div><div class="sbi-track"><div class="sbi-fill fill-blue" style="width:99%"></div></div><div class="sbi-val">Up to 99%</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Services</div>
+  <div class="st">Our glass treatment services</div>
+  <div class="svcs">
+    <div class="svc-c">
+      <div class="svc-icon"><i class="ti ti-windmill" aria-hidden="true"></i></div>
+      <div class="svc-tag">Legal clear film</div>
+      <h3>Windshield UV blocking film</h3>
+      <p>Clear UV blocking film on your front windshield — nearly invisible, 70%+ VLT compliant, blocking up to 99.9% UV and high infrared energy. Coimbatore's strongest front glass protection.</p>
+    </div>
+    <div class="svc-c">
+      <div class="svc-icon"><i class="ti ti-layout-sidebar" aria-hidden="true"></i></div>
+      <div class="svc-tag">Driver protection</div>
+      <h3>Front side window film</h3>
+      <p>Driver and passenger windows treated with ceramic or nano-ceramic film for maximum UV and heat protection. 50%+ VLT compliant. Options in clear, light, and medium tint.</p>
+    </div>
+    <div class="svc-c">
+      <div class="svc-icon"><i class="ti ti-layout-sidebar-right" aria-hidden="true"></i></div>
+      <div class="svc-tag">Passenger comfort</div>
+      <h3>Rear side window film</h3>
+      <p>Rear passenger windows treated with your choice of high-performance ceramic to darker privacy tints — matched to your preference and legal requirements.</p>
+    </div>
+    <div class="svc-c">
+      <div class="svc-icon"><i class="ti ti-rectangle" aria-hidden="true"></i></div>
+      <div class="svc-tag">Full coverage</div>
+      <h3>Rear windshield film</h3>
+      <p>Complete rear glass UV protection, heat rejection, and privacy. Film shade and performance matched to the rest of your glass for a consistent, unified appearance.</p>
+    </div>
+    <div class="svc-c">
+      <div class="svc-icon"><i class="ti ti-car" aria-hidden="true"></i></div>
+      <div class="svc-tag">Most popular</div>
+      <h3>Full car glass treatment</h3>
+      <p>All glass surfaces — windshield, four side windows, rear glass, and quarter glass — treated as a single comprehensive installation. Complete UV, heat, and glare protection in one service.</p>
+    </div>
+    <div class="svc-c">
+      <div class="svc-icon"><i class="ti ti-refresh" aria-hidden="true"></i></div>
+      <div class="svc-tag">Existing film</div>
+      <h3>Sun film upgrade & replacement</h3>
+      <p>Old, bubbling, or discoloured sun film? We remove it cleanly, prepare the glass, and replace it with a fresh high-performance installation from 3M, LLumar, Garware, or V-KOOL.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Brands</div>
+  <div class="st">Premium film brands at DRK Stickers</div>
+  <p class="sb">We install only globally trusted, performance-verified brands. No generic or unbranded films — ever.</p>
+  <div class="brands-g">
+    <div class="brand-c"><div class="brand-init">3M</div><div class="brand-n">3M</div><div class="brand-d">Crystalline · Ceramic IR · XP Series. The world's most trusted automotive film.</div></div>
+    <div class="brand-c"><div class="brand-init">LL</div><div class="brand-n">LLumar</div><div class="brand-d">CTX ceramic + AIR series. Exceptional optical clarity, proven colour stability.</div></div>
+    <div class="brand-c"><div class="brand-init">VK</div><div class="brand-n">V-KOOL</div><div class="brand-d">Singapore origin. Max solar rejection with minimal darkening effect.</div></div>
+    <div class="brand-c"><div class="brand-init">GW</div><div class="brand-n">Garware</div><div class="brand-d">India's leading domestic brand. Nano ceramic range, RTO-compliant.</div></div>
+    <div class="brand-c"><div class="brand-init">ST</div><div class="brand-n">SunTek</div><div class="brand-d">CoolSight nano-ceramic. Near-invisible, ideal for EVs and panoramic roofs.</div></div>
+    <div class="brand-c"><div class="brand-init">CA</div><div class="brand-n">CarzSpa Aegis</div><div class="brand-d">CX ceramic + K carbon series. Engineered for India's climate conditions.</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Numbers decoded</div>
+  <div class="st">Understanding film performance specs</div>
+  <div class="perf-grid">
+    <div class="perf-c"><div class="perf-acronym">UV%</div><h4>UV rejection</h4><p>% of ultraviolet rays blocked. Protects skin and prevents dashboard/seat fading. Look for 99%+.</p></div>
+    <div class="perf-c"><div class="perf-acronym">VLT</div><h4>Visible light transmission</h4><p>% of visible light passing through. Higher = lighter, more natural-looking. Indian law requires 70%+ front windshield, 50%+ front side.</p></div>
+    <div class="perf-c"><div class="perf-acronym">TSER</div><h4>Total solar energy rejection</h4><p>The most complete heat measure — covers all solar energy types. 60%+ TSER means premium performance. Higher is better.</p></div>
+    <div class="perf-c"><div class="perf-acronym">IRR</div><h4>Infrared rejection</h4><p>% of infrared heat blocked — the heat you physically feel. Nano-ceramic and crystalline films achieve 95–99% IRR.</p></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">RTO compliance</div>
+  <div class="legal-box">
+    <div class="legal-badge"><i class="ti ti-shield-check" aria-hidden="true" style="font-size:13px;margin-right:4px"></i>CMVR Rule 100(2) compliant</div>
+    <h3>Is your window film RTO-legal?</h3>
+    <div class="legal-body">Indian law under CMVR Rule 100(2) and IS: 2553 (Part 2) — 1992 mandates minimum visible light transmission levels for car glass. DRK Stickers only recommends and installs films that keep your vehicle fully compliant — every customer is guided on legal film choices before any work begins.</div>
+    <div class="legal-grid">
+      <div class="legal-row"><div class="legal-glass">Front windshield</div><div class="legal-vlt">70%+ VLT</div><div class="legal-note">A clear UV blocking film maintains full compliance here</div></div>
+      <div class="legal-row"><div class="legal-glass">Front side windows</div><div class="legal-vlt">50%+ VLT</div><div class="legal-note">Light ceramic tints and clear films are fully legal</div></div>
+      <div class="legal-row"><div class="legal-glass">Rear side windows</div><div class="legal-vlt">No minimum</div><div class="legal-note">Privacy tints and darker films are permitted</div></div>
+      <div class="legal-row"><div class="legal-glass">Rear windshield</div><div class="legal-vlt">No minimum</div><div class="legal-note">Any film opacity is legally permitted here</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">How it works</div>
+  <div class="st">Our installation process</div>
+  <div class="steps-c">
+    <div class="step-r"><div class="step-circle">1</div><div><h4>Consultation & film selection</h4><p>We assess your vehicle and priorities — heat rejection, UV protection, privacy, or all three — and recommend the right film and brand within your budget and VLT legal limits.</p></div></div>
+    <div class="step-r"><div class="step-circle">2</div><div><h4>Glass cleaning & preparation</h4><p>Every glass surface is cleaned thoroughly — removing dust, grease, existing adhesive, and contamination. A contamination-free surface is essential for a bubble-free installation.</p></div></div>
+    <div class="step-r"><div class="step-circle">3</div><div><h4>Precision film cutting</h4><p>Film is precision-cut using a computer-aided plotter or hand-cut template matched to your specific car model — ensuring perfect edge-to-edge coverage on every panel.</p></div></div>
+    <div class="step-r"><div class="step-circle">4</div><div><h4>Professional application</h4><p>Film applied using professional-grade slip solution and squeegeed to eliminate every air bubble and water pocket. Edges sealed and corners tucked for a factory-fit finish.</p></div></div>
+    <div class="step-r"><div class="step-circle">5</div><div><h4>Curing period guidance</h4><p>We advise keeping windows rolled up for 24–48 hours post-installation to allow the adhesive to cure and bond correctly to the glass surface.</p></div></div>
+    <div class="step-r"><div class="step-circle">6</div><div><h4>Quality check & handover</h4><p>Every panel inspected under proper lighting for bubbles, contamination, or edge lifting. Only a clean, flawless installation leaves DRK Stickers.</p></div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Benefits</div>
+  <div class="st">Why get a clear UV blocking window film</div>
+  <div class="ben-g">
+    <div class="ben"><div class="ben-chk"><i class="ti ti-check" aria-hidden="true"></i></div><p>Blocks <strong>up to 99.9% of UV radiation</strong> — protecting skin and car interior on every drive</p></div>
+    <div class="ben"><div class="ben-chk"><i class="ti ti-check" aria-hidden="true"></i></div><p>Reduces <strong>cabin temperature by 8–15°C</strong> — dramatically cooler from the moment you start</p></div>
+    <div class="ben"><div class="ben-chk"><i class="ti ti-check" aria-hidden="true"></i></div><p>Cuts <strong>AC load and fuel consumption</strong> — cabin cools faster and holds temperature longer</p></div>
+    <div class="ben"><div class="ben-chk"><i class="ti ti-check" aria-hidden="true"></i></div><p>Prevents <strong>dashboard cracking and seat fading</strong> — preserving interior resale value</p></div>
+    <div class="ben"><div class="ben-chk"><i class="ti ti-check" aria-hidden="true"></i></div><p>Reduces <strong>glare significantly</strong> — less eye fatigue, better visibility, safer driving in Coimbatore</p></div>
+    <div class="ben"><div class="ben-chk"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>RTO-legal installation</strong> — all films installed within CMVR VLT limits at DRK Stickers</p></div>
+    <div class="ben"><div class="ben-chk"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>Signal-safe</strong> — ceramic and crystalline films never interfere with GPS, 5G, Bluetooth, or FASTag</p></div>
+    <div class="ben"><div class="ben-chk"><i class="ti ti-check" aria-hidden="true"></i></div><p><strong>Shatter resistance</strong> — film holds broken glass together in an accident, reducing injury risk</p></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Questions answered</div>
+  <div class="st">Frequently asked questions</div>
+  <div class="faq-c" id="faq">
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How much does window film installation cost in Coimbatore?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Entry-level carbon or dyed films start from ₹2,500–₹5,000. Ceramic and nano-ceramic films range from ₹6,000–₹15,000. Full-car 3M Crystalline or V-KOOL installations range from ₹18,000–₹35,000. Contact DRK Stickers for a free, vehicle-specific quote.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Will a clear UV blocking film actually keep my car cooler?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Yes — significantly. Premium ceramic and nano-ceramic films block infrared radiation, which is the heat component of sunlight. Quality films reduce cabin temperature by 8–15°C and dramatically reduce the time your AC takes to cool the cabin — even in Coimbatore's peak summer temperatures.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Is window film legal in India?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Yes, as long as it meets CMVR VLT requirements: 70% or above for front windshields and 50% or above for front side windows. DRK Stickers only installs RTO-compliant films and guides every customer on legal film choices before any work begins.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Will window film interfere with my GPS, mobile, FASTag, or 5G signal?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">No — ceramic, nano-ceramic, and multi-layer optical films like 3M Crystalline are fully metal-free and signal-safe. GPS, 4G, 5G, Bluetooth, and FASTag (National Electronic Toll Collection) all work without any interference after installation.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How long does installation take?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">A full-car window film installation typically takes 3–5 hours depending on vehicle size and film type. We advise keeping windows rolled up for 24–48 hours after installation for full adhesive curing.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How long does quality window film last?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Premium ceramic and crystalline films from 3M, LLumar, and V-KOOL last 7–12 years with proper care. Avoid ammonia-based window cleaners on filmed glass as these degrade the adhesive over time. Use a microfibre cloth and mild soap instead.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Can you remove my old, bubbling film and replace it?<div class="faq-arr"><i class="ti ti-plus"></i></div></div><div class="faq-a">Absolutely — this is one of our most commonly requested services. We professionally remove existing film including stubborn adhesive residue, prepare the glass, and install a fresh high-performance replacement from 3M, LLumar, Garware, or V-KOOL.</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Why DRK Stickers</div>
+  <div class="st">Coimbatore's window film specialists</div>
+  <div class="wu-g">
+    <div class="wu-c"><div class="wu-n">6+</div><h4>Premium brands</h4><p>3M, LLumar, V-KOOL, Garware, SunTek, CarzSpa Aegis — genuine products, full warranty.</p></div>
+    <div class="wu-c"><div class="wu-n">Legal</div><h4>RTO-compliant</h4><p>Every installation guided for legal CMVR VLT compliance — never an illegal fit.</p></div>
+    <div class="wu-c"><div class="wu-n">5G</div><h4>Signal-safe</h4><p>Ceramic and crystalline films that never block GPS, 5G, Bluetooth, or FASTag.</p></div>
+    <div class="wu-c"><div class="wu-n">Free</div><h4>Consultation</h4><p>We explain UV%, TSER%, and VLT so you pick the right film — no pressure, no jargon.</p></div>
+    <div class="wu-c"><div class="wu-n">0</div><h4>Bubbles guaranteed</h4><p>Every installation quality-checked under proper lighting before the keys come back to you.</p></div>
+    <div class="wu-c"><div class="wu-n">CBE</div><h4>Locally trusted</h4><p>Sidhapudur, Coimbatore — accessible, accountable, with after-service support always available.</p></div>
+  </div>
+</div>
+
+<div class="lsi-r">
+  <span class="lsi-l">Related:</span>
+  <span class="lsi-p">heat rejection window film</span>
+  <span class="lsi-p">nano ceramic window film</span>
+  <span class="lsi-p">car sun film Coimbatore</span>
+  <span class="lsi-p">infrared rejection film</span>
+  <span class="lsi-p">automotive window tint</span>
+  <span class="lsi-p">solar control film</span>
+  <span class="lsi-p">car glass tint</span>
+  <span class="lsi-p">UV protection car windows</span>
+  <span class="lsi-p">ceramic window tint</span>
+  <span class="lsi-p">window film VLT</span>
+  <span class="lsi-p">TSER window film</span>
+  <span class="lsi-p">anti-glare window film</span>
+  <span class="lsi-p">car sun film installation</span>
+</div>
+
+<div class="sec">
+  <div class="cta">
+    <div class="cta-g"></div>
+    <div class="cta-bar"></div>
+    <h2>Ready to keep your car cool and UV-protected?</h2>
+    <p>Invisible windshield protection or a full-car nano-ceramic glass treatment — DRK Stickers has the brands, expertise, and precision to do it right.</p>
+    <span class="cta-loc">No. 102, Sidhapudur, Coimbatore — 641044</span>
+    <div class="cta-btns">
+      <button class="btn-t" onclick="sendPrompt('Book a free window film consultation at DRK Stickers Coimbatore')">Book Free Consultation ↗</button>
+      <button class="btn-wa" onclick="sendPrompt('WhatsApp contact for DRK Stickers window film')">WhatsApp Us ↗</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function tf(el){
+  const a=el.nextElementSibling;
+  const ic=el.querySelector('.faq-arr i');
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-arr i').forEach(x=>{x.className='ti ti-plus'});
+  if(!isOpen){a.classList.add('open');ic.className='ti ti-minus'}
+}
+</script>

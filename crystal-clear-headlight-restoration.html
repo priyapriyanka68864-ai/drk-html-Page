@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Professional headlight restoration in Coimbatore at DRK Stickers. Remove yellowing, fogging & oxidation. UV coating included. Ready in 1–2 hours. Book today!">
+<title>Crystal Clear Headlight Restoration | Headlight Restoration Coimbatore | DRK Stickers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --night: #060B14;
+  --deep: #0C1526;
+  --navy: #0F1E36;
+  --panel: #111D30;
+  --mid: #172540;
+  --cyan: #00C8FF;
+  --cyan-dim: #0090BB;
+  --cyan-glow: rgba(0,200,255,0.12);
+  --cyan-soft: rgba(0,200,255,0.06);
+  --white: #F0F6FF;
+  --muted: #5A7190;
+  --muted-light: #8AA5C0;
+  --warn: #FF8C00;
+  --warn-soft: rgba(255,140,0,0.1);
+  --border: rgba(0,200,255,0.12);
+  --border-soft: rgba(255,255,255,0.06);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --r: 6px;
+  --r-lg: 14px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--night);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 60px;
+  background: rgba(6,11,20,0.9);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 800; letter-spacing: 1px;
+  color: var(--cyan); text-decoration: none;
+}
+.nav-book {
+  background: var(--cyan);
+  color: var(--night);
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; text-decoration: none;
+  padding: 8px 20px; border-radius: var(--r);
+  transition: opacity 0.2s;
+}
+.nav-book:hover { opacity: 0.85; }
+
+/* ── HERO ──────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px 5vw 80px;
+  position: relative; overflow: hidden;
+}
+.hero-beam {
+  position: absolute;
+  top: -10%; left: 50%;
+  width: 700px; height: 700px;
+  background: radial-gradient(ellipse 60% 60% at 50% 30%,
+    rgba(0,200,255,0.16) 0%,
+    rgba(0,200,255,0.04) 50%,
+    transparent 100%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.hero-beam-left {
+  position: absolute; top: 30%; left: -8%;
+  width: 500px; height: 180px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,200,255,0.06) 40%, transparent 100%);
+  transform: rotate(-12deg);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-beam-right {
+  position: absolute; top: 20%; right: -8%;
+  width: 500px; height: 180px;
+  background: linear-gradient(270deg, transparent 0%, rgba(0,200,255,0.06) 40%, transparent 100%);
+  transform: rotate(12deg);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 2; max-width: 800px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-display);
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--cyan);
+  border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 40px;
+  margin-bottom: 30px;
+}
+.eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7vw, 92px);
+  font-weight: 800; line-height: 1.0;
+  letter-spacing: -1.5px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+h1 .accent { color: var(--cyan); }
+.hero-sub {
+  font-size: 17px; font-weight: 300;
+  color: var(--muted-light);
+  max-width: 560px; line-height: 1.7;
+  margin-bottom: 40px;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  background: var(--cyan);
+  color: var(--night);
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; text-decoration: none;
+  padding: 14px 30px; border-radius: var(--r);
+  border: none; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-outline {
+  color: var(--cyan);
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; text-decoration: none;
+  padding: 14px 28px; border-radius: var(--r);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+.btn-outline:hover { border-color: var(--cyan); }
+
+.hero-pills {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 48px; padding-top: 40px;
+  border-top: 1px solid var(--border-soft);
+}
+.pill {
+  background: var(--cyan-soft);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 7px 16px;
+  font-size: 13px; color: var(--muted-light);
+  font-weight: 400;
+}
+.pill strong { color: var(--cyan); font-weight: 500; }
+
+/* ── SHARED ────────────────────────────────────────────── */
+section { padding: 90px 5vw; }
+.section-tag {
+  font-family: var(--font-display);
+  font-size: 10px; font-weight: 700; letter-spacing: 3.5px;
+  text-transform: uppercase; color: var(--cyan);
+  margin-bottom: 14px;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.5vw, 56px);
+  font-weight: 800; line-height: 1.05;
+  letter-spacing: -0.5px; color: var(--white);
+  margin-bottom: 20px;
+}
+h2 .hl { color: var(--cyan); }
+.intro-text {
+  font-size: 16px; font-weight: 300; color: var(--muted-light);
+  max-width: 580px; line-height: 1.75; margin-bottom: 52px;
+}
+
+/* ── WHAT IS IT ────────────────────────────────────────── */
+.what-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
+}
+.what-copy p {
+  font-size: 16px; font-weight: 300; color: var(--muted-light);
+  line-height: 1.8; margin-bottom: 18px;
+}
+.what-copy p strong { color: var(--white); font-weight: 500; }
+.lsi-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.lsi-tag {
+  font-size: 12px; color: var(--cyan-dim);
+  border: 1px solid rgba(0,200,255,0.15);
+  background: var(--cyan-soft);
+  padding: 4px 12px; border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+/* cause cards */
+.causes-grid {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.cause-card {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--cyan-dim);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.cause-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--cyan-glow);
+  display: flex; align-items: center; justify-content: center;
+}
+.cause-icon svg { width: 18px; height: 18px; stroke: var(--cyan); fill: none; stroke-width: 1.8; }
+.cause-card h4 {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 700;
+  color: var(--white); margin-bottom: 4px;
+}
+.cause-card p { font-size: 13px; color: var(--muted-light); line-height: 1.55; }
+
+/* ── SAFETY BANNER ─────────────────────────────────────── */
+.safety-banner {
+  background: var(--warn-soft);
+  border: 1px solid rgba(255,140,0,0.25);
+  border-radius: var(--r-lg);
+  padding: 48px 40px;
+  display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center;
+}
+.safety-icon-wrap {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: rgba(255,140,0,0.12);
+  border: 1px solid rgba(255,140,0,0.3);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.safety-icon-wrap svg { width: 40px; height: 40px; stroke: var(--warn); fill: none; stroke-width: 1.5; }
+.safety-banner h3 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 34px); font-weight: 800;
+  color: var(--warn); margin-bottom: 12px; line-height: 1.1;
+}
+.safety-banner p { font-size: 15px; color: rgba(240,246,255,0.7); line-height: 1.7; }
+.safety-banner p strong { color: var(--white); font-weight: 500; }
+.stat-highlight {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 38px; font-weight: 800; color: var(--warn);
+  line-height: 1;
+}
+
+/* ── PROCESS ───────────────────────────────────────────── */
+.process-bg { background: var(--deep); }
+.steps-track {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  position: relative;
+}
+.step {
+  background: var(--panel);
+  padding: 36px 24px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+.step:hover { background: var(--mid); }
+.step-num {
+  font-family: var(--font-display);
+  font-size: 72px; font-weight: 800;
+  color: rgba(0,200,255,0.05);
+  position: absolute; top: -8px; right: 10px;
+  line-height: 1; pointer-events: none;
+  letter-spacing: -2px;
+}
+.step-label {
+  font-family: var(--font-display);
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--cyan);
+  margin-bottom: 14px;
+}
+.step-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--cyan-glow);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.step-icon svg { width: 20px; height: 20px; stroke: var(--cyan); fill: none; stroke-width: 1.8; }
+.step h3 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 800;
+  color: var(--white); margin-bottom: 10px;
+  line-height: 1.2; text-transform: uppercase;
+}
+.step p { font-size: 13px; color: var(--muted-light); line-height: 1.6; }
+.step-accent { height: 2px; width: 32px; background: var(--cyan-dim); margin-bottom: 14px; }
+
+/* ── COMPARE TABLE ─────────────────────────────────────── */
+.compare-wrap { overflow-x: auto; }
+table {
+  width: 100%; border-collapse: collapse;
+  min-width: 560px;
+}
+th {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 16px 20px;
+  text-align: left;
+}
+th:first-child { color: var(--muted-light); }
+th.col-restore { background: var(--cyan-glow); color: var(--cyan); border-top: 2px solid var(--cyan); }
+th.col-replace { background: rgba(255,255,255,0.03); color: var(--muted-light); border-top: 1px solid var(--border-soft); }
+td {
+  padding: 14px 20px;
+  font-size: 14px; color: rgba(240,246,255,0.7);
+  border-bottom: 1px solid var(--border-soft);
+}
+td:first-child { color: var(--muted-light); font-weight: 500; font-size: 13px; letter-spacing: 0.3px; }
+td.good { color: var(--cyan); font-weight: 500; }
+td.bad { color: var(--warn); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--panel); }
+
+/* ── AUDIENCE ──────────────────────────────────────────── */
+.audience-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.aud-card {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.aud-card:hover { border-color: var(--border); background: var(--mid); }
+.aud-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--cyan-glow);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.aud-icon svg { width: 22px; height: 22px; stroke: var(--cyan); fill: none; stroke-width: 1.8; }
+.aud-card h4 {
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 800; text-transform: uppercase;
+  color: var(--white); margin-bottom: 8px;
+}
+.aud-card p { font-size: 13px; color: var(--muted-light); line-height: 1.6; }
+
+/* ── USP ───────────────────────────────────────────────── */
+.usp-bg { background: var(--deep); }
+.usp-list {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.usp-item {
+  background: var(--panel); padding: 36px 32px;
+  display: flex; gap: 20px; align-items: flex-start;
+  transition: background 0.2s;
+}
+.usp-item:hover { background: var(--mid); }
+.usp-check {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--cyan-glow);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+.usp-check svg { width: 16px; height: 16px; stroke: var(--cyan); fill: none; stroke-width: 2.5; }
+.usp-item h4 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 800; text-transform: uppercase;
+  color: var(--white); margin-bottom: 6px;
+}
+.usp-item p { font-size: 14px; color: var(--muted-light); line-height: 1.65; }
+
+/* ── FAQ ───────────────────────────────────────────────── */
+.faq-col { max-width: 800px; }
+.faq-item { border-bottom: 1px solid var(--border-soft); }
+.faq-btn {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 0; gap: 20px; text-align: left;
+}
+.faq-btn span {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 700;
+  text-transform: uppercase; color: var(--white); line-height: 1.2;
+}
+.faq-chevron {
+  width: 20px; height: 20px; flex-shrink: 0;
+  stroke: var(--cyan); fill: none; stroke-width: 2;
+  transition: transform 0.3s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.2s;
+}
+.faq-item.open .faq-body { max-height: 280px; padding-bottom: 22px; }
+.faq-body p { font-size: 15px; color: var(--muted-light); line-height: 1.75; }
+
+/* ── CTA SECTION ───────────────────────────────────────── */
+.cta-section {
+  background: var(--deep);
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.cta-glow {
+  position: absolute; top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0,200,255,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section h2 { position: relative; z-index: 2; }
+.cta-section p {
+  font-size: 16px; font-weight: 300; color: var(--muted-light);
+  max-width: 500px; margin: 0 auto 40px;
+  position: relative; z-index: 2;
+}
+.cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+.contact-pills {
+  display: flex; gap: 24px; justify-content: center;
+  margin-top: 36px; flex-wrap: wrap;
+  position: relative; z-index: 2;
+}
+.contact-pill {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--muted-light);
+  font-weight: 400;
+}
+.contact-pill svg { width: 16px; height: 16px; stroke: var(--cyan); fill: none; stroke-width: 2; }
+.time-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cyan-soft);
+  border: 1px solid var(--border);
+  border-radius: 40px; padding: 8px 20px;
+  font-size: 13px; color: var(--cyan);
+  margin-bottom: 28px; position: relative; z-index: 2;
+}
+
+/* ── FOOTER ────────────────────────────────────────────── */
+footer {
+  background: var(--night);
+  border-top: 1px solid var(--border-soft);
+  padding: 32px 5vw;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+footer p { font-size: 12px; color: var(--muted); }
+.f-logo {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 800; letter-spacing: 1px;
+  color: var(--cyan); text-decoration: none;
+}
+.footer-tags { font-size: 11px; color: rgba(90,113,144,0.6); }
+
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .what-grid { grid-template-columns: 1fr; }
+  .steps-track { grid-template-columns: 1fr 1fr; }
+  .usp-list { grid-template-columns: 1fr; }
+  .safety-banner { grid-template-columns: 1fr; }
+  .safety-icon-wrap { margin: 0 auto; }
+}
+@media (max-width: 600px) {
+  h1 { font-size: 42px; }
+  .steps-track { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://drkstickers.com" class="logo">DRK Stickers</a>
+  <a href="#book" class="nav-book">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-beam"></div>
+  <div class="hero-beam-left"></div>
+  <div class="hero-beam-right"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Headlight Restoration Coimbatore</div>
+    <h1>Crystal <span class="accent">Clear</span><br>Headlight<br>Restoration</h1>
+    <p class="hero-sub">Yellowed, foggy headlights cut your night visibility to just 20% of normal. We restore them to crystal-clear clarity — with UV protection — in as little as 1.5 hours.</p>
+    <div class="hero-btns">
+      <a href="#book" class="btn-primary">Book Restoration</a>
+      <a href="#process" class="btn-outline">See the Process</a>
+    </div>
+    <div class="hero-pills">
+      <div class="pill"><strong>1.5–2.5 hrs</strong> same day service</div>
+      <div class="pill"><strong>UV sealant</strong> included</div>
+      <div class="pill">All car types</div>
+      <div class="pill">Transparent pricing</div>
+      <div class="pill">Coimbatore's trusted studio</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section id="about">
+  <div class="section-tag">About the Service</div>
+  <div class="what-grid">
+    <div class="what-copy">
+      <h2>What is <span class="hl">Headlight</span> Restoration?</h2>
+      <p>Headlight restoration is a professional process that removes <strong>yellowing, fogging, and oxidation</strong> from your car's plastic headlight lenses — restoring them to a clear, bright, like-new condition without replacing the entire headlight assembly.</p>
+      <p>Modern headlights are made from polycarbonate plastic protected by a factory UV coating. Coimbatore's intense year-round sunlight rapidly breaks down that coating, exposing the plastic to UV radiation, heat, and road grime. The result: <strong>lenses that look dull, yellow, or milky</strong> — and perform dangerously worse at night.</p>
+      <p>At DRK Stickers, we use professional-grade multi-stage wet sanding, machine polishing compounds, and a UV-protective sealant coat to bring back full clarity — at a fraction of the cost of replacement.</p>
+      <div class="lsi-cloud">
+        <span class="lsi-tag">Foggy headlight fix</span>
+        <span class="lsi-tag">Headlight polishing</span>
+        <span class="lsi-tag">Oxidation removal</span>
+        <span class="lsi-tag">Cloudy headlight treatment</span>
+        <span class="lsi-tag">UV coating headlights</span>
+        <span class="lsi-tag">Headlight lens restoration</span>
+        <span class="lsi-tag">Car headlight cleaning</span>
+        <span class="lsi-tag">Yellowed headlight repair</span>
+      </div>
+    </div>
+
+    <div class="causes-grid">
+      <div style="font-family:'Syne',sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted-light); margin-bottom:8px;">Why headlights go yellow</div>
+
+      <div class="cause-card">
+        <div class="cause-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+        </div>
+        <div>
+          <h4>UV Oxidation — #1 Cause</h4>
+          <p>Coimbatore's intense sunlight breaks down polycarbonate plastic at the molecular level. About <strong style="color:var(--white);">80% of all headlight fogging</strong> is UV-related.</p>
+        </div>
+      </div>
+
+      <div class="cause-card">
+        <div class="cause-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </div>
+        <div>
+          <h4>Road Debris & Micro-scratches</h4>
+          <p>Dust, gravel, and grit physically pit the lens surface. These micro-scratches scatter light, creating a frosted, hazy look.</p>
+        </div>
+      </div>
+
+      <div class="cause-card">
+        <div class="cause-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2v10l4.5 4.5"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div>
+          <h4>Heat from Bulbs</h4>
+          <p>Your headlights' own heat slowly degrades the plastic from the inside, contributing to discoloration and fogging over time.</p>
+        </div>
+      </div>
+
+      <div class="cause-card">
+        <div class="cause-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+        </div>
+        <div>
+          <h4>Monsoon Moisture</h4>
+          <p>Coimbatore's monsoon season pushes moisture into lens imperfections — accelerating cloudiness and internal fogging.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY BANNER -->
+<section style="padding: 0 5vw 80px;">
+  <div class="safety-banner">
+    <div class="safety-icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <div>
+      <h3>Foggy Headlights Are a Serious Safety Risk</h3>
+      <p>Studies show that severely yellowed headlights produce as little as <span class="stat-highlight">20%</span> of the light output of new headlights. That means your car is running on one-fifth of its designed visibility at night — giving you far less time to react to pedestrians, animals, and obstacles on the road.</p>
+      <p style="margin-top:12px;">On dark stretches around Coimbatore — towards Mettupalayam, Pollachi, or Tiruppur — this reduction in visibility is a genuine accident risk. <strong>Professional headlight restoration can recover up to 70% of your original light output.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-bg" id="process">
+  <div class="section-tag">Step-by-Step</div>
+  <h2>Our <span class="hl">5-Step</span> Restoration Process</h2>
+  <p class="intro-text">Every headlight restoration at DRK Stickers follows a professional multi-stage process — not a quick buff with an off-the-shelf kit. This is what makes the results last.</p>
+
+  <div class="steps-track">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-label">Step 01</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div class="step-accent"></div>
+      <h3>Inspection & Assessment</h3>
+      <p>We assess both lenses for oxidation level, scratches, and internal fogging to select the correct process and products for your car.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-label">Step 02</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      </div>
+      <div class="step-accent"></div>
+      <h3>Surface Cleaning</h3>
+      <p>Headlights are thoroughly cleaned to remove dust, road chemicals, and debris. Paint and surrounds are masked off for protection.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-label">Step 03</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <div class="step-accent"></div>
+      <h3>Multi-Stage Wet Sanding</h3>
+      <p>Using progressively finer wet sandpaper, we carefully remove the oxidized, yellowed outer layer — the most critical step for lasting results.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-label">Step 04</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </div>
+      <div class="step-accent"></div>
+      <h3>Compound Polishing</h3>
+      <p>A professional polishing compound applied with a machine polisher restores full optical clarity and a mirror-like gloss to the lens surface.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-label">Step 05</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="step-accent"></div>
+      <h3>UV-Protective Sealant</h3>
+      <p>A durable UV-resistant sealant coat is applied to protect the restored surface from future oxidation and yellowing — this is what makes results last 1–2 years.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:32px; padding:20px 28px; background:var(--cyan-soft); border:1px solid var(--border); border-radius:var(--r); display:inline-flex; align-items:center; gap:12px;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span style="font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--white);">Total time: <span style="color:var(--cyan);">1.5 to 2.5 hours</span> — same day, drive away the same evening</span>
+  </div>
+</section>
+
+<!-- RESTORATION vs REPLACEMENT -->
+<section id="compare">
+  <div class="section-tag">Cost Comparison</div>
+  <h2>Restoration vs <span class="hl">Replacement</span></h2>
+  <p class="intro-text">For the vast majority of cars with yellowed or foggy headlights, professional restoration is the smarter, faster, and far more affordable choice.</p>
+
+  <div class="compare-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-restore">✦ Headlight Restoration</th>
+          <th class="col-replace">Headlight Replacement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cost</td>
+          <td class="good">Affordable — fraction of replacement cost</td>
+          <td class="bad">₹5,000–₹25,000+ per headlight unit</td>
+        </tr>
+        <tr>
+          <td>Time required</td>
+          <td class="good">1.5 to 2.5 hours, same day</td>
+          <td class="bad">1–3 days (OEM parts sourcing)</td>
+        </tr>
+        <tr>
+          <td>Result</td>
+          <td class="good">Crystal-clear, like-new clarity</td>
+          <td>Brand new unit</td>
+        </tr>
+        <tr>
+          <td>Availability</td>
+          <td class="good">Immediate — no waiting for parts</td>
+          <td class="bad">OEM parts may not be in stock locally</td>
+        </tr>
+        <tr>
+          <td>Environmental impact</td>
+          <td class="good">Zero plastic waste</td>
+          <td class="bad">Old plastic unit disposed</td>
+        </tr>
+        <tr>
+          <td>Best for</td>
+          <td class="good">Oxidation, yellowing, fogging, light scratches</td>
+          <td>Cracked housing, broken assembly</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section style="padding-top:0;">
+  <div class="section-tag">Is This Right for You?</div>
+  <h2>Who Should Book <span class="hl">This Service?</span></h2>
+  <div class="audience-grid">
+    <div class="aud-card">
+      <div class="aud-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h4>Night Drivers</h4>
+      <p>If you've noticed your headlights seem dimmer than before, restoration could recover most of your original light output immediately.</p>
+    </div>
+    <div class="aud-card">
+      <div class="aud-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h4>Cars 2+ Years Old</h4>
+      <p>If your car is over two years old and parked in the sun regularly, your headlights have almost certainly begun to oxidize.</p>
+    </div>
+    <div class="aud-card">
+      <div class="aud-icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h4>Selling Your Car</h4>
+      <p>Clear headlights immediately improve your car's visual appeal and can increase buyer confidence and resale price.</p>
+    </div>
+    <div class="aud-card">
+      <div class="aud-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </div>
+      <h4>Sun-Exposed Cars</h4>
+      <p>Cars parked outdoors without covers in Coimbatore's climate are particularly prone to rapid headlight yellowing.</p>
+    </div>
+    <div class="aud-card">
+      <div class="aud-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h4>Visible Yellow or Fog</h4>
+      <p>If your headlights have a yellow, brown, or milky tint visible in daylight — that's oxidation, and restoration will clear it.</p>
+    </div>
+    <div class="aud-card">
+      <div class="aud-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <h4>All Car Types</h4>
+      <p>Halogen, HID, and LED headlights — hatchbacks, sedans, SUVs, luxury cars. We restore all makes and models.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DRK -->
+<section class="usp-bg">
+  <div class="section-tag">Why DRK Stickers</div>
+  <h2>Coimbatore's <span class="hl">Trusted</span> Restoration Studio</h2>
+  <div class="usp-list">
+    <div class="usp-item">
+      <div class="usp-check">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <h4>Professional Wet Sanding — Not a Kit</h4>
+        <p>We don't use off-the-shelf consumer kits. Our multi-stage professional wet sanding process produces results that last 1–2 years, not weeks.</p>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-check">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <h4>UV Sealant Always Included</h4>
+        <p>Every restoration includes a proper UV-protective sealant coat — the crucial final step that most DIY attempts skip, and why results fade so quickly without it.</p>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-check">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <h4>Same Day, 1.5–2.5 Hours</h4>
+        <p>Drop your car in the morning, collect it the same day. No waiting for parts, no multi-day booking. Most restorations are done in under 3 hours.</p>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-check">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <h4>Paint-Safe Process</h4>
+        <p>We carefully mask all surrounding paintwork and trim before starting. The process is non-invasive and will not affect your car's paint or its warranty.</p>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-check">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <h4>Transparent, Upfront Pricing</h4>
+        <p>We inspect your headlights and give you a clear quote before any work begins. No hidden charges, no surprises when you come to collect.</p>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-check">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <h4>Honest Assessment First</h4>
+        <p>If your headlights have internal damage or cracking that would need replacement rather than restoration, we'll tell you honestly — before charging a single rupee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-tag">Frequently Asked Questions</div>
+  <h2>Got <span class="hl">Questions?</span></h2>
+  <div class="faq-col">
+
+    <div class="faq-item open">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>How long does headlight restoration last?</span>
+        <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-body">
+        <p>With professional UV sealant correctly applied, results typically last 1.5 to 2 years in Coimbatore's sunny climate. Parking in shade when possible and reapplying UV protectant periodically helps extend the results further.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Can all yellowed headlights be restored?</span>
+        <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-body">
+        <p>Most can. Headlights with surface oxidation, yellowing, fogging, and light scratches are excellent candidates. Headlights with deep internal fogging (condensation inside the sealed housing), severe cracking, or physically broken assemblies may need replacement. We always inspect and give you an honest answer first.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Is the restoration process safe for my car's paint?</span>
+        <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-body">
+        <p>Yes — we carefully tape off all paintwork and surrounding panels before sanding or polishing begins. The restoration is a non-invasive surface process and will not affect your vehicle's paint, trim, or warranty in any way.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>How much does headlight restoration cost in Coimbatore?</span>
+        <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-body">
+        <p>Pricing depends on the severity of oxidation and whether one or both headlights need restoration. Contact us directly — we'll inspect your headlights and give you a clear, upfront quote with no hidden charges.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Can I drive immediately after the restoration?</span>
+        <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-body">
+        <p>Yes — your car is completely ready to drive as soon as the restoration is complete. No curing time is needed. Most customers collect their car and drive home the same afternoon.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>How is professional restoration different from a DIY kit?</span>
+        <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-body">
+        <p>DIY kits use a single-stage compound approach, and most don't include a proper UV sealant coat — so results fade back within weeks to months. Professional restoration uses multi-stage wet sanding, machine polishing, and a durable UV-protective sealant, producing results that last 1 to 2 years.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Works on halogen, HID, and LED headlights?</span>
+        <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-body">
+        <p>Yes — we restore all headlight types. The restoration process addresses the outer plastic lens, which is the same polycarbonate material across halogen, HID, and LED headlight assemblies. All car makes and models are welcome.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="book">
+  <div class="cta-glow"></div>
+  <div class="time-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Ready in 1.5–2.5 hours
+  </div>
+  <h2>Book Your Headlight Restoration<br>in Coimbatore Today</h2>
+  <p>Don't drive with reduced night visibility another day. Let DRK Stickers restore your headlights to crystal-clear condition — safely, affordably, and in just a few hours.</p>
+  <div class="cta-row">
+    <a href="tel:+91XXXXXXXXXX" class="btn-primary">📞 Call to Book</a>
+    <a href="https://wa.me/91XXXXXXXXXX" class="btn-outline">💬 WhatsApp for a Quote</a>
+  </div>
+  <div class="contact-pills">
+    <div class="contact-pill">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      DRK Stickers, Coimbatore
+    </div>
+    <div class="contact-pill">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Mon – Sat: 9:00 AM – 7:00 PM
+    </div>
+    <div class="contact-pill">
+      <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Same day service
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://drkstickers.com" class="f-logo">DRK Stickers</a>
+  <p>© 2025 DRK Stickers — Sun Film & Car Care Studio, Coimbatore. All rights reserved.</p>
+  <p class="footer-tags">Headlight Restoration Coimbatore | Foggy Headlight Fix | UV Headlight Coating | Car Care Coimbatore</p>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

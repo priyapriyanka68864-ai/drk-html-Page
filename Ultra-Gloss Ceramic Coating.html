@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Mulish:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0A0A0A;--ink2:#121212;--ink3:#1C1C1C;
+  --red:#C62828;--red2:#EF5350;--red-soft:#FFEBEE;
+  --gold:#C9A84C;--gold2:#F0C040;--gold-soft:#FFF8E1;
+  --silver:#9E9E9E;--border:#E0E0E0;
+  --light:#F4F3F0;--white:#fff;--muted:#666;
+  --font-h:'Syne',sans-serif;--font-b:'Mulish',sans-serif;
+}
+body{font-family:var(--font-b);background:var(--light);color:var(--ink);font-size:15px;line-height:1.7;margin:0}
+.page{max-width:860px;margin:0 auto}
+
+/* ── HERO ── */
+.hero{background:var(--ink2);padding:54px 40px 48px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+.hero-orb{position:absolute;top:-100px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.1) 0%,transparent 65%);pointer-events:none}
+.hero-orb2{position:absolute;bottom:-80px;left:60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(198,40,40,.08) 0%,transparent 70%);pointer-events:none}
+.hero-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold) 0%,var(--red) 50%,transparent 100%)}
+.hero-inner{position:relative;z-index:1}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:16px;font-family:var(--font-b)}
+.hero-h1{font-family:var(--font-h);font-size:42px;line-height:.96;color:#fff;font-weight:800;margin-bottom:14px}
+.hero-h1 span{color:var(--gold2)}
+.hero-h2{font-size:13px;color:#666;line-height:1.75;margin-bottom:24px;font-weight:300}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.badge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:6px 12px;border-radius:3px;font-size:11px;color:#ccc;font-weight:500}
+.bdot-g{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--ink);padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-b)}
+.btn-ghost{background:transparent;color:#888;padding:11px 22px;border:1px solid #252525;border-radius:4px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-b)}
+.btn-red{background:var(--red);color:#fff;padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-b)}
+/* hero right */
+.hero-visual{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px}
+.hero-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:16px 18px;display:flex;align-items:center;gap:14px}
+.stat-icon{width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.stat-icon.g{background:rgba(201,168,76,.15)}
+.stat-icon.r{background:rgba(198,40,40,.15)}
+.stat-num{font-family:var(--font-h);font-size:26px;color:#fff;line-height:1;font-weight:800}
+.stat-lbl{font-size:11px;color:#555;margin-top:1px}
+
+/* SECTIONS */
+.sec{padding:48px 40px}
+.sec-w{background:#fff}
+.sec-d{background:var(--ink2)}
+.sec-g{background:var(--light)}
+.lbl{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:10px;font-family:var(--font-b)}
+.lbl-r{color:var(--red2)}
+.lbl-s{color:var(--silver)}
+.h2{font-family:var(--font-h);font-size:34px;line-height:1;color:var(--ink);margin-bottom:18px;font-weight:800}
+.h2-d{color:#fff}
+.h2 span{color:var(--red2)}
+.h2-d span{color:var(--gold2)}
+.body-p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:14px}
+.body-p:last-child{margin-bottom:0}
+.div{height:1px;background:var(--border)}
+
+/* WHAT IS — 2col */
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px}
+.char-card{border-radius:6px;padding:22px;margin-bottom:12px}
+.char-card.hard{background:var(--gold-soft);border:1px solid rgba(201,168,76,.3)}
+.char-card.hydro{background:var(--red-soft);border:1px solid rgba(198,40,40,.2)}
+.char-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px;display:flex;align-items:center;gap:8px}
+.char-icon{font-size:18px}
+.char-p{font-size:13px;color:var(--muted);line-height:1.65}
+.pro-note{background:var(--ink2);border-radius:6px;padding:18px;margin-top:4px}
+.pro-note-p{font-size:13px;color:#666;line-height:1.7}
+.pro-note-p strong{color:#aaa;font-weight:500}
+
+/* WHY COIMBATORE */
+.threats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.threat-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px;border-left:3px solid transparent}
+.threat-card:hover{border-left-color:var(--red)}
+.threat-icon{font-size:22px;margin-bottom:8px}
+.threat-h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.threat-p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* PACKAGES */
+.pkg-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
+.pkg-card{border-radius:8px;padding:24px;position:relative;overflow:hidden;border:1px solid var(--border);background:#fff}
+.pkg-card.diamond{background:var(--ink2);border-color:rgba(201,168,76,.3)}
+.pkg-card.gold-pkg{border-color:rgba(201,168,76,.4)}
+.pkg-top-badge{position:absolute;top:14px;right:-20px;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:4px 28px;transform:rotate(45deg);font-family:var(--font-b)}
+.badge-best{background:var(--gold);color:var(--ink)}
+.pkg-tier{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:8px;font-family:var(--font-b)}
+.tier-s{color:var(--silver)}
+.tier-g{color:var(--gold)}
+.tier-d{color:var(--gold2)}
+.pkg-name{font-family:var(--font-h);font-size:24px;font-weight:800;line-height:1;margin-bottom:4px}
+.pkg-name-d{color:#fff}
+.pkg-price{font-size:13px;color:var(--muted);margin-bottom:14px}
+.pkg-price-d{color:#555}
+.pkg-ideal{font-size:12px;padding:6px 10px;border-radius:3px;margin-bottom:14px;font-style:italic}
+.ideal-s{background:#f5f5f5;color:#888}
+.ideal-g{background:var(--gold-soft);color:#7a6000}
+.ideal-d{background:rgba(201,168,76,.08);color:#8a7040}
+.pkg-list{list-style:none;margin-bottom:16px}
+.pkg-list li{font-size:12px;padding:4px 0;padding-left:16px;position:relative;line-height:1.5}
+.pkg-list li.dk{color:#666}
+.pkg-list li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700;font-size:11px;top:5px}
+.pkg-list li.dk::before{color:var(--gold2)}
+.pkg-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.pkg-tag{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600}
+.pt-s{background:#f0f0f0;color:#777}
+.pt-g{background:var(--gold-soft);color:#8a6800}
+.pt-d{background:rgba(201,168,76,.12);color:var(--gold)}
+.pkg-btn{width:100%;padding:10px;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-b);border:none}
+.pb-s{background:#f0f0f0;color:var(--ink)}
+.pb-g{background:var(--gold);color:var(--ink)}
+.pb-d{background:var(--gold2);color:var(--ink)}
+
+/* BENEFITS */
+.ben-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
+.ben-card{border:1px solid rgba(255,255,255,.05);border-radius:6px;padding:20px;background:rgba(255,255,255,.03)}
+.ben-n{font-family:var(--font-h);font-size:44px;color:rgba(255,255,255,.04);line-height:1;margin-bottom:4px;font-weight:800}
+.ben-icon{font-size:20px;margin-bottom:8px}
+.ben-h3{font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:7px}
+.ben-p{font-size:12px;color:#555;line-height:1.65}
+
+/* COMPARISON TABLE */
+.comp-wrap{margin-top:22px;overflow-x:auto;border-radius:6px;border:1px solid var(--border)}
+.comp-table{width:100%;border-collapse:collapse;font-size:13px;min-width:580px}
+.comp-table thead tr{background:var(--ink2)}
+.comp-table th{padding:13px 16px;text-align:left;font-weight:600;font-size:12px;letter-spacing:.3px}
+.comp-table th:first-child{color:#777}
+.comp-table th.th-w{color:#aaa}
+.comp-table th.th-c{color:var(--gold2)}
+.comp-table th.th-p{color:#90CAF9}
+.comp-table tbody tr{border-bottom:1px solid var(--border)}
+.comp-table tbody tr:last-child{border-bottom:none}
+.comp-table tbody tr:hover{background:#fafafa}
+.comp-table td{padding:10px 16px;vertical-align:middle;color:#888;font-size:12px}
+.comp-table td:first-child{color:var(--ink);font-weight:500;font-size:12px}
+.ico-yes{color:#4CAF50;font-weight:700}
+.ico-no{color:#EF5350}
+.ico-mid{color:var(--gold)}
+.chip{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.chip-g{background:rgba(201,168,76,.15);color:var(--gold)}
+.chip-b{background:rgba(144,202,249,.1);color:#64B5F6}
+.chip-r{background:#f5f5f5;color:#888}
+.rec-box{background:var(--ink2);border-radius:6px;padding:20px;margin-top:14px;border-left:3px solid var(--gold)}
+.rec-box p{font-size:13px;color:#666;line-height:1.75}
+.rec-box strong{color:#ccc;font-weight:500}
+
+/* PROCESS */
+.proc-steps{margin-top:22px}
+.proc-step{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.proc-step:last-child{border-bottom:none}
+.proc-left{flex-shrink:0;display:flex;flex-direction:column;align-items:center;width:44px}
+.proc-num{font-family:var(--font-h);font-size:34px;color:var(--gold);line-height:1;font-weight:800}
+.proc-line{width:1px;flex:1;background:rgba(255,255,255,.05);min-height:16px;margin-top:4px}
+.proc-step:last-child .proc-line{display:none}
+.proc-h3{font-size:14px;font-weight:600;color:#e0e0e0;margin-bottom:5px}
+.proc-p{font-size:13px;color:#555;line-height:1.65}
+.proc-meta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.pm-pill{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);padding:10px 16px;border-radius:4px;text-align:center}
+.pm-lbl{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+.pm-val{font-size:14px;font-weight:600;color:var(--gold2)}
+
+/* GALLERY */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.gal-item{aspect-ratio:4/3;background:#ece9e4;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid #ddd}
+.gal-item::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:#fff;font-size:10px;padding:6px 10px;text-align:center;font-family:var(--font-b)}
+.gal-icon svg{width:36px;height:36px;fill:#bbb;opacity:.45}
+
+/* FAQ */
+.faq-wrap{margin-top:22px;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.faq-item{background:#fff;border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;text-align:left;padding:15px 20px;font-size:14px;font-weight:500;color:var(--ink);border:none;background:none;cursor:pointer;font-family:var(--font-b);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-arr{color:var(--red);font-size:13px;transition:transform .2s;flex-shrink:0}
+.faq-a{display:none;padding:0 20px 15px;font-size:13px;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-item.open .faq-q{color:var(--red)}
+
+/* CTA */
+.cta{background:var(--ink);padding:48px 40px}
+.cta-inner{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-bottom:28px}
+.cta-h2{font-family:var(--font-h);font-size:30px;color:#fff;line-height:1;margin-bottom:10px;font-weight:800}
+.cta-h2 span{color:var(--gold2)}
+.cta-p{font-size:13px;color:#555;line-height:1.7;max-width:380px}
+.cta-btns{display:flex;flex-direction:column;gap:10px}
+.cta-info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid #181818;padding-top:24px}
+.ci-lbl{font-size:10px;color:#2a2a2a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.ci-val{font-size:13px;color:#777}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-orb"></div><div class="hero-orb2"></div><div class="hero-line"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Ultra-Gloss Ceramic Coating — DRK Stickers Coimbatore</div>
+    <div class="hero-h1">Ceramic Coating<br>in <span>Coimbatore</span><br>— Done Right</div>
+    <div class="hero-h2">Professional 9H Nano Ceramic Coating — Chemically bonds with paint for a hydrophobic, UV-resistant mirror-gloss finish with written warranty.</div>
+    <div class="hero-badges">
+      <div class="badge"><div class="bdot-g"></div>9H Hardness Nano Ceramic</div>
+      <div class="badge"><div class="bdot-g"></div>Hydrophobic Protection</div>
+      <div class="badge"><div class="bdot-g"></div>UV & Chemical Resistant</div>
+      <div class="badge"><div class="bdot-g"></div>Written Warranty — 2–5 Yrs</div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-gold">📞 Call for Free Quote</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-stat">
+      <div class="stat-icon g">💎</div>
+      <div><div class="stat-num">9H</div><div class="stat-lbl">Hardness Rating</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-icon g">🌊</div>
+      <div><div class="stat-num">99%</div><div class="stat-lbl">UV Ray Protection</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-icon r">🛡️</div>
+      <div><div class="stat-num">5 Yrs</div><div class="stat-lbl">Max Warranty Available</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-icon g">✨</div>
+      <div><div class="stat-num">500+</div><div class="stat-lbl">Cars Coated in Coimbatore</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS -->
+<div class="sec sec-w">
+  <div class="lbl">Understanding the Service</div>
+  <div class="h2">What is <span>Ceramic Coating</span><br>for Cars?</div>
+  <div class="what-grid">
+    <div>
+      <p class="body-p">Ceramic coating — also called nano coating or glass coating — is a liquid polymer applied to your car's exterior paint by hand. When applied by a trained professional, it chemically bonds with the factory paint — becoming a permanent part of the surface rather than sitting on top like wax.</p>
+      <p class="body-p">Once cured, the coating forms an ultra-hard, crystal-clear protective layer with two defining characteristics that make it superior to any other paint protection product available:</p>
+      <div class="char-card hard">
+        <div class="char-title"><span class="char-icon">💎</span>9H Hardness — Scratch Resistance</div>
+        <p class="char-p">Professional ceramic coatings reach 9H hardness — the hardest rating on the pencil scale. This protects your paint against light scratches, swirl marks, bird droppings, tree sap, road grime and environmental contaminants.</p>
+      </div>
+      <div class="char-card hydro">
+        <div class="char-title"><span class="char-icon">🌊</span>Hydrophobicity — Self-Cleaning</div>
+        <p class="char-p">The ceramic layer creates an ultra-smooth, hydrophobic surface — water beads instantly and rolls off taking dirt with it. Your car stays cleaner longer and every wash is safer and dramatically easier.</p>
+      </div>
+    </div>
+    <div>
+      <div class="pro-note">
+        <div style="font-size:11px;letter-spacing:2px;color:#444;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-b)">Why Professional Application Matters</div>
+        <p class="pro-note-p">At DRK Stickers, we apply only <strong>professional-grade nano ceramic coatings</strong> — not off-the-shelf consumer products. The difference in bond strength, durability and gloss enhancement is significant and immediately visible.</p>
+        <p class="pro-note-p" style="margin-top:10px">Consumer-grade ceramic coatings sold online lack the molecular concentration and bond permanence of professional products — and without proper paint correction before application, even professional coatings will underperform. <strong>Our certified technicians ensure every step is done correctly.</strong></p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:18px;margin-top:12px">
+        <div style="font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:12px;font-family:var(--font-b)">What it protects against</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">UV Rays</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Bird Droppings</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Acid Rain</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Swirl Marks</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Road Dust</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Tree Sap</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Chemicals</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Oxidation</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Water Spots</span>
+          <span style="font-size:11px;background:var(--gold-soft);color:#7a6000;padding:4px 10px;border-radius:20px;font-weight:600">Industrial Fallout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- WHY COIMBATORE -->
+<div class="sec">
+  <div class="lbl lbl-r">Local Relevance</div>
+  <div class="h2">Why Ceramic Coating is Essential<br>for Cars in <span>Coimbatore</span></div>
+  <p class="body-p">Coimbatore's climate presents a unique combination of threats to your car's paint that make ceramic coating a genuine necessity — not just a luxury upgrade.</p>
+  <div class="threats-grid">
+    <div class="threat-card">
+      <div class="threat-icon">☀️</div>
+      <div class="threat-h3">Intense UV Radiation All Year</div>
+      <p class="threat-p">Coimbatore's intense sunlight oxidises and fades unprotected paint — causing a chalky, dull appearance within just a few years. Ceramic coating provides a permanent UV-resistant barrier that keeps paint colour and gloss intact.</p>
+    </div>
+    <div class="threat-card">
+      <div class="threat-icon">🌧️</div>
+      <div class="threat-h3">Monsoon Acid Rain & Water Spots</div>
+      <p class="threat-p">Coimbatore's monsoon rains carry airborne pollutants that leave water spots and acid etching on unprotected paint. The hydrophobic ceramic layer causes rainwater to sheet off cleanly — preventing spotting and acid damage.</p>
+    </div>
+    <div class="threat-card">
+      <div class="threat-icon">🌫️</div>
+      <div class="threat-h3">Year-Round Dust & Industrial Fallout</div>
+      <p class="threat-p">Coimbatore's industrial zones and construction dust embed into unprotected paint. Ceramic coating creates a slick surface that prevents contaminant bonding — making them easy to rinse off without abrasive scrubbing.</p>
+    </div>
+    <div class="threat-card">
+      <div class="threat-icon">🐦</div>
+      <div class="threat-h3">Bird Droppings & Tree Sap</div>
+      <p class="threat-p">Highly acidic bird droppings and tree sap can etch permanently into unprotected paint within hours in Coimbatore's heat. The chemical-resistant ceramic layer prevents permanent etching and staining even after prolonged contact.</p>
+    </div>
+    <div class="threat-card">
+      <div class="threat-icon">🚗</div>
+      <div class="threat-h3">Frequent Washing Causing Swirl Marks</div>
+      <p class="threat-p">Frequent washing at roadside car washes introduces micro-scratches and swirl marks into unprotected paint. The hard ceramic layer resists these micro-abrasions and keeps your paint swirl-free and glossy for years.</p>
+    </div>
+    <div class="threat-card" style="background:var(--ink2);border-color:transparent">
+      <div class="threat-icon">📈</div>
+      <div class="threat-h3" style="color:#fff">Protects Resale Value</div>
+      <p class="threat-p" style="color:#555">A ceramic-coated car maintains significantly better paint condition, gloss and appearance compared to an unprotected car of the same age — directly protecting its resale value when you sell or trade in.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- PACKAGES -->
+<div class="sec sec-w">
+  <div class="lbl">Our Packages</div>
+  <div class="h2">Ceramic Coating Packages<br>& <span>Pricing</span> in Coimbatore</div>
+  <p class="body-p">All packages include professional paint decontamination and certified application by our trained technicians. Choose the right tier for your car, usage and budget.</p>
+  <div class="pkg-grid">
+
+    <!-- Silver -->
+    <div class="pkg-card">
+      <div class="pkg-tier tier-s">Package 01</div>
+      <div class="pkg-name">Silver<br>Ceramic</div>
+      <div class="pkg-price">Starting from ₹XXXX</div>
+      <div class="pkg-ideal ideal-s">Best for: Daily drivers & budget-conscious owners</div>
+      <ul class="pkg-list">
+        <li>Exterior wash & decontamination</li>
+        <li>Clay bar decontamination</li>
+        <li>Single-stage light polish</li>
+        <li>1 Layer nano ceramic coating</li>
+        <li>Hydrophobic protection</li>
+        <li>UV resistance</li>
+      </ul>
+      <div class="pkg-meta">
+        <span class="pkg-tag pt-s">⏱️ 1–2 Days</span>
+        <span class="pkg-tag pt-s">🛡️ 1–2 Yr Warranty</span>
+      </div>
+      <button class="pkg-btn pb-s">Book Silver Package</button>
+    </div>
+
+    <!-- Gold -->
+    <div class="pkg-card gold-pkg">
+      <div class="pkg-tier tier-g">Package 02</div>
+      <div class="pkg-name">Gold<br>Ceramic</div>
+      <div class="pkg-price">Starting from ₹XXXX</div>
+      <div class="pkg-ideal ideal-g">Best for: Owners who want proper correction & longer protection</div>
+      <ul class="pkg-list">
+        <li>Foam decontamination & wash</li>
+        <li>Clay bar & iron fallout removal</li>
+        <li>Multi-stage paint correction</li>
+        <li>2 Layers 9H nano ceramic</li>
+        <li>Enhanced hydrophobicity & gloss</li>
+        <li>UV & chemical resistance</li>
+        <li>Glass & trim coating</li>
+      </ul>
+      <div class="pkg-meta">
+        <span class="pkg-tag pt-g">⏱️ 2–3 Days</span>
+        <span class="pkg-tag pt-g">🛡️ 2–3 Yr Warranty</span>
+      </div>
+      <button class="pkg-btn pb-g">Book Gold Package</button>
+    </div>
+
+    <!-- Diamond -->
+    <div class="pkg-card diamond">
+      <div class="pkg-top-badge badge-best">BEST</div>
+      <div class="pkg-tier tier-d">Package 03</div>
+      <div class="pkg-name pkg-name-d">Diamond<br>Ceramic</div>
+      <div class="pkg-price pkg-price-d">Starting from ₹XXXX</div>
+      <div class="pkg-ideal" style="background:rgba(201,168,76,.08);color:#8a7040;font-size:12px;padding:6px 10px;border-radius:3px;margin-bottom:14px;font-style:italic">Best for: New cars, luxury & enthusiast owners</div>
+      <ul class="pkg-list">
+        <li class="dk">Full decontamination & inspection</li>
+        <li class="dk">Full multi-stage paint correction</li>
+        <li class="dk">3 Layers premium 9H ceramic</li>
+        <li class="dk">Glass, trim, plastic & wheel coating</li>
+        <li class="dk">Maximum gloss depth</li>
+        <li class="dk">Highest scratch & UV resistance</li>
+        <li class="dk">Engine bay ceramic coating</li>
+        <li class="dk">Paint inspection report</li>
+        <li class="dk">Written warranty certificate</li>
+      </ul>
+      <div class="pkg-meta">
+        <span class="pkg-tag pt-d">⏱️ 3–4 Days</span>
+        <span class="pkg-tag pt-d">🛡️ 3–5 Yr Warranty</span>
+      </div>
+      <button class="pkg-btn pb-d">Book Diamond Package</button>
+    </div>
+
+  </div>
+  <div style="margin-top:14px;text-align:center;font-size:13px;color:var(--muted)">💡 Custom packages available for luxury, exotic and fleet vehicles — <strong style="color:var(--ink)">WhatsApp us for a personalised quote</strong></div>
+</div>
+
+<!-- BENEFITS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-s">Why Choose It</div>
+  <div class="h2 h2-d">6 Reasons to Get Ceramic<br>Coating at <span>DRK Stickers</span></div>
+  <div class="ben-grid">
+    <div class="ben-card">
+      <div class="ben-n">01</div>
+      <div class="ben-icon">💎</div>
+      <div class="ben-h3">Ultra-Gloss Mirror Finish</div>
+      <p class="ben-p">Ceramic coating enhances paint depth and gloss to a level wax cannot achieve — delivering a deep, wet-look mirror finish every single day.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">02</div>
+      <div class="ben-icon">🌊</div>
+      <div class="ben-h3">Hydrophobic Self-Cleaning</div>
+      <p class="ben-p">Water beads and rolls off instantly — taking dirt with it. Your car stays cleaner longer and every wash is dramatically easier and safer.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">03</div>
+      <div class="ben-icon">☀️</div>
+      <div class="ben-h3">UV & Oxidation Protection</div>
+      <p class="ben-p">Acts as a permanent UV shield — preventing paint oxidation, colour fading and chalky dullness from Coimbatore's year-round intense sunlight.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">04</div>
+      <div class="ben-icon">🧪</div>
+      <div class="ben-h3">Chemical & Contaminant Resistance</div>
+      <p class="ben-p">Highly resistant to acids, bird droppings, tree sap, industrial fallout and road chemicals — preventing the permanent etching that damages unprotected paint.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">05</div>
+      <div class="ben-icon">🛡️</div>
+      <div class="ben-h3">Scratch & Swirl Resistance</div>
+      <p class="ben-p">9H hardness provides significantly better resistance against light scratches and wash-induced swirl marks — keeping paint flawless for longer.</p>
+    </div>
+    <div class="ben-card">
+      <div class="ben-n">06</div>
+      <div class="ben-icon">📈</div>
+      <div class="ben-h3">Preserves Resale Value</div>
+      <p class="ben-p">A ceramic-coated car maintains far better paint condition and appearance — directly protecting and enhancing its resale value when you sell or trade in.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div class="sec sec-w">
+  <div class="lbl">Make the Right Choice</div>
+  <div class="h2">Ceramic Coating vs Wax vs <span>PPF</span><br>— Which is Right for You?</div>
+  <p class="body-p">Many car owners in Coimbatore are unsure about the difference between ceramic coating, wax and PPF. Here is a clear comparison:</p>
+  <div class="comp-wrap">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th class="th-w">Feature</th>
+          <th class="th-w">Traditional Wax</th>
+          <th class="th-c">Ceramic Coating ★</th>
+          <th class="th-p">PPF Film</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Protection Type</td><td>Surface coating</td><td><span class="chip chip-g">Chemical bond</span></td><td><span class="chip chip-b">Physical film</span></td></tr>
+        <tr><td>Hardness</td><td>Soft</td><td><span class="chip chip-g">9H Hardness</span></td><td>Self-healing TPU</td></tr>
+        <tr><td>Durability</td><td>2–4 Months</td><td class="ico-mid"><strong>2–5 Years</strong></td><td>5–10 Years</td></tr>
+        <tr><td>Hydrophobic</td><td class="ico-mid">Moderate</td><td class="ico-yes">Excellent ✓</td><td>Good</td></tr>
+        <tr><td>Gloss Enhancement</td><td>Good</td><td class="ico-yes">Mirror Gloss ✓</td><td class="ico-mid">Clear only</td></tr>
+        <tr><td>UV Protection</td><td>Basic</td><td class="ico-yes">Excellent ✓</td><td class="ico-yes">Excellent ✓</td></tr>
+        <tr><td>Scratch Protection</td><td class="ico-no">Minimal ✗</td><td>Light scratches</td><td class="ico-yes">Full scratch & chip ✓</td></tr>
+        <tr><td>Chemical Resistance</td><td class="ico-no">Minimal ✗</td><td class="ico-yes">Excellent ✓</td><td>Good</td></tr>
+        <tr><td>Rock Chip Protection</td><td class="ico-no">No ✗</td><td class="ico-no">No ✗</td><td class="ico-yes">Yes ✓</td></tr>
+        <tr><td>Maintenance</td><td>Monthly</td><td class="ico-yes">Annual check only</td><td class="ico-yes">Very low</td></tr>
+        <tr><td>Price Range</td><td>Low</td><td class="ico-mid">Mid–High</td><td>High</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rec-box">
+    <p>For Coimbatore's climate, we recommend <strong>Ceramic Coating</strong> for daily drivers who want long-term paint protection and a stunning gloss finish. For brand new or high-value cars, combining <strong>PPF on impact zones + Ceramic Coating on top</strong> delivers the ultimate protection — physical and chemical — in one package. Our experts will guide you during your free consultation.</p>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- PROCESS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-s">The Process</div>
+  <div class="h2 h2-d">Our Ceramic Coating<br><span>Application Process</span></div>
+  <p class="body-p body-p" style="color:#555">A professional ceramic coating application is a multi-step precision process — not a quick spray and wipe. At DRK Stickers, every step is done correctly so the coating bonds for maximum performance and longevity.</p>
+  <div class="proc-steps">
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">01</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Paint Inspection & Assessment</div><p class="proc-p">We inspect your car's paint under controlled lighting — identifying swirl marks, scratches, water spots, oxidation and all defects. We document the condition before work begins and discuss our recommendations with you.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">02</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Thorough Wash & Foam Decontamination</div><p class="proc-p">A full foam pre-wash and hand wash removes all surface dirt, dust and loose contaminants. This step is critical — any dirt trapped under the ceramic coating will remain there permanently after curing.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">03</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Clay Bar & Chemical Decontamination</div><p class="proc-p">Even after washing, paint holds embedded contaminants — brake dust, industrial fallout and iron particles — invisible to the naked eye. We perform a full clay bar treatment and chemical decontamination to completely clean the paint to its base level.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">04</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Paint Correction — Machine Polishing</div><p class="proc-p">The most critical step. All swirl marks, light scratches and defects are removed using professional machine polishers. The coating locks in whatever condition the paint is in — so paint correction before coating is essential for a perfect result.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">05</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Panel Wipe & IPA Preparation</div><p class="proc-p">After polishing, every panel is wiped with isopropyl alcohol (IPA) solution to remove all polish residue and oils — ensuring the paint surface is completely clean, bare and chemically ready to accept the ceramic coating bond.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">06</div><div class="proc-line"></div></div>
+      <div><div class="proc-h3">Ceramic Coating Application & Curing</div><p class="proc-p">Coating is applied panel by panel using professional applicator pads in cross-hatch patterns, then levelled and allowed to flash — forming its chemical bond. The car is cured in a controlled environment for 24–48 hours before final inspection and delivery.</p></div>
+    </div>
+  </div>
+  <div class="proc-meta">
+    <div class="pm-pill"><div class="pm-lbl">Package Duration</div><div class="pm-val">2–4 Days</div></div>
+    <div class="pm-pill"><div class="pm-lbl">Studio Curing</div><div class="pm-val">24–48 Hours</div></div>
+    <div class="pm-pill"><div class="pm-lbl">Full Cure</div><div class="pm-val">7–14 Days</div></div>
+    <div class="pm-pill"><div class="pm-lbl">Max Warranty</div><div class="pm-val">5 Years</div></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="sec sec-g">
+  <div class="lbl">Our Work</div>
+  <div class="h2">Real Cars.<br>Real <span>Gloss.</span></div>
+  <p class="body-p">Every ceramic coating result below was achieved at DRK Stickers Coimbatore. Real paint. Real results. No filters.</p>
+  <div class="gal-grid">
+    <div class="gal-item" data-label="Ceramic Coating Before & After">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="9H Nano Ceramic — Mirror Gloss">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Paint Correction + Ceramic — Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="SUV Ceramic Coating DRK Stickers">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Hydrophobic Water Bead Test">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Diamond Package Ceramic Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:18px"><button class="btn-red">View Full Gallery →</button></div>
+</div>
+
+<div class="div"></div>
+
+<!-- FAQ -->
+<div class="sec sec-w">
+  <div class="lbl">Got Questions?</div>
+  <div class="h2">Frequently Asked Questions —<br><span>Ceramic Coating</span> in Coimbatore</div>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q">How long does ceramic coating last in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Our ceramic coating packages offer warranties ranging from 1–2 years (Silver) to 3–5 years (Diamond). In Coimbatore's climate, a properly applied and maintained ceramic coating comfortably lasts its full warranty period — protecting your paint through intense sun, monsoon rains and dusty conditions year-round.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Does ceramic coating prevent scratches completely? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Ceramic coating provides significant resistance against light surface scratches, swirl marks and minor abrasions — far more than unprotected or wax-protected paint. However, it is not scratch-proof. Deep scratches and rock chips can still penetrate the layer. For complete physical protection, we recommend combining PPF on high-impact areas with ceramic coating on top.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How much does ceramic coating cost in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Ceramic coating prices at DRK Stickers vary based on the package grade, your car size and the level of paint correction required. Our Silver package starts from ₹XXXX and our Diamond package starts from ₹XXXX. Contact us for a free, no-obligation quote specific to your car model and current paint condition.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can ceramic coating be applied to an old car? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Yes — ceramic coating can be applied to cars of any age, provided the paint is in acceptable condition or has been properly corrected before application. For older cars with significant defects, we recommend a full multi-stage paint correction before coating to achieve the best possible result. Our paint inspection will assess your car's condition and recommend the right approach.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How do I maintain my car after ceramic coating? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">After the initial curing period of 7–14 days, wash your car every 2–3 weeks using a pH-neutral car shampoo and clean microfibre mitts — never automatic car washes or harsh detergents. Avoid bird droppings and tree sap sitting on the surface for extended periods. An annual ceramic coating maintenance inspection at DRK Stickers is recommended.</div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <button class="faq-q" style="border-bottom:none">Is ceramic coating better than PPF for Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Both serve different purposes. Ceramic coating provides chemical protection, UV resistance, hydrophobicity and stunning gloss — it is the best choice for daily drivers wanting long-term paint protection and easy maintenance. PPF provides physical protection against rock chips and deep scratches. For Coimbatore's roads, the ideal solution is PPF on high-impact zones combined with ceramic coating on the full car — our team will guide you during a free consultation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-h2">Book Your <span>Ceramic Coating</span><br>in Coimbatore Today</div>
+      <p class="cta-p">Give your car the ultimate paint protection — stunning mirror gloss that lasts for years. Applied by certified technicians, backed by written warranty, free paint inspection included.</p>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-gold">📞 Call for Free Quote</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+      <button class="btn-ghost">📍 Get Directions</button>
+    </div>
+  </div>
+  <div class="cta-info">
+    <div><div class="ci-lbl">Phone</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">Location</div><div class="ci-val">[Address], Coimbatore</div></div>
+    <div><div class="ci-lbl">Hours</div><div class="ci-val">Mon–Sat 9AM–7PM | Sun 10AM–5PM</div></div>
+  </div>
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

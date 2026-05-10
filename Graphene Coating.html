@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Mulish:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#080808;--dark2:#0F0F0F;--dark3:#181818;--dark4:#1F1F1F;
+  --graphene:#2A2A2A;--g-accent:#4FC3F7;--g-accent2:#81D4FA;--g-glow:#00B0FF;
+  --red:#C62828;--red2:#EF5350;
+  --carbon:#222;--border:#1E1E1E;--border2:#2A2A2A;
+  --light:#F3F4F6;--white:#fff;--muted:#888;--muted2:#555;
+  --font-h:'Syne',sans-serif;--font-b:'Mulish',sans-serif;
+}
+body{font-family:var(--font-b);background:var(--dark2);color:#ccc;font-size:15px;line-height:1.7;margin:0}
+.page{max-width:860px;margin:0 auto}
+
+/* HERO */
+.hero{background:var(--dark);padding:54px 40px 50px;position:relative;overflow:hidden}
+.hero-hex{position:absolute;top:-60px;right:-60px;width:320px;height:320px;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52'%3E%3Cpolygon points='30,1 59,17 59,34 30,50 1,34 1,17' fill='none' stroke='%234FC3F7' stroke-width='1'/%3E%3C/svg%3E");background-size:60px 52px}
+.hero-glow{position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(79,195,247,.06) 0%,transparent 65%);pointer-events:none}
+.hero-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--g-glow) 0%,var(--red2) 50%,transparent 100%);opacity:.4}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--g-accent);text-transform:uppercase;font-weight:700;margin-bottom:16px;font-family:var(--font-b)}
+.hero-h1{font-family:var(--font-h);font-size:40px;line-height:.95;color:#fff;font-weight:800;margin-bottom:14px}
+.hero-h1 span{color:var(--g-accent)}
+.hero-h2{font-size:13px;color:var(--muted2);line-height:1.75;margin-bottom:24px;font-weight:300}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.hbadge{display:flex;align-items:center;gap:6px;background:rgba(79,195,247,.05);border:1px solid rgba(79,195,247,.12);padding:6px 12px;border-radius:3px;font-size:11px;color:#aaa;font-weight:500}
+.hbdot{width:5px;height:5px;border-radius:50%;background:var(--g-accent);flex-shrink:0}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-carbon{background:var(--g-accent);color:var(--dark);padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-b)}
+.btn-ghost{background:transparent;color:#666;padding:11px 22px;border:1px solid #1e1e1e;border-radius:4px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-b)}
+.btn-red{background:var(--red);color:#fff;padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-b)}
+/* Hero right — molecule viz */
+.hero-right{display:flex;flex-direction:column;gap:10px}
+.hero-stat{background:rgba(255,255,255,.02);border:1px solid rgba(79,195,247,.1);border-radius:6px;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.hstat-icon{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;background:rgba(79,195,247,.08)}
+.hstat-num{font-family:var(--font-h);font-size:24px;color:#fff;line-height:1;font-weight:800}
+.hstat-lbl{font-size:11px;color:#444;margin-top:1px}
+
+/* SECTIONS */
+.sec{padding:48px 40px}
+.sec-l{background:var(--light);color:var(--dark)}
+.sec-d{background:var(--dark2)}
+.sec-dd{background:var(--dark)}
+.sec-g{background:var(--dark3)}
+.lbl{font-size:10px;letter-spacing:3px;color:var(--g-accent);text-transform:uppercase;font-weight:700;margin-bottom:10px;font-family:var(--font-b)}
+.lbl-r{color:var(--red2)}
+.lbl-l{color:var(--red)}
+.h2{font-family:var(--font-h);font-size:34px;line-height:1.02;color:#fff;margin-bottom:18px;font-weight:800}
+.h2-l{color:var(--dark)}
+.h2 span{color:var(--g-accent)}
+.h2-l span{color:var(--red2)}
+.body-p{font-size:14px;color:var(--muted);line-height:1.82;margin-bottom:14px}
+.body-p-l{color:#555}
+.body-p:last-child{margin-bottom:0}
+.div{height:1px;background:var(--border2)}
+
+/* WHAT IS — science section */
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px}
+.analogy-box{background:rgba(79,195,247,.04);border:1px solid rgba(79,195,247,.12);border-radius:6px;padding:20px;margin-top:14px}
+.analogy-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(79,195,247,.06)}
+.analogy-row:last-child{border-bottom:none}
+.analogy-icon{font-size:20px;flex-shrink:0;width:30px}
+.analogy-text{font-size:13px;color:var(--muted);line-height:1.55}
+.analogy-text strong{color:#ccc;font-weight:500}
+.science-card{background:rgba(255,255,255,.02);border:1px solid var(--border2);border-radius:6px;padding:20px;margin-bottom:10px}
+.science-title{font-size:12px;font-weight:700;color:var(--g-accent);margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase;font-family:var(--font-b)}
+.science-p{font-size:13px;color:var(--muted);line-height:1.65}
+.molecule-label{font-size:11px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;margin-bottom:10px;font-family:var(--font-b)}
+
+/* WHY BETTER */
+.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.adv-card{background:rgba(255,255,255,.02);border:1px solid var(--border2);border-radius:6px;padding:20px;border-left:3px solid transparent;transition:border-color .2s}
+.adv-card:hover{border-left-color:var(--g-accent)}
+.adv-num{font-family:var(--font-h);font-size:38px;color:rgba(79,195,247,.08);line-height:1;margin-bottom:4px;font-weight:800}
+.adv-icon{font-size:20px;margin-bottom:8px}
+.adv-h3{font-size:13px;font-weight:700;color:#e0e0e0;margin-bottom:7px}
+.adv-p{font-size:12px;color:var(--muted2);line-height:1.65}
+
+/* WHY COIMBATORE */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.why-card{background:rgba(255,255,255,.015);border:1px solid var(--border2);border-radius:6px;padding:18px}
+.why-icon{font-size:20px;margin-bottom:8px}
+.why-h3{font-size:13px;font-weight:700;color:#ddd;margin-bottom:6px}
+.why-p{font-size:12px;color:var(--muted2);line-height:1.65}
+
+/* PACKAGES */
+.pkg-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
+.pkg{border-radius:8px;padding:24px;border:1px solid var(--border2);background:var(--dark3);position:relative;overflow:hidden}
+.pkg.elite{background:var(--dark);border-color:rgba(79,195,247,.2)}
+.pkg.elite::after{content:'BEST';position:absolute;top:14px;right:-18px;background:var(--g-accent);color:var(--dark);font-size:9px;font-weight:800;letter-spacing:2px;padding:4px 28px;transform:rotate(45deg);font-family:var(--font-b)}
+.pkg-tier{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:8px;font-family:var(--font-b)}
+.pt-ess{color:var(--muted)}
+.pt-pro{color:var(--g-accent2)}
+.pt-elite{color:var(--g-accent)}
+.pkg-name{font-family:var(--font-h);font-size:22px;font-weight:800;line-height:1.1;margin-bottom:4px;color:#fff}
+.pkg-price{font-size:12px;color:var(--muted2);margin-bottom:10px}
+.pkg-tag{display:inline-block;font-size:10px;padding:3px 10px;border-radius:3px;margin-bottom:12px;font-weight:600;font-family:var(--font-b)}
+.pt-tag-e{background:rgba(255,255,255,.05);color:#666}
+.pt-tag-p{background:rgba(79,195,247,.08);color:var(--g-accent2)}
+.pt-tag-el{background:rgba(79,195,247,.1);color:var(--g-accent)}
+.pkg-list{list-style:none;margin-bottom:14px}
+.pkg-list li{font-size:12px;color:var(--muted2);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.pkg-list li::before{content:'✓';position:absolute;left:0;color:var(--g-accent);font-weight:700;font-size:11px;top:4px}
+.pkg-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.pmeta{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600}
+.pm-e{background:rgba(255,255,255,.04);color:#555}
+.pm-p{background:rgba(79,195,247,.07);color:var(--g-accent2)}
+.pm-el{background:rgba(79,195,247,.1);color:var(--g-accent)}
+.pkg-btn{width:100%;padding:10px;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-b);border:none}
+.pb-e{background:#1e1e1e;color:#666;border:1px solid #252525}
+.pb-p{background:rgba(79,195,247,.12);color:var(--g-accent2);border:1px solid rgba(79,195,247,.2)}
+.pb-el{background:var(--g-accent);color:var(--dark)}
+
+/* BENEFITS */
+.ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.ben-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:6px;padding:20px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s}
+.ben-card:hover{border-color:rgba(79,195,247,.15)}
+.ben-icon-wrap{width:40px;height:40px;background:rgba(79,195,247,.07);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.ben-h3{font-size:13px;font-weight:700;color:#e0e0e0;margin-bottom:5px}
+.ben-p{font-size:12px;color:var(--muted2);line-height:1.65}
+
+/* COMPARISON */
+.comp-outer{margin-top:22px;border-radius:6px;overflow:hidden;border:1px solid var(--border2)}
+.comp-table{width:100%;border-collapse:collapse;font-size:12px}
+.comp-table thead tr{background:var(--dark)}
+.comp-table th{padding:12px 14px;text-align:left;font-weight:700;font-size:11px;letter-spacing:.5px;font-family:var(--font-b)}
+.th-f{color:var(--muted2)}
+.th-c{color:#aaa}
+.th-g{color:var(--g-accent)}
+.th-p{color:#90CAF9}
+.comp-table tbody tr{border-bottom:1px solid var(--border)}
+.comp-table tbody tr:last-child{border-bottom:none}
+.comp-table tbody tr:hover{background:rgba(255,255,255,.01)}
+.comp-table td{padding:9px 14px;vertical-align:middle;color:var(--muted2)}
+.comp-table td:first-child{color:#777;font-weight:500}
+.td-yes{color:#66BB6A;font-weight:600}
+.td-no{color:#EF5350}
+.td-best{color:var(--g-accent);font-weight:600}
+.chip{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.chip-g{background:rgba(79,195,247,.12);color:var(--g-accent)}
+.chip-c{background:rgba(255,255,255,.05);color:#888}
+.chip-p{background:rgba(144,202,249,.1);color:#90CAF9}
+.rec-strip{background:rgba(79,195,247,.04);border:1px solid rgba(79,195,247,.12);border-radius:6px;padding:18px;margin-top:14px}
+.rec-strip p{font-size:13px;color:var(--muted);line-height:1.75}
+.rec-strip strong{color:var(--g-accent);font-weight:500}
+
+/* PROCESS */
+.proc-wrap{margin-top:22px}
+.proc-step{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.proc-step:last-child{border-bottom:none}
+.proc-left{flex-shrink:0;width:44px;display:flex;flex-direction:column;align-items:center}
+.proc-num{font-family:var(--font-h);font-size:32px;color:var(--g-accent);line-height:1;font-weight:800}
+.proc-vline{width:1px;flex:1;background:rgba(79,195,247,.08);min-height:16px;margin-top:4px}
+.proc-step:last-child .proc-vline{display:none}
+.proc-h3{font-size:14px;font-weight:600;color:#e0e0e0;margin-bottom:5px}
+.proc-p{font-size:13px;color:var(--muted2);line-height:1.65}
+.proc-meta-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.pm-box{background:rgba(79,195,247,.06);border:1px solid rgba(79,195,247,.15);padding:10px 16px;border-radius:4px;text-align:center}
+.pm-lbl{font-size:10px;color:var(--muted2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+.pm-val{font-size:14px;font-weight:700;color:var(--g-accent)}
+
+/* GALLERY */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.gal-item{aspect-ratio:4/3;background:#111;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid var(--border)}
+.gal-item::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);color:#aaa;font-size:10px;padding:6px 10px;text-align:center;font-family:var(--font-b)}
+.gal-icon svg{width:34px;height:34px;fill:#2a2a2a;opacity:.6}
+
+/* FAQ */
+.faq-wrap{margin-top:22px;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.faq-item{background:var(--dark3);border-bottom:1px solid var(--border2)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;text-align:left;padding:15px 20px;font-size:13px;font-weight:500;color:#ccc;border:none;background:none;cursor:pointer;font-family:var(--font-b);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-arr{color:var(--g-accent);font-size:12px;transition:transform .2s;flex-shrink:0}
+.faq-a{display:none;padding:0 20px 15px;font-size:13px;color:var(--muted2);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-item.open .faq-q{color:var(--g-accent)}
+
+/* CTA */
+.cta{background:var(--dark);padding:48px 40px;border-top:1px solid var(--border2)}
+.cta-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-bottom:28px}
+.cta-h2{font-family:var(--font-h);font-size:30px;color:#fff;line-height:1.05;margin-bottom:10px;font-weight:800}
+.cta-h2 span{color:var(--g-accent)}
+.cta-p{font-size:13px;color:var(--muted2);line-height:1.7;max-width:380px}
+.cta-btns{display:flex;flex-direction:column;gap:10px}
+.cta-info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid var(--border);padding-top:24px}
+.ci-lbl{font-size:10px;color:#222;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.ci-val{font-size:13px;color:var(--muted2)}
+
+/* LSI KEYWORD TAGS */
+.keyword-strip{padding:16px 40px;background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.kw-label{font-size:10px;color:#333;text-transform:uppercase;letter-spacing:2px;font-family:var(--font-b);flex-shrink:0;margin-right:4px}
+.kw-tag{font-size:10px;background:rgba(79,195,247,.05);border:1px solid rgba(79,195,247,.1);color:#555;padding:4px 10px;border-radius:20px;font-family:var(--font-b)}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-hex"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-line"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-label">Graphene Coating Services — DRK Stickers Coimbatore</div>
+      <div class="hero-h1">Graphene Coating<br>in <span>Coimbatore</span><br>— Beyond Ceramic</div>
+      <div class="hero-h2">Next-generation graphene oxide car coating — stronger, harder, better heat dissipation and longer lasting than standard ceramic. Professional application. Written warranty up to 7 years.</div>
+      <div class="hero-badges">
+        <div class="hbadge"><div class="hbdot"></div>Carbon Lattice Technology</div>
+        <div class="hbadge"><div class="hbdot"></div>Superior Heat Dissipation</div>
+        <div class="hbadge"><div class="hbdot"></div>Anti-Static Dust Repelling</div>
+        <div class="hbadge"><div class="hbdot"></div>Up to 7 Year Warranty</div>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-carbon">📞 Free Consultation</button>
+        <button class="btn-ghost">💬 WhatsApp Us</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
+        <div class="hstat-icon">⚡</div>
+        <div><div class="hstat-num">9H+</div><div class="hstat-lbl">Graphene Hardness Rating</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hstat-icon">🌡️</div>
+        <div><div class="hstat-num">Better</div><div class="hstat-lbl">Heat Dissipation vs Ceramic</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hstat-icon">⏳</div>
+        <div><div class="hstat-num">7 Yrs</div><div class="hstat-lbl">Maximum Warranty</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hstat-icon">🌊</div>
+        <div><div class="hstat-num">Zero</div><div class="hstat-lbl">Water Spot Formation</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LSI KEYWORD STRIP -->
+<div class="keyword-strip">
+  <div class="kw-label">Related:</div>
+  <span class="kw-tag">Graphene Coating Coimbatore</span>
+  <span class="kw-tag">Nano Graphene Car Coating</span>
+  <span class="kw-tag">Graphene vs Ceramic Coating</span>
+  <span class="kw-tag">Anti-Static Car Coating</span>
+  <span class="kw-tag">Heat Dissipation Coating</span>
+  <span class="kw-tag">Best Car Coating Coimbatore</span>
+  <span class="kw-tag">Graphene Coating Price India</span>
+</div>
+
+<!-- WHAT IS GRAPHENE -->
+<div class="sec sec-d">
+  <div class="lbl">The Science — Made Simple</div>
+  <div class="h2">What is Graphene Coating<br>— and <span>How Does it Work?</span></div>
+  <div class="what-grid">
+    <div>
+      <p class="body-p">Graphene is a single layer of carbon atoms arranged in a honeycomb lattice — one atom thick, 200 times stronger than steel, incredibly flexible and highly thermally conductive. It won the Nobel Prize in 2010 for its extraordinary material properties.</p>
+      <p class="body-p">Graphene coating takes the proven chemistry of ceramic coating (SiO2) and enhances it by infusing graphene oxide particles into the ceramic base — creating a hybrid nano-coating that chemically bonds with your car's paint and delivers significantly better performance in every category.</p>
+      <div class="analogy-box">
+        <div style="font-size:11px;color:var(--muted2);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-b)">The Simple Analogy</div>
+        <div class="analogy-row">
+          <div class="analogy-icon">🔵</div>
+          <div class="analogy-text"><strong>Ceramic Coating</strong> = A hardened glass shield bonded to your paint</div>
+        </div>
+        <div class="analogy-row">
+          <div class="analogy-icon">⚫</div>
+          <div class="analogy-text"><strong>Graphene Coating</strong> = That same glass shield — reinforced with microscopic carbon mesh woven through it. Stronger. Smarter. Longer lasting.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="science-card">
+        <div class="science-title">🧬 The Chemistry</div>
+        <p class="science-p">Standard ceramic coating = SiO2 (Silicon Dioxide) only. Graphene coating = SiO2 + Graphene Oxide (rGO). The graphene oxide molecules fill the gaps in the ceramic matrix — creating a denser, more heat-conductive and chemically resistant protective layer.</p>
+      </div>
+      <div class="science-card">
+        <div class="science-title">⚡ Anti-Static Property</div>
+        <p class="science-p">Graphene is electrically conductive. This reduces the static charge on your car's paint — actively repelling dust particles that would normally be attracted electrostatically to the surface. No other coating technology does this.</p>
+      </div>
+      <div class="science-card">
+        <div class="science-title">🌡️ Thermal Conductivity</div>
+        <p class="science-p">Graphene distributes and dissipates surface heat faster than ceramic alone. This prevents heat build-up on your panels that causes water spots and coating stress — especially critical in Coimbatore's climate where panels reach 65–70°C in summer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- WHY BETTER THAN CERAMIC -->
+<div class="sec sec-g">
+  <div class="lbl">Key Advantages</div>
+  <div class="h2">How Graphene Coating is<br><span>Better Than Ceramic</span> Coating</div>
+  <p class="body-p">Ceramic coating has been the gold standard for years. Graphene takes it a clear step further — addressing ceramic's key weaknesses with real science. Here is an honest breakdown:</p>
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-num">01</div>
+      <div class="adv-icon">🌡️</div>
+      <div class="adv-h3">Far Superior Heat Dissipation</div>
+      <p class="adv-p">Ceramic can trap heat — in Coimbatore's summer (65–70°C panel temps), this causes water spots and coating stress. Graphene's thermal conductivity actively distributes heat — protecting the coating and your paint underneath.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">02</div>
+      <div class="adv-icon">💧</div>
+      <div class="adv-h3">Zero Water Spot Formation</div>
+      <p class="adv-p">Graphene's carbon lattice reduces surface energy — causing water to sheet off faster with less residue. In real-world Indian monsoon conditions, graphene-coated cars showed dramatically better water spot resistance than ceramic-coated cars over 18 months of testing.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">03</div>
+      <div class="adv-icon">⚡</div>
+      <div class="adv-h3">Anti-Static — Actively Repels Dust</div>
+      <p class="adv-p">Unique to graphene — no ceramic coating can do this. The anti-static surface reduces electrostatic attraction, actively repelling dust. In Coimbatore's dusty environment, your car stays visibly cleaner between washes.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">04</div>
+      <div class="adv-icon">⏳</div>
+      <div class="adv-h3">Longer Durability — Up to 7 Years</div>
+      <p class="adv-p">Professional ceramic lasts 2–5 years. DRK Stickers graphene coating is designed to last 5–7 years with proper maintenance — significantly longer protection and better long-term value for your investment.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-num">05</div>
+      <div class="adv-icon">🧪</div>
+      <div class="adv-h3">Superior Chemical Resistance</div>
+      <p class="adv-p">Graphene's carbon structure naturally resists oxidation and chemical reactions that degrade paint. Better resistance to bird droppings, acid rain, tree sap and road chemicals — with less risk of etching even under prolonged exposure.</p>
+    </div>
+    <div class="adv-card" style="border-color:rgba(79,195,247,.1)">
+      <div class="adv-num">06</div>
+      <div class="adv-icon">💎</div>
+      <div class="adv-h3">Deeper Gloss on Dark Cars</div>
+      <p class="adv-p">Graphene's carbon-based chemistry delivers exceptional colour depth on black, dark grey, dark blue and other deep colours — a visual richness that standard SiO2 ceramic simply cannot match. Outstanding on dark-coloured cars in Coimbatore.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHY COIMBATORE -->
+<div class="sec sec-d">
+  <div class="lbl lbl-r">Local Climate</div>
+  <div class="h2">Why Coimbatore Cars<br><span>Specifically Need</span> Graphene</div>
+  <p class="body-p">Coimbatore's specific climate conditions make graphene coating a particularly strong choice over standard ceramic. Every challenge Coimbatore presents — graphene handles better:</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🌞</div>
+      <div class="why-h3">Extreme Heat — Panels at 65–70°C</div>
+      <p class="why-p">Coimbatore's afternoon sun pushes panel temperatures to 65–70°C in summer. Standard ceramic traps this heat. Graphene's thermal conductivity actively dissipates it — protecting both the coating and your paint.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌧️</div>
+      <div class="why-h3">Monsoon Rains + Hard Water</div>
+      <p class="why-p">Heavy monsoon rainfall combined with Coimbatore's hard water creates perfect conditions for water spot formation on ceramic coatings. Graphene's enhanced water-sheeting and anti-spotting chemistry handles this far better.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌫️</div>
+      <div class="why-h3">Industrial Dust & Particulates</div>
+      <p class="why-p">Coimbatore's textile factories, industrial zones and construction sites generate constant fine dust. Graphene's anti-static surface actively repels these particles — keeping your car visibly cleaner far longer than ceramic.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🚗</div>
+      <div class="why-h3">High Daily Driving & Wash Frequency</div>
+      <p class="why-p">More driving means more frequent washing — and more washing-induced swirl risks. Graphene's superior hardness resists wash marring better through its 5–7 year lifespan in Coimbatore's demanding conditions.</p>
+    </div>
+    <div class="why-card" style="grid-column:1/-1;background:rgba(79,195,247,.03);border-color:rgba(79,195,247,.1)">
+      <div class="why-icon">💎</div>
+      <div class="why-h3" style="color:var(--g-accent)">Best Long-Term Value for Coimbatore Car Owners</div>
+      <p class="why-p" style="color:#555">When you calculate cost per year of protection — and factor in reduced wash frequency, better paint condition at resale and graphene's longer lifespan — graphene coating delivers better long-term value than ceramic coating for Coimbatore's climate, even at a higher initial investment.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<div class="sec sec-l">
+  <div class="lbl lbl-l">Our Packages</div>
+  <div class="h2 h2-l">Graphene Coating Packages<br>& <span>Pricing</span> in Coimbatore</div>
+  <p class="body-p body-p-l">All packages include full paint decontamination, professional paint correction and certified graphene oxide application. Choose the right tier for your car, usage and ownership plan.</p>
+  <div class="pkg-grid">
+    <div class="pkg">
+      <div class="pkg-tier pt-ess">Package 01</div>
+      <div class="pkg-name">Graphene<br>Essential</div>
+      <div class="pkg-price">Starting from ₹XXXX</div>
+      <div class="pkg-tag pt-tag-e">Daily Drivers & Budget Upgrade</div>
+      <ul class="pkg-list">
+        <li>Full wash & foam decontamination</li>
+        <li>Clay bar treatment</li>
+        <li>Single-stage machine polish</li>
+        <li>1 Layer graphene oxide coating</li>
+        <li>Anti-static surface</li>
+        <li>Heat dissipating hydrophobic layer</li>
+        <li>UV & chemical resistance</li>
+      </ul>
+      <div class="pkg-meta">
+        <span class="pmeta pm-e">⏱️ 2 Days</span>
+        <span class="pmeta pm-e">🛡️ 2–3 Yr Warranty</span>
+      </div>
+      <button class="pkg-btn pb-e">Book Essential Package</button>
+    </div>
+    <div class="pkg">
+      <div class="pkg-tier pt-pro">Package 02</div>
+      <div class="pkg-name">Graphene<br>Pro</div>
+      <div class="pkg-price">Starting from ₹XXXX</div>
+      <div class="pkg-tag pt-tag-p">SUVs, Daily Drivers & Multi-Layer</div>
+      <ul class="pkg-list">
+        <li>Foam decon & iron fallout removal</li>
+        <li>Clay bar & chemical decontamination</li>
+        <li>Multi-stage paint correction</li>
+        <li>2 Layers graphene oxide coating</li>
+        <li>Enhanced anti-static performance</li>
+        <li>Superior water spot resistance</li>
+        <li>Glass & trim graphene coating</li>
+      </ul>
+      <div class="pkg-meta">
+        <span class="pmeta pm-p">⏱️ 2–3 Days</span>
+        <span class="pmeta pm-p">🛡️ 3–5 Yr Warranty</span>
+      </div>
+      <button class="pkg-btn pb-p">Book Pro Package</button>
+    </div>
+    <div class="pkg elite">
+      <div class="pkg-tier pt-elite">Package 03</div>
+      <div class="pkg-name">Graphene<br>Elite</div>
+      <div class="pkg-price">Starting from ₹XXXX</div>
+      <div class="pkg-tag pt-tag-el">New Cars, Luxury & Long-Term Owners</div>
+      <ul class="pkg-list">
+        <li>Full paint inspection & report</li>
+        <li>Complete multi-stage correction</li>
+        <li>3 Layers premium graphene oxide</li>
+        <li>Glass, trim, wheels & plastic coating</li>
+        <li>Maximum anti-static performance</li>
+        <li>Engine bay graphene coating</li>
+        <li>Pre & post inspection report</li>
+        <li>Written warranty certificate</li>
+      </ul>
+      <div class="pkg-meta">
+        <span class="pmeta pm-el">⏱️ 3–4 Days</span>
+        <span class="pmeta pm-el">🛡️ 5–7 Yr Warranty</span>
+      </div>
+      <button class="pkg-btn pb-el">Book Elite Package</button>
+    </div>
+  </div>
+  <div style="margin-top:12px;text-align:center;font-size:13px;color:#999">💡 Custom packages for luxury, exotic & fleet vehicles — <strong style="color:var(--dark)">WhatsApp us for a personalised quote</strong></div>
+</div>
+
+<!-- BENEFITS -->
+<div class="sec sec-d">
+  <div class="lbl">Why Choose It</div>
+  <div class="h2">7 Reasons to Choose<br><span>Graphene Coating</span> at DRK Stickers</div>
+  <div class="ben-grid">
+    <div class="ben-card">
+      <div class="ben-icon-wrap">⚡</div>
+      <div><div class="ben-h3">Most Advanced Coating in 2025</div><p class="ben-p">Graphene coating represents the current pinnacle of automotive paint protection. When you choose DRK Stickers, you get Coimbatore's most advanced car protection available today.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-wrap">🌡️</div>
+      <div><div class="ben-h3">Superior Heat Dissipation</div><p class="ben-p">Graphene actively distributes surface heat — critical for Coimbatore where panels reach 65–70°C. Prevents heat-induced water spotting that plagues ceramic-coated cars in Indian summer.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-wrap">🌫️</div>
+      <div><div class="ben-h3">Anti-Static Dust Repelling</div><p class="ben-p">Unique to graphene — reduces electrostatic charge and actively repels dust. In Coimbatore's dusty environment, your car stays visibly cleaner far longer between every wash.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-wrap">💧</div>
+      <div><div class="ben-h3">Zero Water Spot Formation</div><p class="ben-p">Graphene's enhanced water-sheeting delivers zero water spot formation even after heavy Coimbatore monsoon rain — a genuine weakness of standard ceramic coating addressed completely.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-wrap">⏳</div>
+      <div><div class="ben-h3">Lasts Up to 7 Years</div><p class="ben-p">Professional graphene coating lasts 5–7 years vs ceramic's 2–5 years. Fewer reapplications, less long-term spending and more years of showroom-fresh paint condition.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-wrap">💎</div>
+      <div><div class="ben-h3">Deep Gloss on Dark Cars</div><p class="ben-p">Graphene delivers exceptional colour depth particularly on black, dark grey and dark blue cars — a visual richness the carbon chemistry creates that standard ceramic simply cannot match.</p></div>
+    </div>
+    <div class="ben-card" style="grid-column:1/-1">
+      <div class="ben-icon-wrap">📈</div>
+      <div><div class="ben-h3">Best Long-Term Value for Your Investment</div><p class="ben-p">Cost per year of protection is comparable to or better than ceramic when calculated over 5–7 years. Add in reduced wash frequency, reduced maintenance costs, better paint condition at resale and graphene coating pays for itself many times over during your ownership period.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div class="sec sec-g">
+  <div class="lbl">Make the Right Choice</div>
+  <div class="h2">Graphene vs Ceramic vs PPF —<br><span>Which is Right</span> for Your Car?</div>
+  <div class="comp-outer">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th class="th-f">Feature</th>
+          <th class="th-c">Ceramic Coating</th>
+          <th class="th-g">Graphene Coating ★</th>
+          <th class="th-p">PPF Film</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Technology Base</td><td>SiO2 only</td><td class="td-best"><span class="chip chip-g">SiO2 + Graphene Oxide</span></td><td>Thermoplastic film</td></tr>
+        <tr><td>Hardness</td><td>9H</td><td class="td-best">9H+ Enhanced</td><td>Self-healing</td></tr>
+        <tr><td>Durability</td><td>2–5 Years</td><td class="td-best">5–7 Years ✓</td><td>7–10 Years</td></tr>
+        <tr><td>Heat Dissipation</td><td class="td-no">Moderate (traps heat)</td><td class="td-yes">Excellent ✓</td><td>Good</td></tr>
+        <tr><td>Water Spot Resistance</td><td>Good</td><td class="td-yes">Excellent ✓</td><td>Good</td></tr>
+        <tr><td>Anti-Static (Dust Repel)</td><td class="td-no">No ✗</td><td class="td-yes">Yes — Unique ✓</td><td class="td-no">No ✗</td></tr>
+        <tr><td>Hydrophobic</td><td class="td-yes">Excellent</td><td class="td-yes">Excellent ✓</td><td>Good</td></tr>
+        <tr><td>Gloss Enhancement</td><td>Mirror Gloss</td><td class="td-best">Deep Mirror Gloss ✓</td><td>Clear only</td></tr>
+        <tr><td>Chemical Resistance</td><td>Excellent</td><td class="td-best">Superior ✓</td><td>Good</td></tr>
+        <tr><td>Rock Chip Protection</td><td class="td-no">No ✗</td><td class="td-no">No ✗</td><td class="td-yes">Yes ✓</td></tr>
+        <tr><td>Best For</td><td>Value protection</td><td class="td-best">Long-term owners ★</td><td>New/luxury cars</td></tr>
+        <tr><td>Price Range</td><td>Mid</td><td>Mid–High</td><td>High</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rec-strip">
+    <p>Choose <strong>Graphene Coating</strong> if you want the best coating technology — longer lasting, better in heat, dust-repelling and superior water spot resistance. Perfect for daily drivers in Coimbatore who park outdoors, own dark cars or plan to keep their car 5+ years.<br><br>For the <strong>ultimate protection</strong>: PPF on high-impact zones + Graphene Coating on the full car. Our experts will guide you during your free consultation — no pressure, no upselling.</p>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="sec sec-d">
+  <div class="lbl">Our Method</div>
+  <div class="h2">Graphene Coating<br><span>Application Process</span></div>
+  <p class="body-p">Graphene coating demands precise, multi-step preparation for the graphene oxide to bond correctly. At DRK Stickers, every step is executed with professional precision — no shortcuts.</p>
+  <div class="proc-wrap">
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">01</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Free Paint Inspection & Consultation</div><p class="proc-p">Thorough paint assessment under studio lighting — documenting all swirl marks, scratches, water spots and defects. We discuss findings with you and recommend the right graphene package for your car's condition and ownership plan. Free of charge.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">02</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Foam Pre-Wash & Full Decontamination</div><p class="proc-p">Complete foam pre-wash followed by thorough hand wash removes all surface dirt. Iron fallout remover is applied to dissolve brake dust and metallic particles embedded in the paint — a critical step before graphene application.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">03</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Clay Bar Paint Decontamination</div><p class="proc-p">Full clay bar treatment removes all remaining embedded contaminants — industrial fallout, road tar, tree sap residue and bonded particles that washing alone cannot remove. Ensures graphene coating bonds to clean, bare paint only.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">04</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Multi-Stage Paint Correction</div><p class="proc-p">Professional dual-action polishers with compound grades matched to your paint remove all swirl marks, light scratches and surface defects. Since graphene coating permanently locks in paint condition, correction-level perfection before application is non-negotiable.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">05</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">IPA Panel Wipe & Surface Preparation</div><p class="proc-p">Every panel is wiped with isopropyl alcohol (IPA) solution — removing all polishing oils, residues and fingerprints. The paint surface is left chemically clean and primed for maximum graphene oxide bond strength.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">06</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Graphene Coating Application & Controlled Curing</div><p class="proc-p">Graphene coating applied panel by panel using professional applicator blocks in cross-hatch motions, levelled with high-grade microfibre. Car is then placed in a controlled temperature and humidity environment for 24–48 hours to ensure the strongest possible graphene-paint bond.</p></div>
+    </div>
+  </div>
+  <div class="proc-meta-row">
+    <div class="pm-box"><div class="pm-lbl">Package Duration</div><div class="pm-val">2–4 Days</div></div>
+    <div class="pm-box"><div class="pm-lbl">Studio Curing</div><div class="pm-val">24–48 Hours</div></div>
+    <div class="pm-box"><div class="pm-lbl">Full Cure</div><div class="pm-val">14–21 Days</div></div>
+    <div class="pm-box"><div class="pm-lbl">Max Warranty</div><div class="pm-val">7 Years</div></div>
+    <div class="pm-box"><div class="pm-lbl">Certification</div><div class="pm-val">Provided ✓</div></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="sec sec-g">
+  <div class="lbl">Our Work</div>
+  <div class="h2">Real Cars.<br><span>Graphene Finish.</span></div>
+  <p class="body-p">Every result below was achieved at DRK Stickers Coimbatore using professional graphene oxide coating. Real paint. Real results. No filters.</p>
+  <div class="gal-grid">
+    <div class="gal-item" data-label="Graphene Coating Before & After">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Graphene on Dark Car — Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Graphene Elite Package Result">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Anti-Static Surface — Dust Test">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Water Beading Test — Hydrophobic">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="SUV Graphene Coating Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:18px"><button class="btn-red">View Full Gallery →</button></div>
+</div>
+
+<div class="div"></div>
+
+<!-- FAQ -->
+<div class="sec sec-d">
+  <div class="lbl">Got Questions?</div>
+  <div class="h2">Frequently Asked Questions —<br><span>Graphene Coating</span> in Coimbatore</div>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q">What is the difference between graphene coating and ceramic coating? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Ceramic coating uses silicon dioxide (SiO2) that chemically bonds to your car's paint — creating a hard, hydrophobic protective layer. Graphene coating enhances this by infusing graphene oxide into the ceramic base — adding superior heat dissipation, anti-static dust repelling, better water spot resistance and a longer lifespan (5–7 years vs 2–5 years for ceramic). For Coimbatore's hot, dusty climate, graphene offers measurably better real-world performance than ceramic alone.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How long does graphene coating last in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Our graphene packages are warranted for 2–3 years (Essential), 3–5 years (Pro) and 5–7 years (Elite). With proper maintenance using pH-neutral shampoo and regular washing, graphene coating in Coimbatore's climate comfortably maintains performance through the full warranty period — through intense heat, monsoon rains and daily driving conditions.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Is graphene coating worth the extra cost over ceramic in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">For most Coimbatore car owners — especially those who park outdoors, drive frequently, own dark-coloured cars or plan to keep their car for 5+ years — graphene coating is worth the additional investment. When calculated as cost per year of protection, graphene is often comparable to or better value than ceramic over the same period. The additional anti-static dust repelling and heat dissipation benefits are particularly valuable in Coimbatore's climate.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Is graphene coating better for dark-coloured cars? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Yes — graphene coating works on all colours but its deep gloss and colour-enhancing properties are particularly impressive on dark-coloured cars — black, dark grey, dark blue and deep colours where the carbon-based chemistry significantly enhances visual depth and richness that standard ceramic cannot match. If you own a dark car in Coimbatore, graphene coating is our top recommendation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How do I maintain my car after graphene coating? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">After the initial curing period of 14–21 days, wash your car every 2–3 weeks using a pH-neutral car shampoo and clean microfibre wash mitts. Avoid automatic car washes, harsh detergents and abrasive materials. Remove bird droppings and tree sap promptly. An annual graphene coating health check at DRK Stickers Coimbatore is recommended to ensure the coating continues performing at its best.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How much does graphene coating cost in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Graphene coating prices at DRK Stickers vary based on the package grade, your car size and the level of paint correction required. Our Essential package starts from ₹XXXX and our Elite package starts from ₹XXXX. Graphene is priced higher than ceramic due to advanced material technology — but offers significantly better long-term value. Contact us or WhatsApp us for a free, no-obligation quote.</div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <button class="faq-q" style="border-bottom:none">Can graphene coating be applied on top of existing ceramic coating? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">In most cases, existing ceramic coating needs to be removed or corrected before applying graphene coating — to ensure proper bonding and maximum performance. Our free paint inspection will assess your car's current coating condition and determine the best approach before any work begins.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-grid">
+    <div>
+      <div class="cta-h2">Book Your <span>Graphene Coating</span><br>in Coimbatore Today</div>
+      <p class="cta-p">Coimbatore's most advanced car paint protection — stronger than ceramic, longer lasting and built for India's climate. Certified application, written warranty, free paint inspection included.</p>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-carbon">📞 Free Consultation</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+      <button class="btn-ghost">📍 Get Directions</button>
+    </div>
+  </div>
+  <div class="cta-info">
+    <div><div class="ci-lbl">Phone</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">Location</div><div class="ci-val">[Address], Coimbatore</div></div>
+    <div><div class="ci-lbl">Hours</div><div class="ci-val">Mon–Sat 9AM–7PM | Sun 10AM–5PM</div></div>
+  </div>
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--gold:#C8960C;--gold-light:#F5E6B0;--dark:#1A1208;--mid:#3D2E0A;
+--surface:#FDFAF3;--surface2:#F5EDD6;--text:#2C1F05;--muted:#6B5A35;
+--border:#E8D9A0;--white:#FFFFFF;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text);font-size:15px;line-height:1.7}
+
+.page{max-width:860px;margin:0 auto;padding:0 0 3rem}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1A1208 0%,#3D2A06 60%,#2C1F05 100%);color:#fff;padding:3.5rem 2.5rem 2.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(200,150,12,0.2)}
+.hero::after{content:'';position:absolute;bottom:-40px;right:80px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(200,150,12,0.15)}
+.hero-badge{display:inline-block;background:rgba(200,150,12,0.2);border:1px solid rgba(200,150,12,0.5);color:#F5E6B0;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.2rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;line-height:1.25;margin-bottom:1rem;color:#fff}
+.hero h1 span{color:#F5C842}
+.hero-sub{color:rgba(255,255,255,0.75);font-size:15px;max-width:600px;line-height:1.75;margin-bottom:1.8rem}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:#1A1208;padding:11px 22px;border-radius:6px;font-weight:500;font-size:14px;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-outline{background:transparent;color:#F5E6B0;padding:11px 22px;border-radius:6px;font-weight:500;font-size:14px;border:1px solid rgba(200,150,12,0.6);cursor:pointer;text-decoration:none;display:inline-block}
+
+/* STATS BAR */
+.stats-bar{background:var(--gold);display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{padding:1rem;text-align:center;border-right:1px solid rgba(26,18,8,0.15)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#1A1208;line-height:1}
+.stat-label{font-size:11px;color:#3D2E0A;margin-top:3px;font-weight:500;letter-spacing:0.04em}
+
+/* SECTIONS */
+.section{padding:2.5rem 2.5rem}
+.section-alt{background:var(--surface2);padding:2.5rem 2.5rem}
+.section-divider{width:40px;height:3px;background:var(--gold);margin:0 0 1rem}
+.section-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.4rem}
+h2.s-title{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:600;color:var(--dark);margin-bottom:1rem;line-height:1.35}
+.body-text{color:var(--muted);font-size:14.5px;line-height:1.8;margin-bottom:0.8rem}
+
+/* PROBLEM CARDS */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:1.2rem}
+.prob-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.1rem}
+.prob-card-title{font-size:13px;font-weight:500;color:var(--dark);margin-bottom:0.5rem;display:flex;align-items:center;gap:6px}
+.prob-icon{width:28px;height:28px;border-radius:50%;background:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.prob-card ul{padding-left:0;list-style:none}
+.prob-card ul li{font-size:12.5px;color:var(--muted);padding:3px 0 3px 14px;position:relative;border-bottom:1px solid #F5EDD6}
+.prob-card ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:11px;top:4px}
+.prob-card ul li:last-child{border-bottom:none}
+
+/* HOW IT WORKS */
+.layers{display:grid;gap:12px;margin-top:1.2rem}
+.layer-row{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;display:flex;gap:1rem;align-items:flex-start}
+.layer-num{background:var(--gold);color:#1A1208;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.layer-body h4{font-size:14px;font-weight:500;color:var(--dark);margin-bottom:3px}
+.layer-body p{font-size:13px;color:var(--muted);line-height:1.65}
+
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:1.5rem}
+.process-step{text-align:center;padding:0.75rem 0.5rem}
+.step-circle{width:36px;height:36px;border-radius:50%;background:var(--gold-light);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:13px;font-weight:500;color:var(--dark)}
+.step-text{font-size:11px;color:var(--muted);line-height:1.4}
+.step-arrow{color:var(--border);font-size:18px;margin-top:14px;text-align:center}
+
+/* BENEFITS */
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:1.2rem}
+.benefit-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.2rem;display:flex;gap:0.9rem}
+.benefit-icon-box{width:40px;height:40px;border-radius:8px;background:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.benefit-card h4{font-size:13.5px;font-weight:500;color:var(--dark);margin-bottom:3px}
+.benefit-card p{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* USE CASES */
+.usecase-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:1.2rem}
+.usecase-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;border-top:3px solid var(--gold)}
+.usecase-card h4{font-size:14px;font-weight:500;color:var(--dark);margin-bottom:0.5rem}
+.usecase-card p{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:0.6rem}
+.usecase-tag{font-size:11px;color:var(--gold);background:var(--gold-light);padding:3px 9px;border-radius:12px;display:inline-block}
+
+/* FILM OPTIONS */
+.film-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:1.2rem}
+.film-card{border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.2rem;background:var(--white)}
+.film-card.premium{border:2px solid var(--gold);background:#FFFDF5}
+.film-card h4{font-size:14px;font-weight:500;color:var(--dark);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.film-badge{font-size:10px;background:var(--gold);color:#1A1208;padding:2px 8px;border-radius:10px;font-weight:500}
+.film-card p{font-size:12.5px;color:var(--muted);line-height:1.65}
+.film-ideal{font-size:11.5px;color:var(--gold);margin-top:6px;font-weight:500}
+
+/* WHY US */
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:1.2rem}
+.trust-item{display:flex;gap:10px;align-items:flex-start;padding:0.8rem 1rem;background:var(--white);border-radius:8px;border:1px solid var(--border)}
+.trust-check{color:var(--gold);font-size:16px;margin-top:2px;flex-shrink:0}
+.trust-item h4{font-size:13.5px;font-weight:500;color:var(--dark);margin-bottom:2px}
+.trust-item p{font-size:12.5px;color:var(--muted);line-height:1.5}
+
+/* FAQ */
+.faq-list{margin-top:1.2rem;display:grid;gap:10px}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem}
+.faq-item summary{font-size:14px;font-weight:500;color:var(--dark);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-item summary::after{content:'+';font-size:18px;color:var(--gold);font-weight:300;flex-shrink:0;margin-left:10px}
+.faq-item[open] summary::after{content:'−'}
+.faq-ans{font-size:13px;color:var(--muted);line-height:1.75;margin-top:0.7rem;padding-top:0.7rem;border-top:1px solid var(--border)}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#1A1208,#3D2A06);padding:2.5rem;text-align:center}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;margin-bottom:0.7rem}
+.cta-section p{color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:1.5rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* LSI TAG CLOUD */
+.lsi-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
+.lsi-tag{font-size:11.5px;background:var(--gold-light);color:var(--mid);padding:4px 12px;border-radius:14px;border:1px solid var(--border)}
+</style>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">DRK Stickers — Coimbatore</div>
+    <h1>UV Protection Film<br>for <span>Windows</span> —<br>Anti-Fade Shield</h1>
+    <p class="hero-sub">Block up to 99% of UV and infrared rays. Keep your car interiors, home furnishings, and office spaces cooler, fade-free, and protected — with professional-grade anti-fade UV protection layer installation.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Book Free Consultation</a>
+      <a href="#" class="btn-outline">WhatsApp Us</a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">99%</div><div class="stat-label">UV rays blocked</div></div>
+    <div class="stat-item"><div class="stat-num">5–10</div><div class="stat-label">Years durability</div></div>
+    <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Bubbles or peeling</div></div>
+    <div class="stat-item"><div class="stat-num">All</div><div class="stat-label">Glass types covered</div></div>
+  </div>
+
+  <!-- WHAT IS IT -->
+  <div class="section">
+    <div class="section-label">Understanding the service</div>
+    <h2 class="s-title">What Is UV Protection Film for Windows?</h2>
+    <div class="section-divider"></div>
+    <p class="body-text">UV protection film for windows is a thin, precision-engineered layer applied directly onto glass surfaces — car windows, home panes, office partitions, and more. It is designed to block ultraviolet (UV-A and UV-B) rays and solar infrared heat that pass through ordinary glass every single day.</p>
+    <p class="body-text">Unlike standard window tint, an anti-fade UV protection layer targets the root cause of colour fading and heat build-up. It works silently — protecting your car dashboard, leather seats, wooden furniture, fabric upholstery, flooring, and even your skin — without altering your view or blocking natural light.</p>
+    <p class="body-text">At DRK Stickers, Coimbatore, we use high-performance UV-blocking film that is scratch-resistant, bubble-free, and built to last in India's intense tropical climate.</p>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="section-alt">
+    <div class="section-label">Why it matters</div>
+    <h2 class="s-title">What Happens When You Ignore UV Exposure?</h2>
+    <div class="section-divider"></div>
+    <p class="body-text">Most people notice the damage only after it is done. UV rays work slowly and invisibly — but the results are permanent.</p>
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-card-title"><div class="prob-icon">🚗</div>For Your Car</div>
+        <ul>
+          <li>Dashboard cracks and warps</li>
+          <li>Seats lose colour and turn brittle</li>
+          <li>Plastic panels fade and chalk</li>
+          <li>Cabin temperature spikes</li>
+        </ul>
+      </div>
+      <div class="prob-card">
+        <div class="prob-card-title"><div class="prob-icon">🏠</div>For Your Home</div>
+        <ul>
+          <li>Curtains and sofas fade near glass</li>
+          <li>Wooden flooring loses its tone</li>
+          <li>Artwork and photos discolour</li>
+          <li>Furnishings age 3× faster</li>
+        </ul>
+      </div>
+      <div class="prob-card">
+        <div class="prob-card-title"><div class="prob-icon">🏢</div>For Your Office</div>
+        <ul>
+          <li>Glass facades increase heat load</li>
+          <li>Workstations near windows overheat</li>
+          <li>Employees exposed to UV daily</li>
+          <li>Higher AC energy bills</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <div class="section-label">Technology & process</div>
+    <h2 class="s-title">How Our UV Protection Layer Works</h2>
+    <div class="section-divider"></div>
+    <div class="layers">
+      <div class="layer-row">
+        <div class="layer-num">1</div>
+        <div class="layer-body"><h4>UV Absorption Layer</h4><p>The inner layer captures and neutralises UV-A and UV-B rays before they penetrate glass — blocking up to 99% of harmful ultraviolet radiation. This is the core anti-fade, UV-blocking window film technology.</p></div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-num">2</div>
+        <div class="layer-body"><h4>Infrared Heat Rejection Layer</h4><p>Solar infrared energy is the primary cause of heat build-up inside your car or room. This layer reflects IR rays, reducing interior temperatures and cutting AC dependency — a key feature of solar heat rejection film.</p></div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-num">3</div>
+        <div class="layer-body"><h4>Scratch-Resistant Hardcoat</h4><p>The outermost surface is finished with a hardcoat that resists scratches, dust abrasion, and daily wear — keeping the UV film for car and home glass looking crystal-clear for years.</p></div>
+      </div>
+    </div>
+    <p class="body-text" style="margin-top:1.2rem;font-weight:500;color:var(--dark)">Our installation process:</p>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-circle">①</div><div class="step-text">Glass surface preparation & cleaning</div></div>
+      <div class="process-step"><div class="step-circle">②</div><div class="step-text">Precision film cutting to window size</div></div>
+      <div class="process-step"><div class="step-circle">③</div><div class="step-text">Bubble-free application with slip solution</div></div>
+      <div class="process-step"><div class="step-circle">④</div><div class="step-text">Edge sealing & quality inspection</div></div>
+      <div class="process-step"><div class="step-circle">⑤</div><div class="step-text">Curing guidance provided</div></div>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <div class="section-alt">
+    <div class="section-label">What you gain</div>
+    <h2 class="s-title">Benefits of UV Protection Film for Windows</h2>
+    <div class="section-divider"></div>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon-box">☀️</div><div><h4>Blocks Up to 99% UV Rays</h4><p>Prevents UV-A and UV-B radiation from entering your space — protecting people and surfaces from sun damage.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon-box">🌡️</div><div><h4>Reduces Interior Heat</h4><p>Solar heat rejection film keeps indoor and in-car temperatures cooler. Less AC dependency, more comfort.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon-box">🎨</div><div><h4>Prevents Colour Fading</h4><p>Upholstery, dashboards, curtains, and flooring retain their original colour far longer with fade-resistant window coating.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon-box">👁️</div><div><h4>Full Optical Clarity</h4><p>Clear UV film does not distort vision or darken your view. You get 100% protection without losing visibility.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon-box">🪟</div><div><h4>Works on All Glass Types</h4><p>Car side windows, windshields, home windows, glass doors, office partitions, and showroom glass — all covered.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon-box">⏳</div><div><h4>5–10 Years Performance</h4><p>Professionally applied UV window film from DRK Stickers lasts years without peeling, yellowing, or bubbling.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon-box">💧</div><div><h4>Zero Maintenance</h4><p>Smooth, dust-resistant surface. Wipe clean with a soft cloth — no special treatment or cleaning products needed.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon-box">💰</div><div><h4>Saves Long-Term Costs</h4><p>Avoid expensive replacement of faded seats, cracked dashboards, discoloured flooring, and worn furnishings.</p></div></div>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="section">
+    <div class="section-label">Applications</div>
+    <h2 class="s-title">UV Protection for Every Space</h2>
+    <div class="section-divider"></div>
+    <div class="usecase-tabs">
+      <div class="usecase-card">
+        <h4>🚗 For Your Car</h4>
+        <p>Your car spends hours under direct sunlight. UV protection window tint film shields your dashboard, seats, door panels, and carpets from fading, cracking, and heat damage — keeping the cabin cooler and more comfortable.</p>
+        <span class="usecase-tag">Sedans · SUVs · Hatchbacks · Luxury Cars</span>
+      </div>
+      <div class="usecase-card">
+        <h4>🏠 For Your Home</h4>
+        <p>Windows are the biggest source of UV entry in any home. Anti-fade window film protects furniture, wooden flooring, curtains, and artwork from sun bleaching — without blocking your view or natural light.</p>
+        <span class="usecase-tag">Living Rooms · Bedrooms · Balcony Doors</span>
+      </div>
+      <div class="usecase-card">
+        <h4>🏢 For Your Office</h4>
+        <p>Large glass facades expose employees to direct sun for hours. Sun protection film for office windows reduces glare, cuts heat, and protects workstations and upholstery from UV damage.</p>
+        <span class="usecase-tag">Offices · Showrooms · Retail · Restaurants</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILM OPTIONS -->
+  <div class="section-alt">
+    <div class="section-label">Our range</div>
+    <h2 class="s-title">Choose the Right UV Protection Film</h2>
+    <div class="section-divider"></div>
+    <div class="film-grid">
+      <div class="film-card">
+        <h4>Clear UV Film</h4>
+        <p>Near-invisible protection. Blocks UV rays without any tint. Best for home windows, office glass, and windshields where optical clarity is the priority.</p>
+        <div class="film-ideal">Ideal for: Home & office glass, windshields</div>
+      </div>
+      <div class="film-card">
+        <h4>Light Tint UV Film</h4>
+        <p>Slight tint with full UV and moderate heat rejection. A popular choice for car side windows and bedroom glass where some privacy is preferred.</p>
+        <div class="film-ideal">Ideal for: Car side windows, bedrooms</div>
+      </div>
+      <div class="film-card">
+        <h4>Medium Tint UV Film</h4>
+        <p>Balanced privacy, heat control, and UV protection. The most popular choice for SUVs, sedans, and home living room windows with high sun exposure.</p>
+        <div class="film-ideal">Ideal for: SUVs, sedans, living rooms</div>
+      </div>
+      <div class="film-card premium">
+        <h4>Ceramic UV Film <span class="film-badge">Premium</span></h4>
+        <p>Nano-ceramic technology. Superior heat rejection, maximum UV blocking, and crystal-clear visibility. Best for luxury vehicles and high-end home installations where performance is non-negotiable.</p>
+        <div class="film-ideal">Ideal for: Luxury cars, premium homes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <div class="section">
+    <div class="section-label">Why DRK Stickers</div>
+    <h2 class="s-title">Why Coimbatore Trusts DRK Stickers</h2>
+    <div class="section-divider"></div>
+    <div class="trust-grid">
+      <div class="trust-item"><div class="trust-check">✦</div><div><h4>Certified Installation Team</h4><p>Trained technicians. Zero bubbles, zero peeling, perfect edges every time.</p></div></div>
+      <div class="trust-item"><div class="trust-check">✦</div><div><h4>Premium Film Brands</h4><p>Only trusted, high-performance UV-blocking films tested for Indian climate conditions.</p></div></div>
+      <div class="trust-item"><div class="trust-check">✦</div><div><h4>Transparent Pricing</h4><p>No hidden charges. Clear quote given before work begins — always.</p></div></div>
+      <div class="trust-item"><div class="trust-check">✦</div><div><h4>All Vehicle & Glass Types</h4><p>Cars, bikes, homes, offices. If it has glass, we can protect it.</p></div></div>
+      <div class="trust-item"><div class="trust-check">✦</div><div><h4>After-Service Support</h4><p>We stand behind our work. Any issue after installation — we fix it.</p></div></div>
+      <div class="trust-item"><div class="trust-check">✦</div><div><h4>Coimbatore's Local Experts</h4><p>We know Coimbatore's sun intensity, humidity, and heat — and choose films that perform best here.</p></div></div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-alt">
+    <div class="section-label">Common questions</div>
+    <h2 class="s-title">Frequently Asked Questions</h2>
+    <div class="section-divider"></div>
+    <div class="faq-list">
+      <details class="faq-item"><summary>Will UV protection film make my windows too dark?</summary><div class="faq-ans">Not necessarily. We offer clear and lightly tinted UV films that block UV rays without noticeably darkening your glass. You choose the tint level that works best for your needs and preferences.</div></details>
+      <details class="faq-item"><summary>How long does the UV protection film last?</summary><div class="faq-ans">With professional installation and basic care, our UV protection films typically last between 5 to 10 years. We use scratch-resistant, fade-proof film materials for maximum longevity in India's climate.</div></details>
+      <details class="faq-item"><summary>Can UV film be applied to already-tinted windows?</summary><div class="faq-ans">In most cases, yes. Our team will assess your existing glass and advise on the best approach — whether that involves removing old film first or applying directly over it.</div></details>
+      <details class="faq-item"><summary>Does UV film affect visibility from inside?</summary><div class="faq-ans">No. Our films are designed for optical clarity. Clear UV films are virtually invisible, and even tinted variants maintain excellent outward visibility from inside the car or room.</div></details>
+      <details class="faq-item"><summary>How long does installation take?</summary><div class="faq-ans">For a standard car, installation takes 2–4 hours. For home or office glass, it depends on the number of windows and total glass area. We provide a time estimate during consultation.</div></details>
+      <details class="faq-item"><summary>Is car window UV film legal in India?</summary><div class="faq-ans">Yes, provided the film meets the Visible Light Transmission (VLT) standards set by the Motor Vehicles Act. Our team ensures all car window films fully comply with legal requirements.</div></details>
+      <details class="faq-item"><summary>Will the film peel or bubble over time?</summary><div class="faq-ans">Not when professionally installed. DRK Stickers uses proper surface preparation and high-quality adhesive films. Peeling and bubbling are signs of poor installation or low-grade film — both of which we avoid entirely.</div></details>
+    </div>
+  </div>
+
+  <!-- LSI TAG CLOUD -->
+  <div class="section">
+    <div class="section-label">Related services</div>
+    <div class="lsi-cloud">
+      <span class="lsi-tag">Anti-fade window film</span>
+      <span class="lsi-tag">Solar heat rejection film</span>
+      <span class="lsi-tag">Window tint UV protection</span>
+      <span class="lsi-tag">UV blocking window film</span>
+      <span class="lsi-tag">Car window UV film</span>
+      <span class="lsi-tag">Sun protection film for home</span>
+      <span class="lsi-tag">Infrared heat rejection film</span>
+      <span class="lsi-tag">Clear UV film for glass</span>
+      <span class="lsi-tag">Fade-resistant window coating</span>
+      <span class="lsi-tag">Ceramic window film</span>
+      <span class="lsi-tag">UV window tint Coimbatore</span>
+      <span class="lsi-tag">Solar protection film office</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to Protect Your Windows?</h2>
+    <p>Stop UV rays before they fade your interiors, overheat your spaces, and damage what matters. DRK Stickers — Coimbatore's most trusted UV protection film installation studio.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary">Book Free Consultation</a>
+      <a href="#" class="btn-outline">WhatsApp Us Now</a>
+      <a href="#" class="btn-outline">Call Us Today</a>
+    </div>
+  </div>
+
+</div>

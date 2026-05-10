@@ -1,0 +1,327 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--steel:#1C2B3A;--steel-mid:#2E4358;--steel-light:#3D5A73;
+--orange:#E8500A;--orange-light:#F5D5C2;
+--silver:#8FA3B1;--silver-light:#DCE6EC;
+--surface:#F4F7F9;--surface2:#E8EEF2;
+--white:#FFFFFF;--text:#1C2B3A;--muted:#4E6475;--border:#C5D3DC;
+}
+body{font-family:'Lato',sans-serif;background:var(--surface);color:var(--text);font-size:15px;line-height:1.7}
+.page{max-width:860px;margin:0 auto;padding:0 0 3rem}
+
+.hero{background:var(--steel);color:#fff;padding:3.5rem 2.5rem 2.5rem;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 40px),repeating-linear-gradient(90deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 40px)}
+.hero-badge{display:inline-block;background:var(--orange);color:#fff;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:3px;margin-bottom:1.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:700;line-height:1.15;margin-bottom:1rem;color:#fff;letter-spacing:0.01em}
+.hero h1 span{color:#E8500A}
+.hero-sub{color:rgba(255,255,255,0.7);font-size:14.5px;max-width:580px;line-height:1.8;margin-bottom:1.8rem}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn-orange{background:var(--orange);color:#fff;padding:11px 24px;border-radius:4px;font-weight:700;font-size:14px;border:none;cursor:pointer;text-decoration:none;display:inline-block;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;text-transform:uppercase}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.85);padding:11px 24px;border-radius:4px;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,0.3);cursor:pointer;text-decoration:none;display:inline-block;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;text-transform:uppercase}
+
+.stats-bar{background:var(--orange);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{padding:1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.2)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:#fff;line-height:1}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.8);margin-top:3px;font-weight:400;letter-spacing:0.03em}
+
+.section{padding:2.5rem 2.5rem}
+.section-alt{background:var(--surface2);padding:2.5rem 2.5rem}
+.section-dark{background:var(--steel);padding:2.5rem 2.5rem}
+.sec-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:0.4rem}
+.sec-label-light{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,80,10,0.8);font-weight:600;margin-bottom:0.4rem}
+.sec-divider{width:36px;height:3px;background:var(--orange);margin:0 0 1rem;border-radius:2px}
+h2.s-title{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:var(--steel);margin-bottom:1rem;line-height:1.2;letter-spacing:0.02em}
+h2.s-title-light{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:#fff;margin-bottom:1rem;line-height:1.2;letter-spacing:0.02em}
+.body-text{color:var(--muted);font-size:14.5px;line-height:1.8;margin-bottom:0.8rem}
+.body-text-light{color:rgba(255,255,255,0.7);font-size:14.5px;line-height:1.8;margin-bottom:0.8rem}
+
+.compare-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:1.2rem}
+.compare-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.2rem}
+.compare-card h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:var(--steel);margin-bottom:0.5rem;letter-spacing:0.03em;display:flex;align-items:center;gap:8px}
+.compare-icon{width:26px;height:26px;border-radius:4px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.compare-card p{font-size:13px;color:var(--muted);line-height:1.65}
+
+.layer-stack{margin-top:1.5rem;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.layer-row{padding:1rem 1.2rem;display:flex;gap:1rem;align-items:flex-start;border-bottom:1px solid var(--border)}
+.layer-row:last-child{border-bottom:none}
+.layer-pill{background:var(--orange);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;padding:3px 10px;border-radius:3px;white-space:nowrap;margin-top:3px;flex-shrink:0;min-width:80px;text-align:center}
+.layer-pill.silver{background:var(--silver-light);color:var(--steel)}
+.layer-pill.dark{background:var(--steel-mid);color:#fff}
+.layer-body h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:var(--steel);margin-bottom:3px;letter-spacing:0.03em}
+.layer-body p{font-size:13px;color:var(--muted);line-height:1.65}
+
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:1.2rem}
+.benefit-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:0 8px 8px 0;padding:1rem 1.2rem;display:flex;gap:0.9rem}
+.benefit-icon{width:38px;height:38px;border-radius:6px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.benefit-card h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;color:var(--steel);margin-bottom:3px;letter-spacing:0.03em}
+.benefit-card p{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+.use-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:1.2rem}
+.use-card{background:var(--steel-mid);border-radius:8px;padding:1.1rem;color:#fff}
+.use-card-icon{font-size:20px;margin-bottom:0.5rem}
+.use-card h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;color:#fff;margin-bottom:4px;letter-spacing:0.03em}
+.use-card p{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6}
+
+.finish-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:1.2rem}
+.finish-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1rem;border-top:3px solid var(--steel-light)}
+.finish-card.premium{border-top:3px solid var(--orange)}
+.finish-card h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;color:var(--steel);margin-bottom:4px;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between}
+.finish-badge{font-size:10px;background:var(--orange);color:#fff;padding:2px 8px;border-radius:3px;font-weight:600;letter-spacing:0.05em}
+.finish-card p{font-size:12.5px;color:var(--muted);line-height:1.6}
+.finish-ideal{font-size:11.5px;color:var(--orange);margin-top:6px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.03em}
+
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:1.2rem}
+.trust-item{display:flex;gap:10px;align-items:flex-start;padding:0.9rem 1rem;background:rgba(255,255,255,0.07);border-radius:6px;border:1px solid rgba(255,255,255,0.1)}
+.trust-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);margin-top:7px;flex-shrink:0}
+.trust-item h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;color:#fff;margin-bottom:2px;letter-spacing:0.03em}
+.trust-item p{font-size:12.5px;color:rgba(255,255,255,0.6);line-height:1.5}
+
+.faq-list{margin-top:1.2rem;display:grid;gap:10px}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.faq-item summary{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:var(--steel);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:0.9rem 1.1rem;letter-spacing:0.02em}
+.faq-item summary::after{content:'+';font-size:20px;color:var(--orange);font-weight:300;flex-shrink:0;margin-left:10px;font-family:'Lato',sans-serif}
+.faq-item[open] summary::after{content:'−'}
+.faq-ans{font-size:13px;color:var(--muted);line-height:1.75;padding:0 1.1rem 0.9rem;border-top:1px solid var(--border)}
+
+.lsi-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
+.lsi-tag{font-size:11.5px;background:var(--surface2);color:var(--steel-mid);padding:4px 12px;border-radius:3px;border:1px solid var(--border);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.04em;font-weight:500}
+
+.cta-section{background:var(--orange);padding:2.5rem;text-align:center}
+.cta-section h2{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:700;color:#fff;margin-bottom:0.6rem;letter-spacing:0.02em}
+.cta-section p{color:rgba(255,255,255,0.85);font-size:14px;margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--orange);padding:11px 24px;border-radius:4px;font-weight:700;font-size:14px;border:none;cursor:pointer;text-decoration:none;display:inline-block;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;text-transform:uppercase}
+.btn-ghost-white{background:transparent;color:#fff;padding:11px 24px;border-radius:4px;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,0.6);cursor:pointer;text-decoration:none;display:inline-block;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;text-transform:uppercase}
+</style>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-grid-bg"></div>
+    <div style="position:relative;z-index:1">
+      <div class="hero-badge">DRK Stickers — Coimbatore</div>
+      <h1>ACP Boards in<br><span>Coimbatore</span> —<br>Premium Aluminium<br>Composite Panels</h1>
+      <p class="hero-sub">From shop fronts and office facades to interior wall cladding and signage — DRK Stickers supplies and installs high-quality ACP boards in Coimbatore that are durable, weather-resistant, and built to impress.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-orange">Get a Free Quote</a>
+        <a href="#" class="btn-ghost">WhatsApp Us Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">15–20</div><div class="stat-label">Years service life</div></div>
+    <div class="stat-item"><div class="stat-num">3–6 kg</div><div class="stat-label">Per sq. metre weight</div></div>
+    <div class="stat-item"><div class="stat-num">FR</div><div class="stat-label">Fire-retardant grade available</div></div>
+    <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Colour & finish options</div></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Understanding the product</div>
+    <h2 class="s-title">What Are ACP Boards (Aluminium Composite Panels)?</h2>
+    <div class="sec-divider"></div>
+    <p class="body-text">ACP boards — short for Aluminium Composite Panels — are modern building and cladding materials made from two thin aluminium sheets bonded to a solid polyethylene or fire-retardant mineral core. The result is a panel that is remarkably strong for its weight, completely flat, and available in virtually any colour or surface finish.</p>
+    <p class="body-text">ACP boards have become the first choice for architects, builders, shop owners, and interior designers across Coimbatore because they combine the clean, premium look of metal with the practical advantages of lightweight installation.</p>
+    <p class="body-text">Whether you need exterior wall cladding for a commercial building, a sleek fascia for your shop signage, or a clean interior accent wall — ACP boards deliver a professional finish at a fraction of the cost of stone, glass, or solid aluminium.</p>
+  </div>
+
+  <div class="section-alt">
+    <div class="sec-label">ACP vs traditional materials</div>
+    <h2 class="s-title">Why ACP Boards Are Preferred Over Traditional Cladding</h2>
+    <div class="sec-divider"></div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h4><div class="compare-icon">🧱</div>vs Cement Plaster</h4>
+        <p>Cement walls crack over time, absorb moisture, and need repainting every few years. ACP panels are weatherproof, never crack, and require zero repainting — one installation lasts a decade or more.</p>
+      </div>
+      <div class="compare-card">
+        <h4><div class="compare-icon">🪟</div>vs Ceramic Tiles</h4>
+        <p>Tiles are heavy, require skilled laying, and break on impact. ACP boards are lightweight, easy to cut, and seamless — no grout lines, no uneven surfaces, lower labour costs.</p>
+      </div>
+      <div class="compare-card">
+        <h4><div class="compare-icon">🎨</div>vs Painted Walls</h4>
+        <p>Painted surfaces fade under UV exposure and monsoon rains. ACP boards are coated with PVDF paint that resists UV, humidity, and colour fading for years — without any retouching.</p>
+      </div>
+      <div class="compare-card">
+        <h4><div class="compare-icon">⚙️</div>vs Solid Metal Panels</h4>
+        <p>Solid metal cladding is expensive and extremely heavy. ACP panels give the same metallic visual finish at a fraction of the weight and cost — ideal for large commercial facades.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Construction</div>
+    <h2 class="s-title">What Makes an ACP Board — Layer by Layer</h2>
+    <div class="sec-divider"></div>
+    <p class="body-text">Understanding the construction of an aluminium composite panel helps you see why it performs so well in both interior and exterior applications.</p>
+    <div class="layer-stack">
+      <div class="layer-row">
+        <div class="layer-pill silver">Top Layer</div>
+        <div class="layer-body"><h4>Aluminium Skin (0.3mm – 0.5mm)</h4><p>High-grade aluminium sheet coated with PVDF or polyester paint. Gives the panel its colour, texture, UV resistance, and scratch protection. This is what you see and touch.</p></div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-pill">Core Layer</div>
+        <div class="layer-body"><h4>PE or Fire-Retardant Mineral Core</h4><p>The middle layer determines rigidity, strength, and fire rating. PE core for interior and low-rise use. FR mineral core for high-rise buildings and fire-safety-critical applications. This is what gives ACP its superior strength-to-weight ratio.</p></div>
+      </div>
+      <div class="layer-row" style="border-bottom:none">
+        <div class="layer-pill dark">Base Layer</div>
+        <div class="layer-body"><h4>Reverse Aluminium Skin</h4><p>A second aluminium sheet on the reverse completes the sandwich structure — preventing warping, maintaining flatness over time, and giving the panel its balanced rigidity.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-alt">
+    <div class="sec-label">What you gain</div>
+    <h2 class="s-title">Benefits of ACP Boards for Your Project</h2>
+    <div class="sec-divider"></div>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon">⚖️</div><div><h4>Lightweight yet strong</h4><p>Just 3–6 kg per square metre — far lighter than tiles or stone — yet rigid and impact-resistant. Easy to transport, handle, and install on any scale.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon">☔</div><div><h4>Fully weatherproof</h4><p>Engineered for Coimbatore's heavy monsoon rains, humidity, and intense summer heat. ACP panels do not rust, absorb moisture, or crack under thermal expansion.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon">🎨</div><div><h4>Limitless design options</h4><p>Gloss, matte, metallic, brushed, wood, stone, mirror finishes — in hundreds of colours. Any design vision, any brand colour — ACP delivers it.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon">🔥</div><div><h4>Fire-retardant grade available</h4><p>FR-grade ACP boards with mineral core slow the spread of fire — meeting building safety standards for commercial, high-rise, and institutional installations.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon">🔧</div><div><h4>Easy to fabricate and install</h4><p>Cut, drilled, bent, and formed using standard tools. Faster installation than tiles or stone means lower labour costs and shorter project timelines.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon">🧹</div><div><h4>Low maintenance</h4><p>The coated surface repels dust and is easy to wipe clean. No repainting, no resealing, no annual maintenance required — ever.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon">💰</div><div><h4>Cost-effective</h4><p>The look of premium stone, metal, or glass at a significantly lower cost per square foot — ideal for large projects without compromising quality or aesthetics.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon">⏳</div><div><h4>15–20 year service life</h4><p>Quality PVDF-coated ACP boards last 15–20 years outdoors without significant colour fade, delamination, or structural deterioration.</p></div></div>
+    </div>
+  </div>
+
+  <div class="section-dark">
+    <div class="sec-label-light">Applications</div>
+    <h2 class="s-title-light">Where Are ACP Boards Used in Coimbatore?</h2>
+    <div class="sec-divider"></div>
+    <div class="use-grid">
+      <div class="use-card">
+        <div class="use-card-icon"><i class="ti ti-building-store" style="font-size:22px;color:#E8500A" aria-hidden="true"></i></div>
+        <h4>Shop fronts & commercial facades</h4>
+        <p>Retail shops, showrooms, and commercial buildings get a sharp, modern look that attracts customers — easy to brand with signage and graphics.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-card-icon"><i class="ti ti-building" style="font-size:22px;color:#E8500A" aria-hidden="true"></i></div>
+        <h4>Office exteriors & corporate buildings</h4>
+        <p>Professional ACP cladding holds up for years without fading — ideal for IT parks, business centres, and corporate campuses.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-card-icon"><i class="ti ti-tool" style="font-size:22px;color:#E8500A" aria-hidden="true"></i></div>
+        <h4>Industrial buildings & warehouses</h4>
+        <p>Cost-effective, weather-resistant cladding for factories and warehouses where large surface areas need to be covered quickly and durably.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-card-icon"><i class="ti ti-home" style="font-size:22px;color:#E8500A" aria-hidden="true"></i></div>
+        <h4>Residential exteriors & balconies</h4>
+        <p>Modern homes and apartments use ACP for exterior walls, balcony railings, window frames, and architectural features.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-card-icon"><i class="ti ti-layout-panel-left" style="font-size:22px;color:#E8500A" aria-hidden="true"></i></div>
+        <h4>Interior cladding & false ceilings</h4>
+        <p>Inside offices, showrooms, hospitals, and hotels for accent walls, reception cladding, partition walls, and modular false ceilings.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-card-icon"><i class="ti ti-sign-left" style="font-size:22px;color:#E8500A" aria-hidden="true"></i></div>
+        <h4>Signage & billboard backings</h4>
+        <p>The industry standard for flat signage panels, shop name boards, flex boards, and backlit sign boxes — strong, flat, and easy to mount.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Our range</div>
+    <h2 class="s-title">ACP Board Finishes Available at DRK Stickers</h2>
+    <div class="sec-divider"></div>
+    <div class="finish-grid">
+      <div class="finish-card">
+        <h4>Solid colour (gloss & matte)</h4>
+        <p>Clean, uniform colour in gloss or matte. Available in hundreds of RAL colour options. Ideal for corporate branding and modern facades.</p>
+        <div class="finish-ideal">Offices · Showrooms · Branding</div>
+      </div>
+      <div class="finish-card">
+        <h4>Metallic & brushed finish</h4>
+        <p>Mimics brushed stainless steel, bronze, copper, or gold. Popular for premium shopfronts and luxury interiors.</p>
+        <div class="finish-ideal">Premium shops · Reception areas</div>
+      </div>
+      <div class="finish-card">
+        <h4>Wooden texture finish</h4>
+        <p>Realistic wood grain prints on ACP. Warmth of wood without the maintenance — perfect for restaurants, cafes, and retail interiors.</p>
+        <div class="finish-ideal">Cafes · Restaurants · Homes</div>
+      </div>
+      <div class="finish-card">
+        <h4>Stone & marble finish</h4>
+        <p>Granite, marble, and sandstone textures on ACP. Premium natural stone feel at a fraction of the weight and cost.</p>
+        <div class="finish-ideal">Hotels · Banks · High-end interiors</div>
+      </div>
+      <div class="finish-card premium">
+        <h4>PVDF coated <span class="finish-badge">Recommended</span></h4>
+        <p>Premium PVDF coating for maximum UV resistance, colour retention, and weatherproofing. Recommended for all exterior applications in Coimbatore's climate.</p>
+        <div class="finish-ideal">All exterior applications</div>
+      </div>
+      <div class="finish-card premium">
+        <h4>FR grade (fire retardant) <span class="finish-badge">Safety</span></h4>
+        <p>Mineral core ACP panels meeting fire safety standards. Essential for high-rise buildings, hospitals, hotels, and public buildings.</p>
+        <div class="finish-ideal">High-rise · Hospitals · Public buildings</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-dark">
+    <div class="sec-label-light">Why choose us</div>
+    <h2 class="s-title-light">Why Coimbatore Chooses DRK Stickers for ACP Boards</h2>
+    <div class="sec-divider"></div>
+    <div class="trust-grid">
+      <div class="trust-item"><div class="trust-dot"></div><div><h4>Quality ACP brands</h4><p>We supply ACP boards from reputed manufacturers with verified PVDF and FR ratings.</p></div></div>
+      <div class="trust-item"><div class="trust-dot"></div><div><h4>End-to-end service</h4><p>Measurement, fabrication, installation, and finishing — we handle the entire project under one roof.</p></div></div>
+      <div class="trust-item"><div class="trust-dot"></div><div><h4>Experienced installation team</h4><p>Installed ACP cladding on shops, offices, factories, and homes across Coimbatore and surrounding districts.</p></div></div>
+      <div class="trust-item"><div class="trust-dot"></div><div><h4>Custom sizes & cuts</h4><p>We fabricate panels to your exact dimensions. No wastage, no ill-fitting panels, no rework.</p></div></div>
+      <div class="trust-item"><div class="trust-dot"></div><div><h4>Transparent pricing</h4><p>Honest quotes with no surprise additions. You know the full cost before work begins — always.</p></div></div>
+      <div class="trust-item"><div class="trust-dot"></div><div><h4>Local climate expertise</h4><p>We understand Coimbatore's weather and building needs — our recommendations are tailored to this climate.</p></div></div>
+    </div>
+  </div>
+
+  <div class="section-alt">
+    <div class="sec-label">Common questions</div>
+    <h2 class="s-title">Frequently Asked Questions About ACP Boards</h2>
+    <div class="sec-divider"></div>
+    <div class="faq-list">
+      <details class="faq-item"><summary>What is the standard thickness of ACP boards?</summary><div class="faq-ans">ACP boards are commonly available in 3mm and 4mm thickness. For exterior cladding and large facades, 4mm panels are recommended. 3mm panels are suitable for interior applications and signage work.</div></details>
+      <details class="faq-item"><summary>What is the difference between PE core and FR core ACP?</summary><div class="faq-ans">PE (Polyethylene) core panels are lighter and more affordable — suitable for interior use and low-rise exteriors. FR (Fire Retardant) core panels have a mineral-filled centre that slows fire spread — required for high-rise and public buildings.</div></details>
+      <details class="faq-item"><summary>Are ACP boards suitable for Coimbatore's climate?</summary><div class="faq-ans">Yes. Quality ACP boards with PVDF coating handle UV exposure, monsoon rain, humidity, and thermal cycling — all highly relevant to Coimbatore's climate. We recommend PVDF-coated panels for all exterior installations here.</div></details>
+      <details class="faq-item"><summary>How long do ACP boards last outdoors?</summary><div class="faq-ans">With quality PVDF-coated ACP panels and proper installation, you can expect 15 to 20 years of service life with minimal colour fade or structural degradation.</div></details>
+      <details class="faq-item"><summary>Can ACP boards be used for shop signage?</summary><div class="faq-ans">Absolutely. ACP boards are the most popular substrate for flat signage, shop name boards, and backlit sign boxes. They are flat, lightweight, easy to cut, and accept vinyl graphics, paint, and printing with ease.</div></details>
+      <details class="faq-item"><summary>Can ACP panels be bent or shaped for custom features?</summary><div class="faq-ans">Yes. ACP boards can be routered and folded to create three-dimensional shapes, curved facades, column cladding, and custom architectural features. Our fabrication team handles all custom shaping in-house.</div></details>
+      <details class="faq-item"><summary>What sizes do ACP boards come in?</summary><div class="faq-ans">Standard ACP sheets are 1220mm × 2440mm (4 feet × 8 feet). We also supply larger sizes up to 1500mm × 5800mm for large facade projects. Custom cuts are available — we fabricate to your exact dimensions.</div></details>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Related keywords</div>
+    <div class="lsi-cloud">
+      <span class="lsi-tag">Aluminium composite panels Coimbatore</span>
+      <span class="lsi-tag">ACP cladding for buildings</span>
+      <span class="lsi-tag">Exterior wall cladding Coimbatore</span>
+      <span class="lsi-tag">ACP sheet suppliers Coimbatore</span>
+      <span class="lsi-tag">PVDF coated ACP panels</span>
+      <span class="lsi-tag">FR grade ACP boards</span>
+      <span class="lsi-tag">ACP board installation</span>
+      <span class="lsi-tag">Shop front ACP cladding</span>
+      <span class="lsi-tag">ACP signage panels</span>
+      <span class="lsi-tag">Commercial building cladding</span>
+      <span class="lsi-tag">ACP interior wall panels</span>
+      <span class="lsi-tag">ACP fabrication Coimbatore</span>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Get ACP Boards Supplied & Installed in Coimbatore</h2>
+    <p>Building a new shopfront, renovating an office facade, or cladding an industrial building — DRK Stickers is your complete ACP board partner. Supply, fabrication, and installation — all under one roof.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-white">Get a Free Quote</a>
+      <a href="#" class="btn-ghost-white">WhatsApp Us</a>
+      <a href="#" class="btn-ghost-white">Call Us Today</a>
+    </div>
+    <p style="color:rgba(255,255,255,0.6);font-size:12px;margin-top:1rem">Serving Coimbatore · Tiruppur · Erode · Salem and surrounding areas</p>
+  </div>
+
+</div>

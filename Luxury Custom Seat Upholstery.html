@@ -1,0 +1,457 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Nunito+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#BA7517;
+  --gold-lt:#FAEEDA;
+  --gold-dk:#633806;
+  --warm:#712B13;
+  --cream:#F1EFE8;
+  --dark:#2C2C2A;
+  --mid:#5F5E5A;
+  --text:var(--color-text-primary);
+  --text-sec:var(--color-text-secondary);
+  --bg:var(--color-background-primary);
+  --bg-sec:var(--color-background-secondary);
+  --bdr:var(--color-border-tertiary);
+  --bdr-sec:var(--color-border-secondary);
+  --r:var(--border-radius-md);
+  --rl:var(--border-radius-lg);
+  --hf:'Playfair Display',serif;
+  --bf:'Nunito Sans',sans-serif;
+}
+.pg{font-family:var(--bf);color:var(--text);max-width:900px;margin:0 auto;padding:0 0 2rem}
+
+.hero{background:var(--dark);border-radius:var(--rl);padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}
+.hero-texture{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(186,117,23,0.04) 0,rgba(186,117,23,0.04) 1px,transparent 0,transparent 50%);background-size:18px 18px}
+.hero-accent{position:absolute;top:0;right:0;width:4px;height:100%;background:var(--gold)}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;border:0.5px solid rgba(186,117,23,0.5);color:#FAC775;font-family:var(--bf);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:30px;margin-bottom:1.2rem}
+.hero h1{font-family:var(--hf);font-size:44px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem;max-width:560px}
+.hero h1 em{color:#FAC775;font-style:normal}
+.hero p{color:#B4B2A9;font-size:14px;line-height:1.8;max-width:500px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-family:var(--bf);font-size:13px;font-weight:600;cursor:pointer;letter-spacing:0.3px}
+.btn-gold:hover{background:var(--gold-dk)}
+.btn-ol{background:transparent;color:#D3D1C7;border:0.5px solid rgba(255,255,255,0.2);padding:11px 22px;border-radius:var(--r);font-family:var(--bf);font-size:13px;cursor:pointer}
+.btn-ol:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);border:0.5px solid var(--bdr);border-radius:var(--r);overflow:hidden;margin:1.5rem 0}
+.stat{background:var(--bg);padding:1rem;text-align:center}
+.sn{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--gold);line-height:1}
+.sl{font-size:11px;color:var(--text-sec);margin-top:4px;line-height:1.4}
+
+.sec{padding:2rem 0}
+.ey{font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.st{font-family:var(--hf);font-size:28px;font-weight:700;color:var(--text);line-height:1.15;margin-bottom:1rem}
+.sb{font-size:14px;color:var(--text-sec);line-height:1.8;max-width:620px;margin-bottom:1.5rem}
+.div{height:0.5px;background:var(--bdr);margin:0.5rem 0 2rem}
+
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pain-card{background:var(--bg-sec);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1.2rem;border-left:3px solid var(--gold);border-radius:0}
+.pain-card h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px}
+.pain-card p{font-size:13px;color:var(--text-sec);line-height:1.7}
+
+.mats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.mat-card{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--rl);overflow:hidden;transition:border-color 0.2s;cursor:default}
+.mat-card:hover{border-color:var(--gold)}
+.mat-swatch{height:52px;position:relative}
+.sw-nappa{background:linear-gradient(135deg,#633806 0%,#BA7517 50%,#FAC775 100%)}
+.sw-art{background:linear-gradient(135deg,#2C2C2A 0%,#444441 50%,#888780 100%)}
+.sw-pu{background:linear-gradient(135deg,#085041 0%,#1D9E75 50%,#9FE1CB 100%)}
+.sw-genuine{background:linear-gradient(135deg,#4A1B0C 0%,#993C1D 50%,#F0997B 100%)}
+.sw-stallion{background:linear-gradient(135deg,#26215C 0%,#534AB7 50%,#AFA9EC 100%)}
+.sw-fabric{background:linear-gradient(135deg,#042C53 0%,#185FA5 50%,#85B7EB 100%)}
+.mat-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.5);color:#fff;font-size:10px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase;padding:2px 7px;border-radius:20px}
+.mat-body{padding:0.9rem}
+.mat-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.mat-desc{font-size:12px;color:var(--text-sec);line-height:1.6}
+
+.svcs{display:flex;flex-direction:column;gap:0}
+.svc-row{display:grid;grid-template-columns:52px 1fr;gap:1rem;padding:1.2rem 0;border-bottom:0.5px solid var(--bdr);align-items:start}
+.svc-row:last-child{border-bottom:none}
+.svc-n{font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);line-height:1;padding-top:3px}
+.svc-tag{display:inline-block;background:var(--gold-lt);color:var(--gold-dk);font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-bottom:6px}
+.svc-row h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:5px}
+.svc-row p{font-size:13px;color:var(--text-sec);line-height:1.7}
+.svc-brands{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.bp{background:var(--bg);border:0.5px solid var(--bdr-sec);color:var(--text-sec);font-size:11px;padding:2px 9px;border-radius:20px}
+
+.brands-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.brand-c{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem;text-align:center;transition:border-color 0.2s;cursor:default}
+.brand-c:hover{border-color:var(--gold)}
+.bi{width:42px;height:42px;border-radius:50%;background:var(--gold-lt);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:var(--hf);font-size:14px;font-weight:700;color:var(--gold-dk)}
+.bn{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.bd{font-size:11px;color:var(--text-sec);line-height:1.5}
+
+.design-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.design-c{background:var(--bg-sec);border:0.5px solid var(--bdr);border-radius:var(--r);padding:1rem}
+.design-dot{width:28px;height:28px;border-radius:var(--r);background:var(--gold-lt);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.design-dot svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.design-c h4{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.design-c p{font-size:12px;color:var(--text-sec);line-height:1.6}
+
+.steps-c{display:flex;flex-direction:column;gap:0}
+.step-r{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding:1.2rem 0;border-bottom:0.5px solid var(--bdr)}
+.step-r:last-child{border-bottom:none}
+.step-circle{width:36px;height:36px;border-radius:50%;background:var(--dark);border:1.5px solid var(--gold);color:var(--gold);font-family:var(--hf);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-r h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.step-r p{font-size:13px;color:var(--text-sec);line-height:1.7}
+
+.who-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.who-c{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--r);padding:1rem}
+.who-bar{height:2px;background:var(--gold);border-radius:2px;margin-bottom:10px}
+.who-c h4{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.who-c p{font-size:12px;color:var(--text-sec);line-height:1.6}
+
+.ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ben-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--bg-sec);border-radius:var(--r);border:0.5px solid var(--bdr)}
+.ben-icon{width:16px;height:16px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ben-icon svg{width:8px;height:8px;stroke:#fff;fill:none;stroke-width:2.5}
+.ben-item p{font-size:13px;color:var(--text-sec);line-height:1.6}
+.ben-item strong{color:var(--text);font-weight:600}
+
+.faq-c{border-top:0.5px solid var(--bdr)}
+.faq-i{border-bottom:0.5px solid var(--bdr)}
+.faq-q{font-size:14px;font-weight:500;color:var(--text);padding:1rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-arrow{width:22px;height:22px;border-radius:50%;background:var(--gold-lt);border:0.5px solid rgba(186,117,23,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:15px;line-height:1;font-family:var(--bf)}
+.faq-a{font-size:13px;color:var(--text-sec);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding-bottom 0.3s}
+.faq-a.open{max-height:200px;padding-bottom:1rem}
+
+.why-us-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wu-c{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--r);padding:1rem;text-align:center}
+.wu-num{font-family:var(--hf);font-size:26px;font-weight:700;color:var(--gold);margin-bottom:4px}
+.wu-c h4{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.wu-c p{font-size:11px;color:var(--text-sec);line-height:1.5}
+
+.lsi-row{display:flex;flex-wrap:wrap;gap:6px;padding:1rem;background:var(--bg-sec);border-radius:var(--r);border:0.5px solid var(--bdr);margin:1.5rem 0 0}
+.lsi-l{font-size:11px;font-weight:600;color:var(--text-sec);align-self:center;margin-right:4px}
+.lsi-p{font-size:11px;color:var(--text-sec);padding:3px 10px;background:var(--bg);border:0.5px solid var(--bdr);border-radius:20px}
+
+.cta-box{background:var(--dark);border-radius:var(--rl);padding:2.5rem 2rem;position:relative;overflow:hidden}
+.cta-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(186,117,23,0.05) 0,rgba(186,117,23,0.05) 1px,transparent 0,transparent 50%);background-size:14px 14px}
+.cta-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold)}
+.cta-box h2{font-family:var(--hf);font-size:30px;font-weight:700;color:#fff;margin-bottom:0.75rem;max-width:500px;position:relative}
+.cta-box p{color:#888780;font-size:14px;margin-bottom:1rem;position:relative}
+.cta-loc{color:#FAC775;font-size:13px;margin-bottom:1.5rem;display:block;position:relative}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+.btn-green{background:#0F6E56;color:#9FE1CB;border:none;padding:11px 22px;border-radius:var(--r);font-family:var(--bf);font-size:13px;font-weight:600;cursor:pointer}
+.btn-green:hover{background:#085041}
+</style>
+
+<div class="pg">
+
+<div class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-tag">DRK Stickers — Coimbatore</div>
+  <h1>Luxury <em>Leather Seat Covers</em> for Cars in Coimbatore</h1>
+  <p>Your car's interior deserves the same attention as its exterior. We craft premium Nappa leather, art leather, and genuine leather seat upholstery — tailored precisely to your vehicle, your taste, and your budget.</p>
+  <div class="hero-btns">
+    <button class="btn-gold" onclick="sendPrompt('I want a free seat upholstery consultation at DRK Stickers Coimbatore')">Book Free Consultation ↗</button>
+    <button class="btn-ol" onclick="sendPrompt('What leather seat cover materials does DRK Stickers offer?')">Explore Materials</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="sn">7+</div><div class="sl">Premium brands stocked</div></div>
+  <div class="stat"><div class="sn">6</div><div class="sl">Material types available</div></div>
+  <div class="stat"><div class="sn">3D</div><div class="sl">Bucket-fit precision</div></div>
+  <div class="stat"><div class="sn">All</div><div class="sl">Car makes & models</div></div>
+</div>
+
+<div class="sec">
+  <div class="ey">The problem</div>
+  <div class="st">Why factory seats fall short</div>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <h4>Stains & fading fast</h4>
+      <p>Factory cloth absorbs sweat, stains easily, and fades under Coimbatore's intense sun — looking tired within just a few years of daily use.</p>
+    </div>
+    <div class="pain-card">
+      <h4>Poor comfort support</h4>
+      <p>Stock seats offer minimal lumbar and thigh support. Upgraded upholstery with foam padding transforms long drives on Coimbatore's highways.</p>
+    </div>
+    <div class="pain-card">
+      <h4>Lost resale value</h4>
+      <p>Worn or damaged seat fabric significantly reduces your car's resale price. Quality seat covers protect the original upholstery underneath.</p>
+    </div>
+    <div class="pain-card">
+      <h4>Heat discomfort</h4>
+      <p>Dark factory seats absorb heat heavily in Coimbatore's climate. Breathable and ventilated leather options regulate cabin temperature far better.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Materials</div>
+  <div class="st">Choose your perfect leather</div>
+  <p class="sb">We offer six premium material options — each suited to a different lifestyle, budget, and vehicle type. All available in custom colours and stitch patterns.</p>
+  <div class="mats">
+    <div class="mat-card">
+      <div class="mat-swatch sw-nappa"><div class="mat-badge">Premium</div></div>
+      <div class="mat-body"><div class="mat-name">Nappa leather</div><div class="mat-desc">Ultra-soft, smooth-grained. Adapts to body temperature — ideal for Coimbatore's heat. The gold standard of car upholstery.</div></div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-swatch sw-art"><div class="mat-badge">Popular</div></div>
+      <div class="mat-body"><div class="mat-name">Art leather</div><div class="mat-desc">Premium leatherette that mimics genuine leather. Crack-resistant, easy to clean, and available in the widest colour range.</div></div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-swatch sw-pu"><div class="mat-badge">Waterproof</div></div>
+      <div class="mat-body"><div class="mat-name">PU leather</div><div class="mat-desc">Soft, waterproof, and highly durable. Ideal for families, rideshare operators, and commercial vehicles.</div></div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-swatch sw-genuine"><div class="mat-badge">Luxury</div></div>
+      <div class="mat-body"><div class="mat-name">Genuine leather</div><div class="mat-desc">Real top-grain leather for the authentic luxury experience. Ages beautifully — supple, rich, and deeply satisfying.</div></div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-swatch sw-stallion"><div class="mat-badge">Heavy-duty</div></div>
+      <div class="mat-body"><div class="mat-name">Stallion leatherette</div><div class="mat-desc">Premium-grade, thick leatherette with superior scratch resistance. Built for SUVs and vehicles that see heavy daily use.</div></div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-swatch sw-fabric"><div class="mat-badge">Breathable</div></div>
+      <div class="mat-body"><div class="mat-name">Breathable fabric</div><div class="mat-desc">Ventilated mesh keeps you cool in Coimbatore's summers. Available standalone or combined with leather accents.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Our services</div>
+  <div class="st">Seat upholstery services we offer</div>
+  <div class="svcs">
+    <div class="svc-row">
+      <div class="svc-n">01</div>
+      <div>
+        <div class="svc-tag">Complete transformation</div>
+        <h3>Full interior seat replacement</h3>
+        <p>Complete re-upholstery of all seats — front and rear — in your chosen material. Custom-cut and stitched to match your factory seat dimensions perfectly for a showroom finish.</p>
+        <div class="svc-brands"><span class="bp">Nappa leather</span><span class="bp">Art leather</span><span class="bp">Genuine leather</span></div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-n">02</div>
+      <div>
+        <div class="svc-tag">Most popular</div>
+        <h3>3D bucket-fit seat covers</h3>
+        <p>Model-specific, precision-fitted covers that hug every curve of your seat. No slipping, no bunching, no loose edges. Available in Nappa, art leather, and stallion leatherette.</p>
+        <div class="svc-brands"><span class="bp">Elegant</span><span class="bp">Autoform</span><span class="bp">Stanley</span><span class="bp">Neodrift</span></div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-n">03</div>
+      <div>
+        <div class="svc-tag">Bespoke</div>
+        <h3>Custom colour & stitch design</h3>
+        <p>Dual-tone interiors, contrast stitching, diamond-quilted patterns, perforation design, and headrest embroidery. Your car interior, your design — completely unique to you.</p>
+        <div class="svc-brands"><span class="bp">All materials</span></div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-n">04</div>
+      <div>
+        <div class="svc-tag">Safety-first</div>
+        <h3>Airbag-compatible upholstery</h3>
+        <p>All seat covers stitched with airbag-compatible seams — allowing side airbags to deploy fully and safely without obstruction. Safety is never compromised at DRK Stickers.</p>
+        <div class="svc-brands"><span class="bp">Elegant</span><span class="bp">Neodrift</span><span class="bp">Panther</span></div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-n">05</div>
+      <div>
+        <div class="svc-tag">Comfort upgrade</div>
+        <h3>Seat padding & foam restoration</h3>
+        <p>Collapsed or lumpy seat foam restored with high-density memory foam padding for improved lumbar and thigh support — ideal for older vehicles where original foam has compressed.</p>
+        <div class="svc-brands"><span class="bp">All car types</span></div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-n">06</div>
+      <div>
+        <div class="svc-tag">Fleet & commercial</div>
+        <h3>Commercial & fleet seating</h3>
+        <p>Durable, easy-clean PU leather covers for taxis, rideshare vehicles, school vans, and company fleets. Built to withstand heavy daily use while looking consistently professional.</p>
+        <div class="svc-brands"><span class="bp">Ovion</span><span class="bp">Gsports</span><span class="bp">Panther</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Brands we carry</div>
+  <div class="st">Trusted brands at DRK Stickers</div>
+  <p class="sb">Every brand we stock is chosen for genuine quality, precise fitment, and products that stand up to Indian road conditions and Coimbatore's climate.</p>
+  <div class="brands-grid">
+    <div class="brand-c"><div class="bi">AF</div><div class="bn">Autoform</div><div class="bd">OEM-quality fitment and high-grade leatherette.</div></div>
+    <div class="brand-c"><div class="bi">EL</div><div class="bn">Elegant</div><div class="bd">Nappa Grande — 3D bucket fit, 2-year warranty.</div></div>
+    <div class="brand-c"><div class="bi">PAN</div><div class="bn">Panther</div><div class="bd">Thick, crack-resistant leatherette for extreme heat.</div></div>
+    <div class="brand-c"><div class="bi">STN</div><div class="bn">Stanley</div><div class="bd">Clean, modern art leather and fabric designs.</div></div>
+    <div class="brand-c"><div class="bi">OVI</div><div class="bn">Ovion</div><div class="bd">Ventilated covers suited to Indian climate.</div></div>
+    <div class="brand-c"><div class="bi">GS</div><div class="bn">Gsports</div><div class="bd">Sporty, racing-inspired stitch patterns.</div></div>
+    <div class="brand-c"><div class="bi">ND</div><div class="bn">Neodrift</div><div class="bd">Precision-tailored, airbag-safe premium Nappa.</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Customisation</div>
+  <div class="st">Design options for your interior</div>
+  <div class="design-grid">
+    <div class="design-c">
+      <div class="design-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/></svg></div>
+      <h4>Colour combinations</h4>
+      <p>Single tone, dual tone, or tri-colour interiors in black, beige, tan, coffee, red, grey, white, and more — mixed to your preference.</p>
+    </div>
+    <div class="design-c">
+      <div class="design-dot"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h8"/></svg></div>
+      <h4>Stitch patterns</h4>
+      <p>Straight stitch, diamond quilting, French seam, contrast colour stitching — each adding a unique texture and character to your seats.</p>
+    </div>
+    <div class="design-c">
+      <div class="design-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="6" cy="8" r="1"/><circle cx="18" cy="8" r="1"/><circle cx="6" cy="16" r="1"/><circle cx="18" cy="16" r="1"/></svg></div>
+      <h4>Perforation design</h4>
+      <p>Laser or pin-perforated panels add ventilation and visual texture to Nappa and art leather covers — a premium detail for hot climates.</p>
+    </div>
+    <div class="design-c">
+      <div class="design-dot"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <h4>Embroidery & branding</h4>
+      <p>Custom logos, initials, or patterns embroidered on headrests or seat backs — a truly personal finishing touch for your car's interior.</p>
+    </div>
+    <div class="design-c">
+      <div class="design-dot"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+      <h4>Matching accessories</h4>
+      <p>We coordinate seat cover design with door panel upholstery, dashboard trim, and steering wheel covers for a unified interior theme.</p>
+    </div>
+    <div class="design-c">
+      <div class="design-dot"><svg viewBox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343"/></svg></div>
+      <h4>Full cabin makeover</h4>
+      <p>Front seats, rear bench, headrests, and armrests — all re-upholstered in your chosen material and design for a complete, cohesive transformation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">How it works</div>
+  <div class="st">Our installation process</div>
+  <div class="steps-c">
+    <div class="step-r"><div class="step-circle">1</div><div><h4>Consultation & design</h4><p>Tell us your car model, material preference, colours, and budget. We show you design options with material samples before anything is confirmed.</p></div></div>
+    <div class="step-r"><div class="step-circle">2</div><div><h4>Measurement & pattern making</h4><p>Precise measurements of your existing seats. A custom pattern is made to your car's exact seat dimensions — ensuring a perfect 3D bucket fit with no wrinkles or loose panels.</p></div></div>
+    <div class="step-r"><div class="step-circle">3</div><div><h4>Material cutting</h4><p>Your chosen material — Nappa, art leather, PU, or genuine leather — is cut using the pattern. Every panel shaped for a smooth, wrinkle-free installation.</p></div></div>
+    <div class="step-r"><div class="step-circle">4</div><div><h4>Expert stitching</h4><p>Our craftsmen stitch every panel with airbag-compatible thread, reinforced edges, and your chosen stitch pattern — quality-checked at every seam before fitting.</p></div></div>
+    <div class="step-r"><div class="step-circle">5</div><div><h4>Fitting & installation</h4><p>Covers are fitted precisely over your existing seat frames. Correct tension, perfect alignment, and zero bunching checked across all seats and headrests.</p></div></div>
+    <div class="step-r"><div class="step-circle">6</div><div><h4>Final inspection & handover</h4><p>Full interior quality check before your car is returned. We walk you through care tips so your new seat covers look great for years to come.</p></div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Who is this for?</div>
+  <div class="st">Built for every kind of car owner</div>
+  <div class="who-grid">
+    <div class="who-c"><div class="who-bar"></div><h4>New car owners</h4><p>Protect factory seats from day one — before stains, fading, and wear begin.</p></div>
+    <div class="who-c"><div class="who-bar"></div><h4>Used car buyers</h4><p>Refresh tired, worn seats and give your pre-owned car a fresh interior identity.</p></div>
+    <div class="who-c"><div class="who-bar"></div><h4>Family car owners</h4><p>Waterproof PU covers that handle spills, crumbs, and daily family life easily.</p></div>
+    <div class="who-c"><div class="who-bar"></div><h4>Car enthusiasts</h4><p>Interior that matches your car's upgraded exterior — in style and finish.</p></div>
+    <div class="who-c"><div class="who-bar"></div><h4>Long-distance drivers</h4><p>Ergonomic foam padding that makes Coimbatore–Bangalore runs genuinely comfortable.</p></div>
+    <div class="who-c"><div class="who-bar"></div><h4>Rideshare operators</h4><p>Durable, easy-clean interiors that look professional and impress every passenger.</p></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Benefits</div>
+  <div class="st">Why choose leather seat covers</div>
+  <div class="ben-grid">
+    <div class="ben-item"><div class="ben-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Protects original seats</strong> from stains, fading, and daily wear — preserving resale value</p></div>
+    <div class="ben-item"><div class="ben-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Easy to clean</strong> — a simple wipe removes most spills and dust instantly</p></div>
+    <div class="ben-item"><div class="ben-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Improved comfort</strong> with foam padding, ergonomic support, and softer materials</p></div>
+    <div class="ben-item"><div class="ben-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Temperature regulation</strong> — breathable options suited to Coimbatore's heat</p></div>
+    <div class="ben-item"><div class="ben-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Airbag-compatible</strong> — all covers stitched for safe side airbag deployment</p></div>
+    <div class="ben-item"><div class="ben-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Unlimited design options</strong> — colours, stitching, patterns, and embroidery</p></div>
+    <div class="ben-item"><div class="ben-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Perfect 3D bucket fit</strong> — no slipping, bunching, or loose edges ever</p></div>
+    <div class="ben-item"><div class="ben-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><p><strong>Lasts 3–7 years</strong> with proper care using Autoform, Elegant, and Neodrift materials</p></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Questions answered</div>
+  <div class="st">Frequently asked questions</div>
+  <div class="faq-c" id="faq">
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How much do leather seat covers cost in Coimbatore?<div class="faq-arrow">+</div></div><div class="faq-a">Entry-level art leather or PU seat covers start from ₹3,500–₹6,000 per full set. Mid-range Nappa leather covers range from ₹7,000–₹15,000. Full genuine leather or custom-stitched upholstery starts from ₹18,000 upward depending on vehicle and design complexity. Contact DRK Stickers for a free, itemised quote.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Will seat covers affect my car's side airbags?<div class="faq-arrow">+</div></div><div class="faq-a">No. All seat covers at DRK Stickers are stitched with airbag-compatible seams that allow side airbags to deploy fully and safely. Your factory safety systems are never compromised — this is a standard we apply to every installation.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How long does seat cover installation take?<div class="faq-arrow">+</div></div><div class="faq-a">A standard full-set seat cover installation (front and rear) takes 4–6 hours. Full re-upholstery with foam restoration and custom stitching takes 1–2 days. We'll give you an exact timeline at consultation based on your chosen service.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Can you install covers on any car model?<div class="faq-arrow">+</div></div><div class="faq-a">Yes — we work on all makes and models including Maruti Suzuki, Hyundai, Tata, Honda, Toyota, Kia, MG, Mahindra, Volkswagen, and more. Both compact hatchbacks and large SUVs are welcome at DRK Stickers.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">How do I care for my leather seat covers?<div class="faq-arrow">+</div></div><div class="faq-a">Wipe with a slightly damp microfibre cloth for daily cleaning. Avoid harsh chemical cleaners or direct steam. For Nappa or genuine leather, use a leather conditioner every 3–6 months to keep the material supple and prevent cracking — especially important in Coimbatore's dry summer months.</div></div>
+    <div class="faq-i"><div class="faq-q" onclick="tf(this)">Can I choose my own colour and stitch pattern?<div class="faq-arrow">+</div></div><div class="faq-a">Absolutely. DRK Stickers offers complete customisation — dual-tone colours, contrast stitching, diamond quilting, perforation patterns, and headrest embroidery. We work with you to create a design unique to your car before a single stitch is made.</div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<div class="sec">
+  <div class="ey">Why DRK Stickers</div>
+  <div class="st">Coimbatore's trusted upholstery studio</div>
+  <div class="why-us-g">
+    <div class="wu-c"><div class="wu-num">7+</div><h4>Premium brands</h4><p>Autoform, Elegant, Panther, Stanley, Ovion, Gsports, and Neodrift — genuine products, full warranty.</p></div>
+    <div class="wu-c"><div class="wu-num">3D</div><h4>Precision fit</h4><p>Model-specific patterns for a factory-quality, wrinkle-free finish on every seat.</p></div>
+    <div class="wu-c"><div class="wu-num">Safe</div><h4>Airbag-compatible</h4><p>Every installation stitched to ensure your factory side airbags deploy without obstruction.</p></div>
+    <div class="wu-c"><div class="wu-num">Free</div><h4>Consultation</h4><p>No commitment — we discuss materials, designs, and pricing before any work begins.</p></div>
+    <div class="wu-c"><div class="wu-num">All</div><h4>Car types</h4><p>Hatchbacks to luxury SUVs — all makes, all models, no exclusions at DRK Stickers.</p></div>
+    <div class="wu-c"><div class="wu-num">CBE</div><h4>Local & trusted</h4><p>Sidhapudur, Coimbatore — accessible, accountable, with after-installation support.</p></div>
+  </div>
+</div>
+
+<div class="lsi-row">
+  <span class="lsi-l">Related:</span>
+  <span class="lsi-p">custom car seat covers</span>
+  <span class="lsi-p">Nappa leather seat covers</span>
+  <span class="lsi-p">PU leather car seats</span>
+  <span class="lsi-p">art leather seat cover</span>
+  <span class="lsi-p">3D bucket fit seat cover</span>
+  <span class="lsi-p">car interior upholstery Coimbatore</span>
+  <span class="lsi-p">airbag compatible seat covers</span>
+  <span class="lsi-p">car seat cover price Coimbatore</span>
+  <span class="lsi-p">luxury car seat covers</span>
+  <span class="lsi-p">custom fit car seat covers</span>
+  <span class="lsi-p">car interior customisation Coimbatore</span>
+  <span class="lsi-p">seat cover installation</span>
+</div>
+
+<div class="sec">
+  <div class="cta-box">
+    <div class="cta-pattern"></div>
+    <div class="cta-line"></div>
+    <h2>Ready to transform your car's interior?</h2>
+    <p>Stained factory seats or a luxury upgrade you've been planning — DRK Stickers has the materials, brands, and craftsmanship to give your car the interior it deserves.</p>
+    <span class="cta-loc">No. 102, Sidhapudur, Coimbatore — 641044</span>
+    <div class="cta-btns">
+      <button class="btn-gold" onclick="sendPrompt('Book a free leather seat cover consultation at DRK Stickers Coimbatore')">Book Free Consultation ↗</button>
+      <button class="btn-green" onclick="sendPrompt('WhatsApp contact for DRK Stickers seat upholstery')">WhatsApp Us ↗</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function tf(el){
+  const a=el.nextElementSibling;
+  const arrow=el.querySelector('.faq-arrow');
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-arrow').forEach(x=>x.textContent='+');
+  if(!isOpen){a.classList.add('open');arrow.textContent='−'}
+}
+</script>

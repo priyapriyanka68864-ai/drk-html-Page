@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Mulish:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#08100C;--ink2:#0D1A14;--ink3:#132010;--ink4:#1A2E1E;
+  --green:#1B5E20;--green2:#2E7D32;--green3:#43A047;--green-light:#E8F5E9;--green-accent:#66BB6A;
+  --teal:#00695C;--teal2:#26A69A;
+  --amber:#F57F17;--amber2:#FFB300;
+  --red:#C62828;--red2:#EF5350;
+  --border:#E0E8E0;--border-d:#1A2E1E;
+  --light:#F4F8F4;--white:#fff;--muted:#5A6B5A;--muted-d:#4A6050;
+  --font-h:'Syne',sans-serif;--font-b:'Mulish',sans-serif;
+}
+body{font-family:var(--font-b);background:var(--light);color:var(--ink);font-size:15px;line-height:1.7;margin:0}
+.page{max-width:860px;margin:0 auto}
+
+/* HERO */
+.hero{background:var(--ink2);padding:54px 40px 50px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+.hero-sun{position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(255,179,0,.07) 0%,rgba(102,187,106,.04) 40%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(102,187,106,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(102,187,106,.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.hero-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green-accent) 0%,rgba(102,187,106,.3) 60%,transparent 100%)}
+.hero-inner{position:relative;z-index:1}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--green-accent);text-transform:uppercase;font-weight:700;margin-bottom:16px;font-family:var(--font-b)}
+.hero-h1{font-family:var(--font-h);font-size:40px;line-height:.95;color:#fff;font-weight:800;margin-bottom:14px}
+.hero-h1 span{color:var(--green-accent)}
+.hero-h2{font-size:13px;color:#4a6050;line-height:1.75;margin-bottom:22px;font-weight:300}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.hbadge{display:flex;align-items:center;gap:6px;background:rgba(102,187,106,.05);border:1px solid rgba(102,187,106,.15);padding:6px 12px;border-radius:3px;font-size:11px;color:#aaa;font-weight:500}
+.hbdot{width:5px;height:5px;border-radius:50%;background:var(--green-accent);flex-shrink:0}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-green{background:var(--green-accent);color:var(--ink);padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-b)}
+.btn-ghost{background:transparent;color:#667;padding:11px 22px;border:1px solid var(--border-d);border-radius:4px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-b)}
+.btn-red{background:var(--red);color:#fff;padding:11px 22px;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-b)}
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px}
+.hero-stat{background:rgba(255,255,255,.03);border:1px solid rgba(102,187,106,.12);border-radius:6px;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.hstat-icon{width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:17px;background:rgba(102,187,106,.08)}
+.hstat-num{font-family:var(--font-h);font-size:24px;color:#fff;line-height:1;font-weight:800}
+.hstat-lbl{font-size:11px;color:#3a5040;margin-top:1px}
+
+/* SECTIONS */
+.sec{padding:48px 40px}
+.sec-w{background:#fff}
+.sec-d{background:var(--ink2)}
+.sec-g{background:var(--light)}
+.sec-ink3{background:var(--ink3)}
+.lbl{font-size:10px;letter-spacing:3px;color:var(--green2);text-transform:uppercase;font-weight:700;margin-bottom:10px;font-family:var(--font-b)}
+.lbl-d{color:var(--green-accent)}
+.lbl-a{color:var(--amber)}
+.h2{font-family:var(--font-h);font-size:34px;line-height:1.02;color:var(--ink);margin-bottom:18px;font-weight:800}
+.h2-d{color:#fff}
+.h2 span{color:var(--red2)}
+.h2-d span{color:var(--green-accent)}
+.body-p{font-size:14px;color:var(--muted);line-height:1.82;margin-bottom:14px}
+.body-p:last-child{margin-bottom:0}
+.div{height:1px;background:var(--border)}
+
+/* LSI STRIP */
+.lsi-strip{padding:13px 40px;background:var(--ink);display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--border-d)}
+.lsi-lbl{font-size:10px;color:#2a3a2a;text-transform:uppercase;letter-spacing:2px;font-family:var(--font-b);flex-shrink:0}
+.lsi-tag{font-size:10px;background:rgba(102,187,106,.06);border:1px solid rgba(102,187,106,.12);color:#3a5040;padding:3px 10px;border-radius:20px;font-family:var(--font-b)}
+
+/* WHAT IS — 2col */
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px;align-items:start}
+.how-box{background:var(--ink2);border-radius:6px;padding:22px}
+.how-title{font-size:11px;letter-spacing:2px;color:#3a5040;text-transform:uppercase;margin-bottom:14px;font-family:var(--font-b)}
+.how-row{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.how-row:last-child{border-bottom:none;padding-bottom:0}
+.how-icon{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.how-title2{font-size:12px;font-weight:700;color:#ccc;margin-bottom:4px}
+.how-p{font-size:12px;color:#3a5040;line-height:1.55}
+.science-note{background:var(--green-light);border:1px solid rgba(46,125,50,.2);border-radius:6px;padding:16px;margin-top:12px}
+.sci-p{font-size:13px;color:var(--green2);line-height:1.65}
+
+/* WHO NEEDS IT — space types */
+.spaces-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.space-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;border-left:3px solid transparent;transition:all .2s}
+.space-card:hover{border-left-color:var(--green3);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.space-icon{font-size:24px;margin-bottom:10px}
+.space-h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.space-p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* FILM TYPES — interactive tabs */
+.film-tabs{display:flex;gap:0;margin-top:22px;border-radius:6px 6px 0 0;overflow:hidden;border:1px solid var(--border);border-bottom:none}
+.film-tab{flex:1;padding:13px 10px;text-align:center;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-b);background:#fff;color:#999;border-right:1px solid var(--border);transition:all .2s;letter-spacing:.3px}
+.film-tab:last-child{border-right:none}
+.film-tab.active{background:var(--green3);color:#fff}
+.film-panels{border:1px solid var(--border);border-radius:0 0 6px 6px;overflow:hidden}
+.film-panel{display:none;background:#fff;padding:28px}
+.film-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.fp-left h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;font-family:var(--font-h)}
+.fp-left p{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:12px}
+.fp-tag{display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;margin-bottom:12px;font-family:var(--font-b);background:var(--green-light);color:var(--green2)}
+.fp-right{background:var(--light);border-radius:6px;padding:18px}
+.fp-stat{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.fp-stat:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.fp-stat-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#999;margin-bottom:4px;font-family:var(--font-b)}
+.fp-stat-val{font-size:14px;font-weight:600;color:var(--ink)}
+.fp-best{font-size:12px;color:var(--green2);font-weight:600;margin-top:4px}
+.fp-note{background:var(--amber-soft,#FFF8E1);border:1px solid rgba(245,127,23,.2);border-radius:4px;padding:10px 14px;margin-top:10px;font-size:12px;color:#8a5000;line-height:1.55}
+
+/* BENEFITS */
+.ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.ben-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:6px;padding:20px;display:flex;gap:14px;transition:border-color .2s}
+.ben-card:hover{border-color:rgba(102,187,106,.2)}
+.ben-icon-box{width:42px;height:42px;background:rgba(102,187,106,.08);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.ben-h3{font-size:13px;font-weight:700;color:#e0e0e0;margin-bottom:5px}
+.ben-p{font-size:12px;color:#3a5040;line-height:1.65}
+
+/* WHY COIMBATORE */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.why-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px}
+.why-icon{font-size:22px;margin-bottom:8px}
+.why-h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.why-p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* PROCESS */
+.proc-steps{margin-top:22px}
+.proc-step{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.proc-step:last-child{border-bottom:none}
+.proc-left{flex-shrink:0;display:flex;flex-direction:column;align-items:center;width:44px}
+.proc-num{font-family:var(--font-h);font-size:32px;color:var(--green-accent);line-height:1;font-weight:800}
+.proc-vline{width:1px;flex:1;background:rgba(102,187,106,.08);min-height:16px;margin-top:4px}
+.proc-step:last-child .proc-vline{display:none}
+.proc-h3{font-size:14px;font-weight:600;color:#e0e0e0;margin-bottom:5px}
+.proc-p{font-size:13px;color:#3a5040;line-height:1.65}
+.proc-meta{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.pm-box{background:rgba(102,187,106,.06);border:1px solid rgba(102,187,106,.15);padding:10px 16px;border-radius:4px;text-align:center}
+.pm-lbl{font-size:10px;color:#2a4030;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+.pm-val{font-size:14px;font-weight:700;color:var(--green-accent)}
+
+/* GALLERY */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.gal-item{aspect-ratio:4/3;background:#e8f0e8;border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid var(--border)}
+.gal-item::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:#fff;font-size:10px;padding:6px 10px;text-align:center;font-family:var(--font-b)}
+.gal-icon svg{width:36px;height:36px;fill:#9ab89a;opacity:.6}
+
+/* FAQ */
+.faq-wrap{margin-top:22px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.faq-item{background:#fff;border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;text-align:left;padding:15px 20px;font-size:14px;font-weight:500;color:var(--ink);border:none;background:none;cursor:pointer;font-family:var(--font-b);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-arr{color:var(--green2);font-size:13px;transition:transform .2s;flex-shrink:0}
+.faq-a{display:none;padding:0 20px 15px;font-size:13px;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-item.open .faq-q{color:var(--green2)}
+
+/* CTA */
+.cta{background:var(--ink);padding:48px 40px}
+.cta-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-bottom:28px}
+.cta-h2{font-family:var(--font-h);font-size:28px;color:#fff;line-height:1.05;margin-bottom:10px;font-weight:800}
+.cta-h2 span{color:var(--green-accent)}
+.cta-p{font-size:13px;color:#3a5040;line-height:1.7;max-width:380px}
+.cta-btns{display:flex;flex-direction:column;gap:10px}
+.cta-info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid var(--border-d);padding-top:24px}
+.ci-lbl{font-size:10px;color:#1a2e1e;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.ci-val{font-size:13px;color:#3a5040}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-sun"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-line"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Architectural Sun Control Films — DRK Stickers Coimbatore</div>
+    <div class="hero-h1">Sun Control Film<br>for Buildings in<br><span>Coimbatore</span></div>
+    <div class="hero-h2">Professional heat rejection, UV protection & privacy window film for homes, offices, shops & commercial buildings — installed in a single day, no glass replacement needed.</div>
+    <div class="hero-badges">
+      <div class="hbadge"><div class="hbdot"></div>Up to 80% Heat Reduction</div>
+      <div class="hbadge"><div class="hbdot"></div>Blocks Up to 99% UV Rays</div>
+      <div class="hbadge"><div class="hbdot"></div>Reduces Electricity Bills</div>
+      <div class="hbadge"><div class="hbdot"></div>All Building Types</div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-green">📞 Free Site Visit</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hstat-icon">🌡️</div>
+      <div><div class="hstat-num">80%</div><div class="hstat-lbl">Heat Reduction Through Glass</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">☀️</div>
+      <div><div class="hstat-num">99%</div><div class="hstat-lbl">UV Ray Protection</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">⚡</div>
+      <div><div class="hstat-num">Lower</div><div class="hstat-lbl">Electricity Bills from Day 1</div></div>
+    </div>
+    <div class="hero-stat">
+      <div class="hstat-icon">🏗️</div>
+      <div><div class="hstat-num">1 Day</div><div class="hstat-lbl">Installation — No Glass Change</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LSI STRIP -->
+<div class="lsi-strip">
+  <div class="lsi-lbl">Also Searched:</div>
+  <span class="lsi-tag">Building Window Film Coimbatore</span>
+  <span class="lsi-tag">Office Window Tinting</span>
+  <span class="lsi-tag">Home Sun Control Film</span>
+  <span class="lsi-tag">Commercial Window Film</span>
+  <span class="lsi-tag">Heat Control Film for Buildings</span>
+  <span class="lsi-tag">Frosted Glass Film</span>
+  <span class="lsi-tag">Energy Saving Window Film</span>
+</div>
+
+<!-- WHAT IS -->
+<div class="sec sec-w">
+  <div class="lbl">Understanding the Service</div>
+  <div class="h2">What is Architectural Sun Control Film<br>— and <span>How Does it Work?</span></div>
+  <div class="what-grid">
+    <div>
+      <p class="body-p">Architectural sun control film is a specially engineered multi-layer window film applied directly to the inside surface of existing glass windows and doors — in homes, offices, shops, showrooms, apartment buildings and any space with glass that lets in unwanted heat, glare or UV radiation.</p>
+      <p class="body-p">Unlike curtains or blinds that block your view entirely, architectural sun control films allow natural light and outward visibility while selectively blocking heat-producing infrared rays and harmful UV radiation that come with sunlight.</p>
+      <div class="science-note">
+        <p class="sci-p">💡 <strong>Simple explanation:</strong> Sunlight carries three things — visible light (you need this), UV rays (harmful) and infrared heat (makes rooms hot). Sun control film blocks the UV and infrared while letting the visible light through. Cooler rooms. Bright interiors. Lower electricity bills. Zero structural changes to your building.</p>
+      </div>
+    </div>
+    <div>
+      <div class="how-box">
+        <div class="how-title">What Sun Control Film Blocks</div>
+        <div class="how-row">
+          <div class="how-icon" style="background:rgba(255,179,0,.12)">☀️</div>
+          <div><div class="how-title2">Infrared Heat (IR)</div><div class="how-p">The primary cause of hot rooms and high AC bills. High-performance films reject up to 80% of solar IR energy before it enters your space.</div></div>
+        </div>
+        <div class="how-row">
+          <div class="how-icon" style="background:rgba(102,187,106,.1)">🌿</div>
+          <div><div class="how-title2">UV Radiation — Up to 99%</div><div class="how-p">The invisible rays that fade your furniture, flooring and interiors. Premium films block up to 99% of harmful UVA and UVB radiation.</div></div>
+        </div>
+        <div class="how-row">
+          <div class="how-icon" style="background:rgba(255,255,255,.05)">💡</div>
+          <div><div class="how-title2">Glare — Controlled</div><div class="how-p">Reduces harsh glare on screens, eyes and interiors without blocking natural light entirely — keeping rooms bright but comfortable.</div></div>
+        </div>
+        <div class="how-row">
+          <div class="how-icon" style="background:rgba(66,165,245,.08)">🔒</div>
+          <div><div class="how-title2">Outside Visibility (Privacy)</div><div class="how-p">Reflective and darker tint films provide daytime privacy — outside cannot see in, inside can see out clearly.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- WHO NEEDS IT -->
+<div class="sec">
+  <div class="lbl lbl-a">Applications</div>
+  <div class="h2">Sun Control Film for<br>Every <span>Space in Coimbatore</span></div>
+  <p class="body-p" style="color:#888">If your space has glass — and that glass is letting in heat, glare or unwanted visibility — we have the right film for it. DRK Stickers installs architectural sun control films across all building types in Coimbatore.</p>
+  <div class="spaces-grid">
+    <div class="space-card">
+      <div class="space-icon">🏠</div>
+      <div class="space-h3">Residential Homes & Villas</div>
+      <p class="space-p">Large glass windows and sliding doors in modern Coimbatore homes let in intense heat. Sun control film keeps living rooms, bedrooms and kitchens dramatically cooler — reducing AC usage and protecting furniture and flooring from UV fading.</p>
+    </div>
+    <div class="space-card">
+      <div class="space-icon">🏢</div>
+      <div class="space-h3">Offices & Corporate Buildings</div>
+      <p class="space-p">Glass-fronted offices face heat discomfort and high electricity costs. Sun control film reduces both — keeping your office cooler, eliminating glare on screens, improving productivity and significantly cutting monthly electricity bills.</p>
+    </div>
+    <div class="space-card">
+      <div class="space-icon">🏪</div>
+      <div class="space-h3">Shops, Showrooms & Retail</div>
+      <p class="space-p">Coimbatore's busy retail spaces have glass frontages that let UV rays fade merchandise and create uncomfortable interiors. Our low-tint, high-performance retail films provide maximum heat and UV protection without darkening the display.</p>
+    </div>
+    <div class="space-card">
+      <div class="space-icon">🏗️</div>
+      <div class="space-h3">Commercial Buildings & IT Spaces</div>
+      <p class="space-p">Large commercial properties and IT parks in Peelamedu and Saravanampatti benefit from building-wide heat reduction and significantly lower cooling costs. Electricity savings typically justify the investment within 2–3 years.</p>
+    </div>
+    <div class="space-card">
+      <div class="space-icon">🏥</div>
+      <div class="space-h3">Hospitals, Clinics & Schools</div>
+      <p class="space-p">Healthcare and educational spaces require comfortable, glare-free environments for patients, students and staff. Sun control film creates consistent, comfortable interiors — reducing heat stress and glare that compromise concentration and wellbeing.</p>
+    </div>
+    <div class="space-card" style="background:var(--ink3);border-color:transparent">
+      <div class="space-icon">🏨</div>
+      <div class="space-h3" style="color:#fff">Hotels, Restaurants & Hospitality</div>
+      <p class="space-p" style="color:#3a5040">Guest comfort is paramount. Sun control film keeps rooms and dining spaces at comfortable temperatures without compromising natural light and views — reducing AC load and cutting operating costs while enhancing guest experience.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- FILM TYPES — Interactive Tabs -->
+<div class="sec sec-w">
+  <div class="lbl">Film Options</div>
+  <div class="h2">Types of Sun Control Films<br>We Install in <span>Coimbatore</span></div>
+  <p class="body-p">Choose the right film type for your space, performance need and aesthetic preference. Click any tab to explore each film type in detail.</p>
+  <div class="film-tabs" id="filmTabs">
+    <div class="film-tab active" data-panel="0">✨ Reflective</div>
+    <div class="film-tab" data-panel="1">🌿 Non-Reflective</div>
+    <div class="film-tab" data-panel="2">🔲 Frosted / Decorative</div>
+    <div class="film-tab" data-panel="3">💡 Anti-Glare</div>
+  </div>
+  <div class="film-panels" id="filmPanels">
+    <div class="film-panel active" id="panel-0">
+      <div class="fp-left">
+        <div class="fp-tag">Highest Heat Rejection + Best Privacy</div>
+        <h3>Reflective Sun Control Film</h3>
+        <p>The highest-performing film for heat rejection and daytime privacy. Mirror-like reflective coating on the outside reflects a significant portion of sunlight before it enters your space. Available in silver, gold and grey finishes.</p>
+        <p>People outside cannot see in during daylight — those inside have full outward visibility and natural light. Transforms the building exterior appearance to a clean, professional glass facade look.</p>
+        <div class="fp-note">⚠️ At night when interior lights are on, reflective films do not provide privacy — curtains or blinds recommended for nighttime privacy needs.</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--green2);font-weight:600">Best for: West-facing windows, top-floor apartments, offices with direct afternoon sun, showrooms & retail glass frontages.</div>
+      </div>
+      <div class="fp-right">
+        <div class="fp-stat"><div class="fp-stat-label">Heat Rejection</div><div class="fp-stat-val">Up to 80%</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">UV Protection</div><div class="fp-stat-val">Up to 99%</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Daytime Privacy</div><div class="fp-stat-val">Excellent ✓</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Night Privacy</div><div class="fp-stat-val">No — use curtains</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Available Finishes</div><div class="fp-stat-val">Silver, Gold, Grey</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Tint Levels</div><div class="fp-stat-val">50%, 70%, 90%</div></div>
+      </div>
+    </div>
+    <div class="film-panel" id="panel-1">
+      <div class="fp-left">
+        <div class="fp-tag">Subtle Look + Good Heat Control</div>
+        <h3>Non-Reflective Sun Control Film</h3>
+        <p>Provides heat and UV protection in a more subtle, neutral appearance — without the mirror-like exterior look of reflective films. Available in blue, green, grey and brown tints at different transparency levels.</p>
+        <p>Suits spaces where a less visible, more natural glass appearance is preferred while still delivering significant heat and UV rejection. Popular for residential homes and hotel rooms where exterior aesthetics are important.</p>
+        <div style="margin-top:12px;font-size:12px;color:var(--green2);font-weight:600">Best for: Residential homes, hotel rooms, restaurants, villas and spaces where a less visible tint is preferred.</div>
+      </div>
+      <div class="fp-right">
+        <div class="fp-stat"><div class="fp-stat-label">Heat Rejection</div><div class="fp-stat-val">50–70%</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">UV Protection</div><div class="fp-stat-val">Up to 99%</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Daytime Privacy</div><div class="fp-stat-val">Moderate to Good</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Exterior Appearance</div><div class="fp-stat-val">Subtle — near-invisible</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Available Colours</div><div class="fp-stat-val">Blue, Green, Grey, Brown</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Tint Levels</div><div class="fp-stat-val">50%, 70%, 90%</div></div>
+      </div>
+    </div>
+    <div class="film-panel" id="panel-2">
+      <div class="fp-left">
+        <div class="fp-tag">Full Privacy + Design Element</div>
+        <h3>Frosted & Decorative Privacy Film</h3>
+        <p>Provides permanent privacy for glass partitions, bathroom windows, office cabins and any glass where full privacy is needed — while acting as an elegant design element that enhances the visual appeal of your space.</p>
+        <p>Available in plain frosted, etched glass patterns, geometric designs and custom-cut patterns — transforming plain glass into a sophisticated architectural element with privacy, elegance and design interest.</p>
+        <div class="fp-note">💡 For spaces needing both heat control and privacy, a combination of sun control film + frosted pattern film is recommended.</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--green2);font-weight:600">Best for: Bathrooms, office cabin partitions, conference room glass, reception areas, retail interiors, bedroom windows.</div>
+      </div>
+      <div class="fp-right">
+        <div class="fp-stat"><div class="fp-stat-label">Privacy Level</div><div class="fp-stat-val">Full — Day & Night ✓</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">UV Protection</div><div class="fp-stat-val">Blocks 85% UV</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Heat Rejection</div><div class="fp-stat-val">Moderate</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Light Transmission</div><div class="fp-stat-val">Diffused natural light</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Patterns Available</div><div class="fp-stat-val">Plain, Etched, Geometric, Custom</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Design Versatility</div><div class="fp-stat-val">Excellent ✓</div></div>
+      </div>
+    </div>
+    <div class="film-panel" id="panel-3">
+      <div class="fp-left">
+        <div class="fp-tag">Office & Workspace Specialist</div>
+        <h3>Anti-Glare Window Film</h3>
+        <p>Specifically engineered for office environments and workspaces where computer screens, televisions and monitors are affected by direct sunlight and glare. Reduces the intensity of light entering through windows without significantly darkening the space.</p>
+        <p>Eliminates screen glare, reduces eye strain during long working hours and creates a more productive working environment — without losing natural light or needing to draw blinds during the day.</p>
+        <div style="margin-top:12px;font-size:12px;color:var(--green2);font-weight:600">Best for: IT offices, corporate workspaces, home study rooms, trading floors and any screen-heavy workspace.</div>
+      </div>
+      <div class="fp-right">
+        <div class="fp-stat"><div class="fp-stat-label">Glare Reduction</div><div class="fp-stat-val">Up to 80%</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">UV Protection</div><div class="fp-stat-val">Up to 99%</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Light Transmission</div><div class="fp-stat-val">High — keeps rooms bright</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Heat Rejection</div><div class="fp-stat-val">Good</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Screen Visibility</div><div class="fp-stat-val">Excellent improvement ✓</div></div>
+        <div class="fp-stat"><div class="fp-stat-label">Employee Productivity</div><div class="fp-stat-val">Measurably improved</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-d">Why Install It</div>
+  <div class="h2 h2-d">7 Benefits of Architectural<br><span>Sun Control Film</span> in Coimbatore</div>
+  <div class="ben-grid">
+    <div class="ben-card">
+      <div class="ben-icon-box">🌡️</div>
+      <div><div class="ben-h3">Significantly Cooler Interiors</div><p class="ben-p">Blocks solar heat through glass — reducing indoor temperatures noticeably and making rooms comfortable even before AC reaches full effect. The most immediate and impactful benefit for Coimbatore's climate.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">⚡</div>
+      <div><div class="ben-h3">Reduces Electricity Bills</div><p class="ben-p">Cooler rooms mean AC works less — consuming less electricity. In Coimbatore where AC runs 8–12 hours daily, the savings from properly installed sun control film are immediate, measurable and cumulative from the first month.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">☀️</div>
+      <div><div class="ben-h3">Blocks Up to 99% UV Rays</div><p class="ben-p">UV rays fade sofas, carpets, curtains, wooden furniture and flooring over time. Sun control films block up to 99% of UV radiation — protecting everything inside your space from UV-related fading and deterioration.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">💡</div>
+      <div><div class="ben-h3">Reduces Glare on Screens & Eyes</div><p class="ben-p">Intense sunlight glaring onto computer screens and into eyes is a constant problem in Coimbatore's glass-heavy buildings. Sun control film reduces glare significantly — making screens clearly visible and reducing eye strain during long working hours.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">🔒</div>
+      <div><div class="ben-h3">Daytime Privacy</div><p class="ben-p">Reflective and medium-tint films provide daytime privacy — outside cannot see in during daylight while inside enjoys full outward visibility and natural light. Valuable for ground-floor homes and offices in Coimbatore's busy areas.</p></div>
+    </div>
+    <div class="ben-card">
+      <div class="ben-icon-box">🏠</div>
+      <div><div class="ben-h3">Protects Interiors & Furnishings</div><p class="ben-p">Heat and UV protection combined creates a significantly more gentle interior environment — dramatically extending the lifespan of your flooring, furniture, curtains and all interior finishes from day one of installation.</p></div>
+    </div>
+    <div class="ben-card" style="grid-column:1/-1">
+      <div class="ben-icon-box">✨</div>
+      <div><div class="ben-h3">Enhances Building Appearance — Instantly</div><p class="ben-p">Quality architectural film transforms the appearance of any building — giving glass surfaces a clean, uniform, professional look that significantly enhances curb appeal and visual impression. Reflective films give commercial buildings a sleek, modern glass facade. Frosted films add elegance to office partitions. The transformation is immediate and permanent for the life of the film — with zero structural changes, no glass replacement and installation completed in a single day.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY COIMBATORE -->
+<div class="sec sec-w">
+  <div class="lbl">Local Climate</div>
+  <div class="h2">Why Coimbatore Buildings<br><span>Specifically Need</span> Sun Control Film</div>
+  <p class="body-p">Coimbatore's climate creates specific challenges for glass-heavy buildings that make architectural sun control film a genuine necessity — not just a comfort upgrade:</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">☀️</div>
+      <div class="why-h3">300+ Days of Intense Sunlight</div>
+      <p class="why-p">Coimbatore receives intense direct sunlight for 300+ days a year. West and south-facing windows in homes and offices receive particularly harsh afternoon sun — making rooms almost uninhabitable from 12–5 PM without sun control film.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌡️</div>
+      <div class="why-h3">35°C+ Temperatures for Months</div>
+      <p class="why-p">Coimbatore's summer temperatures regularly exceed 35°C. Untreated glass windows act like solar panels — raising room temperatures 5–10°C above outdoor levels, forcing AC to work significantly harder and consume more electricity.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏗️</div>
+      <div class="why-h3">Modern Architecture Uses More Glass</div>
+      <p class="why-p">Coimbatore's growing real estate sector increasingly features large glass windows, floor-to-ceiling glazing and glass curtain walls that maximise natural light aesthetics — but create significant heat and UV challenges without sun control film.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <div class="why-h3">Rising Electricity Costs</div>
+      <p class="why-p">As electricity tariffs in Tamil Nadu continue to rise, energy savings from reducing cooling load through window film become increasingly significant. For commercial buildings in Coimbatore, annual savings can run into tens of thousands of rupees.</p>
+    </div>
+    <div class="why-card" style="grid-column:1/-1;background:var(--green-light);border-color:rgba(46,125,50,.2)">
+      <div class="why-icon">🌿</div>
+      <div class="why-h3" style="color:var(--green2)">Sustainable, Eco-Friendly Solution</div>
+      <p class="why-p" style="color:var(--green2);opacity:.85">Unlike replacing glass or installing external shading structures, architectural sun control film is a minimal-intervention, low-waste solution that reduces your building's cooling energy consumption — lowering both your electricity bills and your building's carbon footprint. One of the most cost-effective and environmentally responsible upgrades available for any building in Coimbatore.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- PROCESS -->
+<div class="sec sec-d">
+  <div class="lbl lbl-d">Our Method</div>
+  <div class="h2 h2-d">Our Installation Process<br>— <span>5 Professional Steps</span></div>
+  <p class="body-p" style="color:#3a5040">At DRK Stickers, every architectural film installation follows a clean, professional process — bubble-free, perfectly aligned film on every glass surface, regardless of building size or complexity.</p>
+  <div class="proc-steps">
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">01</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Free Site Visit & Film Consultation</div><p class="proc-p">Our team visits your property in Coimbatore — home, office, shop or commercial building — to assess glass surfaces, understand your heat, glare, privacy and aesthetic requirements, measure all glass areas and recommend the right film type and tint level for each window. Free of charge with no obligation.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">02</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Glass Measurement & Transparent Quote</div><p class="proc-p">After assessing your space, we provide a detailed, transparent written quotation — specifying film type, coverage area in square feet, expected performance improvements and the total installation cost. No hidden charges, no vague pricing. What we quote is what you pay.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">03</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Glass Cleaning & Surface Preparation</div><p class="proc-p">On installation day, our team thoroughly cleans all glass surfaces — removing dust, fingerprints, adhesive residue and contaminants. Proper glass preparation is the most critical step for a clean, bubble-free and long-lasting film installation.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">04</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Professional Film Cutting & Application</div><p class="proc-p">Film is precision-cut to match the exact dimensions of each glass panel. Our trained team applies the film using professional squeegee tools — carefully removing all moisture and air from under the film for a completely smooth, bubble-free, edge-clean finish on every window and door.</p></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-left"><div class="proc-num">05</div><div class="proc-vline"></div></div>
+      <div><div class="proc-h3">Final Inspection & Care Instructions</div><p class="proc-p">After installation, every glass panel is inspected for bubbles, lifting edges or imperfections. The film typically takes 3–7 days to fully cure — during which some slight haziness may be visible. This clears completely as the film bonds to the glass. Full care and maintenance instructions provided after every installation.</p></div>
+    </div>
+  </div>
+  <div class="proc-meta">
+    <div class="pm-box"><div class="pm-lbl">Standard Homes & Offices</div><div class="pm-val">1 Day</div></div>
+    <div class="pm-box"><div class="pm-lbl">Large Commercial</div><div class="pm-val">2–3 Days</div></div>
+    <div class="pm-box"><div class="pm-lbl">Curing Period</div><div class="pm-val">3–7 Days</div></div>
+    <div class="pm-box"><div class="pm-lbl">Site Visit</div><div class="pm-val">Free ✓</div></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="sec sec-g">
+  <div class="lbl">Our Work</div>
+  <div class="h2">Real Buildings.<br>Real <span>Comfort.</span></div>
+  <p class="body-p">Every installation below was completed by DRK Stickers in Coimbatore — homes, offices and commercial spaces transformed by professional sun control film.</p>
+  <div class="gal-grid">
+    <div class="gal-item" data-label="Office Window Film — Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Residential Sun Film — DRK Stickers">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Reflective Film — Commercial Building">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Frosted Film — Office Partition">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Showroom Window Film Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+    <div class="gal-item" data-label="Home Villa Sun Film Coimbatore">
+      <div class="gal-icon"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:18px"><button class="btn-red">View Full Gallery →</button></div>
+</div>
+
+<div class="div"></div>
+
+<!-- FAQ -->
+<div class="sec sec-w">
+  <div class="lbl">Got Questions?</div>
+  <div class="h2">Frequently Asked Questions —<br>Architectural Sun Control Film in <span>Coimbatore</span></div>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q">How much does architectural sun control film cost in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Architectural sun control film installation prices at DRK Stickers are calculated per square foot of glass covered. Pricing varies based on the film type selected (reflective, non-reflective, frosted or anti-glare), the brand grade and the total glass area. Contact us or WhatsApp us for a free site visit and detailed transparent quote specific to your property — home, office, shop or commercial building.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Will sun control film make my rooms too dark? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">No — this is the most common misconception about window films. Modern architectural sun control films are specifically engineered to block heat and UV rays while maintaining excellent natural light transmission. Your rooms remain well-lit and bright — only the invisible infrared heat and harmful UV radiation are significantly blocked. Our experts always demonstrate film samples during the free site visit so you can choose the right tint level for your light preference.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Which type of sun control film is best for my home in Coimbatore? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">For residential homes in Coimbatore, we typically recommend non-reflective sun control films in 50% or 70% tint for bedrooms and living rooms facing east or north, and reflective or high-performance films for west-facing and south-facing windows that receive the most intense afternoon sun. For bathroom windows, frosted privacy film is recommended. Our team assesses each window's orientation during the free site visit and recommends the right film for each specific window.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How long does architectural sun control film last in Coimbatore's climate? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">High-quality architectural sun control films installed by DRK Stickers are designed to last 7–12 years in Coimbatore's climate depending on the brand and grade selected. Premium films from international brands with scratch-resistant coatings are particularly durable in Coimbatore's conditions. We always recommend investing in a higher-grade film for building applications — since installation is a one-time fixed expense, better film delivers significantly better long-term value.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can sun control film be applied to all types of glass? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Sun control films can be applied to all plain glass surfaces — ordinary clear glass, tinted glass and toughened/tempered glass — whether framed or frameless. Films cannot be applied to etched, perforated or deeply textured glass surfaces. For double-glazed or insulated glass units (IGU), specific film types designed for IGU applications are required. Our team will assess your glass type during the site visit and recommend the appropriate film.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How soon will I see electricity savings after installation? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Most Coimbatore residents and building owners notice a measurable improvement in room comfort and a reduction in AC running time within the first week of installation — especially in rooms with west-facing or south-facing glass. The corresponding reduction in electricity bills is typically visible in the first full month's bill after installation. For commercial buildings, energy monitoring before and after installation often shows significant, measurable reductions in cooling load and electricity consumption.</div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <button class="faq-q" style="border-bottom:none">Will the film affect the appearance of my building from outside? <span class="faq-arr">▾</span></button>
+      <div class="faq-a">Reflective sun control films give your building's glass a clean, mirror-like appearance from outside — which most commercial building owners find significantly more professional and modern-looking than untreated glass. Non-reflective films in lighter tints are barely noticeable from outside. Frosted films add an elegant, designer appearance to interior-facing glass. All film types are available in different shades and finishes — our experts will show you samples during the free site visit so you can make a fully informed choice.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-grid">
+    <div>
+      <div class="cta-h2">Book Your Free Site Visit<br>for <span>Sun Control Film</span> in Coimbatore</div>
+      <p class="cta-p">Stop paying high electricity bills and living in uncomfortable, overheated rooms. Professional installation completed in a single day — zero structural changes, no glass replacement, immediate results.</p>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-green">📞 Free Site Visit</button>
+      <button class="btn-ghost">💬 WhatsApp Us</button>
+      <button class="btn-ghost">📍 Get Directions</button>
+    </div>
+  </div>
+  <div class="cta-info">
+    <div><div class="ci-lbl">Phone</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">[Your Number]</div></div>
+    <div><div class="ci-lbl">Location</div><div class="ci-val">[Address], Coimbatore</div></div>
+    <div><div class="ci-lbl">Hours</div><div class="ci-val">Mon–Sat 9AM–7PM | Sun 10AM–5PM</div></div>
+  </div>
+</div>
+
+</div>
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const was=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!was)item.classList.add('open');
+  });
+});
+// Film type tabs
+document.querySelectorAll('.film-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const panelIdx=tab.dataset.panel;
+    document.querySelectorAll('.film-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.film-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+panelIdx).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

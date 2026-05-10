@@ -1,0 +1,318 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --primary:#D85A30;
+    --primary-dark:#993C1D;
+    --accent:#1D9E75;
+    --dark:#2C2C2A;
+    --mid:#888780;
+    --light:#F1EFE8;
+    --white:var(--color-background-primary);
+    --text:var(--color-text-primary);
+    --text-sec:var(--color-text-secondary);
+    --border:var(--color-border-tertiary);
+    --bg-sec:var(--color-background-secondary);
+    --heading-font:'Barlow Condensed',sans-serif;
+    --body-font:'DM Sans',sans-serif;
+  }
+  .page{font-family:var(--body-font);color:var(--text);max-width:900px;margin:0 auto;padding:0 0 2rem}
+  /* HERO */
+  .hero{background:var(--dark);padding:3rem 2rem 2.5rem;position:relative;overflow:hidden;border-radius:var(--border-radius-lg)}
+  .hero::before{content:'';position:absolute;top:-40px;right:-60px;width:320px;height:320px;border-radius:50%;background:var(--primary);opacity:0.12}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:10%;width:220px;height:220px;border-radius:50%;background:var(--accent);opacity:0.10}
+  .hero-badge{display:inline-block;background:var(--primary);color:#fff;font-family:var(--body-font);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:30px;margin-bottom:1rem}
+  .hero h1{font-family:var(--heading-font);font-size:52px;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;margin-bottom:1rem;max-width:580px}
+  .hero h1 span{color:var(--primary)}
+  .hero p{color:#B4B2A9;font-size:15px;line-height:1.7;max-width:520px;margin-bottom:1.8rem}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-primary{background:var(--primary);color:#fff;border:none;padding:12px 24px;border-radius:var(--border-radius-md);font-family:var(--body-font);font-size:14px;font-weight:500;cursor:pointer;transition:background 0.2s}
+  .btn-primary:hover{background:var(--primary-dark)}
+  .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:12px 24px;border-radius:var(--border-radius-md);font-family:var(--body-font);font-size:14px;font-weight:500;cursor:pointer;transition:border-color 0.2s}
+  .btn-outline:hover{border-color:#fff}
+  /* STATS BAR */
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:var(--border-radius-md);overflow:hidden;margin:1.5rem 0}
+  .stat-item{background:var(--white);padding:1rem;text-align:center}
+  .stat-num{font-family:var(--heading-font);font-size:28px;font-weight:800;color:var(--primary);line-height:1}
+  .stat-label{font-size:12px;color:var(--text-sec);margin-top:4px}
+  /* SECTION COMMON */
+  .section{padding:2rem 0}
+  .section-label{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--primary);margin-bottom:6px}
+  .section-title{font-family:var(--heading-font);font-size:34px;font-weight:800;text-transform:uppercase;color:var(--text);line-height:1.1;margin-bottom:1rem}
+  .section-body{font-size:14px;color:var(--text-sec);line-height:1.8;max-width:600px;margin-bottom:1.5rem}
+  /* WHAT IS */
+  .what-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .what-card{background:var(--bg-sec);border-radius:var(--border-radius-lg);padding:1.25rem;border:0.5px solid var(--border)}
+  .what-card-icon{width:36px;height:36px;border-radius:var(--border-radius-md);background:var(--primary);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+  .what-card-icon svg{width:18px;height:18px;fill:#fff}
+  .what-card h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px}
+  .what-card p{font-size:13px;color:var(--text-sec);line-height:1.7}
+  /* COMPARE */
+  .compare-table{width:100%;border-collapse:collapse;font-size:13px;border-radius:var(--border-radius-md);overflow:hidden;border:0.5px solid var(--border)}
+  .compare-table th{background:var(--dark);color:#fff;padding:10px 16px;text-align:left;font-weight:500;font-family:var(--heading-font);font-size:15px;text-transform:uppercase;letter-spacing:0.5px}
+  .compare-table th:first-child{width:40%}
+  .compare-table td{padding:10px 16px;border-bottom:0.5px solid var(--border);color:var(--text-sec);vertical-align:middle}
+  .compare-table tr:last-child td{border-bottom:none}
+  .compare-table tr:nth-child(even) td{background:var(--bg-sec)}
+  .check{color:var(--accent);font-weight:500;font-size:15px}
+  .cross{color:#E24B4A;font-weight:500;font-size:15px}
+  .compare-table td:first-child{color:var(--text);font-weight:500}
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .service-card{background:var(--white);border:0.5px solid var(--border);border-radius:var(--border-radius-lg);padding:1.25rem;transition:border-color 0.2s;cursor:default}
+  .service-card:hover{border-color:var(--primary)}
+  .service-tag{display:inline-block;background:#FAECE7;color:#993C1D;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:30px;margin-bottom:10px}
+  .service-card h3{font-size:15px;font-weight:500;color:var(--text);margin-bottom:6px}
+  .service-card p{font-size:13px;color:var(--text-sec);line-height:1.7}
+  /* FINISHES */
+  .finishes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .finish-card{border-radius:var(--border-radius-md);padding:1rem;border:0.5px solid var(--border);background:var(--bg-sec)}
+  .finish-swatch{height:44px;border-radius:6px;margin-bottom:10px}
+  .finish-swatch.matte{background:#444441}
+  .finish-swatch.gloss{background:linear-gradient(135deg,#D85A30,#FA9870)}
+  .finish-swatch.satin{background:linear-gradient(135deg,#185FA5,#85B7EB)}
+  .finish-swatch.chrome{background:linear-gradient(135deg,#B4B2A9,#F1EFE8,#888780)}
+  .finish-swatch.carbon{background:repeating-conic-gradient(#444 0% 25%,#2C2C2A 0% 50%) 0 0/8px 8px}
+  .finish-swatch.custom{background:linear-gradient(135deg,#1D9E75,#5DCAA5,#9FE1CB)}
+  .finish-card h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+  .finish-card p{font-size:12px;color:var(--text-sec);line-height:1.6}
+  /* PROCESS */
+  .process-steps{display:flex;flex-direction:column;gap:0}
+  .process-step{display:flex;gap:1.25rem;padding:1.25rem 0;border-bottom:0.5px solid var(--border);align-items:flex-start}
+  .process-step:last-child{border-bottom:none}
+  .step-num{min-width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;font-family:var(--heading-font);font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .step-content h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+  .step-content p{font-size:13px;color:var(--text-sec);line-height:1.7}
+  /* BENEFITS */
+  .benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .benefit-item{display:flex;align-items:flex-start;gap:10px;padding:12px;background:var(--bg-sec);border-radius:var(--border-radius-md);border:0.5px solid var(--border)}
+  .benefit-dot{min-width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:5px}
+  .benefit-item p{font-size:13px;color:var(--text-sec);line-height:1.6}
+  .benefit-item strong{color:var(--text);font-weight:500}
+  /* FAQ */
+  .faq-item{border-bottom:0.5px solid var(--border);padding:1rem 0}
+  .faq-q{font-size:14px;font-weight:500;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .faq-q::after{content:'+';font-size:18px;color:var(--primary);font-weight:400;flex-shrink:0}
+  .faq-q.open::after{content:'−'}
+  .faq-a{font-size:13px;color:var(--text-sec);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.3s,padding 0.3s}
+  .faq-a.open{max-height:200px;padding-top:10px}
+  /* WHY US */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .why-card{background:var(--bg-sec);border-radius:var(--border-radius-md);padding:1rem;border:0.5px solid var(--border);text-align:center}
+  .why-icon{font-size:22px;margin-bottom:8px;display:block}
+  .why-card h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+  .why-card p{font-size:12px;color:var(--text-sec);line-height:1.6}
+  /* CTA */
+  .cta-block{background:var(--dark);border-radius:var(--border-radius-lg);padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+  .cta-block::before{content:'';position:absolute;top:-80px;left:-80px;width:280px;height:280px;border-radius:50%;background:var(--primary);opacity:0.1}
+  .cta-block h2{font-family:var(--heading-font);font-size:36px;font-weight:800;text-transform:uppercase;color:#fff;margin-bottom:0.75rem}
+  .cta-block p{color:#B4B2A9;font-size:14px;margin-bottom:1.5rem}
+  .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-wa{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:var(--border-radius-md);font-family:var(--body-font);font-size:14px;font-weight:500;cursor:pointer}
+  .lsi-strip{background:var(--bg-sec);border:0.5px solid var(--border);border-radius:var(--border-radius-md);padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px;margin:1.5rem 0 0}
+  .lsi-tag{font-size:11px;color:var(--text-sec);padding:3px 10px;background:var(--white);border-radius:30px;border:0.5px solid var(--border)}
+</style>
+
+<div class="page">
+  <div class="hero">
+    <div class="hero-badge">Coimbatore's Car Wrap Studio</div>
+    <h1>Stunning <span>Vehicle Vinyl</span> Wrap Designs</h1>
+    <p>Transform your car's look without touching its original paint. Premium vehicle vinyl wrap designs — bold, beautiful, and built to last. Full colour change or custom graphics, we've got you covered.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="sendPrompt('I want to know more about DRK Stickers vinyl wrap pricing')">Get a Free Quote ↗</button>
+      <button class="btn-outline" onclick="sendPrompt('What vinyl wrap finish types does DRK Stickers offer?')">Explore Finishes</button>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Vehicles Wrapped</div></div>
+    <div class="stat-item"><div class="stat-num">6+</div><div class="stat-label">Finish Types</div></div>
+    <div class="stat-item"><div class="stat-num">3–5</div><div class="stat-label">Years Durability</div></div>
+    <div class="stat-item"><div class="stat-num">1–3</div><div class="stat-label">Day Turnaround</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">What is it?</div>
+    <div class="section-title">Vehicle Vinyl Wrap — Explained</div>
+    <p class="section-body">A vehicle vinyl wrap is a high-quality adhesive film applied directly over your car's original paint. It changes colour, adds custom designs, or gives a brand-new finish — without permanently altering the factory paintwork.</p>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>100% Reversible</h3>
+        <p>Remove the wrap anytime and restore your factory paint — perfect for leased or luxury vehicles.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <h3>Paint Protection</h3>
+        <p>The vinyl layer shields your original paint from UV rays, minor scratches, bird droppings, and dust.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon"><svg viewBox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div>
+        <h3>Unlimited Designs</h3>
+        <p>Choose from matte, gloss, satin, chrome, carbon fibre, or fully custom printed vehicle vinyl wrap designs.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon"><svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3>Cost-Effective</h3>
+        <p>A fraction of the cost of a full repaint — with more flexibility, faster completion, and better protection.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Why Wrap?</div>
+    <div class="section-title">Vinyl Wrap vs Repainting</div>
+    <table class="compare-table">
+      <thead><tr><th>Feature</th><th>Vinyl Wrap</th><th>Traditional Repaint</th></tr></thead>
+      <tbody>
+        <tr><td>Cost</td><td class="check">More affordable</td><td class="cross">Expensive</td></tr>
+        <tr><td>Time to complete</td><td class="check">1–3 days</td><td class="cross">5–10 days</td></tr>
+        <tr><td>Reversible</td><td class="check">Yes — remove anytime</td><td class="cross">No, permanent</td></tr>
+        <tr><td>Protects original paint</td><td class="check">Yes</td><td class="cross">No</td></tr>
+        <tr><td>Custom design options</td><td class="check">Unlimited</td><td class="cross">Very limited</td></tr>
+        <tr><td>Preserves resale value</td><td class="check">Yes</td><td class="cross">May reduce it</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Our Services</div>
+    <div class="section-title">Wrap Services We Offer</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-tag">Most Popular</div>
+        <h3>Full Body Colour Change Wrap</h3>
+        <p>Complete bumper-to-bumper transformation with premium automotive vinyl film. Perfect for a bold new identity for your vehicle.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-tag">Budget Friendly</div>
+        <h3>Partial Vinyl Wrap</h3>
+        <p>Wrap just the roof, bonnet, mirrors, or boot for a sporty two-tone look — great results at a lower cost.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-tag">Unique</div>
+        <h3>Custom Graphic & Design Wrap</h3>
+        <p>Patterns, racing stripes, or full custom artwork — our designers bring your unique vehicle vinyl wrap design to life.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-tag">Business</div>
+        <h3>Commercial Branding Wrap</h3>
+        <p>Turn your car, van, or truck into a moving billboard. Professional branding wraps for businesses across Coimbatore.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-tag">Premium</div>
+        <h3>Chrome & Specialty Wrap</h3>
+        <p>Chrome, brushed metal, and carbon fibre wraps for a show-stopping, showroom-quality finish that commands attention.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-tag">Protective</div>
+        <h3>Paint Protection Wrap</h3>
+        <p>A clear or tinted wrap that protects against stone chips, UV fading, and environmental damage while staying nearly invisible.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Finishes</div>
+    <div class="section-title">Finish Types Available</div>
+    <div class="finishes-grid">
+      <div class="finish-card"><div class="finish-swatch matte"></div><h4>Matte vinyl wrap</h4><p>Understated, premium look. Hides minor surface imperfections beautifully.</p></div>
+      <div class="finish-card"><div class="finish-swatch gloss"></div><h4>Gloss car wrap</h4><p>Classic mirror-like shine that makes bold colours pop in sunlight.</p></div>
+      <div class="finish-card"><div class="finish-swatch satin"></div><h4>Satin wrap</h4><p>The sweet spot between matte and gloss — smooth, silky, and refined.</p></div>
+      <div class="finish-card"><div class="finish-swatch chrome"></div><h4>Chrome wrap</h4><p>Ultra-reflective metallic finish for a futuristic, show-stopping appearance.</p></div>
+      <div class="finish-card"><div class="finish-swatch carbon"></div><h4>Carbon fibre wrap</h4><p>Textured sporty look — ideal for hoods, pillars, mirror caps, and trims.</p></div>
+      <div class="finish-card"><div class="finish-swatch custom"></div><h4>Custom printed wrap</h4><p>Any design, pattern, or image — digitally printed and applied with precision.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">How it works</div>
+    <div class="section-title">Our Installation Process</div>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-num">1</div><div class="step-content"><h4>Consultation & design</h4><p>We understand your vision, suggest the best wrap type and finish, and provide a design preview when required.</p></div></div>
+      <div class="process-step"><div class="step-num">2</div><div class="step-content"><h4>Surface preparation</h4><p>Your vehicle is thoroughly cleaned and decontaminated — all grease, wax, and dust removed for perfect adhesion.</p></div></div>
+      <div class="process-step"><div class="step-num">3</div><div class="step-content"><h4>Precision application</h4><p>Our trained technicians apply the vinyl carefully across every panel, curve, and edge — zero bubbles, zero creases.</p></div></div>
+      <div class="process-step"><div class="step-num">4</div><div class="step-content"><h4>Quality inspection</h4><p>Every inch is inspected before handover — edges, seams, and all surfaces are checked for a flawless finish.</p></div></div>
+      <div class="process-step"><div class="step-num">5</div><div class="step-content"><h4>Handover & care guide</h4><p>We return your vehicle looking brand new and walk you through how to maintain the wrap for maximum lifespan.</p></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Benefits</div>
+    <div class="section-title">Why Car Owners Love Vinyl Wraps</div>
+    <div class="benefits-grid">
+      <div class="benefit-item"><div class="benefit-dot"></div><p><strong>Protects original paint</strong> from UV rays, dust, scratches, and bird droppings</p></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><p><strong>100% reversible</strong> — restore factory look anytime without any damage</p></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><p><strong>Cost-effective</strong> compared to full repainting, with faster turnaround</p></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><p><strong>Unlimited designs</strong> — any colour, texture, or custom artwork you imagine</p></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><p><strong>Maintains resale value</strong> by keeping original paint intact underneath</p></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><p><strong>Durable finish</strong> — high-quality wraps last 3 to 5 years with proper care</p></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><p><strong>Quick 1–3 day</strong> completion for most full-body colour change wraps</p></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><p><strong>Easy to maintain</strong> — regular hand washing is all you need</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Questions</div>
+    <div class="section-title">Frequently Asked Questions</div>
+    <div id="faq">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does a vehicle vinyl wrap last in Coimbatore's climate?</div><div class="faq-a">A professionally installed, high-quality vinyl wrap typically lasts 3 to 5 years. Longevity depends on sun exposure, washing frequency, and usage conditions. Coimbatore's warm climate means UV-resistant premium films are especially recommended.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will vinyl wrap damage my car's original paint?</div><div class="faq-a">No. When installed and removed by professionals, vinyl wraps do not damage factory paint. In fact, they protect it from UV rays, minor abrasions, and environmental elements during the wrap's lifetime.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much does a car wrap cost in Coimbatore?</div><div class="faq-a">The cost depends on the wrap type (full or partial), finish chosen (matte, gloss, chrome), design complexity, and vehicle size. Contact DRK Stickers for a free, customised quote with no hidden charges.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I wash my wrapped car normally?</div><div class="faq-a">Yes — hand washing is recommended. Avoid high-pressure jet washes directly on wrap edges and do not use abrasive or chemical cleaners. A gentle car wash soap and microfibre cloth work best.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does the installation take?</div><div class="faq-a">A standard full-body colour change wrap takes 2 to 3 days. Partial wraps and single-panel jobs can be completed in just a few hours, depending on the vehicle and design complexity.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can vinyl wrap be applied to any vehicle?</div><div class="faq-a">Yes — vinyl wraps work on cars, SUVs, bikes, vans, trucks, and commercial vehicles of all makes and models, including hatchbacks, sedans, and luxury cars.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Why us</div>
+    <div class="section-title">Why Coimbatore Trusts DRK Stickers</div>
+    <div class="why-grid">
+      <div class="why-card"><span class="why-icon">&#9733;</span><h4>Expert technicians</h4><p>Trained wrap specialists with hands-on precision for every vehicle type.</p></div>
+      <div class="why-card"><span class="why-icon">&#9998;</span><h4>Custom design support</h4><p>We help you visualise the final look before a single layer is applied.</p></div>
+      <div class="why-card"><span class="why-icon">&#10003;</span><h4>Premium vinyl films</h4><p>Only trusted, high-grade automotive vinyl for lasting, vibrant results.</p></div>
+      <div class="why-card"><span class="why-icon">&#9679;</span><h4>Locally trusted</h4><p>Hundreds of satisfied car owners across Coimbatore back our work.</p></div>
+      <div class="why-card"><span class="why-icon">&#9654;</span><h4>Transparent pricing</h4><p>No hidden costs. Free consultations. Clear quotes before any work begins.</p></div>
+      <div class="why-card"><span class="why-icon">&#9989;</span><h4>Quality guarantee</h4><p>Every wrap is inspected and backed by our workmanship guarantee.</p></div>
+    </div>
+  </div>
+
+  <div class="lsi-strip">
+    <span style="font-size:11px;color:var(--text-sec);font-weight:500;align-self:center">Related:</span>
+    <span class="lsi-tag">car wrap Coimbatore</span>
+    <span class="lsi-tag">colour change wrap</span>
+    <span class="lsi-tag">matte vinyl wrap</span>
+    <span class="lsi-tag">gloss car wrap</span>
+    <span class="lsi-tag">full body wrap</span>
+    <span class="lsi-tag">partial vehicle wrap</span>
+    <span class="lsi-tag">chrome wrap</span>
+    <span class="lsi-tag">custom car wrap design</span>
+    <span class="lsi-tag">automotive vinyl film</span>
+    <span class="lsi-tag">car wrap cost</span>
+    <span class="lsi-tag">paint protection wrap</span>
+    <span class="lsi-tag">vehicle wrap installation</span>
+  </div>
+
+  <div class="section">
+    <div class="cta-block">
+      <h2>Ready to Transform Your Car?</h2>
+      <p>Bold colour change, custom artwork, or a sleek matte finish — DRK Stickers has the skill and materials to make it happen.</p>
+      <p style="color:#9FE1CB;font-size:13px;margin-bottom:1.5rem">No. 102, Sidhapudur, Coimbatore — 641044</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="sendPrompt('I want to book a free consultation at DRK Stickers for a vinyl wrap')">Book Free Consultation ↗</button>
+        <button class="btn-wa" onclick="sendPrompt('What is the WhatsApp number for DRK Stickers?')">WhatsApp Us ↗</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleFaq(el){
+  const a=el.nextElementSibling;
+  const isOpen=el.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(q=>{q.classList.remove('open');q.nextElementSibling.classList.remove('open')});
+  if(!isOpen){el.classList.add('open');a.classList.add('open')}
+}
+</script>
